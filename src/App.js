@@ -27,7 +27,7 @@ const Example = () => {
     console.log("scrollPostion", scrollPostion)
 
     if (typeof scrollPostion != undefined && scrollPostion)
-      listRef.current.scrollToItem(scrollPostion);
+      listRef.current.scrollToItem(scrollPostion, "start");
   }
 
   return (
