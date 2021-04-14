@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { useRef } from "react";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import copy from 'copy-to-clipboard';
@@ -11,36 +11,44 @@ const Row = ({ index, style }) => {
       {`${data[index]}`}
       <button onClick={() => {
         copy(`"${data[index]}"\n\n― Friedrich Nietzsche`);
+        localStorage.setItem("scrollPostion", index)
       }}>Copy!</button>
 
-    </div>
+    </div >
   )
 };
 
-function handleOnWheel(obj) {
-  // Your handler goes here ...
-  console.log("handleOnWheel()", obj);
-}
+const Example = () => {
+  const listRef = useRef(null);
 
-const outerElementType = forwardRef((props, ref) => (
-  <div ref={ref} onWheel={handleOnWheel} {...props} />
-));
+  const scrollToRowStart = (rowIndex) => {
+    let scrollPostion = JSON.parse(localStorage.getItem('scrollPostion'));
 
-const Example = () => (
-  <AutoSizer>
-    {({ height, width }) => (
-      <List
-        className="List"
-        height={height}
-        itemCount={1000}
-        itemSize={150}
-        width={width}
-        outerElementType={outerElementType}
-      >
-        {Row}
-      </List>
-    )}
-  </AutoSizer>
-);
+    console.log("scrollPostion", scrollPostion)
+
+    if (typeof scrollPostion != undefined && scrollPostion)
+      listRef.current.scrollToItem(scrollPostion);
+  }
+
+  return (
+    <>
+      <button onClick={() => scrollToRowStart()}>Remember Last Quote</button>
+      <AutoSizer>
+        {({ height, width }) => (
+          <List
+            className="List"
+            height={height}
+            itemCount={1000}
+            itemSize={150}
+            width={width}
+            ref={listRef}
+          >
+            {Row}
+          </List>
+        )}
+      </AutoSizer>
+    </>
+  )
+};
 
 export default Example
