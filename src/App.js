@@ -39,7 +39,7 @@ const Example = () => {
             className="List"
             height={height}
             itemCount={data.length}
-            itemSize={200}
+            itemSize={250}
             width={width}
             ref={listRef}
           >
