@@ -1,14 +1,25 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import copy from 'copy-to-clipboard';
 
 import { data } from "./static/data";
+import ErrorBoundary from "./components/error-boundary";
+var debounce = require('lodash.debounce');
 
-const Row = ({ index, style }) => {
+const Row = ({ index, isScrolling, style }) => {
+
+  // const rememberScrollPosition = debounce(() => {
+  //   localStorage.setItem("scrollPostion", index - 4)
+  // }, 1000)
+
+  // useEffect(() => {
+  //   rememberScrollPosition();
+  // }, [isScrolling]);
+
   return (
     <div className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
-      {`${data[index]}`}
+      {`${index} ${data[index]}`}
       <button onClick={() => {
         copy(`"${data[index]}"\n\n― Friedrich Nietzsche`);
         localStorage.setItem("scrollPostion", index)
@@ -21,21 +32,33 @@ const Row = ({ index, style }) => {
 const Example = () => {
   const listRef = useRef(null);
 
-  const scrollToRowStart = (rowIndex) => {
+  const scrollToRow = () => {
     let scrollPostion = JSON.parse(localStorage.getItem('scrollPostion'));
 
-    console.log("scrollPostion", scrollPostion)
+    // console.log("scrollPostion", scrollPostion)
 
-    if (typeof scrollPostion != undefined && scrollPostion)
-      listRef.current.scrollToItem(scrollPostion, "start");
+    if (typeof scrollPostion != undefined && scrollPostion && scrollPostion > 0)
+      listRef.current.scrollToItem(scrollPostion, "center");
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      try {
+        scrollToRow();
+      }
+      catch (e) {
+        console.log(e)
+      }
+    }, 1000)
+  }, []);
+
   return (
-    <>
-      <button onClick={() => scrollToRowStart()}>Remember Last Quote</button>
+    <ErrorBoundary scrollToRow={scrollToRow}>
+      {/* <button onClick={() => scrollToRow()}>Remember Last Quote</button> */}
       <AutoSizer>
         {({ height, width }) => (
           <List
+            useIsScrolling
             className="List"
             height={height}
             itemCount={data.length}
@@ -47,7 +70,7 @@ const Example = () => {
           </List>
         )}
       </AutoSizer>
-    </>
+    </ErrorBoundary >
   )
 };
 
