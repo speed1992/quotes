@@ -23,7 +23,7 @@ const Row = ({ index, isScrolling, style }) => {
 
   return (
     <div className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
-      {`${index}. ${data[index]}`}
+      {`${index + 1}. ${data[index]}`}
       <button onClick={() => {
         copy(`"${data[index]}"\n\n― Friedrich Nietzsche`);
         localStorage.setItem("scrollPostion", index)
@@ -53,7 +53,7 @@ const Example = () => {
       catch (e) {
         console.log(e)
       }
-    }, 1000)
+    }, 1500)
   }, []);
 
   return (
