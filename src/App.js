@@ -5,9 +5,13 @@ import copy from 'copy-to-clipboard';
 
 import { data } from "./static/data";
 import ErrorBoundary from "./components/error-boundary";
-var debounce = require('lodash.debounce');
+import SnackbarProvider, { useSnackbar } from 'react-simple-snackbar'
+
+// var debounce = require('lodash.debounce');
 
 const Row = ({ index, isScrolling, style }) => {
+
+  const [openSnackbar] = useSnackbar()
 
   // const rememberScrollPosition = debounce(() => {
   //   localStorage.setItem("scrollPostion", index - 4)
@@ -23,8 +27,8 @@ const Row = ({ index, isScrolling, style }) => {
       <button onClick={() => {
         copy(`"${data[index]}"\n\n― Friedrich Nietzsche`);
         localStorage.setItem("scrollPostion", index)
+        openSnackbar('Copied!', 1000);
       }}>Copy!</button>
-
     </div >
   )
 };
@@ -54,22 +58,24 @@ const Example = () => {
 
   return (
     <ErrorBoundary scrollToRow={scrollToRow}>
-      {/* <button onClick={() => scrollToRow()}>Remember Last Quote</button> */}
-      <AutoSizer>
-        {({ height, width }) => (
-          <List
-            useIsScrolling
-            className="List"
-            height={height}
-            itemCount={data.length}
-            itemSize={300}
-            width={width}
-            ref={listRef}
-          >
-            {Row}
-          </List>
-        )}
-      </AutoSizer>
+      <SnackbarProvider>
+        {/* <button onClick={() => scrollToRow()}>Remember Last Quote</button> */}
+        <AutoSizer>
+          {({ height, width }) => (
+            <List
+              useIsScrolling
+              className="List"
+              height={height}
+              itemCount={data.length}
+              itemSize={300}
+              width={width}
+              ref={listRef}
+            >
+              {Row}
+            </List>
+          )}
+        </AutoSizer>
+      </SnackbarProvider>
     </ErrorBoundary >
   )
 };
