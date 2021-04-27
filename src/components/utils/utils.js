@@ -4,11 +4,11 @@ export const scrollToFirstRow = (listRef) => listRef.current.scrollToItem(0);
 
 export const scrollToRow = (listRef, scrollPosition) => listRef.current.scrollToItem(scrollPosition);
 
-export const scrollToMemorizedRow = (listRef, rowNumber = null, align = "center") => {
+export const scrollToMemorizedRow = (listRef) => {
     let scrollPosition = JSON.parse(localStorage.getItem('scrollPosition'));
 
     if (typeof scrollPosition != undefined && scrollPosition && scrollPosition > 0) {
-        listRef.current.scrollToItem(scrollPosition, align);
+        listRef.current.scrollToItem(scrollPosition);
     }
 }
 
