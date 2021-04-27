@@ -11,7 +11,7 @@ export const Row = ({ index, isScrolling, style }) => {
         <div className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
             {`${data[index]['id']}. ${data[index]['quote']}`}
             <button onClick={() => {
-                copy(`"${data[index]}"\n\n― Friedrich Nietzsche`);
+                copy(`"${data[index]['quote']}"\n\n― Friedrich Nietzsche`);
                 localStorage.setItem("scrollPosition", data[index]['id'])
                 openSnackbar('Copied!', 1000);
             }}>Copy!</button>

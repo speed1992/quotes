@@ -26,7 +26,7 @@ export const delayedScrollToRow = (listRef) => {
 export const search = (searchText, ...callback) => {
 
     const newData = INITIAL_DATA.filter(({ quote }, index) => {
-        if ((quote.indexOf(searchText) < 0)) {
+        if ((quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0)) {
             return false
         }
         else {
