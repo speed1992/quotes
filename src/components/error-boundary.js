@@ -17,12 +17,7 @@ export default class ErrorBoundary extends React.Component {
     }
 
     componentDidCatch(error, errorInfo) {
-        // You can also log the error to an error reporting service
-        // setTimeout(() => {
-        //     this.props.scrollToRow();
-        // }, 1000);
         console.log("******", error);
-        // logErrorToMyService(error, errorInfo);
     }
 
     render() {
