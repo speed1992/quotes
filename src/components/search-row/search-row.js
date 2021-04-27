@@ -3,18 +3,17 @@ import { useSnackbar } from 'react-simple-snackbar'
 import copy from 'copy-to-clipboard';
 import { data } from "../../static/data";
 
-export const Row = ({ index, isScrolling, style }) => {
+export const SearchRow = ({ index, isScrolling, style }) => {
 
     const [openSnackbar] = useSnackbar()
 
     return (
         <div className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
-            {`${index + 1}. ${data[index]}`}
+            {`${data[index]['id']}. ${data[index]['quote']}`}
             <button onClick={() => {
-                copy(`"${data[index]}"\n\n― Friedrich Nietzsche`);
-                localStorage.setItem("scrollPostion", index)
+                copy(`"${data[index]['quote']}"\n\n― Friedrich Nietzsche`);
                 openSnackbar('Copied!', 1000);
-            }}>Copy!</button>
+            }}>Copy1!</button>
         </div >
     )
 };
