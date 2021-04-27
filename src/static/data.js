@@ -7,5 +7,5 @@ export const resetData = () => {
 }
 
 export const changeData = (newData) => {
-    data = newData;
+    data = JSON.parse(JSON.stringify(newData));
 }

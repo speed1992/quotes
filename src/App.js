@@ -7,8 +7,6 @@ import SnackbarProvider from 'react-simple-snackbar'
 import { delayedScrollToRow, resetSearch, scrollToFirstRow, search } from "./components/utils/utils"
 import { Row } from "./components/row/row";
 import './App.css';
-import { SearchRow } from "./components/search-row/search-row";
-
 
 export const App = () => {
   const listRef = useRef(null);
@@ -39,12 +37,11 @@ export const App = () => {
           <div className="column">
             <input type="text" value={searchText} onChange={({ target: { value } }) => { setSearchText(value) }} />
             <button onClick={() => { search(searchText, () => setSearchFlag(true), () => scrollToFirstRow(listRef)) }}>Search</button>
-            {searchText}
           </div>
         </div>
         {
           searchFlag ?
-            <span>Search Results:</span> : null
+            <span>Search Results: {searchText}</span> : null
         }
         < AutoSizer >
           {({ height, width }) => (
@@ -55,8 +52,9 @@ export const App = () => {
               itemSize={300}
               width={width}
               ref={listRef}
+              itemData={{ searchFlag }}
             >
-              {!searchFlag ? Row : SearchRow}
+              {Row}
             </List>
           )}
         </AutoSizer>
