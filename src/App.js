@@ -12,6 +12,7 @@ export const App = () => {
   const listRef = useRef(null);
   const [searchText, setSearchText] = useState('');
   const [searchFlag, setSearchFlag] = useState(false);
+  const [triggerChange, setTriggerChange] = useState(0);
 
   useEffect(() => {
     delayedScrollToRow(listRef)
@@ -38,8 +39,11 @@ export const App = () => {
             ) : null} */}
           </div>
           <div className="column">
-            <input type="text" value={searchText} onChange={({ target: { value } }) => { setSearchText(value); setSearchFlag(false) }} />
-            <button onClick={() => { search(searchText, () => setSearchFlag(true), () => scrollToFirstRow(listRef)) }}>Search</button>
+            <input type="text" value={searchText} onChange={({ target: { value } }) => {
+              setSearchText(value);
+              // setSearchFlag(false) 
+            }} />
+            <button onClick={() => { search(searchText, () => setTriggerChange(!triggerChange), () => setSearchFlag(true), () => scrollToFirstRow(listRef)) }}>Search</button>
           </div>
         </div>
         {
@@ -55,7 +59,7 @@ export const App = () => {
               itemSize={600}
               width={width}
               ref={listRef}
-              itemData={{ searchFlag }}
+              itemData={{ searchFlag, triggerChange }}
             >
               {Row}
             </List>

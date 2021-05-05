@@ -15,7 +15,7 @@ export const Row = ({ data: { searchFlag }, index, isScrolling, style }) => {
                 if (!searchFlag)
                     localStorage.setItem("scrollPosition", data[index]['id'])
                 openSnackbar('Copied!', 1000);
-            }}>Copy!{process.env.NODE_ENV !== "production" && searchFlag ? <>R</> : null}</button>
+            }}>Copy!{process.env.NODE_ENV !== "production" && searchFlag ? <>!</> : null}</button>
         </div >
     )
 };
