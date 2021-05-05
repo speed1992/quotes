@@ -18,6 +18,16 @@ export const App = () => {
     delayedScrollToRow(listRef)
   }, []);
 
+  const handleSearch = (e) => {
+    console.log(e);
+    debugger;
+    if (searchText !== '' && (e._reactName == "onClick" || (e._reactName == "onKeyDown" && (e.key === 'Enter')))) {
+
+      search(searchText, () => setTriggerChange(!triggerChange), () => setSearchFlag(true), () => scrollToFirstRow(listRef))
+
+    }
+  }
+
   //!! check scrollToMemorizedRow setTimeout bug, search before 1.5 sec
   // useEffect(() => {
   //   changeData([{ id: 1, quote: "reset" }]);
@@ -39,11 +49,11 @@ export const App = () => {
             ) : null} */}
           </div>
           <div className="column">
-            <input type="text" value={searchText} onChange={({ target: { value } }) => {
-              setSearchText(value);
-              // setSearchFlag(false) 
-            }} />
-            <button onClick={() => { search(searchText, () => setTriggerChange(!triggerChange), () => setSearchFlag(true), () => scrollToFirstRow(listRef)) }}>Search</button>
+            <input type="text" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
+              onKeyDown={handleSearch}
+            />
+            <button
+              onClick={handleSearch}>Search</button>
           </div>
         </div>
         {
