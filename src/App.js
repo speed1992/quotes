@@ -52,7 +52,7 @@ export const App = () => {
               className="List"
               height={height}
               itemCount={data.length}
-              itemSize={300}
+              itemSize={600}
               width={width}
               ref={listRef}
               itemData={{ searchFlag }}
