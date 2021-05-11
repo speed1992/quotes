@@ -37,16 +37,14 @@ function QuotesList({ width, height }) {
         <>
             <div className="row">
                 <div className="column">
-                    <button onClick={() => { resetSearch(() => setSearchText(''), () => scrollToMemorizedRow(listRef)) }}>Home</button> 
+                    <button onClick={() => { resetSearch(() => setSearchText(''), () => scrollToMemorizedRow(listRef)) }}>Home</button>
                 </div>
                 <div className="column">
                 </div>
                 <div className="column">
-                    <input type="text" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
+                    <input type="text" placeholder="Search any word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
                         onKeyDown={handleSearch}
                     />
-                    <button
-                        onClick={handleSearch}>Search</button>
                 </div>
             </div>
             {
