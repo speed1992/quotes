@@ -40,8 +40,6 @@ function QuotesList({ width, height }) {
                     <button onClick={() => { resetSearch(() => setSearchText(''), () => scrollToMemorizedRow(listRef)) }}>Home</button>
                 </div>
                 <div className="column">
-                </div>
-                <div className="column">
                     <input type="text" placeholder="Search any word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
                         onKeyDown={handleSearch}
                     />
