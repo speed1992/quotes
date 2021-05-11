@@ -1,81 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import { FixedSizeList as List } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
-import { data } from "./static/data";
+import React from "react";
 import ErrorBoundary from "./components/error-boundary";
-import SnackbarProvider from 'react-simple-snackbar'
-import { delayedScrollToRow, resetSearch, scrollToFirstRow, search } from "./components/utils/utils"
-import { Row } from "./components/row/row";
-import './App.css';
+import { HomePage } from "./components/home-page/home-page";
 
 export const App = () => {
-  const listRef = useRef(null);
-  const [searchText, setSearchText] = useState('');
-  const [searchFlag, setSearchFlag] = useState(false);
-  const [triggerChange, setTriggerChange] = useState(0);
-
-  useEffect(() => {
-    delayedScrollToRow(listRef)
-  }, []);
-
-  const handleSearch = (e) => {
-    console.log(e);
-    debugger;
-    if (searchText !== '' && (e._reactName == "onClick" || (e._reactName == "onKeyDown" && (e.key === 'Enter')))) {
-
-      search(searchText, () => setTriggerChange(!triggerChange), () => setSearchFlag(true), () => scrollToFirstRow(listRef))
-
-    }
-  }
-
-  //!! check scrollToMemorizedRow setTimeout bug, search before 1.5 sec
-  // useEffect(() => {
-  //   changeData([{ id: 1, quote: "reset" }]);
-  // }, []);
-
   return (
     <ErrorBoundary>
-      <SnackbarProvider>
-        <div className="row">
-          <div className="column">
-            <button onClick={() => { resetSearch(() => setSearchText(''), () => setSearchFlag(false), () => delayedScrollToRow(listRef)) }}>Home</button>
-          </div>
-          <div className="column">
-            {/* {!searchFlag ? (
-              <button onClick={() => {
-                resetSearch(() => setSearchText(''), () => setSearchFlag(false), () => delayedScrollToRow(listRef))
-                scrollToMemorizedRow(listRef)
-              }}>Recall</button>
-            ) : null} */}
-          </div>
-          <div className="column">
-            <input type="text" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
-              onKeyDown={handleSearch}
-            />
-            <button
-              onClick={handleSearch}>Search</button>
-          </div>
-        </div>
-        {
-          searchFlag ?
-            <span>Search Results: {searchText}</span> : null
-        }
-        < AutoSizer >
-          {({ height, width }) => (
-            <List
-              className="List"
-              height={height}
-              itemCount={data.length}
-              itemSize={600}
-              width={width}
-              ref={listRef}
-              itemData={{ searchFlag, triggerChange }}
-            >
-              {Row}
-            </List>
-          )}
-        </AutoSizer>
-      </SnackbarProvider>
+      <HomePage />
     </ErrorBoundary >
   )
 };

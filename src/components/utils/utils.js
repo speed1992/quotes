@@ -12,17 +12,6 @@ export const scrollToMemorizedRow = (listRef) => {
     }
 }
 
-export const delayedScrollToRow = (listRef) => {
-    setTimeout(() => {
-        try {
-            scrollToMemorizedRow(listRef);
-        }
-        catch (e) {
-            console.log(e)
-        }
-    }, 1500)
-}
-
 export const search = (searchText, ...callback) => {
 
     const newData = INITIAL_DATA.filter(({ quote }, index) => {
