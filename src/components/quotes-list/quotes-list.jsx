@@ -3,6 +3,7 @@ import { FixedSizeList as List } from "react-window";
 import { Row } from "../row/row";
 import { data } from "../../static/data";
 import { scrollToMemorizedRow, resetSearch, scrollToFirstRow, search } from "../utils/utils";
+
 import "./quotes-list.css"
 
 function QuotesList({ width, height }) {
@@ -15,20 +16,23 @@ function QuotesList({ width, height }) {
         search(searchText, () => setTriggerChange(!triggerChange), () => setSearchFlag(true), () => scrollToFirstRow(listRef));
     }
 
-    const handleSearch = (e) => {
-        if (searchText !== '' && (e._reactName === "onClick" || (e._reactName === "onKeyDown" && (e.key === 'Enter')))) {
-            performSearch();
-        }
-    }
-
     useEffect(() => {
         scrollToMemorizedRow(listRef);
     }, [])
 
     useEffect(() => {
-        console.log("reaching here")
-        performSearch();
+        if (searchText === "")
+            resetSearch(() => setSearchText(''), () => setSearchFlag(false), () => scrollToMemorizedRow(listRef))
+        else {
+            performSearch();
+        }
     }, [searchText])
+
+    const handleSearch = (e) => {
+        if (searchText !== '' && (e._reactName === "onClick" || (e._reactName === "onKeyDown" && (e.key === 'Enter')))) {
+            performSearch();
+        }
+    }
 
     return (
         <>
