@@ -9,11 +9,10 @@ import "./quotes-list.css"
 function QuotesList({ width, height }) {
     const listRef = useRef()
     const [searchText, setSearchText] = useState('');
-    const [searchFlag, setSearchFlag] = useState(false);
     const [triggerChange, setTriggerChange] = useState(0);
 
     const performSearch = () => {
-        search(searchText, () => setTriggerChange(!triggerChange), () => setSearchFlag(true), () => scrollToFirstRow(listRef));
+        search(searchText, () => setTriggerChange(!triggerChange), () => scrollToFirstRow(listRef));
     }
 
     useEffect(() => {
@@ -22,7 +21,7 @@ function QuotesList({ width, height }) {
 
     useEffect(() => {
         if (searchText === "")
-            resetSearch(() => setSearchText(''), () => setSearchFlag(false), () => scrollToMemorizedRow(listRef))
+            resetSearch(() => setSearchText(''), () => scrollToMemorizedRow(listRef))
         else {
             performSearch();
         }
@@ -38,7 +37,7 @@ function QuotesList({ width, height }) {
         <>
             <div className="row">
                 <div className="column">
-                    <button onClick={() => { resetSearch(() => setSearchText(''), () => setSearchFlag(false), () => scrollToMemorizedRow(listRef)) }}>Home</button>
+                    <button onClick={() => { resetSearch(() => setSearchText(''), () => scrollToMemorizedRow(listRef)) }}>Home</button> 
                 </div>
                 <div className="column">
                 </div>
@@ -51,7 +50,7 @@ function QuotesList({ width, height }) {
                 </div>
             </div>
             {
-                searchFlag ?
+                searchText !== "" ?
                     <span>Search Results: {searchText}</span> : null
             }
             <List
@@ -61,7 +60,7 @@ function QuotesList({ width, height }) {
                 itemSize={600}
                 width={width}
                 ref={listRef}
-                itemData={{ searchFlag, triggerChange }}
+                itemData={{ searchText, triggerChange }}
             >
                 {Row}
             </List>
