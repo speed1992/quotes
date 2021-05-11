@@ -11,17 +11,24 @@ function QuotesList({ width, height }) {
     const [searchFlag, setSearchFlag] = useState(false);
     const [triggerChange, setTriggerChange] = useState(0);
 
+    const performSearch = () => {
+        search(searchText, () => setTriggerChange(!triggerChange), () => setSearchFlag(true), () => scrollToFirstRow(listRef));
+    }
+
     const handleSearch = (e) => {
         if (searchText !== '' && (e._reactName === "onClick" || (e._reactName === "onKeyDown" && (e.key === 'Enter')))) {
-
-            search(searchText, () => setTriggerChange(!triggerChange), () => setSearchFlag(true), () => scrollToFirstRow(listRef))
-
+            performSearch();
         }
     }
 
     useEffect(() => {
         scrollToMemorizedRow(listRef);
     }, [])
+
+    useEffect(() => {
+        console.log("reaching here")
+        performSearch();
+    }, [searchText])
 
     return (
         <>
