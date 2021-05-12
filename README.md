@@ -14,6 +14,6 @@ You will also see any lint errors in the console.
 ### `npm build && sudo npm start`
 
 Runs the app in the prod mode.\
-Open [http://localhost:80](http://localhost:80) to view it in the browser.
+Open [http://localhost](http://localhost:80) to view it in the browser.
 
 
