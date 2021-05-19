@@ -1,11 +1,14 @@
-import { INITIAL_DATA } from "../static/data";
+import { NIETZSCHE } from "../static/nietzsche";
+import { MARIE_KONDO } from "../static/marie-kondo"
 
-export let data = INITIAL_DATA;
+export let dataCollection = { NIETZSCHE, MARIE_KONDO };
+
+export let currentData = [];
 
 export const resetData = () => {
-    data = INITIAL_DATA;
+    currentData = NIETZSCHE;
 }
 
 export const changeData = (newData) => {
-    data = JSON.parse(JSON.stringify(newData));
+    currentData = JSON.parse(JSON.stringify(newData));
 }

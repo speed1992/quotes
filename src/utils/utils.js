@@ -1,4 +1,4 @@
-import { changeData, data, resetData } from "./staticDataUtils";
+import { changeData, currentData, resetData } from "./staticDataUtils";
 
 export const scrollToFirstRow = (listRef) => listRef.current.scrollToItem(0);
 
@@ -14,7 +14,7 @@ export const scrollToMemorizedRow = (listRef) => {
 
 export const search = (searchText, ...callback) => {
 
-    const newData = data.filter(({ quote }, index) => {
+    const newData = currentData.filter(({ quote }, index) => {
         if ((quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0)) {
             return false
         }
