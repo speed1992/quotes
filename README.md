@@ -1,5 +1,4 @@
 # Quotes app
-## Available Scripts
 
 ## Demo : https://germans.herokuapp.com/
 
