@@ -1,4 +1,4 @@
-# Nietzsche quotes app
+# Quotes app
 ## Available Scripts
 
 In the project directory, you can run:
