@@ -2,10 +2,10 @@ import { NIETZSCHE } from "../static/nietzsche";
 import { MARIE_KONDO } from "../static/marie-kondo"
 
 export let dataCollection = { NIETZSCHE, MARIE_KONDO };
+export let currentPhilosopher = ""
 
 export let currentData = [];
 
-export let currentPhilosopher = ""
 
 export const initializeData = () => {
     currentData = JSON.parse(JSON.stringify(NIETZSCHE));

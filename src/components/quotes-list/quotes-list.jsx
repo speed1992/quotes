@@ -15,11 +15,25 @@ function QuotesList({ width, height }) {
     const [searchText, setSearchText] = useState('');
     const [triggerChange, setTriggerChange] = useState(0);
 
-    const performSearch = useCallback(() => search(searchText, (triggerChange) => setTriggerChange(!triggerChange), () => scrollToFirstRow(listRef)), [searchText]);
+    const performSearch = useCallback(() => {
+        search(searchText)
+        scrollToFirstRow(listRef)
+    }, [searchText, listRef])
 
-    useEffect((triggerChange) => {
+
+    const searchHandler = (e) => {
+        if (searchText !== '' &&
+            (e._reactName === "onClick"
+                || (e._reactName === "onKeyDown"
+                    && (e.key === 'Enter')))) {
+
+            performSearch();
+        }
+    }
+
+    useEffect(() => {
         initializeData();
-        setTriggerChange(!triggerChange);
+        ((triggerChange) => setTriggerChange(!triggerChange))();
     }, [])
 
     useEffect(() => {
@@ -27,45 +41,59 @@ function QuotesList({ width, height }) {
     }, [listRef, triggerChange]);
 
     useEffect(() => {
-        if (searchText === "")
-            resetSearch(() => setSearchText(''), () => scrollToMemorizedRow(listRef))
+        if (searchText === "") {
+            resetSearch();
+            setSearchText('')
+            scrollToMemorizedRow(listRef)
+        }
         else {
             performSearch();
         }
-    }, [searchText, performSearch])
 
-    const handleSearch = (e) => {
-        if (searchText !== '' && (e._reactName === "onClick" || (e._reactName === "onKeyDown" && (e.key === 'Enter')))) {
-            performSearch();
-        }
-    }
+    }, [searchText, performSearch])
 
     return (
         <>
             <div className="row">
                 <div className="column">
-                    <button onClick={() => { resetSearch(() => setSearchText(''), () => scrollToMemorizedRow(listRef)) }}>Home</button>
+                    <button
+                        onClick={
+                            () => {
+                                resetSearch();
+                                setSearchText('')
+                                scrollToMemorizedRow(listRef)
+                            }}>
+                        Home
+                    </button>
                 </div>
                 <div className="column">
-                    <input type="text" placeholder="Search any word" value={searchText} onChange={({ target: { value } }) => { console.log(value); setSearchText(value) }}
-                        onKeyDown={handleSearch}
+                    <input
+                        type="text"
+                        placeholder="Search any word"
+                        value={searchText}
+                        onChange={({ target: { value } }) => {
+                            setSearchText(value)
+                        }}
+                        onKeyDown={searchHandler}
                     />
                 </div>
-                {/* <div className="column">
-                </div> */}
                 <div className="column">
-                    <Select options={OPTIONS} onChangeHandler={({ target: { value } }) => { console.log(value); changeQuotesData(value, () => setTriggerChange(!triggerChange)) }} />
+                    <Select
+                        options={OPTIONS}
+                        onChangeHandler={({ target: { value } }) => {
+                            changeQuotesData(value);
+                            setTriggerChange(!triggerChange)
+                        }} />
                 </div>
             </div>
-            {
-                searchText !== "" ?
-                    <span>Search Results: {searchText}</span> : null
-            }
+
+            { searchText !== "" ? <span>Search Results: {searchText}</span> : null}
+
             <List
                 className="List"
                 height={height}
-                itemCount={currentData.length > 0 ? currentData.length : 0}
-                itemSize={600}
+                itemCount={currentData.length}
+                itemSize={100}
                 width={width}
                 ref={listRef}
                 itemData={{ searchText, triggerChange }}

@@ -1,4 +1,4 @@
-import { changeData, currentData, resetData } from "./staticDataUtils";
+import { changeData, currentData, dataCollection, currentPhilosopher, resetData } from "./staticDataUtils";
 
 export const scrollToFirstRow = (listRef) => {
     if (currentData.length > 0 && listRef.current) {
@@ -23,9 +23,8 @@ export const scrollToMemorizedRow = (listRef) => {
 
 }
 
-export const search = (searchText, ...callback) => {
-
-    const newData = currentData.filter(({ quote }, index) => {
+export const search = (searchText) => {
+    const newData = dataCollection[currentPhilosopher].filter(({ quote }, index) => {
         if ((quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0)) {
             return false
         }
@@ -34,13 +33,8 @@ export const search = (searchText, ...callback) => {
         }
     });
 
-    callback.map(eachCallback => eachCallback())
 
     changeData(newData);
-
 }
 
-export const resetSearch = (...callback) => {
-    resetData();
-    callback.map(eachCallback => eachCallback())
-}
+export const resetSearch = () => resetData();
