@@ -1,19 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FixedSizeList as List } from "react-window";
 import { Row } from "../row/row";
-import { data } from "../../static/data";
-import { scrollToMemorizedRow, resetSearch, scrollToFirstRow, search } from "../utils/utils";
 
+import { data } from "../../utils/staticDataUtils";
+import { OPTIONS } from "../../constants/constants";
+
+import { scrollToMemorizedRow, resetSearch, scrollToFirstRow, search } from "../../utils/utils";
 import "./quotes-list.css"
+import Select from "../select/select";
 
 function QuotesList({ width, height }) {
     const listRef = useRef()
     const [searchText, setSearchText] = useState('');
     const [triggerChange, setTriggerChange] = useState(0);
 
-    const performSearch = () => {
-        search(searchText, () => setTriggerChange(!triggerChange), () => scrollToFirstRow(listRef));
-    }
+    const performSearch = useCallback(() => search(searchText, (triggerChange) => setTriggerChange(!triggerChange), () => scrollToFirstRow(listRef)), [searchText]);
 
     useEffect(() => {
         scrollToMemorizedRow(listRef);
@@ -25,7 +26,7 @@ function QuotesList({ width, height }) {
         else {
             performSearch();
         }
-    }, [searchText])
+    }, [searchText, performSearch])
 
     const handleSearch = (e) => {
         if (searchText !== '' && (e._reactName === "onClick" || (e._reactName === "onKeyDown" && (e.key === 'Enter')))) {
@@ -43,6 +44,9 @@ function QuotesList({ width, height }) {
                     <input type="text" placeholder="Search any word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
                         onKeyDown={handleSearch}
                     />
+                </div>
+                <div className="column">
+                    <Select options={OPTIONS} onChangeHandler={({ target: { value } }) => { console.log(value) }} />
                 </div>
             </div>
             {

@@ -5,7 +5,7 @@ import { HomePage } from "./components/home-page/home-page";
 export const App = () => {
   return (
     <ErrorBoundary>
-      env: {process.env.NODE_ENV}
+      {/* env: {process.env.NODE_ENV} */}
       <HomePage />
     </ErrorBoundary >
   )

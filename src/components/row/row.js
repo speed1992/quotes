@@ -1,9 +1,8 @@
-
 import { useSnackbar } from 'react-simple-snackbar'
 import copy from 'copy-to-clipboard';
-import { data } from "../../static/data";
+import { data } from "../../utils/staticDataUtils";
 
-export const Row = ({ data: { searchText }, index, isScrolling, style }) => {
+export const Row = ({ data: { searchText }, index, style }) => {
 
     const [openSnackbar] = useSnackbar()
 

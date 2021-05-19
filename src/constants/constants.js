@@ -1,0 +1,1 @@
+export const OPTIONS = [{ id: 1, name: "Nietzsche" }, { id: 2, name: "Marie Kondo" }]
