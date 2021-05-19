@@ -20,17 +20,6 @@ function QuotesList({ width, height }) {
         scrollToFirstRow(listRef)
     }, [searchText, listRef])
 
-
-    const searchHandler = (e) => {
-        if (searchText !== '' &&
-            (e._reactName === "onClick"
-                || (e._reactName === "onKeyDown"
-                    && (e.key === 'Enter')))) {
-
-            performSearch();
-        }
-    }
-
     useEffect(() => {
         initializeData();
         ((triggerChange) => setTriggerChange(!triggerChange))();
@@ -42,13 +31,12 @@ function QuotesList({ width, height }) {
 
     useEffect(() => {
         if (searchText === "") {
-            resetSearch();
+            resetSearch()
             setSearchText('')
             scrollToMemorizedRow(listRef)
         }
-        else {
-            performSearch();
-        }
+        else
+            performSearch()
 
     }, [searchText, performSearch])
 
@@ -74,7 +62,6 @@ function QuotesList({ width, height }) {
                         onChange={({ target: { value } }) => {
                             setSearchText(value)
                         }}
-                        onKeyDown={searchHandler}
                     />
                 </div>
                 <div className="column">
