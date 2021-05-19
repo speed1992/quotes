@@ -3,27 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
     "copy-to-clipboard": "^3.3.1",
     "cross-env": "^7.0.3",
-    "express": "^4.17.1",
-    "express-favicon": "^2.0.1",
-    "lodash.debounce": "^4.0.8",
     "path": "^0.12.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "react-simple-snackbar": "^1.1.11",
     "react-virtualized-auto-sizer": "^1.0.5",
-    "react-window": "^1.8.6",
-    "web-vitals": "^1.1.1"
+    "react-window": "^1.8.6"
   },
   "scripts": {
     "dev": "react-scripts start",
     "build": "node node_modules/cross-env/src/bin/cross-env.js NODE_ENV=production & react-scripts build",
-    "start": "node node_modules/cross-env/src/bin/cross-env.js NODE_ENV=production & node server.js",
+    "start": "node node_modules/cross-env/src/bin/cross-env.js NODE_ENV=production & react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
