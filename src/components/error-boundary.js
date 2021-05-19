@@ -6,10 +6,6 @@ export default class ErrorBoundary extends React.Component {
         this.state = { hasError: false };
     }
 
-    componentDidMount() {
-        // console.log("******Mounted");
-    }
-
     static getDerivedStateFromError(error) {
         // Update state so the next render will show the fallback UI.
         console.log(error);
@@ -17,7 +13,7 @@ export default class ErrorBoundary extends React.Component {
     }
 
     componentDidCatch(error, errorInfo) {
-        console.log("******", error);
+        console.log(error);
     }
 
     render() {
