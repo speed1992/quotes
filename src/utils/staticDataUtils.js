@@ -6,10 +6,10 @@ export let currentPhilosopher = ""
 
 export let currentData = [];
 
-
 export const initializeData = () => {
     currentData = JSON.parse(JSON.stringify(NIETZSCHE));
     currentPhilosopher = "NIETZSCHE";
+    localStorage.setItem("lastReadPhilosopher", currentPhilosopher)
 }
 
 export const resetData = () => {
@@ -18,8 +18,11 @@ export const resetData = () => {
 
 export const changeData = (newData) => {
     currentData = JSON.parse(JSON.stringify(newData));
+    console.log("currentData", currentData)
+    debugger
 }
 
 export const setCurrentPhilosopher = (name) => {
     currentPhilosopher = name;
+    localStorage.setItem("lastReadPhilosopher", currentPhilosopher)
 }

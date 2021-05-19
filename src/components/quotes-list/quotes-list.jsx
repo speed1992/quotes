@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FixedSizeList as List } from "react-window";
 import { Row } from "../row/row";
 
-import { currentData, initializeData } from "../../utils/staticDataUtils";
+import { changeData, currentData, currentPhilosopher, dataCollection, initializeData, setCurrentPhilosopher } from "../../utils/staticDataUtils";
 import { OPTIONS } from "../../constants/constants";
 
 import { scrollToMemorizedRow, resetSearch, scrollToFirstRow, search } from "../../utils/utils";
@@ -21,8 +21,16 @@ function QuotesList({ width, height }) {
     }, [searchText, listRef])
 
     useEffect(() => {
-        initializeData();
-        ((triggerChange) => setTriggerChange(!triggerChange))();
+        const lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher') || null;
+        if (lastReadPhilosopher) {
+            setCurrentPhilosopher(lastReadPhilosopher);
+            console.log("lastReadPhilosopher", lastReadPhilosopher)
+            changeData(dataCollection[lastReadPhilosopher])
+            setTriggerChange(!triggerChange);
+        }
+        else {
+            initializeData()
+        }
     }, [])
 
     useEffect(() => {
@@ -64,14 +72,15 @@ function QuotesList({ width, height }) {
                         }}
                     />
                 </div>
-                <div className="column">
+                {/* <div className="column">
                     <Select
                         options={OPTIONS}
                         onChangeHandler={({ target: { value } }) => {
                             changeQuotesData(value);
                             setTriggerChange(!triggerChange)
+                            scrollToMemorizedRow(listRef)
                         }} />
-                </div>
+                </div> */}
             </div>
 
             { searchText !== "" ? <span>Search Results: {searchText}</span> : null}

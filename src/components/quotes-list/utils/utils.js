@@ -1,9 +1,9 @@
-import { changeData, dataCollection } from "../../../utils/staticDataUtils"
+import { changeData, dataCollection, setCurrentPhilosopher } from "../../../utils/staticDataUtils"
 
 export const changeQuotesData = (name) => {
     let newName = name.toUpperCase().split(" ").join("_");
 
-    // setCurrentPhilosopher(newName)
+    setCurrentPhilosopher(newName)
 
     changeData(dataCollection[newName])
 
