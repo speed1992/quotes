@@ -10,5 +10,6 @@ export const resetData = () => {
 }
 
 export const changeData = (newData) => {
+    debugger;
     currentData = JSON.parse(JSON.stringify(newData));
 }

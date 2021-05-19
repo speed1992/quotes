@@ -52,7 +52,7 @@ function QuotesList({ width, height }) {
                     />
                 </div>
                 <div className="column">
-                    <Select options={OPTIONS} onChangeHandler={({ target: { value } }) => { console.log(value); changeQuotesData(value) }} />
+                    <Select options={OPTIONS} onChangeHandler={({ target: { value } }) => { console.log(value); changeQuotesData(value, () => setTriggerChange(!triggerChange)) }} />
                 </div>
             </div>
             {
