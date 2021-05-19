@@ -1,15 +1,26 @@
 import { changeData, currentData, resetData } from "./staticDataUtils";
 
-export const scrollToFirstRow = (listRef) => listRef.current.scrollToItem(0);
+export const scrollToFirstRow = (listRef) => {
+    if (currentData.length > 0 && listRef.current) {
+        listRef.current.scrollToItem(0)
+    }
+}
 
-export const scrollToRow = (listRef, scrollPosition) => listRef.current.scrollToItem(scrollPosition);
+export const scrollToRow = (listRef, scrollPosition) => {
+    if (currentData.length > 0 && listRef.current) {
+        listRef.current.scrollToItem(scrollPosition)
+    }
+};
 
 export const scrollToMemorizedRow = (listRef) => {
-    let scrollPosition = JSON.parse(localStorage.getItem('scrollPosition'));
+    if (currentData.length > 0 && listRef.current) {
+        let scrollPosition = JSON.parse(localStorage.getItem('scrollPosition'));
 
-    if (typeof scrollPosition != undefined && scrollPosition && scrollPosition > 0) {
-        listRef.current.scrollToItem(scrollPosition - 1);
+        if (typeof scrollPosition != undefined && scrollPosition && scrollPosition > 0) {
+            listRef.current.scrollToItem(scrollPosition - 1);
+        }
     }
+
 }
 
 export const search = (searchText, ...callback) => {

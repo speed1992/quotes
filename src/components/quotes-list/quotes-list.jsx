@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FixedSizeList as List } from "react-window";
 import { Row } from "../row/row";
 
-import { currentData, resetData } from "../../utils/staticDataUtils";
+import { currentData, initializeData } from "../../utils/staticDataUtils";
 import { OPTIONS } from "../../constants/constants";
 
 import { scrollToMemorizedRow, resetSearch, scrollToFirstRow, search } from "../../utils/utils";
@@ -18,7 +18,7 @@ function QuotesList({ width, height }) {
     const performSearch = useCallback(() => search(searchText, (triggerChange) => setTriggerChange(!triggerChange), () => scrollToFirstRow(listRef)), [searchText]);
 
     useEffect((triggerChange) => {
-        resetData();
+        initializeData();
         setTriggerChange(!triggerChange);
     }, [])
 
@@ -47,10 +47,12 @@ function QuotesList({ width, height }) {
                     <button onClick={() => { resetSearch(() => setSearchText(''), () => scrollToMemorizedRow(listRef)) }}>Home</button>
                 </div>
                 <div className="column">
-                    <input type="text" placeholder="Search any word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
+                    <input type="text" placeholder="Search any word" value={searchText} onChange={({ target: { value } }) => { console.log(value); setSearchText(value) }}
                         onKeyDown={handleSearch}
                     />
                 </div>
+                {/* <div className="column">
+                </div> */}
                 <div className="column">
                     <Select options={OPTIONS} onChangeHandler={({ target: { value } }) => { console.log(value); changeQuotesData(value, () => setTriggerChange(!triggerChange)) }} />
                 </div>
@@ -62,7 +64,7 @@ function QuotesList({ width, height }) {
             <List
                 className="List"
                 height={height}
-                itemCount={currentData.length}
+                itemCount={currentData.length > 0 ? currentData.length : 0}
                 itemSize={600}
                 width={width}
                 ref={listRef}
