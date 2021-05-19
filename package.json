@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "copy-to-clipboard": "^3.3.1",
-    "cross-env": "^7.0.3",
     "path": "^0.12.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -15,7 +14,7 @@
     "react-virtuoso": "*"
   },
   "scripts": {
-    "build": "node node_modules/cross-env/src/bin/cross-env.js NODE_ENV=production & react-scripts build",
+    "build": "react-scripts build",
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
