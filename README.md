@@ -1,6 +1,8 @@
 # Quotes app
 ## Available Scripts
 
+## Demo : https://germans.herokuapp.com/
+
 In the project directory, you can run:
 
 ### `npm run dev`
