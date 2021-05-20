@@ -1,1 +1,1 @@
-export const OPTIONS = [{ id: 1, value: "NIETZSCHE", name: "Nietzsche" }, { id: 2, value: "MARIE_KONDO", name: "Marie Kondo" }]
+export const OPTIONS = [{ id: 1, value: "NIETZSCHE", displayName: "Nietzsche", fullName: "Friedrich Nietzsche" }, { id: 2, value: "MARIE_KONDO", displayName: "Marie Kondo", fullName: "Marie Kondo" }]

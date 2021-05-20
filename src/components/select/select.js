@@ -5,7 +5,7 @@ function Select({ options, onChangeHandler, defaultValue }) {
     return (
         <>
             <select onChange={onChangeHandler} value={currentPhilosopher}>
-                {options && options.map(({ id, name, value }) => <option key={id} value={value}>{name}</option>)}
+                {options && options.map(({ id, displayName, value }) => <option key={id} value={value}>{displayName}</option>)}
             </select>
         </>)
 }

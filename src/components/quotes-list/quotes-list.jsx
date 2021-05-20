@@ -8,7 +8,7 @@ import { OPTIONS } from "../../constants/constants";
 import { scrollToMemorizedRow, resetSearch, scrollToFirstRow, search } from "../../utils/utils";
 import "./quotes-list.css"
 import Select from "../select/select";
-import { changeQuotesData } from "./utils/utils";
+import { changeQuotesData, getPhilosopherFullName } from "./utils/utils";
 
 function QuotesList({ width, height }) {
     const listRef = useRef()
@@ -50,6 +50,8 @@ function QuotesList({ width, height }) {
 
     }, [searchText, performSearch])
 
+    const philosopherFullName = getPhilosopherFullName();
+
     return (
         <>
             <div className="row">
@@ -88,17 +90,17 @@ function QuotesList({ width, height }) {
 
             { searchText !== "" ? <span>Search Results: {searchText}</span> : null}
 
-            <List
+            { philosopherFullName !== undefined && <List
                 className="List"
                 height={height}
                 itemCount={currentData.length}
                 itemSize={600}
                 width={width}
                 ref={listRef}
-                itemData={{ searchText, triggerChange }}
+                itemData={{ searchText, triggerChange, philosopherFullName }}
             >
                 {Row}
-            </List>
+            </List>}
         </>
     )
 }
