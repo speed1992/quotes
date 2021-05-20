@@ -1,5 +1,5 @@
 import React from "react";
-import AutoSizer from "react-virtualized-auto-sizer";
+import { AutoSizer } from "react-virtualized";
 import SnackbarProvider from 'react-simple-snackbar'
 import QuotesList from "../quotes-list/quotes-list"
 
