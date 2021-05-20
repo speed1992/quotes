@@ -92,7 +92,7 @@ function QuotesList({ width, height }) {
                 className="List"
                 height={height}
                 itemCount={currentData.length}
-                itemSize={100}
+                itemSize={600}
                 width={width}
                 ref={listRef}
                 itemData={{ searchText, triggerChange }}
