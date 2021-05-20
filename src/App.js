@@ -5,9 +5,9 @@ import { updateVersionInLocalStorage } from "./utils/localStorageUtils";
 
 export const App = () => {
 
-  useEffect(() => {
-    // updateVersionInLocalStorage();
-  }, []);
+  // useEffect(() => {
+  // updateVersionInLocalStorage();
+  // }, []);
 
   return (
     <ErrorBoundary>

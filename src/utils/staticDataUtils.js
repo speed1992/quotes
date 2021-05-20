@@ -13,7 +13,6 @@ export const initializeData = () => {
 }
 
 export const resetData = () => {
-    console.log(JSON.parse(JSON.stringify(dataCollection[currentPhilosopher])));
     currentData = JSON.parse(JSON.stringify(dataCollection[currentPhilosopher]));
 }
 
