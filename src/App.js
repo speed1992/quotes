@@ -6,7 +6,7 @@ import { updateVersionInLocalStorage } from "./utils/localStorageUtils";
 export const App = () => {
 
   useEffect(() => {
-    updateVersionInLocalStorage();
+    // updateVersionInLocalStorage();
   }, []);
 
   return (
