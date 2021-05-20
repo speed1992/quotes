@@ -2,7 +2,7 @@ import { useSnackbar } from 'react-simple-snackbar'
 import copy from 'copy-to-clipboard';
 import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
 
-export const Row = ({ data: { searchText }, index, style }) => {
+export const Row = ({ data: { searchText, triggerChange }, index, style }) => {
 
     const [openSnackbar] = useSnackbar()
 

@@ -1,10 +1,11 @@
 import React from "react";
+import { currentPhilosopher } from "../../utils/staticDataUtils";
 
-function Select({ options, onChangeHandler }) {
+function Select({ options, onChangeHandler, defaultValue }) {
     return (
         <>
-            <select onChange={onChangeHandler}>
-                {options && options.map(({ id, name: value }) => <option key={id} value={value}>{value}</option>)}
+            <select onChange={onChangeHandler} value={currentPhilosopher}>
+                {options && options.map(({ id, name, value }) => <option key={id} value={value}>{name}</option>)}
             </select>
         </>)
 }

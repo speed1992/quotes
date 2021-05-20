@@ -21,16 +21,18 @@ function QuotesList({ width, height }) {
     }, [searchText, listRef])
 
     useEffect(() => {
-        const lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher') || null;
+        const lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher') || "NIETZSCHE";
+        setCurrentPhilosopher(lastReadPhilosopher);
+
         if (lastReadPhilosopher) {
-            setCurrentPhilosopher(lastReadPhilosopher);
-            console.log("lastReadPhilosopher", lastReadPhilosopher)
             changeData(dataCollection[lastReadPhilosopher])
-            setTriggerChange(!triggerChange);
         }
         else {
             initializeData()
         }
+
+        setTriggerChange(!triggerChange)
+        scrollToMemorizedRow(listRef)
     }, [])
 
     useEffect(() => {
@@ -72,15 +74,16 @@ function QuotesList({ width, height }) {
                         }}
                     />
                 </div>
-                {/* <div className="column">
+                <div className="column">
                     <Select
                         options={OPTIONS}
+                        defaultOption={currentPhilosopher}
                         onChangeHandler={({ target: { value } }) => {
                             changeQuotesData(value);
                             setTriggerChange(!triggerChange)
                             scrollToMemorizedRow(listRef)
                         }} />
-                </div> */}
+                </div>
             </div>
 
             { searchText !== "" ? <span>Search Results: {searchText}</span> : null}

@@ -7,19 +7,18 @@ export let currentPhilosopher = ""
 export let currentData = [];
 
 export const initializeData = () => {
-    currentData = JSON.parse(JSON.stringify(NIETZSCHE));
     currentPhilosopher = "NIETZSCHE";
+    currentData = JSON.parse(JSON.stringify(NIETZSCHE));
     localStorage.setItem("lastReadPhilosopher", currentPhilosopher)
 }
 
 export const resetData = () => {
-    currentData = JSON.parse(JSON.stringify(NIETZSCHE));
+    console.log(JSON.parse(JSON.stringify(dataCollection[currentPhilosopher])));
+    currentData = JSON.parse(JSON.stringify(dataCollection[currentPhilosopher]));
 }
 
 export const changeData = (newData) => {
     currentData = JSON.parse(JSON.stringify(newData));
-    console.log("currentData", currentData)
-    debugger
 }
 
 export const setCurrentPhilosopher = (name) => {
