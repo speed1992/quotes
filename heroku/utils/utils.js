@@ -1,5 +1,5 @@
 const https = require('https');
-const fs = require('fs');
+// const fs = require('fs');
 const { GITHUB_URL, GITHUB_AUTH_TOKEN } = require('../constants/constants');
 
 module.exports.getLatestGithubSHA = () => {
@@ -31,11 +31,11 @@ module.exports.getLatestGithubSHA = () => {
     })
 }
 
-module.exports.writeContent = (content, fileName) => {
-    fs.writeFile(fileName, JSON.stringify(content), err => {
-        if (err) {
-            console.error(err)
-            return
-        }
-    })
-}
+// module.exports.writeContent = (content, fileName) => {
+//     fs.writeFile(fileName, JSON.stringify(content), err => {
+//         if (err) {
+//             console.error(err)
+//             return
+//         }
+//     })
+// }
