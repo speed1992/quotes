@@ -1,6 +1,6 @@
 const Heroku = require('heroku-client');
-const { MY_APP_ID, HEROKU_AUTH_TOKEN } = require('./constants');
-const { getLatestGithubSHA } = require('./utils');
+const { MY_APP_ID, HEROKU_AUTH_TOKEN } = require('./constants/constants');
+const { getLatestGithubSHA } = require('./utils/utils');
 const heroku = new Heroku({ token: HEROKU_AUTH_TOKEN })
 
 heroku.get('/apps').then(async (apps) => {
