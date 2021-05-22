@@ -1,1 +1,1 @@
-release: node configHerokuVars.js
+release: node heroku/configHerokuVars.js
