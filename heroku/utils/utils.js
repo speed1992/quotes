@@ -4,8 +4,13 @@ const { GITHUB_URL, GITHUB_AUTH_TOKEN } = require('../constants/constants');
 
 module.exports.getLatestGithubSHA = () => {
     return new Promise(async (resolve, reject) => {
-
-        https.get(`${GITHUB_URL}?access_token=${GITHUB_AUTH_TOKEN}`, { headers: { 'user-agent': 'node.js' } },
+        console.log(`${GITHUB_URL}?access_token=${GITHUB_AUTH_TOKEN}`)
+        https.get(`${GITHUB_URL}`, {
+            headers: {
+                'user-agent': 'node.js',
+                "Authorization": `${GITHUB_AUTH_TOKEN}`
+            }
+        },
             (resp) => {
                 let data = '';
 
@@ -14,13 +19,18 @@ module.exports.getLatestGithubSHA = () => {
                 });
 
                 resp.on('end', () => {
-                    JSON.parse(data).reduce((acc, { name, commit: { sha } }) => {
-                        if (name === ("master" || "main")) {
-                            acc = sha;
-                        }
-                        console.log({ REACT_APP_CURRENT_GIT_SHA: acc.substr(0, 7) });
-                        resolve({ REACT_APP_CURRENT_GIT_SHA: acc.substr(0, 7) });
-                    }, null)
+                    try {
+                        JSON.parse(data).reduce((acc, { name, commit: { sha } }) => {
+                            if (name === ("master" || "main")) {
+                                acc = sha;
+                            }
+                            console.log({ REACT_APP_CURRENT_GIT_SHA: acc.substr(0, 7) });
+                            resolve({ REACT_APP_CURRENT_GIT_SHA: acc.substr(0, 7) });
+                        }, null)
+                    }
+                    catch (e) {
+                        reject(e)
+                    }
                 });
 
             }).on("error", (err) => {
