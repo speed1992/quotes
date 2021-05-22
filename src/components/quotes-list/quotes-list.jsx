@@ -82,6 +82,7 @@ function QuotesList({ width, height }) {
                         options={OPTIONS}
                         defaultOption={currentPhilosopher}
                         onChangeHandler={({ target: { value } }) => {
+                            setSearchText('')
                             changeQuotesData(value);
                             setTriggerChange(!triggerChange)
                             scrollToMemorizedRow(listRef)
