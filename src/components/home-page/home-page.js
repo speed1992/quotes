@@ -1,5 +1,5 @@
 import React from "react";
-import { AutoSizer } from "react-virtualized";
+import AutoSizer from "react-virtualized-auto-sizer";
 import SnackbarProvider from 'react-simple-snackbar'
 import QuotesList from "../quotes-list/quotes-list"
 
@@ -13,7 +13,6 @@ export const HomePage = () => {
                     )}
                 </AutoSizer>
             </SnackbarProvider>
-
         </>
     )
 };
