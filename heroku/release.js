@@ -14,7 +14,6 @@ heroku.get('/apps').then(async (apps) => {
 
         for (let i = 0; i < apps.length; i++) {
             if (apps[i].id === MY_APP_ID) {
-
                 let releases = await heroku.get(`/apps/${MY_APP_ID}/releases`)
                 // writeContent(releases, "test3.json")
                 const latestReleaseVersion = releases.length;
