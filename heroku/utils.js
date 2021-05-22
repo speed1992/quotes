@@ -2,7 +2,7 @@ var exec = require('child_process').exec;
 
 module.exports.getLatestGithubSHA = () => {
     return new Promise((resolve, reject) => {
-        exec("git rev-parse --short HEAD", function (err, stdout, stderr) {
+        exec("cd app && git rev-parse --short HEAD", function (err, stdout, stderr) {
             if (err) {
                 reject(err);
             }
