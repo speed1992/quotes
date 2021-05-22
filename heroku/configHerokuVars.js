@@ -18,6 +18,4 @@ heroku.get('/apps').then(async (apps) => {
     catch (e) {
         console.log(e)
     }
-
-
 });
