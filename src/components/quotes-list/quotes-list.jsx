@@ -33,6 +33,7 @@ function QuotesList({ width, height }) {
 
         setTriggerChange(!triggerChange)
         scrollToMemorizedRow(listRef)
+            // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
