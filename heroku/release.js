@@ -14,9 +14,9 @@ heroku.get('/apps').then(async (apps) => {
 
         for (let i = 0; i < apps.length; i++) {
             if (apps[i].id === MY_APP_ID) {
-                let releases = await heroku.get(`/apps/${MY_APP_ID}/releases`)
+                // let releases = await heroku.get(`/apps/${MY_APP_ID}/releases`)
                 // writeContent(releases, "test3.json")
-                const latestReleaseVersion = releases.length;
+                // const latestReleaseVersion = releases.length;
                 await heroku.patch(`/apps/${MY_APP_ID}/config-vars`, {
                     body: {
                         ...newConfigVars,
@@ -24,7 +24,7 @@ heroku.get('/apps').then(async (apps) => {
                         HEROKU_AUTH_TOKEN,
                         GITHUB_AUTH_TOKEN,
                         GITHUB_URL,
-                        REACT_APP_CURRENT_RELEASE_VERSION: latestReleaseVersion
+                        // REACT_APP_CURRENT_RELEASE_VERSION: latestReleaseVersion
                     }
                 });
                 response = await heroku.get(`/apps/${MY_APP_ID}/config-vars`);
