@@ -14,7 +14,7 @@ module.exports.getLatestGithubSHA = () => {
                 });
 
                 resp.on('end', () => {
-                    latestSHA = JSON.parse(data).reduce((acc, { name, commit: { sha } }) => {
+                    JSON.parse(data).reduce((acc, { name, commit: { sha } }) => {
                         if (name === ("master" || "main")) {
                             acc = sha;
                         }
