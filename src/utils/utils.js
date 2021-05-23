@@ -16,8 +16,10 @@ export const scrollToMemorizedRow = (listRef) => {
     if (currentData.length > 0 && listRef.current) {
         let scrollPosition = JSON.parse(localStorage.getItem(currentPhilosopher + '-scrollPosition'));
 
-        if (typeof scrollPosition != undefined && scrollPosition && scrollPosition > 0) {
+        if (typeof scrollPosition !== undefined && scrollPosition !== "undefined" && scrollPosition && scrollPosition > 0) {
             listRef.current.scrollToItem(scrollPosition);
+        } else {
+            scrollToFirstRow(listRef);
         }
     }
 
