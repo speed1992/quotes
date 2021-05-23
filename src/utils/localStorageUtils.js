@@ -9,5 +9,9 @@ export const updateVersionInLocalStorage = () => {
         if (typeof localStorage.LATEST_GITHUB_SHA === undefined || localStorage.LATEST_GITHUB_SHA === 'undefined' || localStorage.LATEST_GITHUB_SHA === null) {
             localStorage.setItem('LATEST_GITHUB_SHA', LATEST_GITHUB_SHA);
         }
-
+        // if (localStorage.LATEST_GITHUB_SHA !== LATEST_GITHUB_SHA) {
+        //     localStorage.clear();
+        // }
     }
+
+}
