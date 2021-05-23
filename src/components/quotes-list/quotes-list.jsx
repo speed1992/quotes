@@ -21,7 +21,11 @@ function QuotesList({ width, height }) {
     }, [searchText, listRef])
 
     useEffect(() => {
-        const lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher') || "NIETZSCHE";
+        let lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher');
+
+        if (lastReadPhilosopher === undefined || lastReadPhilosopher === "undefined") lastReadPhilosopher = OPTIONS[0].value;
+
+        console.log("lastReadPhilosopher", lastReadPhilosopher, "OPTIONS[0].value", OPTIONS[0].value)
         setCurrentPhilosopher(lastReadPhilosopher);
 
         if (lastReadPhilosopher) {
@@ -33,7 +37,7 @@ function QuotesList({ width, height }) {
 
         setTriggerChange(!triggerChange)
         scrollToMemorizedRow(listRef)
-            // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {

@@ -1,14 +1,14 @@
-import { NIETZSCHE } from "../static/nietzsche";
-import { MARIE_KONDO } from "../static/marie-kondo"
+import * as PHILOSOPHERS_DATA from "../static/philosophers-data";
+import { OPTIONS } from "../constants/constants";
 
-export let dataCollection = { NIETZSCHE, MARIE_KONDO };
+export let dataCollection = { ...PHILOSOPHERS_DATA };
 export let currentPhilosopher = ""
 
 export let currentData = [];
 
 export const initializeData = () => {
-    currentPhilosopher = "NIETZSCHE";
-    currentData = JSON.parse(JSON.stringify(NIETZSCHE));
+    currentPhilosopher = OPTIONS[0].value;
+    currentData = JSON.parse(JSON.stringify(dataCollection[OPTIONS[0].value]));
     localStorage.setItem("lastReadPhilosopher", currentPhilosopher)
 }
 

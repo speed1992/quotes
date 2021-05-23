@@ -3,11 +3,14 @@ import { OPTIONS } from "../../../constants/constants";
 import { changeData, currentPhilosopher, dataCollection, setCurrentPhilosopher } from "../../../utils/staticDataUtils"
 
 export const changeQuotesData = (name) => {
-    let newName = name.toUpperCase().split(" ").join("_");
 
-    setCurrentPhilosopher(newName)
+    const currentPhilosopherArray = OPTIONS.filter(({ value }) => {
+        return (name === value)
+    });
 
-    changeData(dataCollection[newName])
+    setCurrentPhilosopher(currentPhilosopherArray[0].value)
+
+    changeData(dataCollection[currentPhilosopherArray[0].value])
 
 }
 
