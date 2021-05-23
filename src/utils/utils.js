@@ -26,7 +26,7 @@ export const scrollToMemorizedRow = (listRef) => {
 }
 
 export const search = (searchText) => {
-    const newData = dataCollection[currentPhilosopher].filter(({ quote }, index) => {
+    const newData = dataCollection[currentPhilosopher].filter(quote => {
         if ((quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0)) {
             return false
         }
