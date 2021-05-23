@@ -25,7 +25,6 @@ function QuotesList({ width, height }) {
 
         if (lastReadPhilosopher === undefined || lastReadPhilosopher === "undefined") lastReadPhilosopher = OPTIONS[0].value;
 
-        console.log("lastReadPhilosopher", lastReadPhilosopher, "OPTIONS[0].value", OPTIONS[0].value)
         setCurrentPhilosopher(lastReadPhilosopher);
 
         if (lastReadPhilosopher) {
