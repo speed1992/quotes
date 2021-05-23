@@ -6,7 +6,7 @@ export const updateVersionInLocalStorage = () => {
 
     if (process.env.REACT_APP_CURRENT_GIT_SHA !== undefined) {
 
-        if (typeof localStorage.LATEST_GITHUB_SHA === 'undefined' || localStorage.LATEST_GITHUB_SHA === null) {
+        if (typeof localStorage.LATEST_GITHUB_SHA === undefined || localStorage.LATEST_GITHUB_SHA === 'undefined' || localStorage.LATEST_GITHUB_SHA === null) {
             localStorage.setItem('LATEST_GITHUB_SHA', LATEST_GITHUB_SHA);
         }
         // if (localStorage.LATEST_GITHUB_SHA !== LATEST_GITHUB_SHA) {
