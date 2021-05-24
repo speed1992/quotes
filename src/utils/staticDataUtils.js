@@ -1,5 +1,5 @@
-import * as PHILOSOPHERS_DATA from "../static/philosophers-data";
 import { OPTIONS } from "../constants/constants";
+import * as PHILOSOPHERS_DATA from "../static/philosophers-data";
 
 export let dataCollection = { ...PHILOSOPHERS_DATA };
 export let currentPhilosopher = ""
