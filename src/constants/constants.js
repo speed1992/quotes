@@ -66,4 +66,10 @@ export const OPTIONS = [
         displayName: "Voltaire",
         fullName: "Voltaire"
     },
+    {
+        id: 14,
+        value: "CIORAN",
+        displayName: "Cioran",
+        fullName: "Emile M. Cioran"
+    },
 ]

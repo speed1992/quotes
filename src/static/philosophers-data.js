@@ -1,5 +1,5 @@
-import { NIETZSCHE } from "./nietzshe-without-key";
-import { MARIE_KONDO } from "./marie-kondo-without-key";
+import { NIETZSCHE } from "./nietzshe";
+import { MARIE_KONDO } from "./marie-kondo";
 import { SCHOPENHAUER } from "./schopenhauer";
 import { CAMUS } from "./camus";
 import { DOSTOEVSKY } from "./dostoevsky";
@@ -11,6 +11,7 @@ import { MAO_ZEDONG } from "./mao"
 import { SADE } from "./sade"
 import { FREUD } from "./freud"
 import { VOLTAIRE } from "./voltaire"
+import { CIORAN } from "./cioran"
 
 export {
     NIETZSCHE,
@@ -25,5 +26,6 @@ export {
     MAO_ZEDONG,
     SADE,
     FREUD,
-    VOLTAIRE
+    VOLTAIRE,
+    CIORAN
 }
