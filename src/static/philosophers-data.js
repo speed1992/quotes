@@ -1,7 +1,7 @@
 import { CAMUS } from "./camus";
 import { CIORAN } from "./cioran";
 import { DOSTOEVSKY } from "./dostoevsky";
-import { EMERSON } from "./emerson";
+// import { EMERSON } from "./emerson";
 import { FREUD } from "./freud";
 import { HERACLITUS } from "./heraclitus";
 import { KAFKA } from "./kafka";
@@ -29,5 +29,5 @@ export {
     FREUD,
     VOLTAIRE,
     CIORAN,
-    EMERSON
+    // EMERSON
 };
