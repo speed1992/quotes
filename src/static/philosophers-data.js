@@ -1,17 +1,18 @@
-import { NIETZSCHE } from "./nietzshe";
-import { MARIE_KONDO } from "./marie-kondo";
-import { SCHOPENHAUER } from "./schopenhauer";
 import { CAMUS } from "./camus";
+import { CIORAN } from "./cioran";
 import { DOSTOEVSKY } from "./dostoevsky";
-import { PESSOA } from "./pessoa";
+import { EMERSON } from "./emerson";
+import { FREUD } from "./freud";
+import { HERACLITUS } from "./heraclitus";
 import { KAFKA } from "./kafka";
-import { HERACLITUS } from "./heraclitus"
-import { SARTRE } from "./sartre"
-import { MAO_ZEDONG } from "./mao"
-import { SADE } from "./sade"
-import { FREUD } from "./freud"
-import { VOLTAIRE } from "./voltaire"
-import { CIORAN } from "./cioran"
+import { MAO_ZEDONG } from "./mao";
+import { MARIE_KONDO } from "./marie-kondo";
+import { NIETZSCHE } from "./nietzshe";
+import { PESSOA } from "./pessoa";
+import { SADE } from "./sade";
+import { SARTRE } from "./sartre";
+import { SCHOPENHAUER } from "./schopenhauer";
+import { VOLTAIRE } from "./voltaire";
 
 export {
     NIETZSCHE,
@@ -27,5 +28,6 @@ export {
     SADE,
     FREUD,
     VOLTAIRE,
-    CIORAN
-}
+    CIORAN,
+    EMERSON
+};

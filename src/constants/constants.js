@@ -72,4 +72,10 @@ export const OPTIONS = [
         displayName: "Cioran",
         fullName: "Emile M. Cioran"
     },
+    {
+        id: 15,
+        value: "EMERSON",
+        displayName: "Emerson",
+        fullName: "Ralph Waldo Emerson"
+    },
 ]
