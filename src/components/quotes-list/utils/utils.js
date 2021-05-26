@@ -19,3 +19,32 @@ export const getPhilosopherFullName = () => {
     if (!isEmpty(currentIndex))
         return currentIndex && currentIndex[0].fullName;
 }
+
+export const changeQuotesByWordLength = (start, end) => {
+    debugger
+    console.log("currentPhilosopher", currentPhilosopher)
+    if (dataCollection[currentPhilosopher]) {
+
+        const newData = dataCollection[currentPhilosopher].filter(quote => {
+            const wordCount = getWordCount(quote)
+            debugger
+            if (isEmpty(start)) start = 0;
+            if (!isEmpty(end))
+                if (wordCount >= start && wordCount <= end) return true;
+                else if (isEmpty(end))
+                    if (wordCount >= start) return true
+            debugger
+            return false;
+        });
+
+        changeData(newData);
+
+    }
+
+}
+
+export function getWordCount(str) {
+    return str.split(' ')
+        .filter(function (n) { return n !== '' })
+        .length;
+}

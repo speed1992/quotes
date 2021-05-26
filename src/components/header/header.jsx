@@ -1,9 +1,10 @@
 import React from "react";
 import { OPTIONS } from "../../constants/constants";
 import { currentPhilosopher } from "../../utils/staticDataUtils";
-import { resetSearch, scrollToMemorizedRow } from "../../utils/utils";
+import { scrollToMemorizedRow } from "../../utils/utils";
 import { changeQuotesData } from "../quotes-list/utils/utils";
 import Select from "../select/select";
+import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import "./header.css";
 
 export function Header({ listRef, setSearchText, searchText, setTriggerChange, triggerChange }) {
@@ -11,7 +12,8 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
         <>
             <div className="row">
                 <div className="column">
-                    <button
+                    <WordLengthSearch listRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange} />
+                    {/* <button
                         onClick={
                             () => {
                                 resetSearch();
@@ -19,7 +21,7 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                                 scrollToMemorizedRow(listRef)
                             }}>
                         Home
-                    </button>
+                    </button> */}
                 </div>
                 <div className="column">
                     <input
