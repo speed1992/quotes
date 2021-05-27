@@ -21,19 +21,26 @@ export const getPhilosopherFullName = () => {
 }
 
 export const changeQuotesByWordLength = (start, end) => {
-    debugger
-    console.log("currentPhilosopher", currentPhilosopher)
-    if (dataCollection[currentPhilosopher]) {
+    if (typeof start === "string" && start.trim() === "") start = 0;
 
+    if (dataCollection[currentPhilosopher]) {
         const newData = dataCollection[currentPhilosopher].filter(quote => {
             const wordCount = getWordCount(quote)
-            debugger
-            if (isEmpty(start)) start = 0;
-            if (!isEmpty(end))
-                if (wordCount >= start && wordCount <= end) return true;
-                else if (isEmpty(end))
-                    if (wordCount >= start) return true
-            debugger
+
+            if (end && end !== "") {
+
+                if (wordCount >= start && wordCount <= end) {
+                    return true;
+                }
+
+                else if (end === "") {
+
+                    if (wordCount >= start) {
+                        return true
+                    }
+                }
+
+            }
             return false;
         });
 

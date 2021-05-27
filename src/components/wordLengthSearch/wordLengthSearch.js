@@ -8,10 +8,8 @@ export function WordLengthSearch({ listRef, setTriggerChange, triggerChange }) {
     const [end, setEnd] = useState("");
 
     useEffect(() => {
-
         changeQuotesByWordLength(start, end)
         setTriggerChange(!triggerChange);
-        scrollToFirstRow(listRef)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [start, end])
 
@@ -22,13 +20,19 @@ export function WordLengthSearch({ listRef, setTriggerChange, triggerChange }) {
                 name="start"
                 type="number"
                 value={start}
-                onChange={({ target: { value } }) => setStart(value)} />
+                onChange={({ target: { value } }) => {
+                    setStart(value)
+                    scrollToFirstRow(listRef)
+                }} />
             <input
                 className="smallInput"
                 name="end"
                 type="number"
                 value={end}
-                onChange={({ target: { value } }) => setEnd(value)} />
+                onChange={({ target: { value } }) => {
+                    scrollToFirstRow(listRef)
+                    setEnd(value)
+                }} />
         </>
     )
 }

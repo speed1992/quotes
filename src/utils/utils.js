@@ -1,7 +1,9 @@
-import { changeData, currentData, dataCollection, currentPhilosopher, resetData } from "./staticDataUtils";
+import { changeData, currentData, currentPhilosopher, dataCollection, resetData } from "./staticDataUtils";
 
 export const scrollToFirstRow = (listRef) => {
+    console.log("currentData.length", currentData.length)
     if (currentData.length > 0 && listRef.current) {
+        debugger
         listRef.current.scrollToItem(0)
     }
 }
