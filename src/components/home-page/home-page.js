@@ -38,6 +38,7 @@ export const HomePage = () => {
     useEffect(() => {
 
         scrollToMemorizedRow(listRef)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [listRef.current])
 
     useEffect(() => {
