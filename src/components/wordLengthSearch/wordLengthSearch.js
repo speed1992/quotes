@@ -5,7 +5,6 @@ import "./wordLengthSearch.css";
 export function WordLengthSearch({ start, end, setStart, setEnd, listRef, setTriggerChange, triggerChange }) {
 
     useEffect(() => {
-        debugger
         changeQuotesByWordLength(start, end)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [start, end])

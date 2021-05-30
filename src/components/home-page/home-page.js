@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { OPTIONS } from "../../constants/constants";
 import { changeData, currentData, currentPhilosopher, dataCollection, initializeData, setCurrentPhilosopher } from "../../utils/staticDataUtils";
-import { resetSearch, scrollToFirstRow, scrollToMemorizedRow, search } from "../../utils/utils";
+import { scrollToFirstRow, scrollToMemorizedRow, search } from "../../utils/utils";
 import { Header } from "../header/header";
 import QuotesList from "../quotes-list/quotes-list";
 
@@ -32,26 +32,27 @@ export const HomePage = () => {
             initializeData()
 
         setTriggerChange(!triggerChange)
-        scrollToMemorizedRow(listRef)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        console.log("scrolling")
+        scrollToMemorizedRow(listRef)
+    }, [listRef.current])
 
     useEffect(() => {
         setTriggerChange(!triggerChange)
     }, [currentData, searchText, currentPhilosopher, start, end])
 
-    // useEffect(() => {
-    //     scrollToMemorizedRow(listRef);
-    // }, [listRef, triggerChange]);
+    useEffect(() => {
+        scrollToFirstRow(listRef)
+    }, [start, end])
 
     useEffect(() => {
-        if (searchText === "") {
-            resetSearch()
-            setSearchText('')
-            scrollToMemorizedRow(listRef)
-        }
-        else
-            performSearch()
+        setStart(1)
+        setEnd("")
+
+        performSearch()
 
     }, [searchText, performSearch])
 

@@ -1,6 +1,8 @@
-import { changeData, currentData, currentPhilosopher, resetData } from "./staticDataUtils";
+import { changeData, currentData, currentPhilosopher, dataCollection, resetData } from "./staticDataUtils";
 
 export const scrollToFirstRow = (listRef) => {
+    console.log("scrollToFirstRow")
+    console.log("currentData.length", currentData.length)
     if (currentData.length > 0 && listRef.current) {
         listRef.current.scrollToItem(0)
     }
@@ -13,6 +15,7 @@ export const scrollToRow = (listRef, scrollPosition) => {
 };
 
 export const scrollToMemorizedRow = (listRef) => {
+    console.log("scrollToMemorizedRow")
     if (currentData.length > 0 && listRef.current) {
         let scrollPosition = JSON.parse(localStorage.getItem(currentPhilosopher + '-scrollPosition'));
 
@@ -26,10 +29,7 @@ export const scrollToMemorizedRow = (listRef) => {
 }
 
 export const search = (searchText) => {
-
-    // if (currentData && isEmpty(currentData) && currentData.length > 0) {
-
-    const newData = currentData.filter(quote => {
+    const newData = dataCollection[currentPhilosopher].filter(quote => {
         if ((quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0)) {
             return false
         }
@@ -40,8 +40,6 @@ export const search = (searchText) => {
 
 
     changeData(newData);
-    // }
-
 }
 
 export const resetSearch = () => resetData();
