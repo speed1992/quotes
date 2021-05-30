@@ -2,6 +2,7 @@ import React from "react";
 import { currentPhilosopher } from "../../utils/staticDataUtils";
 
 function Select({ options, onChangeHandler, defaultValue }) {
+    console.log(currentPhilosopher)
     return (
         <>
             <select onChange={onChangeHandler} value={currentPhilosopher}>

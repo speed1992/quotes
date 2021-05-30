@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { OPTIONS } from "../../constants/constants";
-import { changeData, dataCollection, initializeData, setCurrentPhilosopher } from "../../utils/staticDataUtils";
+import { changeData, currentData, currentPhilosopher, dataCollection, initializeData, setCurrentPhilosopher } from "../../utils/staticDataUtils";
 import { resetSearch, scrollToFirstRow, scrollToMemorizedRow, search } from "../../utils/utils";
 import { Header } from "../header/header";
 import QuotesList from "../quotes-list/quotes-list";
@@ -11,6 +11,8 @@ export const HomePage = () => {
 
     const [searchText, setSearchText] = useState('');
     const [triggerChange, setTriggerChange] = useState(0);
+    const [start, setStart] = useState(1);
+    const [end, setEnd] = useState("");
 
     const performSearch = useCallback(() => {
         search(searchText)
@@ -35,8 +37,12 @@ export const HomePage = () => {
     }, [])
 
     useEffect(() => {
-        scrollToMemorizedRow(listRef);
-    }, [listRef, triggerChange]);
+        setTriggerChange(!triggerChange)
+    }, [currentData, searchText, currentPhilosopher, start, end])
+
+    // useEffect(() => {
+    //     scrollToMemorizedRow(listRef);
+    // }, [listRef, triggerChange]);
 
     useEffect(() => {
         if (searchText === "") {
@@ -55,6 +61,10 @@ export const HomePage = () => {
         setTriggerChange,
         triggerChange,
         listRef,
+        start,
+        setStart,
+        end,
+        setEnd
     }
 
     return (

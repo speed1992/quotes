@@ -1,6 +1,6 @@
 import { isEmpty } from "lodash";
 import { OPTIONS } from "../../../constants/constants";
-import { changeData, currentPhilosopher, dataCollection, setCurrentPhilosopher } from "../../../utils/staticDataUtils";
+import { changeData, currentData, currentPhilosopher, dataCollection, setCurrentPhilosopher } from "../../../utils/staticDataUtils";
 
 export const changeQuotesData = (name) => {
 
@@ -21,10 +21,14 @@ export const getPhilosopherFullName = () => {
 }
 
 export const changeQuotesByWordLength = (start, end) => {
+    console.log(start, end)
+    console.log(currentData.length)
+    // if (start === 1 && typeof end === "string" && end.trim() === "") resetData()
+
     if (typeof start === "string" && start.trim() === "") start = 0;
 
-    if (dataCollection[currentPhilosopher]) {
-        const newData = dataCollection[currentPhilosopher].filter(quote => {
+    if (currentData) {
+        const newData = currentData.filter(quote => {
             const wordCount = getWordCount(quote)
 
             if (end && end !== "") {

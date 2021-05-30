@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { scrollToFirstRow } from "../../utils/utils";
+import React, { useEffect } from "react";
 import { changeQuotesByWordLength } from "../quotes-list/utils/utils";
 import "./wordLengthSearch.css";
 
-export function WordLengthSearch({ listRef, setTriggerChange, triggerChange }) {
-    const [start, setStart] = useState(1);
-    const [end, setEnd] = useState("");
+export function WordLengthSearch({ start, end, setStart, setEnd, listRef, setTriggerChange, triggerChange }) {
 
     useEffect(() => {
+        debugger
         changeQuotesByWordLength(start, end)
-        setTriggerChange(!triggerChange);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [start, end])
 
@@ -22,7 +19,6 @@ export function WordLengthSearch({ listRef, setTriggerChange, triggerChange }) {
                 value={start}
                 onChange={({ target: { value } }) => {
                     setStart(value)
-                    scrollToFirstRow(listRef)
                 }} />
             <input
                 className="smallInput"
@@ -30,7 +26,6 @@ export function WordLengthSearch({ listRef, setTriggerChange, triggerChange }) {
                 type="number"
                 value={end}
                 onChange={({ target: { value } }) => {
-                    scrollToFirstRow(listRef)
                     setEnd(value)
                 }} />
         </>

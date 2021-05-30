@@ -7,12 +7,15 @@ import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import "./header.css";
 
-export function Header({ listRef, setSearchText, searchText, setTriggerChange, triggerChange }) {
+export function Header({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd }) {
+    const props = { start, end, setStart, setEnd }
     return (
         <>
             <div className="row">
                 <div className="column">
-                    <WordLengthSearch listRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange} />
+                    <WordLengthSearch listRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
+                        {...props}
+                    />
                     {/* <button
                         onClick={
                             () => {
@@ -38,7 +41,11 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                         options={OPTIONS}
                         defaultOption={currentPhilosopher}
                         onChangeHandler={({ target: { value } }) => {
+                            setStart(1)
+                            setEnd("")
+
                             setSearchText('')
+
                             changeQuotesData(value);
                             setTriggerChange(!triggerChange)
                             scrollToMemorizedRow(listRef)

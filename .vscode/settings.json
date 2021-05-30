@@ -1,0 +1,44 @@
+{
+    "editor.wordWrap": "on",
+    "replacerules.rules": {
+        "Remove trailing and leading whitespace": {
+            "find": "^[ \t]+|[ \t]+$",
+            "replace": ""
+        },
+        "Remove blank lines": {
+            "find": "\n\\s*\n",
+            "replace": "\n",
+        },
+        "Remove duplicate lines": {
+            "find": "^(.*)(\n\\1)+$",
+            "replace": "$1"
+        },
+        "Re-add black lines": {
+            "find": "\n",
+            "replace": "\n\n"
+        }
+    },
+    "replacerules.rulesets": {
+        "Remove spaces, blank lines and duplicate lines": {
+            "rules": [
+                "Remove trailing and leading whitespace",
+                "Remove blank lines",
+                "Remove duplicate lines",
+                "Re-add black lines"
+            ]
+        }
+    },
+    "files.autoSave": "afterDelay",
+    "extensions.autoUpdate": false,
+    "update.mode": "none",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "editor.formatOnSave": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "output.smartScroll.enabled": false,
+    "json.maxItemsComputed": 0,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "terminal.integrated.rendererType": "dom"
+}
