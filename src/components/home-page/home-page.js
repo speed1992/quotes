@@ -36,7 +36,7 @@ export const HomePage = () => {
     }, [])
 
     useEffect(() => {
-        console.log("scrolling")
+
         scrollToMemorizedRow(listRef)
     }, [listRef.current])
 

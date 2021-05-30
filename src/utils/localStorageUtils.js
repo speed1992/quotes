@@ -1,5 +1,5 @@
 export const updateVersionInLocalStorage = () => {
-    // console.log("process.env", process.env)
+    // 
 
     const LATEST_GITHUB_SHA = process.env.REACT_APP_CURRENT_GIT_SHA;
     // const APP_VERSION = process.env.REACT_APP_CURRENT_RELEASE_VERSION;

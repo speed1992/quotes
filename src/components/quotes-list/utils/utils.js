@@ -24,7 +24,7 @@ export const changeQuotesByWordLength = (start, end) => {
     // if (start === 1 && typeof end === "string" && end.trim() === "") resetData()
 
     if (dataCollection[currentPhilosopher] !== undefined) {
-        console.log(start, end)
+
 
         if (typeof start === "string" && start.trim() === "") start = 0;
 
