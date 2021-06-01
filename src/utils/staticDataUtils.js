@@ -1,7 +1,11 @@
 import { OPTIONS } from "../constants/constants";
-import * as PHILOSOPHERS_DATA from "../static/philosophers-data";
+import PHILOSOPHERS_DATA from "../static/philosophers-data";
 
-export let dataCollection = { ...PHILOSOPHERS_DATA };
+export let dataCollection = PHILOSOPHERS_DATA.reduce((acc, obj, index) => {
+    acc[obj.value] = obj.quotes;
+    return acc
+}, {})
+
 export let currentPhilosopher = ""
 
 export let currentData = [];

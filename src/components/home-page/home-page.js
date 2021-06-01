@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import AutoSizer from "react-virtualized-auto-sizer";
-import { OPTIONS } from "../../constants/constants";
+import OPTIONS from "../../static/philosophers-data";
 import { changeData, currentData, currentPhilosopher, dataCollection, initializeData, setCurrentPhilosopher } from "../../utils/staticDataUtils";
 import { scrollToFirstRow, scrollToMemorizedRow, search } from "../../utils/utils";
 import { Header } from "../header/header";
