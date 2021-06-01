@@ -38,7 +38,7 @@
     "output.smartScroll.enabled": false,
     "json.maxItemsComputed": 0,
     "editor.codeActionsOnSave": {
-        "source.organizeImports": false
+        "source.organizeImports": true
     },
     "terminal.integrated.rendererType": "dom"
 }
