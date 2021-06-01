@@ -77,5 +77,12 @@ export const OPTIONS = [
         value: "DIOGENES",
         displayName: "Diogenes",
         fullName: "Diogenes"
+    },
+    {
+        id: 16,
+        value: "KISSINGER",
+        displayName: "Kissinger",
+        fullName: "Henry A. Kissinger"
     }
+
 ]

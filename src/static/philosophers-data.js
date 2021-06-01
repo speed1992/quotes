@@ -5,6 +5,7 @@ import { DOSTOEVSKY } from "./dostoevsky";
 import { FREUD } from "./freud";
 import { HERACLITUS } from "./heraclitus";
 import { KAFKA } from "./kafka";
+import { KISSINGER } from "./kissinger";
 import { MAO_ZEDONG } from "./mao";
 import { MARIE_KONDO } from "./marie-kondo";
 import { NIETZSCHE } from "./nietzshe";
@@ -28,5 +29,6 @@ export {
     FREUD,
     VOLTAIRE,
     CIORAN,
-    DIOGENES
+    DIOGENES,
+    KISSINGER
 };
