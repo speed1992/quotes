@@ -1,5 +1,5 @@
 import React from "react";
-import { OPTIONS } from "../../constants/constants";
+import OPTIONS from "../../static/philosophers-data";
 import { currentPhilosopher } from "../../utils/staticDataUtils";
 import { scrollToMemorizedRow } from "../../utils/utils";
 import { changeQuotesData } from "../quotes-list/utils/utils";
