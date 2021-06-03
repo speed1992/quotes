@@ -28,7 +28,6 @@ heroku.get('/apps').then(async (apps) => {
                     }
                 });
                 response = await heroku.get(`/apps/${MY_APP_ID}/config-vars`);
-                console.log(response)
             }
         }
     }
