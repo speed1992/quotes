@@ -1,5 +1,7 @@
+import { BUKOWSKI } from "./bukowski";
 import { CAMUS } from "./camus";
 import { CIORAN } from "./cioran";
+import { CLAUSEWITZ } from "./clausewitz";
 import { DIOGENES } from "./diogenes";
 import { DOSTOEVSKY } from "./dostoevsky";
 import { FREUD } from "./freud";
@@ -119,8 +121,21 @@ const data = [
         value: "KISSINGER",
         displayName: "Kissinger",
         fullName: "Henry A. Kissinger"
+    },
+    {
+        id: 17,
+        quotes: CLAUSEWITZ,
+        value: "CLAUSEWITZ",
+        displayName: "Clausewitz",
+        fullName: "Carl von Clausewitz"
+    },
+    {
+        id: 18,
+        quotes: BUKOWSKI,
+        value: "BUKOWSKI",
+        displayName: "Bukowski",
+        fullName: "Charles Bukowski"
     }
-
 ]
 
 export default data
