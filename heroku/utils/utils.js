@@ -22,6 +22,7 @@ module.exports.getLatestGithubSHA = () => {
                         JSON.parse(data).reduce((acc, { name, commit: { sha } }) => {
                             if (name === "master" || name === "main") {
                                 acc = sha;
+                                console.log({ REACT_APP_CURRENT_GIT_SHA: acc.substr(0, 7) });
                                 resolve({ REACT_APP_CURRENT_GIT_SHA: acc.substr(0, 7) });
                             }
                         }, "")
