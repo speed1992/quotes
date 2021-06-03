@@ -11,6 +11,7 @@ import { KISSINGER } from "./kissinger";
 import { MAO_ZEDONG } from "./mao";
 import { MARIE_KONDO } from "./marie-kondo";
 import { NIETZSCHE } from "./nietzshe";
+import { OSCAR_WILDE } from "./oscar_wilde";
 import { PESSOA } from "./pessoa";
 import { SADE } from "./sade";
 import { SARTRE } from "./sartre";
@@ -135,6 +136,13 @@ const data = [
         value: "BUKOWSKI",
         displayName: "Bukowski",
         fullName: "Charles Bukowski"
+    },
+    {
+        id: 19,
+        quotes: OSCAR_WILDE,
+        value: "OSCAR_WILDE",
+        displayName: "Oscar Wilde",
+        fullName: "Oscar Wilde"
     }
 ]
 
