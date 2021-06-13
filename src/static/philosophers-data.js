@@ -19,6 +19,7 @@ import { ROCHEFOUCAULD } from "./rochefoucauld";
 import { SADE } from "./sade";
 import { SARTRE } from "./sartre";
 import { SCHOPENHAUER } from "./schopenhauer";
+import { SIMONE_WEIL } from "./simone-weil";
 import { VOLTAIRE } from "./voltaire";
 
 const data = [
@@ -167,7 +168,15 @@ const data = [
         value: "PASCAL",
         displayName: "Pascal",
         fullName: "Blaise Pascal"
+    },
+    {
+        id: 23,
+        quotes: SIMONE_WEIL,
+        value: "SIMONE_WEIL",
+        displayName: "Simone Weil",
+        fullName: "Simone Weil"
     }
+    
 ]
 
 export default data
