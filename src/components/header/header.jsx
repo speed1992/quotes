@@ -28,6 +28,7 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                 </div>
                 <div className="column">
                     <input
+                        className="wordSearch"
                         type="text"
                         placeholder="Search any word"
                         value={searchText}

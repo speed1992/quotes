@@ -8,4 +8,8 @@
     clear: both;
     display: table;
 }
-
+@media only screen and (min-width: 320px) {
+    .wordSearch{
+        width: 114px;
+    }   
+}
