@@ -11,6 +11,7 @@ import { KAFKA } from "./kafka";
 import { KISSINGER } from "./kissinger";
 import { MAO_ZEDONG } from "./mao";
 import { MARIE_KONDO } from "./marie-kondo";
+import { MARSHALL_MCLUHAN } from "./marshall-mcluhan";
 import { NIETZSCHE } from "./nietzshe";
 import { OSCAR_WILDE } from "./oscar_wilde";
 import { PESSOA } from "./pessoa";
