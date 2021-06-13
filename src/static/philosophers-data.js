@@ -1,3 +1,4 @@
+import { PASCAL } from "./blaise pascal";
 import { BUKOWSKI } from "./bukowski";
 import { CAMUS } from "./camus";
 import { CIORAN } from "./cioran";
@@ -13,6 +14,7 @@ import { MARIE_KONDO } from "./marie-kondo";
 import { NIETZSCHE } from "./nietzshe";
 import { OSCAR_WILDE } from "./oscar_wilde";
 import { PESSOA } from "./pessoa";
+import { ROCHEFOUCAULD } from "./rochefoucauld";
 import { SADE } from "./sade";
 import { SARTRE } from "./sartre";
 import { SCHOPENHAUER } from "./schopenhauer";
@@ -143,6 +145,27 @@ const data = [
         value: "OSCAR_WILDE",
         displayName: "Oscar Wilde",
         fullName: "Oscar Wilde"
+    },
+    {
+        id: 20,
+        quotes: ROCHEFOUCAULD,
+        value: "ROCHEFOUCAULD",
+        displayName: "Rochefoucauld",
+        fullName: "Francois de La Rochefoucauld"
+    },
+    {
+        id: 21,
+        quotes: MARSHALL_MCLUHAN,
+        value: "MARSHALL_MCLUHAN",
+        displayName: "Marshall McLuhan",
+        fullName: "Marshall McLuhan"
+    },
+    {
+        id: 22,
+        quotes: PASCAL,
+        value: "PASCAL",
+        displayName: "Pascal",
+        fullName: "Blaise Pascal"
     }
 ]
 
