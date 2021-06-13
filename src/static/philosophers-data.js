@@ -1,4 +1,3 @@
-import { PASCAL } from "./blaise pascal";
 import { BUKOWSKI } from "./bukowski";
 import { CAMUS } from "./camus";
 import { CIORAN } from "./cioran";
@@ -14,6 +13,7 @@ import { MARIE_KONDO } from "./marie-kondo";
 import { MARSHALL_MCLUHAN } from "./marshall-mcluhan";
 import { NIETZSCHE } from "./nietzshe";
 import { OSCAR_WILDE } from "./oscar_wilde";
+import { PASCAL } from "./pascal";
 import { PESSOA } from "./pessoa";
 import { ROCHEFOUCAULD } from "./rochefoucauld";
 import { SADE } from "./sade";
