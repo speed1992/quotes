@@ -6,6 +6,7 @@ import { DIOGENES } from "./diogenes";
 import { DOSTOEVSKY } from "./dostoevsky";
 import { FREUD } from "./freud";
 import { HERACLITUS } from "./heraclitus";
+import { HITLER } from "./hitler";
 import { KAFKA } from "./kafka";
 import { KISSINGER } from "./kissinger";
 import { MAO_ZEDONG } from "./mao";
@@ -175,8 +176,14 @@ const data = [
         value: "SIMONE_WEIL",
         displayName: "Simone Weil",
         fullName: "Simone Weil"
+    },
+    {
+        id: 24,
+        quotes: HITLER,
+        value: "HITLER",
+        displayName: "Hitler",
+        fullName: "Adolf Hitler"
     }
-    
 ]
 
 export default data
