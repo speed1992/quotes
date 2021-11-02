@@ -4,7 +4,12 @@ const { GITHUB_URL, GITHUB_AUTH_TOKEN } = require('../constants/constants');
 
 module.exports.getLatestGithubSHA = () => {
     return new Promise(async (resolve, reject) => {
-        https.get(`${GITHUB_URL}`,
+        https.get(`${GITHUB_URL}`, {
+            headers: {
+                'user-agent': 'node.js',
+                "Authorization": `${GITHUB_AUTH_TOKEN}`
+            }
+        },
             (resp) => {
                 let data = '';
 

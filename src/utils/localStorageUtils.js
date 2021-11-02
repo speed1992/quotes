@@ -1,4 +1,4 @@
-import { RefreshPageWithNewKey } from "./routeUtils";
+import { refreshPageWithNewKey } from "./routeUtils";
 
 export const updateVersionInLocalStorage = () => {
     // const APP_VERSION = process.env.REACT_APP_CURRENT_RELEASE_VERSION;
@@ -8,7 +8,7 @@ export const updateVersionInLocalStorage = () => {
 
         if (LATEST_GITHUB_SHA !== process.env.REACT_APP_CURRENT_GIT_SHA) {
             localStorage.setItem('LATEST_GITHUB_SHA', process.env.REACT_APP_CURRENT_GIT_SHA);
-            RefreshPageWithNewKey(process.env.REACT_APP_CURRENT_GIT_SHA)
+            refreshPageWithNewKey(process.env.REACT_APP_CURRENT_GIT_SHA)
         }
         // if (LATEST_GITHUB_SHA !== LATEST_GITHUB_SHA) {
         //     localStorage.clear();
