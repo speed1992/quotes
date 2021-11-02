@@ -196,6 +196,4 @@ var obj = data.reduce((acc, currentValue, index) => {
 
 data.unshift(obj);
 
-// console.log(data[0].quotes)
-
 export default data
