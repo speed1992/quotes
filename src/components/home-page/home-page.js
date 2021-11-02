@@ -22,7 +22,7 @@ export const HomePage = () => {
     useEffect(() => {
         let lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher');
 
-        if (lastReadPhilosopher === undefined || lastReadPhilosopher === "undefined") lastReadPhilosopher = OPTIONS[0].value;
+        if (lastReadPhilosopher === undefined || lastReadPhilosopher === "undefined" || lastReadPhilosopher === "null") lastReadPhilosopher = OPTIONS[0].value;
 
         setCurrentPhilosopher(lastReadPhilosopher);
 

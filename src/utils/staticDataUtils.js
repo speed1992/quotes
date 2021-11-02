@@ -1,4 +1,3 @@
-import { OPTIONS } from "../constants/constants";
 import PHILOSOPHERS_DATA from "../static/philosophers-data";
 
 export let dataCollection = PHILOSOPHERS_DATA.reduce((acc, obj, index) => {
@@ -11,8 +10,8 @@ export let currentPhilosopher = ""
 export let currentData = [];
 
 export const initializeData = () => {
-    currentPhilosopher = OPTIONS[0].value;
-    currentData = JSON.parse(JSON.stringify(dataCollection[OPTIONS[0].value]));
+    currentPhilosopher = PHILOSOPHERS_DATA[0].value;
+    currentData = JSON.parse(JSON.stringify(dataCollection[PHILOSOPHERS_DATA[0].value]));
     localStorage.setItem("lastReadPhilosopher", currentPhilosopher)
 }
 

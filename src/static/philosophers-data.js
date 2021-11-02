@@ -186,4 +186,16 @@ const data = [
     }
 ]
 
+var obj = data.reduce((acc, currentValue, index) => {
+
+    acc.quotes = [...acc.quotes, ...currentValue.quotes]
+
+    return acc
+
+}, { id: 99, value: "ALL", displayName: "All", fullName: "All", quotes: [] })
+
+data.unshift(obj);
+
+// console.log(data[0].quotes)
+
 export default data
