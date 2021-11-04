@@ -21,6 +21,7 @@ import { SADE } from "./sade";
 import { SARTRE } from "./sartre";
 import { SCHOPENHAUER } from "./schopenhauer";
 import { SIMONE_WEIL } from "./simone-weil";
+import { convertQuoteArray } from "./utils/utils";
 import { VOLTAIRE } from "./voltaire";
 
 const data = [
@@ -186,14 +187,19 @@ const data = [
     }
 ]
 
-var obj = data.reduce((acc, currentValue, index) => {
+var allQuotesCombined = data.reduce((acc, { quotes, fullName }) => {
 
-    acc.quotes = [...acc.quotes, ...currentValue.quotes]
+    let newQuoteArray = convertQuoteArray(quotes, fullName)
+
+    acc.quotes = [...acc.quotes, ...newQuoteArray]
 
     return acc
 
 }, { id: 99, value: "ALL", displayName: "All", fullName: "All", quotes: [] })
 
-data.unshift(obj);
+data.unshift(allQuotesCombined);
 
 export default data
+
+
+
