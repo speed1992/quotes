@@ -195,7 +195,7 @@ var allQuotesCombined = data.reduce((acc, { quotes, fullName }) => {
 
     return acc
 
-}, { id: 99, value: "ALL", displayName: "All", fullName: "All", quotes: [] })
+}, { id: 99, value: "ALL", displayName: "All", fullName: "", quotes: [] })
 
 data.unshift(allQuotesCombined);
 
