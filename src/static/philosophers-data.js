@@ -199,6 +199,8 @@ var allQuotesCombined = data.reduce((acc, { quotes, fullName }) => {
 
 data.unshift(allQuotesCombined);
 
+data.sort((a, b) => a.displayName.localeCompare(b.displayName))
+
 export default data
 
 
