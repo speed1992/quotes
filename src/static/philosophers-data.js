@@ -1,28 +1,48 @@
+import { ALAN_WATTS } from "./alan_watts";
+import { AURELIUS } from "./aurelius";
+import { BEAUVOIR } from "./beauvoir";
+import { BECKETT } from "./beckett";
 import { BUKOWSKI } from "./bukowski";
 import { CAMUS } from "./camus";
+import { CARL_JUNG } from "./carl_jung";
 import { CIORAN } from "./cioran";
 import { CLAUSEWITZ } from "./clausewitz";
+import { DARWISH } from "./darwish";
 import { DIOGENES } from "./diogenes";
 import { DOSTOEVSKY } from "./dostoevsky";
 import { FREUD } from "./freud";
 import { HERACLITUS } from "./heraclitus";
+import { HIPPOCRATES } from "./hippocrates";
 import { HITLER } from "./hitler";
 import { KAFKA } from "./kafka";
+import { KANT } from "./kant";
 import { KISSINGER } from "./kissinger";
-import { MAO_ZEDONG } from "./mao";
-import { MARIE_KONDO } from "./marie-kondo";
-import { MARSHALL_MCLUHAN } from "./marshall-mcluhan";
-import { NIETZSCHE } from "./nietzshe";
+import { KRISHNAMURTI } from "./krishnamurti";
+import { LIGOTTI } from "./ligotti";
+import { MAO } from "./mao";
+import { MARIE_KONDO } from "./marie_kondo";
+import { MARSHALL_MCLUHAN } from "./marshall_mcluhan";
+import { NAVAL_RAVIKANT } from "./naval_ravikant";
+import { NIETZSCHE } from "./nietzsche";
 import { OSCAR_WILDE } from "./oscar_wilde";
+import { OSHO } from "./osho";
 import { PASCAL } from "./pascal";
 import { PESSOA } from "./pessoa";
+import { PETERSON } from "./peterson";
+import { ROBERT_GREENE } from "./robert_greene";
 import { ROCHEFOUCAULD } from "./rochefoucauld";
 import { SADE } from "./sade";
+import { SALVADOR_DALI } from "./salvador_dali";
 import { SARTRE } from "./sartre";
 import { SCHOPENHAUER } from "./schopenhauer";
-import { SIMONE_WEIL } from "./simone-weil";
+import { SENECA } from "./seneca";
+import { SIMONE_WEIL } from "./simone_weil";
 import { convertQuoteArray } from "./utils/utils";
+import { VICTOR_FRANKL } from "./victor_frankl";
+import { VINCENT_VAN_GOGH } from "./vincent_van_gogh";
+import { VIRGINIA_WOOLF } from "./virginia_woolf";
 import { VOLTAIRE } from "./voltaire";
+import { ZIZEK } from "./zizek";
 
 const data = [
     {
@@ -83,8 +103,8 @@ const data = [
     },
     {
         id: 10,
-        quotes: MAO_ZEDONG,
-        value: "MAO_ZEDONG", displayName: "Mao Zedong",
+        quotes: MAO,
+        value: "MAO", displayName: "Mao Zedong",
         fullName: "Mao Zedong"
     },
     {
@@ -184,17 +204,153 @@ const data = [
         value: "HITLER",
         displayName: "Hitler",
         fullName: "Adolf Hitler"
+    },
+    {
+        id: 25,
+        quotes: KANT,
+        value: "KANT",
+        displayName: "Immanuel Kant",
+        fullName: "Immanuel Kant"
+    },
+    {
+        id: 26,
+        quotes: OSHO,
+        value: "OSHO",
+        displayName: "Osho",
+        fullName: "Osho"
+    },
+    {
+        id: 27,
+        quotes: VIRGINIA_WOOLF,
+        value: "VIRGINIA_WOOLF",
+        displayName: "Virginia Woolf",
+        fullName: "Virginia Woolf"
+    },
+    {
+        id: 28,
+        quotes: BEAUVOIR,
+        value: "BEAUVOIR",
+        displayName: "Beauvoir",
+        fullName: "Simone De Beauvoir"
+    },
+    {
+        id: 29,
+        quotes: CARL_JUNG,
+        value: "CARL_JUNG",
+        displayName: "Carl Jung",
+        fullName: "Carl Jung"
+    },
+    {
+        id: 30,
+        quotes: SALVADOR_DALI,
+        value: "SALVADOR_DALI",
+        displayName: "Salvador",
+        fullName: "Salvador Dali"
+    },
+    {
+        id: 31,
+        quotes: VINCENT_VAN_GOGH,
+        value: "VINCENT_VAN_GOGH",
+        displayName: "Vincent Gogh",
+        fullName: "Vincent Van Gogh"
+    },
+    {
+        id: 32,
+        quotes: ALAN_WATTS,
+        value: "ALAN_WATTS",
+        displayName: "Alan Watts",
+        fullName: "Alan Watts"
+    },
+    {
+        id: 33,
+        quotes: HIPPOCRATES,
+        value: "HIPPOCRATES",
+        displayName: "Hippocrates",
+        fullName: "Hippocrates"
+    },
+    {
+        id: 34,
+        quotes: KRISHNAMURTI,
+        value: "KRISHNAMURTI",
+        displayName: "Krishnamurti",
+        fullName: "Jiddu Krishnamurti"
+    },
+    {
+        id: 35,
+        quotes: PETERSON,
+        value: "PETERSON",
+        displayName: "Peterson",
+        fullName: "Jordan Peterson"
+    },
+    {
+        id: 36,
+        quotes: VICTOR_FRANKL,
+        value: "VICTOR_FRANKL",
+        displayName: "Victor Frankl",
+        fullName: "Victor Frankl"
+    },
+    {
+        id: 37,
+        quotes: AURELIUS,
+        value: "AURELIUS",
+        displayName: "Marcus Aurelius",
+        fullName: "Marcus Aurelius"
+    },
+    {
+        id: 38,
+        quotes: ROBERT_GREENE,
+        value: "ROBERT_GREENE",
+        displayName: "Robert Greene",
+        fullName: "Robert Greene"
+    },
+    {
+        id: 39,
+        quotes: NAVAL_RAVIKANT,
+        value: "NAVAL_RAVIKANT",
+        displayName: "Naval Ravikant",
+        fullName: "Naval Ravikant"
+    },
+    {
+        id: 40,
+        quotes: LIGOTTI,
+        value: "LIGOTTI",
+        displayName: "Thomas Liggoti",
+        fullName: "Thomas Liggoti"
+    },
+    {
+        id: 41,
+        quotes: SENECA,
+        value: "SENECA",
+        displayName: "Seneca",
+        fullName: "Seneca"
+    },
+    {
+        id: 42,
+        quotes: ZIZEK,
+        value: "ZIZEK",
+        displayName: "Zizek",
+        fullName: "Slavoj Žižek"
+    },
+    {
+        id: 43,
+        quotes: BECKETT,
+        value: "BECKETT",
+        displayName: "Samuel Beckett",
+        fullName: "Samuel Beckett"
+    },
+    {
+        id: 44,
+        quotes: DARWISH,
+        value: "DARWISH",
+        displayName: "Darwish",
+        fullName: "Mahmoud Darwish"
     }
 ]
 
 var allQuotesCombined = data.reduce((acc, { quotes, fullName }) => {
-
     let newQuoteArray = convertQuoteArray(quotes, fullName)
-
     acc.quotes = [...acc.quotes, ...newQuoteArray]
-
     return acc
-
 }, { id: 99, value: "ALL", displayName: "All", fullName: "", quotes: [] })
 
 data.unshift(allQuotesCombined);
