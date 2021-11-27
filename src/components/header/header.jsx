@@ -8,7 +8,7 @@ import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import "./header.css";
 
 export function Header({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd }) {
-    const props = { start, end, setStart, setEnd }
+    const props = { start, end, setStart, setEnd, setSearchText }
     return (
         <>
             <div className="row">
@@ -16,25 +16,13 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                     <WordLengthSearch listRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
                         {...props}
                     />
-                    {/* <button
-                        onClick={
-                            () => {
-                                resetSearch();
-                                setSearchText('')
-                                scrollToMemorizedRow(listRef)
-                            }}>
-                        Home
-                    </button> */}
                 </div>
                 <div className="column">
-                    <input
-                        className="wordSearch"
-                        type="text"
-                        placeholder="Search word"
-                        value={searchText}
-                        onChange={({ target: { value } }) => {
-                            setSearchText(value)
-                        }}
+                    <input className="wordSearch" type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => {
+                        setSearchText(value)
+                        setStart(1)
+                        setEnd("")
+                    }}
                     />
                 </div>
                 <div className="column">

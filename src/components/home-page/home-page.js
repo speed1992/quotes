@@ -50,11 +50,8 @@ export const HomePage = () => {
     }, [start, end])
 
     useEffect(() => {
-        setStart(1)
-        setEnd("")
-
+        scrollToFirstRow(listRef)
         performSearch()
-
     }, [searchText, performSearch])
 
     const propsToSend = {
