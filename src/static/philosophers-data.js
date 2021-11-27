@@ -1,48 +1,5 @@
-import { ALAN_WATTS } from "./alan_watts";
-import { AURELIUS } from "./aurelius";
-import { BEAUVOIR } from "./beauvoir";
-import { BECKETT } from "./beckett";
-import { BUKOWSKI } from "./bukowski";
-import { CAMUS } from "./camus";
-import { CARL_JUNG } from "./carl_jung";
-import { CIORAN } from "./cioran";
-import { CLAUSEWITZ } from "./clausewitz";
-import { DARWISH } from "./darwish";
-import { DIOGENES } from "./diogenes";
-import { DOSTOEVSKY } from "./dostoevsky";
-import { FREUD } from "./freud";
-import { HERACLITUS } from "./heraclitus";
-import { HIPPOCRATES } from "./hippocrates";
-import { HITLER } from "./hitler";
-import { KAFKA } from "./kafka";
-import { KANT } from "./kant";
-import { KISSINGER } from "./kissinger";
-import { KRISHNAMURTI } from "./krishnamurti";
-import { LIGOTTI } from "./ligotti";
-import { MAO } from "./mao";
-import { MARIE_KONDO } from "./marie_kondo";
-import { MARSHALL_MCLUHAN } from "./marshall_mcluhan";
-import { NAVAL_RAVIKANT } from "./naval_ravikant";
-import { NIETZSCHE } from "./nietzsche";
-import { OSCAR_WILDE } from "./oscar_wilde";
-import { OSHO } from "./osho";
-import { PASCAL } from "./pascal";
-import { PESSOA } from "./pessoa";
-import { PETERSON } from "./peterson";
-import { ROBERT_GREENE } from "./robert_greene";
-import { ROCHEFOUCAULD } from "./rochefoucauld";
-import { SADE } from "./sade";
-import { SALVADOR_DALI } from "./salvador_dali";
-import { SARTRE } from "./sartre";
-import { SCHOPENHAUER } from "./schopenhauer";
-import { SENECA } from "./seneca";
-import { SIMONE_WEIL } from "./simone_weil";
-import { convertQuoteArray } from "./utils/utils";
-import { VICTOR_FRANKL } from "./victor_frankl";
-import { VINCENT_VAN_GOGH } from "./vincent_van_gogh";
-import { VIRGINIA_WOOLF } from "./virginia_woolf";
-import { VOLTAIRE } from "./voltaire";
-import { ZIZEK } from "./zizek";
+import { ALAN_WATTS, AURELIUS, BEAUVOIR, BECKETT, BUKOWSKI, CAMUS, CARL_JUNG, CIORAN, CLAUSEWITZ, DARWISH, DIOGENES, DOSTOEVSKY, FREUD, HERACLITUS, HIPPOCRATES, HITLER, HUXLEY, KAFKA, KANT, KISSINGER, KRISHNAMURTI, LAO_TZU, LIGOTTI, MAO, MARIE_KONDO, MARSHALL_MCLUHAN, NAVAL_RAVIKANT, NIETZSCHE, ORWELL, OSCAR_WILDE, OSHO, PASCAL, PESSOA, PETERSON, ROBERT_GREENE, ROCHEFOUCAULD, RUMI, RUSSELL, SADE, SALVADOR_DALI, SARTRE, SCHOPENHAUER, SENECA, SIMONE_WEIL, VICTOR_FRANKL, VINCENT_VAN_GOGH, VIRGINIA_WOOLF, VOLTAIRE, ZIZEK } from './assets';
+import { doOperationsOnData } from "./utils/utils";
 
 const data = [
     {
@@ -344,22 +301,45 @@ const data = [
         value: "DARWISH",
         displayName: "Darwish",
         fullName: "Mahmoud Darwish"
+    },
+    {
+        id: 45,
+        quotes: HUXLEY,
+        value: "Huxley",
+        displayName: "Huxley",
+        fullName: "Aldous Huxley"
+    },
+    {
+        id: 46,
+        quotes: ORWELL,
+        value: "Orwell",
+        displayName: "Orwell",
+        fullName: "George Orwell"
+    },
+    {
+        id: 47,
+        quotes: RUMI,
+        value: "Rumi",
+        displayName: "Rumi",
+        fullName: "Rumi"
+    },
+    {
+        id: 48,
+        quotes: LAO_TZU,
+        value: "Lao Tzu",
+        displayName: "Lao Tzu",
+        fullName: "Lao Tzu"
+    },
+    {
+        id: 49,
+        quotes: RUSSELL,
+        value: "Russell",
+        displayName: "Bertrand Russell",
+        fullName: "Bertrand Russell"
     }
 ]
 
-// Sort options alphabetically
-data.sort((a, b) => a.displayName.localeCompare(b.displayName))
-
-
-// Insert All option
-var allQuotesCombined = data.reduce((acc, { quotes, fullName }) => {
-    let newQuoteArray = convertQuoteArray(quotes, fullName)
-    acc.quotes = [...acc.quotes, ...newQuoteArray]
-    return acc
-}, { id: 99, value: "ALL", displayName: "All", fullName: "", quotes: [] })
-
-data.unshift(allQuotesCombined);
-
+doOperationsOnData(data);
 
 export default data
 
