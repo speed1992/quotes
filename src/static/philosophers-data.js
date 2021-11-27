@@ -347,6 +347,11 @@ const data = [
     }
 ]
 
+// Sort options alphabetically
+data.sort((a, b) => a.displayName.localeCompare(b.displayName))
+
+
+// Insert All option
 var allQuotesCombined = data.reduce((acc, { quotes, fullName }) => {
     let newQuoteArray = convertQuoteArray(quotes, fullName)
     acc.quotes = [...acc.quotes, ...newQuoteArray]
@@ -355,7 +360,6 @@ var allQuotesCombined = data.reduce((acc, { quotes, fullName }) => {
 
 data.unshift(allQuotesCombined);
 
-data.sort((a, b) => a.displayName.localeCompare(b.displayName))
 
 export default data
 

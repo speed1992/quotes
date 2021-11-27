@@ -1,6 +1,6 @@
 import { useSnackbar } from 'react-simple-snackbar';
 import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
-import { quoteText } from './utils';
+import { copyQuoteText } from './utils';
 
 export const Row = ({ data: { searchText, triggerChange, philosopherFullName }, index, style }) => {
     const [openSnackbar] = useSnackbar()
@@ -10,7 +10,7 @@ export const Row = ({ data: { searchText, triggerChange, philosopherFullName }, 
             <div key={index} className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
                 {`${index + 1}. ${currentData[index]}`}
                 <button onClick={() => {
-                    quoteText(currentData[index], philosopherFullName)
+                    copyQuoteText(currentData[index], philosopherFullName)
                     if (searchText === "")
                         localStorage.setItem(currentPhilosopher + "-scrollPosition", index)
                     openSnackbar('Copied!', 1000);
