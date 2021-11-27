@@ -30,7 +30,7 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                     <input
                         className="wordSearch"
                         type="text"
-                        placeholder="Search any word"
+                        placeholder="Search word"
                         value={searchText}
                         onChange={({ target: { value } }) => {
                             setSearchText(value)

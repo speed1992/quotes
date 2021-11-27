@@ -2,6 +2,9 @@
     float: left;
     padding: 10px 15px 15px 0;
 }
+.column:last-child {
+    padding-right: 0;
+}
 
 .row::after {
     content: "";
