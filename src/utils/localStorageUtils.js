@@ -1,4 +1,4 @@
-import { refreshPageWithNewKey } from "./routeUtils";
+// import { refreshPageWithNewKey } from "./routeUtils";
 
 export const updateVersionInLocalStorage = () => {
     // const APP_VERSION = process.env.REACT_APP_CURRENT_RELEASE_VERSION;
