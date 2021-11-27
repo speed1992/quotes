@@ -187,7 +187,7 @@ const data = [
         id: 28,
         quotes: BEAUVOIR,
         value: "BEAUVOIR",
-        displayName: "Beauvoir",
+        displayName: "Simone De Beauvoir",
         fullName: "Simone De Beauvoir"
     },
     {
