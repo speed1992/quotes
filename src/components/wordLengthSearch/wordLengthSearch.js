@@ -15,6 +15,7 @@ export function WordLengthSearch({ start, end, setStart, setEnd, listRef, setTri
                 className="smallInput"
                 name="start"
                 type="number"
+                min="1"
                 value={start}
                 onChange={({ target: { value } }) => {
                     setStart(value)
@@ -23,6 +24,7 @@ export function WordLengthSearch({ start, end, setStart, setEnd, listRef, setTri
                 className="smallInput"
                 name="end"
                 type="number"
+                min="0"
                 value={end}
                 onChange={({ target: { value } }) => {
                     setEnd(value)
