@@ -1432,7 +1432,7 @@ export const LAO_TZU = [
     "He who acts, spoils; he who grasps, lets slip.",
     "Respond to anger with virtue. Deal with difficulties while they are still easy. Handle the great while it is still small.",
     "If there is to be peace in the world,There must be peace in the nations.If there is to be peace in the nations,There must be peace in the cities.If there is to be peace in the cities,There must be peace between neighbors.If there is to be peace between neighbors,There must be peace in the home.If there is to be peace in the home,There must be peace in the heart.",
-    "Shape clay into a vessel; It is the space within that makes it useful. Cut doors and windows for a room; It is the holes which make it useful. Therefore benefit comes from what is there; Usefulness from what is not there.",
+    "Shape clay into a vessel;It is the space within that makes it useful.Cut doors and windows for a room;It is the holes which make it useful.Therefore benefit comes from what is there;Usefulness from what is not there.",
     "To realize that you do not understand is a virtue; not to realize that you do not understand is a defect.",
     "What is firmly rooted cannot be pulled out.",
     "When the people of the world all know beauty as beauty, there arises the recognition of ugliness. When they all know the good as good, there arises the recognition of evil.",
