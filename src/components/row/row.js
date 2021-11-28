@@ -1,5 +1,6 @@
 import { useSnackbar } from 'react-simple-snackbar';
 import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
+import { Translate } from '../translate/translate';
 import { copyQuoteText } from './utils';
 
 export const Row = ({ data: { searchText, triggerChange, philosopherFullName }, index, style }) => {
@@ -9,6 +10,9 @@ export const Row = ({ data: { searchText, triggerChange, philosopherFullName }, 
         currentData[index] !== undefined ? (
             <div key={index} className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
                 {`${index + 1}. ${currentData[index]}`}
+                <span key={index}>
+                    <Translate key={index} inputText={currentData[index]} triggerChange={triggerChange} />
+                </span>
                 <button onClick={() => {
                     copyQuoteText(currentData[index], philosopherFullName)
                     if (searchText === "")
