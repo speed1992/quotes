@@ -305,44 +305,44 @@ const data = [
     {
         id: 45,
         quotes: HUXLEY,
-        value: "Huxley",
+        value: "HUXLEY",
         displayName: "Huxley",
         fullName: "Aldous Huxley"
     },
     {
         id: 46,
         quotes: ORWELL,
-        value: "Orwell",
+        value: "ORWELL",
         displayName: "Orwell",
         fullName: "George Orwell"
     },
     {
         id: 47,
         quotes: RUMI,
-        value: "Rumi",
+        value: "RUMI",
         displayName: "Rumi",
         fullName: "Rumi"
     },
     {
         id: 48,
         quotes: LAO_TZU,
-        value: "Lao Tzu",
+        value: "LAO_TZU",
         displayName: "Lao Tzu",
         fullName: "Lao Tzu"
     },
     {
         id: 49,
         quotes: RUSSELL,
-        value: "Russell",
+        value: "RUSSELL",
         displayName: "Bertrand Russell",
         fullName: "Bertrand Russell"
     },
     {
         id: 50,
         quotes: NASSIM_TALEB,
-        value: "Nassim Taleb",
+        value: "NASSIM_TALEB",
         displayName: "Nassim Taleb",
-        fullName: "Nassim Taleb"
+        fullName: "Nassim Nicholas Taleb"
     }
 ]
 
