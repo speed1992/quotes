@@ -5,6 +5,7 @@ import { changeData, currentData, currentPhilosopher, dataCollection, initialize
 import { scrollToFirstRow, scrollToMemorizedRow, search } from "../../utils/utils";
 import { Header } from "../header/header";
 import QuotesList from "../quotes-list/quotes-list";
+import "./home-page.css";
 
 export const HomePage = () => {
     const listRef = useRef()
@@ -68,12 +69,16 @@ export const HomePage = () => {
 
     return (
         <>
-            <Header {...propsToSend} />
-            < AutoSizer disableWidth>
-                {({ height, width }) => (
-                    <QuotesList {...propsToSend} width={width} height={height} />
-                )}
-            </AutoSizer>
+            <div className="header">
+                <Header {...propsToSend} />
+            </div>
+            <div className="content">
+                < AutoSizer >
+                    {({ height, width }) => (
+                        <QuotesList {...propsToSend} width={width} height={height} />
+                    )}
+                </AutoSizer>
+            </div>
         </>
     )
 };
