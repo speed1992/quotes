@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react";
 
-export const Translate = ({ key, inputText, from = "en", to = "hi", triggerChange }) => {
+export const Translate = ({ index, inputText, from = "en", to = "hi", triggerChange }) => {
 
-    const [isFetching, setIsFetching] = useState(false);
+    // const [isFetching, setIsFetching] = useState(false);
     const [translationOutput, setTranslationOutput] = useState("");
+    const [triggerRender, setTriggerRender] = useState(triggerChange)
+
+    useEffect(() => {
+
+        console.log(triggerChange)
+        setTriggerRender(triggerChange)
+    }, [triggerChange])
 
     useEffect(() => {
         (async function () {
             try {
-                setIsFetching(true);
+                // setIsFetching(true);
 
                 const res = await fetch("https://translate.api.skitzen.com/translate", {
                     method: "POST",
@@ -28,14 +35,18 @@ export const Translate = ({ key, inputText, from = "en", to = "hi", triggerChang
                 console.log(error)
             }
             finally {
-                setIsFetching(false)
+                // setIsFetching(false)
             }
         })();
+
+        return (() => {
+            setTranslationOutput("")
+        })
 
     }, [])
 
     return (
-        <span key={key}>
+        <span key={index}>
             {translationOutput !== "" ? translationOutput : null}
         </span>)
 }

@@ -11,7 +11,7 @@ export const Row = ({ data: { searchText, triggerChange, philosopherFullName }, 
             <div key={index} className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
                 {`${index + 1}. ${currentData[index]}`}
                 <span key={index}>
-                    <Translate key={index} inputText={currentData[index]} triggerChange={triggerChange} />
+                    <Translate index={index} inputText={currentData[index]} triggerChange={triggerChange} />
                 </span>
                 <button onClick={() => {
                     copyQuoteText(currentData[index], philosopherFullName)
