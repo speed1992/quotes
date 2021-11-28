@@ -340,7 +340,7 @@ const data = [
     {
         id: 50,
         quotes: NASSIM_TALEB,
-        value: "Nassim Taleb",
+        value: "Nassim Nicholas Taleb",
         displayName: "Nassim Taleb",
         fullName: "Nassim Taleb"
     }
