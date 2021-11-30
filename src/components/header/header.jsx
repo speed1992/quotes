@@ -41,7 +41,9 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                         }} />
                 </div>
             </div>
-
+            <div class="row">
+                {searchText !== "" ? <span>Search Results: {searchText}</span> : null}
+            </div>
         </>
     )
 }

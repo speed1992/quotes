@@ -11,7 +11,6 @@ function QuotesList({ listRef, width, height, searchText, triggerChange }) {
 
     return (
         <>
-            { searchText !== "" ? <span>Search Results: {searchText}</span> : null}
 
             { philosopherFullName !== undefined && <List
                 className="List"
