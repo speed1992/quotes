@@ -34,7 +34,7 @@
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "editor.formatOnSave": true,
-    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "prompt",
     "output.smartScroll.enabled": false,
     "json.maxItemsComputed": 0,
     "editor.codeActionsOnSave": {
