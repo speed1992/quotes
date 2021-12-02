@@ -18,9 +18,9 @@ export const doOperationsOnData = (data) => {
     return data
 }
 
-// const lazyLoadAsset = (languageKey) => {
+// const lazyLoadAsset = (philosopherName) => {
 //     return new Promise((res, rej) => {
-//         import(`../assets/i18n/${languageKey}-messages.json`).then((data) => {
+//         import(`./philosopherName.json`).then((data) => {
 //             res(data?.default);
 //         });
 //     });

@@ -1,4 +1,5 @@
 import { ALAN_WATTS, AURELIUS, BEAUVOIR, BECKETT, BUKOWSKI, CAMUS, CARL_JUNG, CIORAN, CLAUSEWITZ, DARWISH, DIOGENES, DOSTOEVSKY, FREUD, HERACLITUS, HIPPOCRATES, HITLER, HUXLEY, KAFKA, KANT, KISSINGER, KRISHNAMURTI, LAO_TZU, LIGOTTI, MAO, MARIE_KONDO, MARSHALL_MCLUHAN, NASSIM_TALEB, NAVAL_RAVIKANT, NIETZSCHE, ORWELL, OSCAR_WILDE, OSHO, PASCAL, PESSOA, PETERSON, ROBERT_GREENE, ROCHEFOUCAULD, RUMI, RUSSELL, SADE, SALVADOR_DALI, SARTRE, SCHOPENHAUER, SENECA, SIMONE_WEIL, VICTOR_FRANKL, VINCENT_VAN_GOGH, VIRGINIA_WOOLF, VOLTAIRE, ZIZEK } from './assets';
+import { HARARI } from './assets/harari';
 import { doOperationsOnData } from "./utils/utils";
 
 const data = [
@@ -343,12 +344,16 @@ const data = [
         value: "NASSIM_TALEB",
         displayName: "Nassim Taleb",
         fullName: "Nassim Nicholas Taleb"
+    },
+    {
+        id: 51,
+        quotes: HARARI,
+        value: "HARARI",
+        displayName: "Yuval Harari",
+        fullName: "Yuval Noah Harari"
     }
 ]
 
 doOperationsOnData(data);
 
 export default data
-
-
-

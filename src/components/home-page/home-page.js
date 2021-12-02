@@ -3,7 +3,7 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
 import { scrollToFirstRow, scrollToMemorizedRow, search } from "../../utils/utils";
 import { Header } from "../header/header";
-import QuotesList from "../quotes-list/quotes-list";
+import { LazyLoadQuoteList } from "../lazy-load-quote-list/lazy-load-quote-list";
 import "./home-page.css";
 import { init } from "./utils/utils";
 
@@ -52,7 +52,7 @@ export const HomePage = () => {
             <div className="content">
                 < AutoSizer >
                     {({ height, width }) => (
-                        <QuotesList {...propsToSend} width={width} height={height} />
+                        <LazyLoadQuoteList {...propsToSend} width={width} height={height} />
                     )}
                 </AutoSizer>
             </div>

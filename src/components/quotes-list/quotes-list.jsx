@@ -11,7 +11,6 @@ function QuotesList({ listRef, width, height, searchText, start, end, triggerCha
 
     return (
         <>
-
             {philosopherFullName !== undefined && <List
                 className="List"
                 height={height}
