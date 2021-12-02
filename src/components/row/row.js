@@ -1,6 +1,6 @@
 import { useSnackbar } from 'react-simple-snackbar';
 import { currentData } from "../../utils/staticDataUtils";
-import { isAppInDevMode, rowClickHandler } from './utils';
+import { devModeSignature, rowClickHandler } from './utils';
 
 export const Row = ({ data: { searchText, start, end, triggerChange, philosopherFullName }, index, style }) => {
     const [openSnackbar] = useSnackbar()
@@ -12,7 +12,7 @@ export const Row = ({ data: { searchText, start, end, triggerChange, philosopher
             <div key={index} className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
                 {quotationText}
                 <button onClick={rowClickHandler.bind(openSnackbar, { searchText, start, end, quote: currentData[index], philosopherFullName, index })}>
-                    Copy!{isAppInDevMode()}
+                    Copy!{devModeSignature()}
                 </button>
             </div >
         ) : null

@@ -22,6 +22,10 @@ export function rowClickHandler(openSnackbar, { searchText, start, end, philosop
     openSnackbar('Copied!', 1000);
 }
 
+export function devModeSignature() {
+    return (isAppInDevMode() ? <>dev-mode</> : null)
+}
+
 export function isAppInDevMode() {
-    return (process.env.NODE_ENV !== "production" ? <>dev-mode</> : null)
+    return process.env.NODE_ENV !== "production"
 }
