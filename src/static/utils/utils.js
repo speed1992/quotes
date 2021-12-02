@@ -17,3 +17,11 @@ export const doOperationsOnData = (data) => {
 
     return data
 }
+
+// const lazyLoadAsset = (languageKey) => {
+//     return new Promise((res, rej) => {
+//         import(`../assets/i18n/${languageKey}-messages.json`).then((data) => {
+//             res(data?.default);
+//         });
+//     });
+// };

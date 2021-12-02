@@ -10,7 +10,7 @@ import "./header.css";
 export function Header({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd }) {
     const props = { start, end, setStart, setEnd, setSearchText }
     return (
-        <>
+        <div className="header">
             <div className="row">
                 <div className="column">
                     <WordLengthSearch listRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
@@ -44,6 +44,6 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
             <div class="row">
                 {searchText !== "" ? <span>Search Results: {searchText}</span> : null}
             </div>
-        </>
+        </div>
     )
 }

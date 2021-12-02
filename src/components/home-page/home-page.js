@@ -1,15 +1,14 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import AutoSizer from "react-virtualized-auto-sizer";
-import OPTIONS from "../../static/philosophers-data";
-import { changeData, currentData, currentPhilosopher, dataCollection, initializeData, setCurrentPhilosopher } from "../../utils/staticDataUtils";
+import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
 import { scrollToFirstRow, scrollToMemorizedRow, search } from "../../utils/utils";
 import { Header } from "../header/header";
 import QuotesList from "../quotes-list/quotes-list";
 import "./home-page.css";
+import { init } from "./utils/utils";
 
 export const HomePage = () => {
     const listRef = useRef()
-
     const [searchText, setSearchText] = useState('');
     const [triggerChange, setTriggerChange] = useState(0);
     const [start, setStart] = useState(1);
@@ -21,17 +20,7 @@ export const HomePage = () => {
     }, [searchText, listRef])
 
     useEffect(() => {
-        let lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher');
-
-        if (lastReadPhilosopher === undefined || lastReadPhilosopher === "undefined" || lastReadPhilosopher === "null") lastReadPhilosopher = OPTIONS[0].value;
-
-        setCurrentPhilosopher(lastReadPhilosopher);
-
-        if (lastReadPhilosopher)
-            changeData(dataCollection[lastReadPhilosopher])
-        else
-            initializeData()
-
+        init();
         setTriggerChange(!triggerChange)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -55,23 +44,11 @@ export const HomePage = () => {
         performSearch()
     }, [searchText, performSearch])
 
-    const propsToSend = {
-        setSearchText,
-        searchText,
-        setTriggerChange,
-        triggerChange,
-        listRef,
-        start,
-        setStart,
-        end,
-        setEnd
-    }
+    const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd }
 
     return (
         <>
-            <div className="header">
-                <Header {...propsToSend} />
-            </div>
+            <Header {...propsToSend} />
             <div className="content">
                 < AutoSizer >
                     {({ height, width }) => (
