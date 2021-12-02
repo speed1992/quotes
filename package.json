@@ -17,7 +17,7 @@
     "react-window": "^1.8.6"
   },
   "scripts": {
-    "build": "node ./clear-cache/updateBuildDate.js && react-scripts build",
+    "build": "react-scripts build",
     "start": "REACT_APP_CURRENT_GIT_SHA=`git rev-parse --short HEAD` react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
