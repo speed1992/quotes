@@ -6,5 +6,3 @@ export function LazyLoadQuoteList(props) {
     const [isFetching, setIsFetching] = useState(false);
     return (isFetching ? <Loader /> : <QuotesList {...props} />)
 }
-
-

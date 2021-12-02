@@ -11,7 +11,7 @@ export const Row = ({ data: { searchText, start, end, triggerChange, philosopher
         currentData[index] !== undefined ? (
             <div key={index} className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
                 {quotationText}
-                <button onClick={rowClickHandler.bind(openSnackbar, { searchText, start, end, quote: currentData[index], philosopherFullName, index })}>
+                <button onClick={rowClickHandler.bind(this, openSnackbar, { searchText, start, end, quote: currentData[index], philosopherFullName, index })}>
                     Copy!{devModeSignature()}
                 </button>
             </div >
