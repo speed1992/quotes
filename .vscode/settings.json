@@ -7,7 +7,7 @@
         },
         "Remove blank lines": {
             "find": "\n\\s*\n",
-            "replace": "\n",
+            "replace": "\n"
         },
         "Remove duplicate lines": {
             "find": "^(.*)(\n\\1)+$",
