@@ -2,7 +2,6 @@ const data = [
     {
         id: 1,
         value: "NIETZSCHE",
-        filePath: "src/static/assets/nietzsche.js",
         displayName: "Nietzsche",
         fullName: "Friedrich Nietzsche"
     },

@@ -1,11 +1,13 @@
 // import { refreshPageWithNewKey } from "./routeUtils";
+import PHILOSOPHERS_DATA from "../static/philosophers-data"
+import { checkIfNull } from "../components/home-page/utils/utils";
+import { setCurrentPhilosopher } from "./staticDataUtils";
 
 export const updateVersionInLocalStorage = () => {
     // const APP_VERSION = process.env.REACT_APP_CURRENT_RELEASE_VERSION;
     const { LATEST_GITHUB_SHA } = localStorage;
 
     if (process.env.REACT_APP_CURRENT_GIT_SHA !== undefined) {
-
         if (LATEST_GITHUB_SHA !== process.env.REACT_APP_CURRENT_GIT_SHA) {
             localStorage.setItem('LATEST_GITHUB_SHA', process.env.REACT_APP_CURRENT_GIT_SHA);
             // refreshPageWithNewKey(process.env.REACT_APP_CURRENT_GIT_SHA)
@@ -14,5 +16,16 @@ export const updateVersionInLocalStorage = () => {
         //     localStorage.clear();
         // }
     }
+}
 
+export const getCurrentPhilosopherFromLocalStorage = () => {
+    try {
+        let lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher');
+        if (checkIfNull()) lastReadPhilosopher = PHILOSOPHERS_DATA[0].value;
+        setCurrentPhilosopher(lastReadPhilosopher);
+        console.log(lastReadPhilosopher);
+        return lastReadPhilosopher
+    } catch (e) {
+
+    }
 }

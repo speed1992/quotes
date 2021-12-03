@@ -4,16 +4,16 @@ import { changeData, dataCollection, initializeData, setCurrentPhilosopher } fro
 export const init = () => {
     try {
         let lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher');
-
         if (checkIfNull()) lastReadPhilosopher = OPTIONS[0].value;
-
         setCurrentPhilosopher(lastReadPhilosopher);
-
         if (lastReadPhilosopher) changeData(dataCollection[lastReadPhilosopher])
     }
-    catch (e) { console.log(e) }
-    finally {
+    catch (e) {
+        console.log(e)
         initializeData()
+
+    }
+    finally {
     }
 }
 
