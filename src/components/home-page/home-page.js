@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import AutoSizer from "react-virtualized-auto-sizer";
+import useDidMountEffect from "../../utils/custom-hooks-utils";
 import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
 import { scrollToFirstRow, scrollToMemorizedRow, search } from "../../utils/utils";
 import { Header } from "../header/header";
@@ -39,7 +40,7 @@ export const HomePage = () => {
         scrollToFirstRow(listRef)
     }, [start, end])
 
-    useEffect(() => {
+    useDidMountEffect(() => {
         scrollToFirstRow(listRef)
         performSearch()
     }, [searchText, performSearch])
