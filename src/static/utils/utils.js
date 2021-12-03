@@ -17,11 +17,3 @@ export const doOperationsOnData = (data) => {
 
     return data
 }
-
-// const lazyLoadAsset = (philosopherName) => {
-//     return new Promise((res, rej) => {
-//         import(`./philosopherName.json`).then((data) => {
-//             res(data?.default);
-//         });
-//     });
-// };
