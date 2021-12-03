@@ -10,8 +10,9 @@ export let currentPhilosopher = ""
 export let currentData = [];
 
 export const initializeData = () => {
+    console.log(PHILOSOPHERS_DATA)
     currentPhilosopher = PHILOSOPHERS_DATA[0].value;
-    currentData = JSON.parse(JSON.stringify(dataCollection[PHILOSOPHERS_DATA[0].value]));
+    currentData = PHILOSOPHERS_DATA[0].quotes;
     localStorage.setItem("lastReadPhilosopher", currentPhilosopher)
 }
 

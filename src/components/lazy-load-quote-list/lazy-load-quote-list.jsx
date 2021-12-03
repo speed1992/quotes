@@ -9,9 +9,9 @@ import data from "../../static/philosophers-data";
 export function LazyLoadQuoteList(props) {
     const [isFetching, setIsFetching] = useState(true);
 
-    useEffect(() => {
+    useEffect(async () => {
         getCurrentPhilosopherFromLocalStorage();
-        lazyLoadAsset(currentPhilosopher)
+        await lazyLoadAsset(currentPhilosopher)
         console.log("inside lazyLoadAsset then")
         initializeData()
         setIsFetching(false)

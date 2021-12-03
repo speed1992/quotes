@@ -21,12 +21,13 @@ export const doOperationsOnData = (data) => {
 }
 
 export const lazyLoadAsset = (philosopherName, callback) => {
-    return new Promise(async (res, rej) => {
+    return new Promise(async (resolve, reject) => {
         const fileName = philosopherName.split("_").join("-").toLowerCase()
         import("../assets/" + fileName + ".json").then((data) => {
             callback && callback();
             addPhilosopherInGlobalData(philosopherName, data?.default)
-        });
+            resolve();
+        }).catch(() => reject());
     });
 };
 
