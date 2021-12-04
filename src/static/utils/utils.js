@@ -9,21 +9,22 @@ export const doOperationsOnData = (data) => {
     data.sort((a, b) => a.displayName.localeCompare(b.displayName))
 
     // Insert All option
-    var allQuotesCombined = data.reduce((acc, { quotes, fullName }) => {
-        let newQuoteArray = convertQuoteArray(quotes, fullName)
-        acc.quotes = [...acc.quotes, ...newQuoteArray]
-        return acc
-    }, { id: 99, value: "ALL", displayName: "All", fullName: "", quotes: [] })
+    // var allQuotesCombined = data.reduce((acc, { quotes, fullName }) => {
+    //     let newQuoteArray = convertQuoteArray(quotes, fullName)
+    //     acc.quotes = [...acc.quotes, ...newQuoteArray]
+    //     return acc
+    // }, { id: 99, value: "ALL", displayName: "All", fullName: "", quotes: [] })
 
-    data.unshift(allQuotesCombined);
+    // data.unshift(allQuotesCombined);
 
     return data
 }
 
 export const lazyLoadAsset = (philosopherName, callback) => {
     return new Promise(async (resolve, reject) => {
-        const fileName = philosopherName.split("_").join("-").toLowerCase()
+        const fileName = philosopherName.toLowerCase()
         import("../assets/" + fileName + ".json").then((data) => {
+            console.log("Assets Loaded", data?.default.length);
             callback && callback();
             addPhilosopherInGlobalData(philosopherName, data?.default)
             resolve();
@@ -31,14 +32,14 @@ export const lazyLoadAsset = (philosopherName, callback) => {
     });
 };
 
-const getFilePath = (philosopherName) => {
-    let currentArray = PHILOSOPHERS_DATA.filter(({ value }, index) => value === philosopherName);
-    return currentArray[0].filePath;
-}
-
-const getPhilosopherObjectIndex = (philosopherName) => {
+export const getPhilosopherObjectIndex = (philosopherName) => {
     let index = PHILOSOPHERS_DATA.findIndex(({ value }, index) => value === philosopherName);
     return index;
+}
+
+export const getPhilosopherData = (philosopherName) => {
+    console.log(PHILOSOPHERS_DATA);
+    return PHILOSOPHERS_DATA.filter(({ value }) => value === philosopherName)[0]
 }
 
 export const addPhilosopherInGlobalData = (philosopherName, data) => {

@@ -21,6 +21,7 @@ export const HomePage = () => {
     }, [searchText, listRef])
 
     useEffect(() => {
+        // init();
         setTriggerChange(!triggerChange)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

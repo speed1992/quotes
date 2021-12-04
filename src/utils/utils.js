@@ -1,3 +1,4 @@
+import { getPhilosopherData } from "../static/utils/utils";
 import { changeData, currentData, currentPhilosopher, dataCollection, resetData } from "./staticDataUtils";
 
 export const scrollToFirstRow = (listRef) => {
@@ -29,7 +30,10 @@ export const scrollToMemorizedRow = (listRef) => {
 }
 
 export const search = (searchText) => {
-    const newData = dataCollection[currentPhilosopher].filter(quote => {
+    const obj = getPhilosopherData(currentPhilosopher);
+    console.log("obj", obj)
+    const { quotes } = obj;
+    const filteredQuotes = quotes && quotes.filter(quote => {
         if ((quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0)) {
             return false
         }
@@ -38,8 +42,7 @@ export const search = (searchText) => {
         }
     });
 
-
-    changeData(newData);
+    changeData(filteredQuotes);
 }
 
 export const resetSearch = () => resetData();

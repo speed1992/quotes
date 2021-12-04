@@ -1,17 +1,12 @@
 import { isEmpty } from "lodash";
 import OPTIONS from "../../../static/philosophers-data";
+import { getPhilosopherData } from "../../../static/utils/utils";
 import { changeData, currentPhilosopher, dataCollection, setCurrentPhilosopher } from "../../../utils/staticDataUtils";
 
-export const changeQuotesData = (name) => {
-
-    const currentPhilosopherArray = OPTIONS.filter(({ value }) => {
-        return (name === value)
-    });
-
-    setCurrentPhilosopher(currentPhilosopherArray[0].value)
-
-    changeData(dataCollection[currentPhilosopherArray[0].value])
-
+export const changeQuotesData = (philosopherName) => {
+    const { value, quotes } = getPhilosopherData(philosopherName)
+    setCurrentPhilosopher(philosopherName)
+    changeData(quotes)
 }
 
 export const getPhilosopherFullName = () => {

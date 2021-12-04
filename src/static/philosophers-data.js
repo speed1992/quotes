@@ -1,3 +1,5 @@
+import { doOperationsOnData } from "./utils/utils";
+
 const data = [
     {
         id: 1,
@@ -299,6 +301,6 @@ const data = [
     }
 ]
 
-// doOperationsOnData(data);
+doOperationsOnData(data);
 
 export default data
