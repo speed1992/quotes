@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import OPTIONS from "../../static/philosophers-data";
 import { lazyLoadAsset } from "../../static/utils/utils";
 import { currentPhilosopher, setCurrentPhilosopher } from "../../utils/staticDataUtils";
@@ -8,14 +8,14 @@ import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import "./header.css";
 
-export function Header({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd }) {
-    const props = { start, end, setStart, setEnd, setSearchText }
+export function Header({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching }) {
+    const propsToSend = { start, end, setStart, setEnd, setSearchText }
     return (
         <div className="header">
             <div className="row">
                 <div className="column">
                     <WordLengthSearch listRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
-                        {...props}
+                        {...propsToSend}
                     />
                 </div>
                 <div className="column">
@@ -34,7 +34,9 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                             setStart(1)
                             setEnd("")
                             setSearchText('')
+                            setIsFetching(true)
                             await lazyLoadAsset(philosopher);
+                            setIsFetching(false)
                             setCurrentPhilosopher(philosopher);
                             changeQuotesData(philosopher);
                             setTriggerChange(!triggerChange)

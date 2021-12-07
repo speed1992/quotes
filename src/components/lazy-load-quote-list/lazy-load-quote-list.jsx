@@ -17,6 +17,6 @@ export function LazyLoadQuoteList(props) {
         lazyInit()
     }, []);
 
-    return (isFetching ? (<><Loader /> </>) : <QuotesList {...props} />)
+    return (isFetching ? <Loader /> : <QuotesList {...props} />)
 }
 

@@ -9,6 +9,7 @@ import { changeQuotesByWordLength } from "../quotes-list/utils/utils"
 import { Header } from "../header/header";
 import { LazyLoadQuoteList } from "../lazy-load-quote-list/lazy-load-quote-list";
 import "./home-page.css";
+import { Loader } from "../loader/loader";
 
 export const HomePage = () => {
     const listRef = useRef()
@@ -16,6 +17,7 @@ export const HomePage = () => {
     const [triggerChange, setTriggerChange] = useState(0);
     const [start, setStart] = useState(1);
     const [end, setEnd] = useState("");
+    const [isFetching, setIsFetching] = useState(false);
 
     const performSearch = useCallback(() => {
         search(searchText)
@@ -45,18 +47,21 @@ export const HomePage = () => {
         performSearch()
     }, [searchText, performSearch])
 
-    const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd }
+    const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd, setIsFetching, isFetching }
 
     return (
         <>
-            <Header {...propsToSend} />
-            <div className="content">
-                < AutoSizer >
-                    {({ height, width }) => (
-                        <LazyLoadQuoteList {...propsToSend} width={width} height={height} />
-                    )}
-                </AutoSizer>
-            </div>
+            {isFetching ? <Loader /> : (<>
+                <Header {...propsToSend} />
+                <div className="content">
+                    < AutoSizer >
+                        {({ height, width }) => (
+                            <LazyLoadQuoteList {...propsToSend} width={width} height={height} />
+                        )}
+                    </AutoSizer>
+                </div>
+            </>)
+            }
         </>
     )
 };
