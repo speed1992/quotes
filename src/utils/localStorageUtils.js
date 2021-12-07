@@ -1,6 +1,6 @@
 // import { refreshPageWithNewKey } from "./routeUtils";
-import PHILOSOPHERS_DATA from "../static/philosophers-data"
 import { checkIfNull } from "../components/home-page/utils/utils";
+import PHILOSOPHERS_DATA from "../static/philosophers-data";
 import { setCurrentPhilosopher } from "./staticDataUtils";
 
 export const updateVersionInLocalStorage = () => {
@@ -21,7 +21,9 @@ export const updateVersionInLocalStorage = () => {
 export const getCurrentPhilosopherFromLocalStorage = () => {
     try {
         let lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher');
-        if (checkIfNull()) lastReadPhilosopher = PHILOSOPHERS_DATA[0].value;
+        console.log("lastReadPhilosopher", lastReadPhilosopher)
+        if (checkIfNull(lastReadPhilosopher)) lastReadPhilosopher = PHILOSOPHERS_DATA[0].value;
+        console.log("checkIfNull()", checkIfNull());
         setCurrentPhilosopher(lastReadPhilosopher);
         console.log(lastReadPhilosopher);
         return lastReadPhilosopher

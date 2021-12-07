@@ -1,12 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import AutoSizer from "react-virtualized-auto-sizer";
-import useDidMountEffect from "../../utils/custom-hooks-utils";
+import { useDidMountEffect } from "../../utils/custom-hooks-utils";
+import { getCurrentPhilosopherFromLocalStorage } from "../../utils/localStorageUtils";
 import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
 import { scrollToFirstRow, scrollToMemorizedRow, search } from "../../utils/utils";
 import { Header } from "../header/header";
 import { LazyLoadQuoteList } from "../lazy-load-quote-list/lazy-load-quote-list";
 import "./home-page.css";
-import { init } from "./utils/utils";
 
 export const HomePage = () => {
     const listRef = useRef()
@@ -21,19 +22,16 @@ export const HomePage = () => {
     }, [searchText, listRef])
 
     useEffect(() => {
-        // init();
+        getCurrentPhilosopherFromLocalStorage();
         setTriggerChange(!triggerChange)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
         scrollToMemorizedRow(listRef)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [listRef.current])
 
     useEffect(() => {
         setTriggerChange(!triggerChange)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentData, searchText, currentPhilosopher, start, end])
 
     useEffect(() => {

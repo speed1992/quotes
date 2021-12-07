@@ -5,7 +5,7 @@ export let dataCollection = PHILOSOPHERS_DATA.reduce((acc, obj, index) => {
     return acc
 }, {})
 
-export let currentPhilosopher = ""
+export let currentPhilosopher;
 
 export let currentData = [];
 
