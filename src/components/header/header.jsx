@@ -30,17 +30,18 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                     <Select
                         options={OPTIONS}
                         defaultOption={currentPhilosopher}
-                        onChangeHandler={async ({ target: { value: philosopher } }) => {
+                        onChangeHandler={({ target: { value: philosopher } }) => {
                             setStart(1)
                             setEnd("")
                             setSearchText('')
                             setIsFetching(true)
-                            await lazyLoadAsset(philosopher);
-                            setIsFetching(false)
-                            setCurrentPhilosopher(philosopher);
-                            changeQuotesData(philosopher);
-                            setTriggerChange(!triggerChange)
-                            scrollToMemorizedRow(listRef)
+                            lazyLoadAsset(philosopher).then(() => {
+                                setCurrentPhilosopher(philosopher);
+                                changeQuotesData(philosopher);
+                                setTriggerChange(!triggerChange)
+                                scrollToMemorizedRow(listRef)
+                                setIsFetching(false)
+                            });
                         }} />
                 </div>
             </div>
