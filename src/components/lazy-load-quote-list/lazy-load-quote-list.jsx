@@ -5,10 +5,10 @@ import { Loader } from "../loader/loader";
 import QuotesList from "../quotes-list/quotes-list";
 import { changeQuotesData } from "../quotes-list/utils/utils";
 
-export function LazyLoadQuoteList(props) {
-    const [isFetching, setIsFetching] = useState(true);
+export function LazyLoadQuoteList({ setIsFetching }) {
 
     async function lazyInit() {
+        setIsFetching(true)
         await lazyLoadAsset(currentPhilosopher)
         changeQuotesData(currentPhilosopher)
         setIsFetching(false)
