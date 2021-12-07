@@ -15,14 +15,15 @@ export const getPhilosopherFullName = () => {
 }
 
 export const changeQuotesByWordLength = (start, end) => {
-    // if (start === 1 && typeof end === "string" && end.trim() === "") resetData()
+    debugger;
+    console.log("currentPhilosopher", currentPhilosopher)
+    const data = getPhilosopherData(currentPhilosopher);
+    const { quotes } = data;
 
-    if (dataCollection[currentPhilosopher] !== undefined) {
-
-
+    if (quotes !== undefined) {
         if (typeof start === "string" && start.trim() === "") start = 0;
 
-        const newData = dataCollection[currentPhilosopher].filter(quote => {
+        const newData = quotes.filter(quote => {
             const wordCount = getWordCount(quote)
 
             if (end && end !== "") {

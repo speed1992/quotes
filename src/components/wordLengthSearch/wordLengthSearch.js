@@ -3,11 +3,7 @@ import { changeQuotesByWordLength } from "../quotes-list/utils/utils";
 import "./wordLengthSearch.css";
 
 export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText }) {
-
-    useEffect(() => {
-        changeQuotesByWordLength(start, end)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [start, end])
+    console.log("start", start, "end", end)
 
     return (
         <>

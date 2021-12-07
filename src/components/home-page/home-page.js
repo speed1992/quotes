@@ -5,6 +5,7 @@ import { useDidMountEffect } from "../../utils/custom-hooks-utils";
 import { getCurrentPhilosopherFromLocalStorage } from "../../utils/localStorageUtils";
 import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
 import { scrollToFirstRow, scrollToMemorizedRow, search } from "../../utils/utils";
+import { changeQuotesByWordLength } from "../quotes-list/utils/utils"
 import { Header } from "../header/header";
 import { LazyLoadQuoteList } from "../lazy-load-quote-list/lazy-load-quote-list";
 import "./home-page.css";
@@ -34,7 +35,8 @@ export const HomePage = () => {
         setTriggerChange(!triggerChange)
     }, [currentData, searchText, currentPhilosopher, start, end])
 
-    useEffect(() => {
+    useDidMountEffect(() => {
+        changeQuotesByWordLength(start, end)
         scrollToFirstRow(listRef)
     }, [start, end])
 
