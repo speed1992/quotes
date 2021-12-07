@@ -35,6 +35,28 @@ export const lazyLoadAsset = (philosopherName, callback) => {
     });
 };
 
+export const lazyLoadAllAssets = (callback) => {
+    return new Promise(async (resolve, reject) => {
+        const promiseArray = [];
+        PHILOSOPHERS_DATA.forEach(async ({ value: philosopherName, fullName: philosopherFullName }) => {
+            if (philosopherName !== "ALL") {
+                const fileName = philosopherName.toLowerCase()
+                const promise = import("../assets/" + fileName + ".json").then((data) => {
+                    callback && callback();
+                    const convertedQuotes = convertQuoteArray(data?.default, philosopherFullName)
+                    addPhilosopherInGlobalData("ALL", convertedQuotes)
+                }).catch((e) => console.log(e));
+                promiseArray.push(promise);
+            }
+        });
+
+        Promise.all(promiseArray).then(() => {
+            debugger;
+            resolve()
+        }).catch(reject)
+    });
+};
+
 export const getPhilosopherObjectIndex = (philosopherName) => {
     let index = PHILOSOPHERS_DATA.findIndex(({ value }, index) => value === philosopherName);
     return index;
@@ -44,7 +66,19 @@ export const getPhilosopherData = (philosopherName) => {
     return PHILOSOPHERS_DATA.filter(({ value }) => value === philosopherName)[0]
 }
 
-export const addPhilosopherInGlobalData = (philosopherName, data) => {
-    const index = getPhilosopherObjectIndex(philosopherName);
-    PHILOSOPHERS_DATA[index].quotes = data;
+export const addPhilosopherInGlobalData = (philosopherName, quotes) => {
+    if (philosopherName.trim().toLowerCase() === "all") {
+        const index = getPhilosopherObjectIndex(philosopherName);
+        let existingQuotes;
+        if (PHILOSOPHERS_DATA[index].quotes === undefined)
+            existingQuotes = [];
+        else {
+            existingQuotes = PHILOSOPHERS_DATA[index].quotes
+        }
+        PHILOSOPHERS_DATA[index].quotes = [...existingQuotes, ...quotes]
+    } else {
+        const index = getPhilosopherObjectIndex(philosopherName);
+        PHILOSOPHERS_DATA[index].quotes = quotes;
+    }
+
 }

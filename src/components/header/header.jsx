@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import OPTIONS from "../../static/philosophers-data";
-import { lazyLoadAsset } from "../../static/utils/utils";
+import { lazyLoadAllAssets, lazyLoadAsset } from "../../static/utils/utils";
 import { currentPhilosopher, setCurrentPhilosopher } from "../../utils/staticDataUtils";
 import { scrollToMemorizedRow } from "../../utils/utils";
 import { changeQuotesData } from "../quotes-list/utils/utils";
@@ -35,13 +35,26 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                             setEnd("")
                             setSearchText('')
                             setIsFetching(true)
-                            lazyLoadAsset(philosopher).then(() => {
-                                setCurrentPhilosopher(philosopher);
-                                changeQuotesData(philosopher);
-                                setTriggerChange(!triggerChange)
-                                scrollToMemorizedRow(listRef)
-                                setIsFetching(false)
-                            });
+
+                            if (philosopher.trim().toLowerCase() === "all") {
+                                lazyLoadAllAssets().then(() => {
+                                    debugger;
+                                    setCurrentPhilosopher(philosopher);
+                                    changeQuotesData(philosopher);
+                                    setTriggerChange(!triggerChange)
+                                    scrollToMemorizedRow(listRef)
+                                    setIsFetching(false)
+                                });
+                            } else {
+                                lazyLoadAsset(philosopher).then(() => {
+                                    setCurrentPhilosopher(philosopher);
+                                    changeQuotesData(philosopher);
+                                    setTriggerChange(!triggerChange)
+                                    scrollToMemorizedRow(listRef)
+                                    setIsFetching(false)
+                                });
+                            }
+
                         }} />
                 </div>
             </div>

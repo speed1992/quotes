@@ -9,9 +9,14 @@ export function LazyLoadQuoteList(props) {
     const [isFetching, setIsFetching] = useState(true);
 
     async function lazyInit() {
-        await lazyLoadAsset(currentPhilosopher)
-        changeQuotesData(currentPhilosopher)
-        setIsFetching(false)
+        try {
+            await lazyLoadAsset(currentPhilosopher)
+            changeQuotesData(currentPhilosopher)
+            setIsFetching(false)
+        }
+        catch (e) {
+            console.log(e)
+        }
     }
     useEffect(() => {
         lazyInit()

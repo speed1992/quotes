@@ -2,6 +2,11 @@ import { doOperationsOnData } from "./utils/utils";
 
 const data = [
     {
+        value: "ALL",
+        displayName: "All",
+        fullName: ""
+    },
+    {
         value: "NIETZSCHE",
         displayName: "Nietzsche",
         fullName: "Friedrich Nietzsche"
