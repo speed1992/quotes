@@ -24,7 +24,6 @@ export const lazyLoadAsset = (philosopherName, callback) => {
     return new Promise(async (resolve, reject) => {
         const fileName = philosopherName.toLowerCase()
         import("../assets/" + fileName + ".json").then((data) => {
-            console.log("Assets Loaded", data?.default.length);
             callback && callback();
             addPhilosopherInGlobalData(philosopherName, data?.default)
             resolve();
@@ -38,7 +37,6 @@ export const getPhilosopherObjectIndex = (philosopherName) => {
 }
 
 export const getPhilosopherData = (philosopherName) => {
-    console.log(PHILOSOPHERS_DATA);
     return PHILOSOPHERS_DATA.filter(({ value }) => value === philosopherName)[0]
 }
 

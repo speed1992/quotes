@@ -21,11 +21,8 @@ export const updateVersionInLocalStorage = () => {
 export const getCurrentPhilosopherFromLocalStorage = () => {
     try {
         let lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher');
-        console.log("lastReadPhilosopher", lastReadPhilosopher)
         if (checkIfNull(lastReadPhilosopher)) lastReadPhilosopher = PHILOSOPHERS_DATA[0].value;
-        console.log("checkIfNull()", checkIfNull());
         setCurrentPhilosopher(lastReadPhilosopher);
-        console.log(lastReadPhilosopher);
         return lastReadPhilosopher
     } catch (e) {
 

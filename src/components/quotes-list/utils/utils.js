@@ -4,7 +4,7 @@ import { getPhilosopherData } from "../../../static/utils/utils";
 import { changeData, currentPhilosopher, dataCollection } from "../../../utils/staticDataUtils";
 
 export const changeQuotesData = (philosopherName) => {
-    const { value, quotes } = getPhilosopherData(philosopherName)
+    const { quotes } = getPhilosopherData(philosopherName)
     changeData(quotes)
 }
 

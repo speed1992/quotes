@@ -13,9 +13,8 @@ const AppNoCacheOnProdPush = withClearCache(App);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    {/* {isAppInDevMode() ? `Build date: ${getBuildDate(buildDate)}` : null}
-    <AppNoCacheOnProdPush /> */}
+    <AppNoCacheOnProdPush />
+    {isAppInDevMode() ? `Build date: ${getBuildDate(buildDate)}` : null}
   </React.StrictMode>,
   document.getElementById('root')
 );
