@@ -37,8 +37,8 @@
     "javascript.updateImportsOnFileMove.enabled": "prompt",
     "output.smartScroll.enabled": false,
     "json.maxItemsComputed": 0,
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-    },
+    // "editor.codeActionsOnSave": {
+    //     "source.organizeImports": true
+    // },
     "terminal.integrated.rendererType": "dom"
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import OPTIONS from "../../static/philosophers-data";
-import { currentPhilosopher } from "../../utils/staticDataUtils";
+import { lazyLoadAsset } from "../../static/utils/utils";
+import { currentPhilosopher, setCurrentPhilosopher } from "../../utils/staticDataUtils";
 import { scrollToMemorizedRow } from "../../utils/utils";
 import { changeQuotesData } from "../quotes-list/utils/utils";
 import Select from "../select/select";
@@ -29,13 +30,13 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                     <Select
                         options={OPTIONS}
                         defaultOption={currentPhilosopher}
-                        onChangeHandler={({ target: { value } }) => {
+                        onChangeHandler={async ({ target: { value: philosopher } }) => {
                             setStart(1)
                             setEnd("")
-
                             setSearchText('')
-
-                            changeQuotesData(value);
+                            await lazyLoadAsset(philosopher);
+                            setCurrentPhilosopher(philosopher);
+                            changeQuotesData(philosopher);
                             setTriggerChange(!triggerChange)
                             scrollToMemorizedRow(listRef)
                         }} />
