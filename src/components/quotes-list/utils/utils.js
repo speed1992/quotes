@@ -15,7 +15,6 @@ export const getPhilosopherFullName = () => {
 }
 
 export const changeQuotesByWordLength = (start, end) => {
-    debugger;
     console.log("currentPhilosopher", currentPhilosopher)
     const data = getPhilosopherData(currentPhilosopher);
     const { quotes } = data;

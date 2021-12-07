@@ -47,7 +47,7 @@ export const HomePage = () => {
         performSearch()
     }, [searchText, performSearch])
 
-    const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd, setIsFetching }
+    const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd, setIsFetching, isFetching }
 
     return (
         <>
