@@ -307,6 +307,11 @@ const data = [
         value: "ZHUANGZI",
         displayName: "Zhuangzi",
         fullName: "Zhuangzi"
+    },
+    {
+        value: "DOUGLASS",
+        displayName: "Douglass",
+        fullName: "Frederick Douglass"
     }
 ]
 
