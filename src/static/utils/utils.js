@@ -1,4 +1,5 @@
 import PHILOSOPHERS_DATA from "../philosophers-data"
+import { v4 as uuidv4 } from 'uuid';
 
 export const addPhilosopherNameToQuote = (quote, philosopherFullName) => `${quote} ― ${philosopherFullName}`
 
@@ -7,6 +8,9 @@ export const convertQuoteArray = (quoteArr, philosopherFullName) => quoteArr.map
 export const doOperationsOnData = (data) => {
     // Sort options alphabetically
     data.sort((a, b) => a.displayName.localeCompare(b.displayName))
+    data.forEach(element => {
+        element.id = uuidv4()
+    });
 
     // Insert All option
     // var allQuotesCombined = data.reduce((acc, { quotes, fullName }) => {

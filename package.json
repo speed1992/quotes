@@ -14,7 +14,8 @@
     "react-scripts": "4.0.3",
     "react-simple-snackbar": "^1.1.11",
     "react-virtualized-auto-sizer": "^1.0.6",
-    "react-window": "^1.8.6"
+    "react-window": "^1.8.6",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "build-cache-clear": "node ./clear-cache/updateBuildDate.js && react-scripts build",
