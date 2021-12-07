@@ -1,7 +1,7 @@
 import { isEmpty } from "lodash";
 import OPTIONS from "../../../static/philosophers-data";
 import { getPhilosopherData } from "../../../static/utils/utils";
-import { changeData, currentPhilosopher, dataCollection } from "../../../utils/staticDataUtils";
+import { changeData, currentPhilosopher } from "../../../utils/staticDataUtils";
 
 export const changeQuotesData = (philosopherName) => {
     const { quotes } = getPhilosopherData(philosopherName)

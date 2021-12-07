@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
-import { changeQuotesByWordLength } from "../quotes-list/utils/utils";
+import React from "react";
 import "./wordLengthSearch.css";
 
 export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText }) {
-    console.log("start", start, "end", end)
-
     return (
         <>
             <input
