@@ -7,23 +7,12 @@ export const addPhilosopherNameToQuote = (quote, philosopherFullName) => `${quot
 export const convertQuoteArray = (quoteArr, philosopherFullName) => quoteArr.map((quote) => addPhilosopherNameToQuote(quote, philosopherFullName))
 
 export const doOperationsOnData = (data) => {
-
     if (getIndividualVersion() !== "paras")
         data.sort((a, b) => a.displayName.localeCompare(b.displayName))
 
     data.forEach(element => {
         element.id = uuidv4()
     });
-
-    // Insert All option
-    // var allQuotesCombined = data.reduce((acc, { quotes, fullName }) => {
-    //     let newQuoteArray = convertQuoteArray(quotes, fullName)
-    //     acc.quotes = [...acc.quotes, ...newQuoteArray]
-    //     return acc
-    // }, { id: 99, value: "ALL", displayName: "All", fullName: "", quotes: [] })
-
-    // data.unshift(allQuotesCombined);
-
     return data
 }
 
