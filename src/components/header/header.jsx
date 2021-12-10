@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import OPTIONS from "../../static/philosophers-data";
 import { lazyLoadAsset } from "../../static/utils/utils";
 import { currentPhilosopher, setCurrentPhilosopher } from "../../utils/staticDataUtils";
