@@ -1,14 +1,17 @@
-import PHILOSOPHERS_DATA from "../philosophers-data"
 import { v4 as uuidv4 } from 'uuid';
 import { getIndividualVersion } from "../../utils/urlUtils";
+import PHILOSOPHERS_DATA from "../philosophers-data";
 
 export const addPhilosopherNameToQuote = (quote, philosopherFullName) => `${quote} ― ${philosopherFullName}`
 
 export const convertQuoteArray = (quoteArr, philosopherFullName) => quoteArr.map((quote) => addPhilosopherNameToQuote(quote, philosopherFullName))
 
 export const doOperationsOnData = (data) => {
+    // Sorting except the first element
+    const allElement = data.shift();
     if (getIndividualVersion() !== "paras")
         data.sort((a, b) => a.displayName.localeCompare(b.displayName))
+    data.unshift(allElement);
 
     data.forEach(element => {
         element.id = uuidv4()

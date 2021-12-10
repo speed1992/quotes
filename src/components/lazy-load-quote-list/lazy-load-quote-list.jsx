@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { lazyLoadAsset } from "../../static/utils/utils";
+import { lazyLoadAllAssets, lazyLoadAsset } from "../../static/utils/utils";
 import { currentPhilosopher } from "../../utils/staticDataUtils";
 import { Loader } from "../loader/loader";
 import QuotesList from "../quotes-list/quotes-list";
@@ -10,7 +10,11 @@ export function LazyLoadQuoteList(props) {
 
     async function lazyInit() {
         try {
-            await lazyLoadAsset(currentPhilosopher)
+            if (currentPhilosopher.trim().toLowerCase() === "all")
+                await lazyLoadAllAssets()
+            else
+                await lazyLoadAsset(currentPhilosopher)
+
             changeQuotesData(currentPhilosopher)
             setIsFetching(false)
         }
