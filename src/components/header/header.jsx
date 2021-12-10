@@ -31,29 +31,22 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                         options={OPTIONS}
                         defaultOption={currentPhilosopher}
                         onChangeHandler={({ target: { value: philosopher } }) => {
+                            function callback() {
+                                setCurrentPhilosopher(philosopher);
+                                changeQuotesData(philosopher);
+                                setTriggerChange(!triggerChange)
+                                scrollToMemorizedRow(listRef)
+                                setIsFetching(false)
+                            }
                             setStart(1)
                             setEnd("")
                             setSearchText('')
                             setIsFetching(true)
 
-                            if (philosopher.trim().toLowerCase() === "all") {
-                                lazyLoadAllAssets().then(() => {
-                                    debugger;
-                                    setCurrentPhilosopher(philosopher);
-                                    changeQuotesData(philosopher);
-                                    setTriggerChange(!triggerChange)
-                                    scrollToMemorizedRow(listRef)
-                                    setIsFetching(false)
-                                });
-                            } else {
-                                lazyLoadAsset(philosopher).then(() => {
-                                    setCurrentPhilosopher(philosopher);
-                                    changeQuotesData(philosopher);
-                                    setTriggerChange(!triggerChange)
-                                    scrollToMemorizedRow(listRef)
-                                    setIsFetching(false)
-                                });
-                            }
+                            if (philosopher.trim().toLowerCase() === "all")
+                                lazyLoadAllAssets().then(callback);
+                            else
+                                lazyLoadAsset(philosopher).then(callback);
 
                         }} />
                 </div>

@@ -46,7 +46,6 @@ export const lazyLoadAllAssets = (callback) => {
         });
 
         Promise.all(promiseArray).then(() => {
-            debugger;
             resolve()
         }).catch(reject)
     });
