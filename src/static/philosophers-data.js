@@ -312,6 +312,61 @@ const data = [
         value: "DOUGLASS",
         displayName: "Douglass",
         fullName: "Frederick Douglass"
+    },
+    {
+        value: "KAMAL_RAVIKANT",
+        displayName: "Kamal Ravikant",
+        fullName: "Kamal Ravikant"
+    },
+    {
+        value: "HEIDEGGER",
+        displayName: "Heidegger",
+        fullName: "Martin Heidegger"
+    },
+    {
+        value: "ANTHONY_DE_MELLO",
+        displayName: "Anthony De Mello",
+        fullName: "Anthony De Mello"
+    },
+    {
+        value: "MICHAEL_SINGER",
+        displayName: "Michael Singer",
+        fullName: "Michael Singer"
+    },
+    {
+        value: "ROVELLI",
+        displayName: "Carlo Rovelli",
+        fullName: "Carlo Rovelli"
+    },
+    {
+        value: "JED_MCKENNA",
+        displayName: "Jed McKenna",
+        fullName: "Jed McKenna"
+    },
+    {
+        value: "PLATO",
+        displayName: "Plato",
+        fullName: "Plato"
+    },
+    {
+        value: "SOCRATES",
+        displayName: "Socrates",
+        fullName: "Socrates"
+    },
+    {
+        value: "BRUCE_LEE",
+        displayName: "Bruce Lee",
+        fullName: "Bruce Lee"
+    },
+    {
+        value: "FEYMAN",
+        displayName: "Richard Feyman",
+        fullName: "Richard Feyman"
+    },
+    {
+        value: "KAPIL_GUPTA",
+        displayName: "Kapil Gupta",
+        fullName: "Kapil Gupta"
     }
 ]
 
