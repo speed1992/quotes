@@ -1,6 +1,6 @@
 import React from "react";
 import OPTIONS from "../../static/philosophers-data";
-import { lazyLoadAsset } from "../../static/utils/utils";
+import { lazyLoadAllAssets, lazyLoadAsset } from "../../static/utils/utils";
 import { currentPhilosopher, setCurrentPhilosopher } from "../../utils/staticDataUtils";
 import { scrollToMemorizedRow } from "../../utils/utils";
 import { changeQuotesData } from "../quotes-list/utils/utils";
@@ -31,17 +31,23 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                         options={OPTIONS}
                         defaultOption={currentPhilosopher}
                         onChangeHandler={({ target: { value: philosopher } }) => {
-                            setStart(1)
-                            setEnd("")
-                            setSearchText('')
-                            setIsFetching(true)
-                            lazyLoadAsset(philosopher).then(() => {
+                            function callback() {
                                 setCurrentPhilosopher(philosopher);
                                 changeQuotesData(philosopher);
                                 setTriggerChange(!triggerChange)
                                 scrollToMemorizedRow(listRef)
                                 setIsFetching(false)
-                            });
+                            }
+                            setStart(1)
+                            setEnd("")
+                            setSearchText('')
+                            setIsFetching(true)
+
+                            if (philosopher.trim().toLowerCase() === "all")
+                                lazyLoadAllAssets().then(callback);
+                            else
+                                lazyLoadAsset(philosopher).then(callback);
+
                         }} />
                 </div>
             </div>
