@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { useDidMountEffect } from "../../utils/custom-hooks-utils";
 import { getCurrentPhilosopherFromLocalStorage } from "../../utils/localStorageUtils";
+import { combinedSearch } from "../../utils/searchUtils";
 import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
-import { scrollToFirstRow, scrollToMemorizedRow, search } from "../../utils/utils";
-import { changeQuotesByWordLength } from "../quotes-list/utils/utils"
+import { scrollToFirstRow, scrollToMemorizedRow } from "../../utils/utils";
 import { Header } from "../header/header";
 import { LazyLoadQuoteList } from "../lazy-load-quote-list/lazy-load-quote-list";
-import "./home-page.css";
 import { Loader } from "../loader/loader";
+import "./home-page.css";
 
 export const HomePage = () => {
     const listRef = useRef()
@@ -18,11 +18,6 @@ export const HomePage = () => {
     const [start, setStart] = useState(1);
     const [end, setEnd] = useState("");
     const [isFetching, setIsFetching] = useState(false);
-
-    const performSearch = useCallback(() => {
-        search(searchText)
-        scrollToFirstRow(listRef)
-    }, [searchText, listRef])
 
     useEffect(() => {
         getCurrentPhilosopherFromLocalStorage();
@@ -38,14 +33,9 @@ export const HomePage = () => {
     }, [currentData, searchText, currentPhilosopher, start, end])
 
     useDidMountEffect(() => {
-        changeQuotesByWordLength(start, end)
+        combinedSearch(searchText, start, end)
         scrollToFirstRow(listRef)
-    }, [start, end])
-
-    useDidMountEffect(() => {
-        scrollToFirstRow(listRef)
-        performSearch()
-    }, [searchText, performSearch])
+    }, [start, end, searchText])
 
     const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd, setIsFetching, isFetching }
 

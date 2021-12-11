@@ -14,10 +14,7 @@ export const getPhilosopherFullName = () => {
         return currentIndex && currentIndex[0].fullName;
 }
 
-export const changeQuotesByWordLength = (start, end) => {
-    const data = getPhilosopherData(currentPhilosopher);
-    const { quotes } = data;
-
+export const searchByWordLength = (start, end, quotes) => {
     if (quotes !== undefined) {
         if (typeof start === "string" && start.trim() === "") start = 0;
 
@@ -25,11 +22,9 @@ export const changeQuotesByWordLength = (start, end) => {
             const wordCount = getWordCount(quote)
 
             if (end && end !== "") {
-
                 if (wordCount >= start && wordCount <= end) {
                     return true;
                 }
-
             }
             if (end === "") {
 

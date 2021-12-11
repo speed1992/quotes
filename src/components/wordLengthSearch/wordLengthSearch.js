@@ -12,7 +12,6 @@ export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText }
                 value={start}
                 onChange={({ target: { value } }) => {
                     setStart(value)
-                    setSearchText('')
                 }} />{` to `}
             <input
                 className="smallInput"
@@ -22,7 +21,6 @@ export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText }
                 value={end}
                 onChange={({ target: { value } }) => {
                     setEnd(value)
-                    setSearchText('')
                 }} />
         </>
     )

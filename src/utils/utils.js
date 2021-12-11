@@ -1,5 +1,5 @@
 import { getPhilosopherData } from "../static/utils/utils";
-import { changeData, currentData, currentPhilosopher } from "./staticDataUtils";
+import { currentData, currentPhilosopher } from "./staticDataUtils";
 
 export const scrollToFirstRow = (listRef) => {
     if (currentData.length > 0 && listRef.current) {
@@ -38,5 +38,5 @@ export const search = (searchText) => {
         }
     });
 
-    changeData(filteredQuotes);
+    return filteredQuotes;
 }
