@@ -4,7 +4,7 @@ const data = [
     {
         value: "ALL",
         displayName: "All",
-        fullName: ""
+        fullName: "All"
     },
     {
         value: "NIETZSCHE",
