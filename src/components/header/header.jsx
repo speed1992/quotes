@@ -21,8 +21,6 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                 <div className="column">
                     <input className="wordSearch" type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => {
                         setSearchText(value)
-                        setStart(1)
-                        setEnd("")
                     }}
                     />
                 </div>
