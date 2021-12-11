@@ -1,10 +1,15 @@
 
 import copy from 'copy-to-clipboard';
 import { currentPhilosopher } from '../../utils/staticDataUtils';
+import { insert, setCharAt } from '../../utils/stringUtils';
 
 export function copyQuoteText(quoteText, philosopherFullName) {
     if (philosopherFullName.toLowerCase().trim() === "all") {
-        copy(`${quoteText}`);
+        let splittingIndex = quoteText.lastIndexOf("― ")
+        let updatedQuoteText = setCharAt(quoteText, splittingIndex - 1, '')
+        updatedQuoteText = "\"" + updatedQuoteText;
+        updatedQuoteText = insert(updatedQuoteText, splittingIndex, "\"\n\n")
+        copy(updatedQuoteText);
     }
     else
         copy(`"${quoteText}"\n\n― ${philosopherFullName}`);
