@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { buildDate } from '../../static/buildDate.json';
 
 const buildDateGreaterThan = (latestDate, currentDate) => {
-    const momLatestDateTime = moment(latestDate);
-    const momCurrentDateTime = moment(currentDate);
+    const momLatestDateTime = moment(new Date(latestDate));
+    const momCurrentDateTime = moment(new Date(currentDate));
 
     if (momLatestDateTime.isAfter(momCurrentDateTime)) {
         return true;
