@@ -1,14 +1,7 @@
-import React, { useEffect } from "react";
-import { changeQuotesByWordLength } from "../quotes-list/utils/utils";
+import React from "react";
 import "./wordLengthSearch.css";
 
 export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText }) {
-
-    useEffect(() => {
-        changeQuotesByWordLength(start, end)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [start, end])
-
     return (
         <>
             <input
@@ -19,7 +12,6 @@ export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText }
                 value={start}
                 onChange={({ target: { value } }) => {
                     setStart(value)
-                    setSearchText('')
                 }} />{` to `}
             <input
                 className="smallInput"
@@ -29,7 +21,6 @@ export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText }
                 value={end}
                 onChange={({ target: { value } }) => {
                     setEnd(value)
-                    setSearchText('')
                 }} />
         </>
     )

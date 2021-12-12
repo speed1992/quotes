@@ -1,3 +1,7 @@
+.header{
+    max-height: 30vh;
+}
+
 .column {
     float: left;
     padding: 10px 15px 15px 0;

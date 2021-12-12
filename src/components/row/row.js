@@ -1,25 +1,18 @@
 import { useSnackbar } from 'react-simple-snackbar';
-import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
-import { Translate } from '../translate/translate';
-import { copyQuoteText } from './utils';
+import { currentData } from "../../utils/staticDataUtils";
+import { devModeSignature, rowClickHandler } from './utils';
 
-export const Row = ({ data: { searchText, triggerChange, philosopherFullName }, index, style }) => {
+export const Row = ({ data: { searchText, start, end, triggerChange, philosopherFullName }, index, style }) => {
     const [openSnackbar] = useSnackbar()
-
+    const updatedIndex = index + 1;
+    const quotation = currentData[index];
+    const quotationText = `${updatedIndex}. ${quotation}`;
     return (
         currentData[index] !== undefined ? (
             <div key={index} className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
-                {`${index + 1}. ${currentData[index]}`}
-                <span key={index}>
-                    <Translate index={index} inputText={currentData[index]} triggerChange={triggerChange} />
-                </span>
-                <button onClick={() => {
-                    copyQuoteText(currentData[index], philosopherFullName)
-                    if (searchText === "")
-                        localStorage.setItem(currentPhilosopher + "-scrollPosition", index)
-                    openSnackbar('Copied!', 1000);
-                }}>
-                    Copy!{process.env.NODE_ENV !== "production" ? <>!</> : null}
+                {quotationText}
+                <button onClick={rowClickHandler.bind(this, openSnackbar, { searchText, start, end, quote: currentData[index], philosopherFullName, index })}>
+                    Copy!{devModeSignature()}
                 </button>
             </div >
         ) : null
