@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { getIndividualVersion } from "../../utils/urlUtils";
+import { sortFeatureDisabled } from '../../utils/urlUtils';
 import PHILOSOPHERS_DATA from "../philosophers-data";
 
 export const addPhilosopherNameToQuote = (quote, philosopherFullName) => `${quote} ― ${philosopherFullName}`
@@ -9,7 +9,7 @@ export const convertQuoteArray = (quoteArr, philosopherFullName) => quoteArr.map
 export const doOperationsOnData = (data) => {
     // Sorting except the first element
     const allElement = data.shift();
-    if (getIndividualVersion() !== "paras")
+    if (!sortFeatureDisabled())
         data.sort((a, b) => a.displayName.localeCompare(b.displayName))
     data.unshift(allElement);
 
