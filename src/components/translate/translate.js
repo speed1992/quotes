@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-export const Translate = ({ index, inputText, from = "en", to = "hi", triggerChange }) => {
+export const Translate = ({ index, inputText, from = "en", to = "hi" }) => {
 
-    // const [isFetching, setIsFetching] = useState(false);
     const [translationOutput, setTranslationOutput] = useState("");
-    const [triggerRender, setTriggerRender] = useState(triggerChange)
-
-    useEffect(() => {
-
-        console.log(triggerChange)
-        setTriggerRender(triggerChange)
-    }, [triggerChange])
 
     useEffect(() => {
         (async function () {
@@ -43,7 +35,7 @@ export const Translate = ({ index, inputText, from = "en", to = "hi", triggerCha
             setTranslationOutput("")
         })
 
-    }, [])
+    }, [inputText, from, to])
 
     return (
         <span key={index}>
