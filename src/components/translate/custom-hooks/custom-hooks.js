@@ -1,34 +1,27 @@
 import { useEffect, useState } from "react";
+import { limiter } from "../../../common/settings/bottleneck.settings";
+import { hitTranslationAPI } from "../utils/utils";
 
 export function useTranslation({ inputText, from, to }) {
 
     const [translationOutput, setTranslationOutput] = useState("");
 
     useEffect(() => {
-        try {
-            const controller = new AbortController()
-            const signal = controller.signal
+        const controller = new AbortController()
+        const signal = controller.signal
 
-            fetch("https://translate.api.skitzen.com/translate", {
-                method: "POST",
-                body: JSON.stringify({ q: inputText, source: from, target: to, format: "text", api_key: "" }),
-                headers: { "Content-Type": "application/json" },
-                signal
-            })
-                .then(response => response.json())
-                .then(({ translatedText }) => setTranslationOutput(translatedText));
+        const wrapped = limiter.wrap(hitTranslationAPI.bind(this, { inputText, from, to, signal }));
 
-            return (() => {
-                controller.abort();
-                setTranslationOutput("")
-            })
+        wrapped()
+            .then(response => response.json())
+            .then(({ translatedText }) => setTranslationOutput(translatedText))
+            .catch((e) => console.log(e));
 
-        } catch (error) {
-            console.log(error)
-        }
-        finally {
-            // setIsFetching(false)
-        }
+        return (() => {
+            controller.abort();
+            setTranslationOutput("")
+        })
+
 
     }, [inputText, from, to])
 
