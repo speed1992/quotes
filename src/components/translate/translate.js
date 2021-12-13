@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-export const Translate = ({ index, inputText, from = "en", to = "hi" }) => {
-
-    const [translationOutput, setTranslationOutput] = useState("");
+export const Translate = ({ index, inputText, from = "en", to = "hi", translationOutput, setTranslationOutput }) => {
 
     useEffect(() => {
         (async function () {
@@ -31,10 +29,10 @@ export const Translate = ({ index, inputText, from = "en", to = "hi" }) => {
             }
         })();
 
-        return (() => {
-            setTranslationOutput("")
-        })
-
+        // return (() => {
+        //     setTranslationOutput("")
+        // })
+        // eslint-disable-next-line
     }, [inputText, from, to])
 
     return (
