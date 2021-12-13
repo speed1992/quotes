@@ -8,7 +8,7 @@ export const changeQuotesData = (philosopherName) => {
     changeData(quotes)
 }
 
-export const getPhilosopherFullName = () => {
+export const getPhilosopherFullName = (language) => {
     const currentIndex = OPTIONS.filter(({ value }) => currentPhilosopher === value);
     if (!isEmpty(currentIndex))
         return currentIndex && currentIndex[0].fullName;
