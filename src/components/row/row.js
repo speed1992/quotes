@@ -13,7 +13,6 @@ export const Row = ({ data: { searchText, start, end, triggerChange, philosopher
         currentData[index] !== undefined ? (
             <div key={index} className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
                 {quotationText}
-
                 {translateFeatureKey() ? (<div key={index}>
                     <Translate index={index} inputText={currentData[index]} />
                 </div>) : null}
