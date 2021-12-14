@@ -4,374 +4,374 @@ const data = [
     {
         value: "ALL",
         displayName: "All",
-        fullName: { en: "All", hi: "" }
+        fullName: "All"
     },
     {
         value: "NIETZSCHE",
         displayName: "Nietzsche",
-        fullName: { en: "Friedrich Nietzsche", hi: "फ्रेडरिक नीत्शे" }
+        fullName: "Friedrich Nietzsche"
     },
     {
         value: "MARIE_KONDO",
-        displayName: "Marie Kondo", fullName: { en: "Marie Kondo", hi: "मैरी कोंडो" }
+        displayName: "Marie Kondo", fullName: "Marie Kondo"
     },
     {
         value: "SCHOPENHAUER",
         displayName: "Schopenhauer",
-        fullName: { en: "Arthur Schopenhauer", hi: "आर्थर शोपेनहावर" }
+        fullName: "Arthur Schopenhauer"
     },
     {
         value: "CAMUS", displayName: "Albert Camus",
-        fullName: { en: "Albert Camus", hi: "एलबर्ट कामू" }
+        fullName: "Albert Camus"
     },
     {
         value: "DOSTOEVSKY", displayName: "Dostoevsky",
-        fullName: { en: "Fyodor Dostoevsky", hi: "फ्योदोर दोस्तोवस्की" }
+        fullName: "Fyodor Dostoevsky"
     },
     {
         value: "PESSOA", displayName: "Pessoa",
-        fullName: { en: "Fernando Pessoa", hi: "फर्नांडो पेसोआ" }
+        fullName: "Fernando Pessoa"
     },
     {
         value: "KAFKA", displayName: "Kafka",
-        fullName: { en: "Franz Kafka", hi: "फ्रांज काफ्का" }
+        fullName: "Franz Kafka"
     },
     {
         value: "HERACLITUS", displayName: "Heraclitus",
-        fullName: { en: "Heraclitus", hi: "हेराक्लीटस" }
+        fullName: "Heraclitus"
     },
     {
         value: "SARTRE", displayName: "Sartre",
-        fullName: { en: "Jean-Paul Sartre", hi: "जीन-पॉल सार्त्र" }
+        fullName: "Jean - Paul Sartre"
     },
     {
         value: "MAO", displayName: "Mao Zedong",
-        fullName: { en: "Mao Zedong", hi: "माओ से-तुंग" }
+        fullName: "Mao Zedong"
     },
     {
         value: "SADE",
         displayName: "Sade",
-        fullName: { en: "Marquis De Sade", hi: "मार्क्विस डे सादे" }
+        fullName: "Marquis de Sade"
     },
     {
         value: "FREUD",
         displayName: "Freud",
-        fullName: { en: "Sigmund Freud", hi: "सिगमंड फ्रॉयड" }
+        fullName: "Sigmund Freud"
     },
     {
         value: "VOLTAIRE",
         displayName: "Voltaire",
-        fullName: { en: "Voltaire", hi: "वॉल्टेयर" }
+        fullName: "Voltaire"
     },
     {
         value: "CIORAN",
         displayName: "Cioran",
-        fullName: { en: "Emile M. Cioran", hi: "एमिल एम. सियोरान" }
+        fullName: "Emile M. Cioran"
     },
     {
         value: "DIOGENES",
         displayName: "Diogenes",
-        fullName: { en: "Diogenes", hi: "डायोजनीज" }
+        fullName: "Diogenes"
     },
     {
         value: "KISSINGER",
         displayName: "Kissinger",
-        fullName: { en: "Henry A. Kissinger", hi: "हेनरी ए किसिंजर" }
+        fullName: "Henry A. Kissinger"
     },
     {
         value: "CLAUSEWITZ",
         displayName: "Clausewitz",
-        fullName: { en: "Carl Von Clausewitz", hi: "कार्ल वॉन क्लॉज़विट्ज़" }
+        fullName: "Carl von Clausewitz"
     },
     {
         value: "BUKOWSKI",
         displayName: "Bukowski",
-        fullName: { en: "Charles Bukowski", hi: "चार्ल्स बुकोवस्की" }
+        fullName: "Charles Bukowski"
     },
     {
         value: "OSCAR_WILDE",
         displayName: "Oscar Wilde",
-        fullName: { en: "Oscar Wilde", hi: "ऑस्कर वाइल्ड" }
+        fullName: "Oscar Wilde"
     },
     {
         value: "ROCHEFOUCAULD",
         displayName: "Rochefoucauld",
-        fullName: { en: "Francois De La Rochefoucauld", hi: "फ्रेंकोइस डे ला रोशेफौकॉल्ड" }
+        fullName: "Francois de La Rochefoucauld"
     },
     {
         value: "MARSHALL_MCLUHAN",
         displayName: "Marshall McLuhan",
-        fullName: { en: "Marshall McLuhan", hi: "मार्शल मैक्लुहान" }
+        fullName: "Marshall McLuhan"
     },
     {
         value: "PASCAL",
         displayName: "Pascal",
-        fullName: { en: "Blaise Pascal", hi: "ब्लेस पास्कल" }
+        fullName: "Blaise Pascal"
     },
     {
         value: "SIMONE_WEIL",
         displayName: "Simone Weil",
-        fullName: { en: "Simone Weil", hi: "सिमोन वेइल" }
+        fullName: "Simone Weil"
     },
     {
         value: "HITLER",
         displayName: "Hitler",
-        fullName: { en: "Adolf Hitler", hi: "एडॉल्फ हिटलर" }
+        fullName: "Adolf Hitler"
     },
     {
         value: "KANT",
         displayName: "Immanuel Kant",
-        fullName: { en: "Immanuel Kant", hi: "इम्मैनुएल कांत" }
+        fullName: "Immanuel Kant"
     },
     {
         value: "OSHO",
         displayName: "Osho",
-        fullName: { en: "Osho", hi: "ओशो" }
+        fullName: "Osho"
     },
     {
         value: "VIRGINIA_WOOLF",
         displayName: "Virginia Woolf",
-        fullName: { en: "Virginia Woolf", hi: "वर्जीनिया वूल्फ" }
+        fullName: "Virginia Woolf"
     },
     {
         value: "BEAUVOIR",
         displayName: "Simone De Beauvoir",
-        fullName: { en: "Simone De Beauvoir", hi: "सिमोन डी ब्यूवोइर" }
+        fullName: "Simone De Beauvoir"
     },
     {
         value: "CARL_JUNG",
         displayName: "Carl Jung",
-        fullName: { en: "Carl Gustav Jung", hi: "कार्ल गुस्टाफ युंग" }
+        fullName: "Carl Jung"
     },
     {
         value: "SALVADOR_DALI",
         displayName: "Salvador",
-        fullName: { en: "Salvador Dali", hi: "साल्वाडोर डाली" }
+        fullName: "Salvador Dali"
     },
     {
         value: "VINCENT_VAN_GOGH",
         displayName: "Vincent Gogh",
-        fullName: { en: "Vincent Van Gogh", hi: "विंसेंट वान गाग" }
+        fullName: "Vincent Van Gogh"
     },
     {
         value: "ALAN_WATTS",
         displayName: "Alan Watts",
-        fullName: { en: "Alan Watts", hi: "एलन वाट्स" }
+        fullName: "Alan Watts"
     },
     {
         value: "HIPPOCRATES",
         displayName: "Hippocrates",
-        fullName: { en: "Hippocrates", hi: "हिप्पोक्रेट्स" }
+        fullName: "Hippocrates"
     },
     {
         value: "KRISHNAMURTI",
         displayName: "Krishnamurti",
-        fullName: { en: "Jiddu Krishnamurti", hi: "जिद्दू कृष्णमूर्ति" }
+        fullName: "Jiddu Krishnamurti"
     },
     {
         value: "PETERSON",
         displayName: "Peterson",
-        fullName: { en: "Jordan Peterson", hi: "जॉर्डन पीटरसन" }
+        fullName: "Jordan Peterson"
     },
     {
         value: "VICTOR_FRANKL",
         displayName: "Victor Frankl",
-        fullName: { en: "Victor Frankl", hi: "विक्टर फ्रैंकल" }
+        fullName: "Victor Frankl"
     },
     {
         value: "AURELIUS",
         displayName: "Marcus Aurelius",
-        fullName: { en: "Marcus Aurelius", hi: "मार्कस ऑरेलियस" }
+        fullName: "Marcus Aurelius"
     },
     {
         value: "ROBERT_GREENE",
         displayName: "Robert Greene",
-        fullName: { en: "Robert Greene", hi: "रॉबर्ट ग्रीन" }
+        fullName: "Robert Greene"
     },
     {
         value: "NAVAL_RAVIKANT",
         displayName: "Naval Ravikant",
-        fullName: { en: "Naval Ravikant", hi: "नवल रविकांत" }
+        fullName: "Naval Ravikant"
     },
     {
         value: "LIGOTTI",
         displayName: "Thomas Liggoti",
-        fullName: { en: "Thomas Liggoti", hi: "थॉमस लिगोटी" }
+        fullName: "Thomas Liggoti"
     },
     {
         value: "SENECA",
         displayName: "Seneca",
-        fullName: { en: "Seneca", hi: "सेनेका" }
+        fullName: "Seneca"
     },
     {
         value: "ZIZEK",
         displayName: "Zizek",
-        fullName: { en: "Slavoj Žižek", hi: "स्लावोज ज़िज़ेक" }
+        fullName: "Slavoj Žižek"
     },
     {
         value: "BECKETT",
         displayName: "Samuel Beckett",
-        fullName: { en: "Samuel Beckett", hi: "सैमुअल बेकेट" }
+        fullName: "Samuel Beckett"
     },
     {
         value: "DARWISH",
         displayName: "Darwish",
-        fullName: { en: "Mahmoud Darwish", hi: "महमूद दरविश" }
+        fullName: "Mahmoud Darwish"
     },
     {
         value: "HUXLEY",
         displayName: "Huxley",
-        fullName: { en: "Aldous Huxley", hi: "ऐलडस हक्सले" }
+        fullName: "Aldous Huxley"
     },
     {
         value: "ORWELL",
         displayName: "Orwell",
-        fullName: { en: "George Orwell", hi: "जॉर्ज ऑरवेल" }
+        fullName: "George Orwell"
     },
     {
         value: "RUMI",
         displayName: "Rumi",
-        fullName: { en: "Rumi", hi: "रूमि" }
+        fullName: "Rumi"
     },
     {
         value: "LAO_TZU",
         displayName: "Lao Tzu",
-        fullName: { en: "Lao Tzu", hi: "लाओ त्सू" }
+        fullName: "Lao Tzu"
     },
     {
         value: "RUSSELL",
         displayName: "Bertrand Russell",
-        fullName: { en: "Bertrand Russell", hi: "बर्ट्रेंड रसेल" }
+        fullName: "Bertrand Russell"
     },
     {
         value: "NASSIM_TALEB",
         displayName: "Nassim Taleb",
-        fullName: { en: "Nassim Nicholas Taleb", hi: "नसीम निकोलस तालेब" }
+        fullName: "Nassim Nicholas Taleb"
     },
     {
         value: "HARARI",
         displayName: "Yuval Harari",
-        fullName: { en: "Yuval Noah Harari", hi: "युवल नोहा हरारी" }
+        fullName: "Yuval Noah Harari"
     },
     {
         value: "ADYASHANTI",
         displayName: "Adyashanti",
-        fullName: { en: "Adyashanti", hi: "अद्यशांती" }
+        fullName: "Adyashanti"
     },
     {
         value: "C_S_LEWIS",
         displayName: "C.S. Lewis",
-        fullName: { en: "C.S. Lewis", hi: "सी.एस. लुईस" }
+        fullName: "C.S. Lewis"
     },
     {
         value: "CONFUCIUS",
         displayName: "Confucius",
-        fullName: { en: "Confucius", hi: "कन्फ्यूशियस" }
+        fullName: "Confucius"
     },
     {
         value: "EZRA_POUND",
         displayName: "Ezra Pound",
-        fullName: { en: "Ezra Pound", hi: "एज्रा पाउंड" }
+        fullName: "Ezra Pound"
     },
     {
         value: "GIBRAN",
         displayName: "Khalil Gibran",
-        fullName: { en: "Khalil Gibran", hi: "खलील जिब्रान" }
+        fullName: "Khalil Gibran"
     },
     {
         value: "HERMANN_HESSE",
         displayName: "Hermann Hesse",
-        fullName: { en: "Hermann Hesse", hi: "हरमन हेस्से" }
+        fullName: "Hermann Hesse"
     },
     {
         value: "KIERKEGAARD",
         displayName: "Kierkegaard",
-        fullName: { en: "Søren Kierkegaard", hi: "सॉरन किअर्केगार्ड" }
+        fullName: "Kierkegaard"
     },
     {
         value: "MACHIAVELLI",
         displayName: "Machiavelli",
-        fullName: { en: "Niccolò Machiavelli", hi: "निकोलो मैकियावेली" }
+        fullName: "Niccolò Machiavelli"
     },
     {
         value: "RIDLEY",
         displayName: "Matt Ridley",
-        fullName: { en: "Matt Ridley", hi: "मैट रिडले" }
+        fullName: "Matt Ridley"
     },
     {
         value: "SUN_TZU",
         displayName: "Sun Tzu",
-        fullName: { en: "Sun Tzu", hi: "सन त्ज़ु" }
+        fullName: "Sun Tzu"
     },
     {
         value: "SYLVIA_PLATH",
         displayName: "Sylvia Plath",
-        fullName: { en: "Sylvia Plath", hi: "सिल्विया प्लाथ" }
+        fullName: "Sylvia Plath"
     },
     {
         value: "ZHUANGZI",
         displayName: "Zhuangzi",
-        fullName: { en: "Zhuangzi", hi: "ज़ुआंग-ज़ी" }
+        fullName: "Zhuangzi"
     },
     {
         value: "DOUGLASS",
         displayName: "Douglass",
-        fullName: { en: "Frederick Douglass", hi: "फ्रेडरिक डगलस" }
+        fullName: "Frederick Douglass"
     },
     {
         value: "KAMAL_RAVIKANT",
         displayName: "Kamal Ravikant",
-        fullName: { en: "Kamal Ravikant", hi: "कमल रविकांत" }
+        fullName: "Kamal Ravikant"
     },
     {
         value: "HEIDEGGER",
         displayName: "Heidegger",
-        fullName: { en: "Martin Heidegger", hi: "मार्टिन हाइडेगर" }
+        fullName: "Martin Heidegger"
     },
     {
         value: "ANTHONY_DE_MELLO",
         displayName: "Anthony De Mello",
-        fullName: { en: "Anthony De Mello", hi: "एंथोनी डी मेलो" }
+        fullName: "Anthony De Mello"
     },
     {
         value: "MICHAEL_SINGER",
         displayName: "Michael Singer",
-        fullName: { en: "Michael Singer", hi: "माइकल सिंगर" }
+        fullName: "Michael Singer"
     },
     {
         value: "ROVELLI",
         displayName: "Carlo Rovelli",
-        fullName: { en: "Carlo Rovelli", hi: "कार्लो रोवेली" }
+        fullName: "Carlo Rovelli"
     },
     {
         value: "JED_MCKENNA",
         displayName: "Jed McKenna",
-        fullName: { en: "Jed McKenna", hi: "जेड मैककेना" }
+        fullName: "Jed McKenna"
     },
     {
         value: "PLATO",
         displayName: "Plato",
-        fullName: { en: "Plato", hi: "प्लेटो" }
+        fullName: "Plato"
     },
     {
         value: "SOCRATES",
         displayName: "Socrates",
-        fullName: { en: "Socrates", hi: "सुकरात" }
+        fullName: "Socrates"
     },
     {
         value: "BRUCE_LEE",
         displayName: "Bruce Lee",
-        fullName: { en: "Bruce Lee", hi: "ब्रूस ली" }
+        fullName: "Bruce Lee"
     },
     {
         value: "FEYMAN",
         displayName: "Richard Feyman",
-        fullName: { en: "Richard Feyman", hi: "रिचर्ड फेमैन" }
+        fullName: "Richard Feyman"
     },
     {
         value: "KAPIL_GUPTA",
         displayName: "Kapil Gupta",
-        fullName: { en: "Kapil Gupta", hi: "कपिल गुप्ता" }
+        fullName: "Kapil Gupta"
     }
 ]
 
