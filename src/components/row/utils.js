@@ -34,3 +34,14 @@ export function devModeSignature() {
 export function isAppInDevMode() {
     return process.env.NODE_ENV !== "production"
 }
+
+export function rowClickHandlerFoBothQuotes({ openSnackbar, searchText, start, end, quote: { hindi, english }, philosopherNames: { englishFullname, hindiFullname }, index }) {
+    debugger
+    copyBothQuotesText({ hindiQuote: hindi, englishQuote: english }, { englishFullname, hindiFullname })
+    rememberScrollPosition(searchText, start, end, index)
+    openSnackbar('Copied!', 1000);
+}
+
+export function copyBothQuotesText({ englishQuote, hindiQuote }, { englishFullname, hindiFullname }) {
+    copy(`"${englishQuote}"\n\n― ${englishFullname}\n\n\n"${hindiQuote}"\n\n― ${hindiFullname}`);
+}

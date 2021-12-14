@@ -27,3 +27,11 @@ export function translateFeatureKey() {
         return true
     else return false
 }
+
+export function adminFeatureKey() {
+    var query = getQueryParams(document.location.search);
+    let admin = query.admin ? query.admin.toLowerCase() : null;
+    if (admin === "true" || admin)
+        return true
+    else return false
+}
