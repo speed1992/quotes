@@ -14,6 +14,12 @@ export const getPhilosopherFullName = () => {
         return currentIndex && currentIndex[0].fullName;
 }
 
+export const getPhilosopherFullName_i10n = () => {
+    const currentIndex = OPTIONS.filter(({ value }) => currentPhilosopher === value);
+    if (!isEmpty(currentIndex))
+        return currentIndex && currentIndex[0].fullNameInOtherLanguages;
+}
+
 export const searchByWordLength = (start, end, quotes) => {
     if (quotes !== undefined) {
         if (typeof start === "string" && start.trim() === "") start = 0;

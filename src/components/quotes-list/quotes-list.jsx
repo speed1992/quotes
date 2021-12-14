@@ -3,12 +3,12 @@ import { FixedSizeList as List } from "react-window";
 import { currentData } from "../../utils/staticDataUtils";
 import { Row } from "../row/row";
 import "./quotes-list.css";
-import { getPhilosopherFullName } from "./utils/utils";
+import { getPhilosopherFullName, getPhilosopherFullName_i10n } from "./utils/utils";
 
 function QuotesList({ listRef, width, height, searchText, start, end, triggerChange }) {
 
     const philosopherFullName = getPhilosopherFullName();
-
+    const philosopherFullName_i10n = getPhilosopherFullName_i10n();
     return (
         <>
             {philosopherFullName !== undefined && <List
@@ -18,7 +18,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, triggerCha
                 itemSize={600}
                 width={width}
                 ref={listRef}
-                itemData={{ searchText, start, end, triggerChange, philosopherFullName }}
+                itemData={{ searchText, start, end, triggerChange, philosopherFullName, philosopherFullName_i10n }}
             >
                 {Row}
             </List>}
