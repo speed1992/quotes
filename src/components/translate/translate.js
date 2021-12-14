@@ -1,7 +1,20 @@
-import React from "react";
+import { devModeSignature, rowClickHandler } from "../row/utils";
 import { useTranslation } from "./custom-hooks/custom-hooks";
 
-export const Translate = ({ index, inputText, from = "en", to = "hi" }) => {
+export const Translate = ({ inputText, from = "en", to = "hi", openSnackbar, searchText, start, end, philosopherFullName, index }) => {
     const translationOutput = useTranslation({ inputText, from, to })
-    return (<span key={index}>{translationOutput}</span>)
+    return (
+        (
+            translationOutput !== "" ?
+                (
+                    < span key={index} > {translationOutput}
+                        < button onClick={rowClickHandler.bind(this, { openSnackbar, searchText, start, end, quote: translationOutput, philosopherFullName, index })} >
+                            Copy!{devModeSignature()}
+                        </button >
+                    </span >
+                )
+                : null
+        )
+
+    )
 }

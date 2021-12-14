@@ -21,7 +21,7 @@ export function rememberScrollPosition(searchText, start, end, index) {
         localStorage.setItem(currentPhilosopher + "-scrollPosition", index)
 }
 
-export function rowClickHandler(openSnackbar, { searchText, start, end, philosopherFullName, quote, index }) {
+export function rowClickHandler({ openSnackbar, searchText, start, end, philosopherFullName, quote, index }) {
     copyQuoteText(quote, philosopherFullName)
     rememberScrollPosition(searchText, start, end, index)
     openSnackbar('Copied!', 1000);

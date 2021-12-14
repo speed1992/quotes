@@ -5,17 +5,18 @@ import { devModeSignature, rowClickHandler } from './utils';
 
 export const Row = ({ data: { searchText, start, end, triggerChange, philosopherFullName }, index, style }) => {
     const [openSnackbar] = useSnackbar()
-    const updatedIndex = index + 1;
-    const quotation = currentData[index];
-    const quotationText = `${updatedIndex}. ${quotation}`;
+    const quotationText = `${index + 1}. ${currentData[index]}`;
+    const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index }
+
     return (
         currentData[index] !== undefined ? (
             <div key={index} className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
-                {quotationText}
-                <Translate index={index} inputText={currentData[index]} />
-                <button onClick={rowClickHandler.bind(this, openSnackbar, { searchText, start, end, quote: currentData[index], philosopherFullName, index })}>
-                    Copy!{devModeSignature()}
-                </button>
+                <span>{quotationText}
+                    <button onClick={rowClickHandler.bind(this, { openSnackbar, searchText, start, end, quote: currentData[index], philosopherFullName, index })}>
+                        Copy!{devModeSignature()}
+                    </button>
+                </span>
+                <Translate inputText={currentData[index]} {...propsToSend} />
             </div >
         ) : null
     )
