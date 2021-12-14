@@ -3,10 +3,10 @@ import { currentData } from "../../utils/staticDataUtils";
 import { Translate } from '../translate/translate';
 import { devModeSignature, rowClickHandler } from './utils';
 
-export const Row = ({ data: { searchText, start, end, triggerChange, philosopherFullName }, index, style }) => {
+export const Row = ({ data: { searchText, start, end, triggerChange, philosopherFullName, philosopherFullName_i10n }, index, style }) => {
     const [openSnackbar] = useSnackbar()
     const quotationText = `${index + 1}. ${currentData[index]}`;
-    const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index }
+    const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
 
     return (
         currentData[index] !== undefined ? (
