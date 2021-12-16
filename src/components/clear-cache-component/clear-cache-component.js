@@ -1,6 +1,6 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { buildDate } from '../../static/buildDate.json';
+import buildDate from '../../static/buildDate.json';
 
 const buildDateGreaterThan = (latestDate, currentDate) => {
     const momLatestDateTime = moment(new Date(latestDate));
