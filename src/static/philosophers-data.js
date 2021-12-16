@@ -532,6 +532,13 @@ const data = [{
     fullNameInOtherLanguages: {
         hi: "कपिल गुप्ता"
     }
+    , {
+    value: "EMERSON",
+    displayName: "Ralph Emerson",
+    fullName: "Ralph Waldo Emerson",
+    fullNameInOtherLanguages: {
+        hi: "राल्फ वाल्डो इमर्सन"
+    }
 }]
 doOperationsOnData(data);
 export default data
