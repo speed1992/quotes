@@ -600,7 +600,7 @@ const data = [{
     displayName: "Spinoza",
     fullName: "Baruch Spinoza",
     fullNameInOtherLanguages: {
-        hi: "बारूथ स्पिनोज़ा"
+        hi: "बारुच स्पिनोज़ा"
     }
 }
 ]
