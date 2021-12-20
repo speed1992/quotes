@@ -5,11 +5,11 @@
 
 * {
   box-sizing: border-box;
+  font-family: 'Segoe UI';
 }
 
 html, body, #root {
   height: 100%;
-  font-family: 'Segoe UI';
   overflow: hidden;
 }
 
