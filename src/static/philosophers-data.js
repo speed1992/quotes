@@ -546,7 +546,21 @@ const data = [{
     fullNameInOtherLanguages: {
         hi: "एलन मस्क"
     }
-}
+}, {
+    value: "ZAPFFE",
+    displayName: "Peter Zapffe",
+    fullName: "Peter Wessel Zapffe",
+    fullNameInOtherLanguages: {
+        hi: "पीटर वेसल जैपफे"
+    }
+}, {
+    value: "HEGEL",
+    displayName: "Hegel",
+    fullName: "Georg Wilhelm Friedrich Hegel",
+    fullNameInOtherLanguages: {
+        hi: "जार्ज विलहेम फ्रेड्रिक हेगेल"
+    }
+},
 ]
 doOperationsOnData(data);
 export default data
