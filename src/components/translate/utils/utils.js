@@ -4,5 +4,5 @@ export function hitTranslationAPI({ from, to, inputText, signal }) {
         body: JSON.stringify({ q: inputText, source: from, target: to, format: "text", api_key: "" }),
         headers: { "Content-Type": "application/json" },
         signal
-    }).catch((e) => console.log(e))
+    }).catch((e) => { })
 }

@@ -15,7 +15,7 @@ export function useTranslation({ inputText, from, to }) {
         wrapped()
             .then(response => response.json())
             .then(({ translatedText }) => setTranslationOutput(translatedText))
-            .catch((e) => console.log(e));
+            .catch((e) => { });
 
         return (() => {
             controller.abort();
