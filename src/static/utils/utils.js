@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { retryTenTimes } from '../../utils/apiUtils';
 import { sortFeatureDisabled } from '../../utils/urlUtils';
 import PHILOSOPHERS_DATA from "../philosophers-data";
 
@@ -20,45 +21,43 @@ export const doOperationsOnData = (data) => {
 }
 
 export const lazyLoadAsset = (philosopherName, callback) => {
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
         const fileName = philosopherName.toLowerCase()
-        import("../assets/" + fileName + ".json").then((data) => {
-            callback && callback();
-            addPhilosopherInGlobalData(philosopherName, data?.default)
-            resolve();
-        }).catch(() => reject());
+        retryTenTimes(() => import("../assets/" + fileName + ".json"))
+            .then((data) => {
+                callback && callback();
+                addPhilosopherInGlobalData(philosopherName, data?.default)
+                resolve();
+            })
+            .catch(e => reject(e));
     });
 };
 
 export const lazyLoadAllAssets = (callback) => {
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
         const promiseArray = [];
-        PHILOSOPHERS_DATA.forEach(async ({ value: philosopherName, fullName: philosopherFullName }) => {
+        PHILOSOPHERS_DATA.forEach(({ value: philosopherName, fullName: philosopherFullName }) => {
             if (philosopherName !== "ALL") {
                 const fileName = philosopherName.toLowerCase()
-                const promise = import("../assets/" + fileName + ".json").then((data) => {
-                    callback && callback();
-                    const convertedQuotes = convertQuoteArray(data?.default, philosopherFullName)
-                    addPhilosopherInGlobalData("ALL", convertedQuotes)
-                }).catch((e) => console.log(e));
+                const promise = retryTenTimes(() => import("../assets/" + fileName + ".json"))
+                    .then((data) => {
+                        callback && callback();
+                        const convertedQuotes = convertQuoteArray(data?.default, philosopherFullName)
+                        addPhilosopherInGlobalData("ALL", convertedQuotes)
+                    })
+                    .catch((e) => console.log(e));
                 promiseArray.push(promise);
             }
         });
 
-        Promise.all(promiseArray).then(() => {
-            resolve()
-        }).catch(reject)
+        Promise.all(promiseArray).then(resolve).catch(reject)
     });
 };
 
-export const getPhilosopherObjectIndex = (philosopherName) => {
-    let index = PHILOSOPHERS_DATA.findIndex(({ value }, index) => value === philosopherName);
-    return index;
-}
+export const getPhilosopherObjectIndex = (philosopherName) => PHILOSOPHERS_DATA.findIndex(({ value }) => value === philosopherName);
 
-export const getPhilosopherData = (philosopherName) => {
-    return PHILOSOPHERS_DATA.filter(({ value }) => value === philosopherName)[0]
-}
+
+export const getPhilosopherData = (philosopherName) => PHILOSOPHERS_DATA.filter(({ value }) => value === philosopherName)[0]
 
 export const addPhilosopherInGlobalData = (philosopherName, quotes) => {
     if (philosopherName.trim().toLowerCase() === "all") {

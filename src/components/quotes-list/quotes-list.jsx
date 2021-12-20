@@ -13,6 +13,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, triggerCha
 
     useEffect(() => {
         scrollToMemorizedRow(listRef)
+        // eslint-disable-next-line
     }, [listRef.current])
 
     return (

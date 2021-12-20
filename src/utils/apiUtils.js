@@ -1,9 +1,12 @@
-export async function retry(fn, n) {
+export function retry(fn, n) {
+    let promise = Promise.reject();
     for (let i = 0; i < n; i++) {
-        try {
-            return await fn();
-        } catch { }
+        promise = promise.catch(() => fn());
     }
-
-    throw new Error(`Failed retrying ${n} times`);
+    promise.catch(() => {
+        throw new Error(`Failed retrying ${n} times`);
+    });
+    return promise;
 }
+
+export const retryTenTimes = fn => retry(fn, 10);

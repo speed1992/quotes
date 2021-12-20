@@ -5,7 +5,7 @@ import { useDidMountEffect } from "../../utils/custom-hooks-utils";
 import { getCurrentPhilosopherFromLocalStorage } from "../../utils/localStorageUtils";
 import { combinedSearch } from "../../utils/searchUtils";
 import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
-import { scrollToFirstRow, scrollToMemorizedRow } from "../../utils/utils";
+import { scrollToFirstRow } from "../../utils/utils";
 import { Header } from "../header/header";
 import { LazyLoadQuoteList } from "../lazy-load-quote-list/lazy-load-quote-list";
 import { Loader } from "../loader/loader";
