@@ -4,8 +4,10 @@
 
 .column {
     float: left;
-    padding: 10px 15px 15px 0;
+    /* padding: 10px 15px 15px 0; */
+    padding: 0px 20px 5px 5px;
 }
+
 .column:last-child {
     padding-right: 0;
 }
