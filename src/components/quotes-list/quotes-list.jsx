@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FixedSizeList as List } from "react-window";
 import { currentData } from "../../utils/staticDataUtils";
+import { scrollToMemorizedRow } from "../../utils/utils";
 import { Row } from "../row/row";
 import "./quotes-list.css";
 import { getPhilosopherFullName, getPhilosopherFullName_i10n } from "./utils/utils";
@@ -9,6 +10,11 @@ function QuotesList({ listRef, width, height, searchText, start, end, triggerCha
 
     const philosopherFullName = getPhilosopherFullName();
     const philosopherFullName_i10n = getPhilosopherFullName_i10n();
+
+    useEffect(() => {
+        scrollToMemorizedRow(listRef)
+    }, [listRef.current])
+
     return (
         <>
             {philosopherFullName !== undefined && <List

@@ -25,10 +25,6 @@ export const HomePage = () => {
     }, [])
 
     useEffect(() => {
-        scrollToMemorizedRow(listRef)
-    }, [listRef.current])
-
-    useEffect(() => {
         setTriggerChange(!triggerChange)
     }, [currentData, searchText, currentPhilosopher, start, end])
 
