@@ -560,7 +560,49 @@ const data = [{
     fullNameInOtherLanguages: {
         hi: "जार्ज विलहेम फ्रेड्रिक हेगेल"
     }
-},
+}, {
+    value: "DAVID_HUME",
+    displayName: "David Hume",
+    fullName: "David Hume",
+    fullNameInOtherLanguages: {
+        hi: "डेविड ह्यूम"
+    }
+}, {
+    value: "BERKELEY",
+    displayName: "George Berkeley",
+    fullName: "George Berkeley",
+    fullNameInOtherLanguages: {
+        hi: "जॉर्ज बर्कले"
+    }
+}, {
+    value: "DESCARTES",
+    displayName: "Descartes",
+    fullName: "René Descartes",
+    fullNameInOtherLanguages: {
+        hi: "रेने डेस्कर्टेस"
+    }
+}, {
+    value: "JOHN_LOCKE",
+    displayName: "John Locke",
+    fullName: "John Locke",
+    fullNameInOtherLanguages: {
+        hi: "जॉन लॉक"
+    }
+}, {
+    value: "LEIBNIZ",
+    displayName: "Gottfried Leibniz",
+    fullName: "Gottfried Wilhelm Leibniz",
+    fullNameInOtherLanguages: {
+        hi: "गाटफ्रीड विलहेल्म लाइबनिज"
+    }
+}, {
+    value: "SPINOZA",
+    displayName: "Spinoza",
+    fullName: "Baruch Spinoza",
+    fullNameInOtherLanguages: {
+        hi: "बारूथ स्पिनोज़ा"
+    }
+}
 ]
 doOperationsOnData(data);
 export default data
