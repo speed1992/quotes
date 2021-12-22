@@ -7,7 +7,7 @@
 // trans.zillyhuhn.com
 
 export function hitTranslationAPI({ from, to, inputText, signal }) {
-    return fetch("https://trans.zillyhuhn.com/translate", {
+    return fetch("https://translate.argosopentech.com/translate", {
         method: "POST",
         body: JSON.stringify({ q: inputText, source: from, target: to, format: "text", api_key: "" }),
         headers: { "Content-Type": "application/json" },
