@@ -43,5 +43,5 @@ export function rowClickHandlerFoBothQuotes({ openSnackbar, searchText, start, e
 }
 
 export function copyBothQuotesText({ englishQuote, hindiQuote }, { englishFullname, hindiFullname }) {
-    copy(`"${englishQuote}"\n\n― ${englishFullname}\n\n\n"${hindiQuote}"\n\n― ${hindiFullname}`);
+    copy(`"${hindiQuote}"\n\n― ${hindiFullname}\n\n\n"${englishQuote}"\n\n― ${englishFullname}`);
 }
