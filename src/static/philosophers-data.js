@@ -542,7 +542,7 @@ const data = [{
 }, {
     value: "ELON_MUSK",
     displayName: "Elon Musk",
-    fullName: "Elon Reeve Musk",
+    fullName: "Elon Musk",
     fullNameInOtherLanguages: {
         hi: "एलन मस्क"
     }
@@ -601,6 +601,48 @@ const data = [{
     fullName: "Baruch Spinoza",
     fullNameInOtherLanguages: {
         hi: "बारुच स्पिनोज़ा"
+    }
+}, {
+    value: "BUDDHA",
+    displayName: "Buddha",
+    fullName: "Gautam Buddha",
+    fullNameInOtherLanguages: {
+        hi: "गौतम बुद्ध"
+    }
+}, {
+    value: "EPICTETUS",
+    displayName: "Epictetus",
+    fullName: "Epictetus",
+    fullNameInOtherLanguages: {
+        hi: "एपिक्टीटस"
+    }
+}, {
+    value: "HUNTER_THOMPSON",
+    displayName: "Hunter Thompson",
+    fullName: "Hunter Thompson",
+    fullNameInOtherLanguages: {
+        hi: "हंटर थॉम्पसन"
+    }
+}, {
+    value: "OVID",
+    displayName: "Ovid",
+    fullName: "Ovid",
+    fullNameInOtherLanguages: {
+        hi: "ओविड"
+    }
+}, {
+    value: "VIRGIL",
+    displayName: "Virgil",
+    fullName: "Virgil",
+    fullNameInOtherLanguages: {
+        hi: "वर्जिल"
+    }
+}, {
+    value: "BORGES",
+    displayName: "Borges",
+    fullName: "Jorge Luis Borges",
+    fullNameInOtherLanguages: {
+        hi: "जॉर्ज लुइस बोर्गेस"
     }
 }
 ]
