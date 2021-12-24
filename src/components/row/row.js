@@ -2,7 +2,7 @@ import { debounce } from 'lodash';
 import { useSnackbar } from 'react-simple-snackbar';
 import { currentData } from "../../utils/staticDataUtils";
 import { Translate } from '../translate/translate';
-import { devModeSignature, rememberScrollPosition, rowClickHandler } from './utils';
+import { rememberScrollPosition, rowClickHandler } from './utils';
 
 export const Row = ({ data: { searchText, start, end, triggerChange, philosopherFullName, philosopherFullName_i10n }, index, style }) => {
     const [openSnackbar] = useSnackbar()
@@ -14,13 +14,10 @@ export const Row = ({ data: { searchText, start, end, triggerChange, philosopher
     return (
         currentData[index] !== undefined &&
         (<div onMouseMove={debouncedHandler} onTouchStart={debouncedHandler} key={index} className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
-            <span>{quotationText}
-                <button onClick={rowClickHandler.bind(this, { openSnackbar, searchText, start, end, quote: currentData[index], philosopherFullName, index })}>
-                    Copy!{devModeSignature()}
-                </button>
+            <span onClick={rowClickHandler.bind(this, { openSnackbar, searchText, start, end, quote: currentData[index], philosopherFullName, index })}>
+                {quotationText}
             </span>
             <Translate inputText={currentData[index]} {...propsToSend} />
-        </div >
-        )
+        </div >)
     )
 };

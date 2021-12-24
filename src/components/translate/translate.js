@@ -9,10 +9,7 @@ export const Translate = ({ inputText, from = "en", to = "hi", openSnackbar, sea
         (
             translationOutput !== "" && translationOutput !== undefined && translationOutput ?
                 (
-                    < span key={index} > {translationOutput}
-                        < button onClick={rowClickHandler.bind(this, { openSnackbar, searchText, start, end, quote: translationOutput, philosopherFullName: philosopherFullnameIn_SelectedLanguage, index })} >
-                            Copy!{devModeSignature()}
-                        </button >
+                    <span key={index} onClick={rowClickHandler.bind(this, { openSnackbar, searchText, start, end, quote: translationOutput, philosopherFullName: philosopherFullnameIn_SelectedLanguage, index })}> {translationOutput}
                         {adminFeatureKey() ? < button onClick={rowClickHandlerFoBothQuotes.bind(this, { openSnackbar, searchText, start, end, quote: { hindi: translationOutput, english: inputText }, philosopherNames: { englishFullname: philosopherFullName, hindiFullname: philosopherFullnameIn_SelectedLanguage }, index })} >
                             Copy Both!{devModeSignature()}
                         </button > : null}
