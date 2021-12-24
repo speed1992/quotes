@@ -21,9 +21,8 @@ export function rememberScrollPosition(searchText, start, end, index) {
         localStorage.setItem(currentPhilosopher + "-scrollPosition", index)
 }
 
-export function rowClickHandler({ openSnackbar, searchText, start, end, philosopherFullName, quote, index }) {
+export function rowClickHandler({ openSnackbar, philosopherFullName, quote, index }) {
     copyQuoteText(quote, philosopherFullName)
-    rememberScrollPosition(searchText, start, end, index)
     openSnackbar('Copied!', 1000);
 }
 
@@ -35,13 +34,11 @@ export function isAppInDevMode() {
     return process.env.NODE_ENV !== "production"
 }
 
-export function rowClickHandlerFoBothQuotes({ openSnackbar, searchText, start, end, quote: { hindi, english }, philosopherNames: { englishFullname, hindiFullname }, index }) {
+export function rowClickHandlerFoBothQuotes({ openSnackbar, quote: { hindi, english }, philosopherNames: { englishFullname, hindiFullname }, index }) {
     debugger
     copyBothQuotesText({ hindiQuote: hindi, englishQuote: english }, { englishFullname, hindiFullname })
-    rememberScrollPosition(searchText, start, end, index)
     openSnackbar('Copied!', 1000);
 }
 
-export function copyBothQuotesText({ englishQuote, hindiQuote }, { englishFullname, hindiFullname }) {
-    copy(`"${englishQuote}"\n\n― ${englishFullname}\n\n\n"${hindiQuote}"\n\n― ${hindiFullname}`);
-}
+export const copyBothQuotesText = ({ englishQuote, hindiQuote }, { englishFullname, hindiFullname }) =>
+    copy(`"${hindiQuote}"\n\n― ${hindiFullname}\n\n\n"${englishQuote}"\n\n― ${englishFullname}`);
