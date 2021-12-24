@@ -646,7 +646,7 @@ const data = [{
     }
 }, {
     value: "SHAKESPEARE",
-    displayName: "SHAKESPEARE",
+    displayName: "Shakespeare",
     fullName: "William Shakespeare",
     fullNameInOtherLanguages: {
         hi: "विलियम शेक्सपीयर"
