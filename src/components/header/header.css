@@ -1,5 +1,7 @@
 .header{
     max-height: 30vh;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
 }
 
 .column {
@@ -17,8 +19,22 @@
     display: table;
 }
 
+.to{
+    vertical-align: -webkit-baseline-middle;
+}
+
 @media only screen and (max-width: 400px) {
     .wordSearch{
         width: 100px;
+    }
+    .header{
+        margin-top: 2vh;
     }   
+    .column {
+        padding: 0 15px 0 0;
+    }
+    
+    .column:last-child {
+        padding-right: 0;
+    }
 }

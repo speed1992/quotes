@@ -1,27 +1,31 @@
+import { TextField } from "@mui/material";
 import React from "react";
 import "./wordLengthSearch.css";
 
 export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText }) {
     return (
         <>
-            <input
+            <TextField
                 className="smallInput"
-                name="start"
+                id="outlined-number"
+                label="Start"
                 type="number"
+                size="small"
+                name="start"
                 min="1"
                 value={start}
-                onChange={({ target: { value } }) => {
-                    setStart(value)
-                }} />{` to `}
-            <input
+                onChange={({ target: { value } }) => setStart(value)} />
+            <span className="to">{` to `}</span>
+            <TextField
                 className="smallInput"
-                name="end"
+                id="outlined-number"
+                label="End"
                 type="number"
+                size="small"
+                name="end"
                 min="0"
                 value={end}
-                onChange={({ target: { value } }) => {
-                    setEnd(value)
-                }} />
+                onChange={({ target: { value } }) => setEnd(value)} />
         </>
     )
 }

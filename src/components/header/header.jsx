@@ -1,3 +1,4 @@
+import TextField from '@mui/material/TextField';
 import React from "react";
 import OPTIONS from "../../static/philosophers-data";
 import { lazyLoadAllAssets, lazyLoadAsset } from "../../static/utils/utils";
@@ -19,10 +20,7 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                     />
                 </div>
                 <div className="column">
-                    <input className="wordSearch" type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => {
-                        setSearchText(value)
-                    }}
-                    />
+                    <TextField className="wordSearch" id="outlined-search" label="Search" type="search" size="small" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />
                 </div>
                 <div className="column">
                     <Select
