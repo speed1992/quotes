@@ -5,7 +5,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Segoe UI';
+  font-family: 'Segoe UI'!important;
 }
 
 html, body, #root {
