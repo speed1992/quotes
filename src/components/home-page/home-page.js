@@ -35,16 +35,21 @@ export const HomePage = () => {
 
     const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd, setIsFetching, isFetching }
 
+    const renderList = () =>
+        < AutoSizer >
+            {({ height, width }) => (
+                <LazyLoadQuoteList {...propsToSend} width={width} height={height} />
+            )}
+        </AutoSizer>
+
     return (
         <>
             {isFetching ? <Loader /> : (<>
                 <Header {...propsToSend} />
                 <div className="content">
-                    < AutoSizer >
-                        {({ height, width }) => (
-                            <LazyLoadQuoteList {...propsToSend} width={width} height={height} />
-                        )}
-                    </AutoSizer>
+                    {/* {currentData.length > 0 ?  */}
+                    {renderList()}
+                    {/* : <NoSearchResults />} */}
                 </div>
             </>)
             }
