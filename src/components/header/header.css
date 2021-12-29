@@ -37,4 +37,11 @@
     .column:last-child {
         padding-right: 0;
     }
+    .mobile-column {
+        display: block;
+    }
+}
+
+.mobile-column {
+    display:none;
 }
