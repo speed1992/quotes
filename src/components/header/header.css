@@ -25,21 +25,19 @@
 
 @media only screen and (max-width: 400px) {
     .wordSearch{
-        width: 100px;
+        width: 110px;
+        padding-left: 4px;
     }
     .header{
         margin-top: 2vh;
     }   
     .mobile-column {
-        float:left;
-        padding: 0 15px 0 0;
+        padding: 0 25px 0 0;
+        display: inline-block!important;
     }
     
     .mobile-column:last-child {
         padding-right: 0;
-    }
-    .mobile-column {
-        display: inline-block!important;
     }
     .column{
         display: none!important;
