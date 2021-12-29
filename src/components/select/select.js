@@ -19,7 +19,7 @@ const Select = ({ options, onChangeHandler, isMobile }) => {
         else {
             return (
                 currentPhilosopher !== undefined && (
-                    <FormControl size="small" sx={{ minWidth: 100 }}>
+                    <FormControl size="small" sx={{ minWidth: 200 }}>
                         <InputLabel id="demo-simple-select-helper-label">Philosopher</InputLabel>
                         <SelectMUI
                             label="Philosopher"
