@@ -18,12 +18,6 @@ export const Row = ({ data: { searchText, start, end, triggerChange, philosopher
                     {quotationText}
                 </span>
                 <Translate inputText={currentData[index]} {...propsToSend} />
-            </div >) :
-            <div>
-                No search results found.
-                <div>Guidlines:</div>
-                1. Please check spelling of your search text.
-                2. Try searching a smaller and a more generic word.
-            </div>
+            </div >) : null
     )
 };
