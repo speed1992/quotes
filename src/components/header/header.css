@@ -30,15 +30,18 @@
     .header{
         margin-top: 2vh;
     }   
-    .column {
+    .mobile-column {
         padding: 0 15px 0 0;
     }
     
-    .column:last-child {
+    .mobile-column:last-child {
         padding-right: 0;
     }
     .mobile-column {
         display: block;
+    }
+    .column{
+        display: none;
     }
 }
 

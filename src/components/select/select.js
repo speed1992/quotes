@@ -10,7 +10,11 @@ const Select = ({ options, onChangeHandler, isMobile }) => {
 
     const renderSelect = () => {
         if (isMobile) {
-
+            return (
+                <select className="dropDown" onChange={onChangeHandler} value={currentPhilosopher}>
+                    {options && options.map(({ id, displayName, value }) => <option key={id} value={value}>{displayName}</option>)}
+                </select>
+            )
         }
         else {
             return (
@@ -31,7 +35,7 @@ const Select = ({ options, onChangeHandler, isMobile }) => {
         }
     }
 
-
+    return (renderSelect())
 }
 
 export default Select
