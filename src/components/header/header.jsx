@@ -19,14 +19,17 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                         {...propsToSend}
                     />
                 </div>
+                
                 <div className="mobile-column">
                     <WordLengthSearch isMobile={true} vlistRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
                         {...propsToSend}
                     />
                 </div>
+
                 <div className="column">
                     <TextField className="wordSearch" id="outlined-search" label="Search" type="search" size="small" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />
                 </div>
+
                 <div className="mobile-column">
                     <input className="wordSearch" type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
                     />
