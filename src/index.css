@@ -13,6 +13,10 @@ html, body, #root {
   overflow: hidden;
 }
 
+body{
+  margin-top:0
+}
+
 .List {
   border: 1px solid #d9dddd;
 }
@@ -30,6 +34,5 @@ html, body, #root {
 @media only screen and (max-width: 600px) {
   input {
     text-overflow: ellipsis;
-    border-radius: 2px;
   }   
 }

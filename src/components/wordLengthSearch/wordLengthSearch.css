@@ -1,14 +1,11 @@
-/* .smallInput {
-    margin-right: 5px;
-} */
 @media only screen and (min-width: 320px) {
-    .smallInput {
-        width: 25px;
-    }   
+    .mobile-column .smallInput {
+        width: 30px;
+    } 
 }
 
 @media only screen and (min-width: 700px) {
-.smallInput {
-    width: 70px;
-}
+    .smallInput {
+        width: 70px;
+    }
 }
