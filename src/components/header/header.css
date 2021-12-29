@@ -31,6 +31,7 @@
         margin-top: 2vh;
     }   
     .mobile-column {
+        float:left;
         padding: 0 15px 0 0;
     }
     
