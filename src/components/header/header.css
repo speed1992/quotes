@@ -38,10 +38,10 @@
         padding-right: 0;
     }
     .mobile-column {
-        display: block;
+        display: inline-block!important;
     }
     .column{
-        display: none;
+        display: none!important;
     }
 }
 
