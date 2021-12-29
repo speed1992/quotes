@@ -25,14 +25,14 @@
 
 @media only screen and (max-width: 400px) {
     .wordSearch{
-        width: 110px;
+        width: 100px;
         padding-left: 4px;
     }
     .header{
         margin-top: 2vh;
     }   
     .mobile-column {
-        padding: 0 25px 0 0;
+        padding: 0 15px 0 0;
         display: inline-block!important;
     }
     
