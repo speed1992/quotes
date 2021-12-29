@@ -26,10 +26,3 @@ html, body, #root {
 .ListItemEven {
   background-color: #f6f6f6;
 }
-
-@media only screen and (max-width: 600px) {
-  input {
-    text-overflow: ellipsis;
-    border-radius: 2px;
-  }   
-}
