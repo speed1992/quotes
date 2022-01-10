@@ -1,4 +1,4 @@
-# Quotes app
+# Quotes app Under Construction/Maintainence
 
 ## Demo : https://germans.herokuapp.com/
 
