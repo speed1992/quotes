@@ -1,12 +1,10 @@
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import SelectMUI from '@mui/material/Select';
+import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
 import { currentPhilosopher } from "../../utils/staticDataUtils";
 import "./select.css";
 
 const Select = ({ options, onChangeHandler, isMobile }) => {
+    // const newOptions = options.map((option) => option.fullName);
 
     const renderSelect = () => {
         if (isMobile) {
@@ -19,17 +17,16 @@ const Select = ({ options, onChangeHandler, isMobile }) => {
         else {
             return (
                 currentPhilosopher !== undefined && (
-                    <FormControl size="small" sx={{ minWidth: 200 }}>
-                        <InputLabel id="demo-simple-select-helper-label">Philosopher</InputLabel>
-                        <SelectMUI
-                            label="Philosopher"
-                            onChange={onChangeHandler}
-                            value={currentPhilosopher}
-                        >
-                            {options && options.map(({ id, displayName, value }) =>
-                                <MenuItem key={id} value={value}>{displayName}</MenuItem>)}
-                        </SelectMUI>
-                    </FormControl >)
+                    <Autocomplete
+                        onChange={onChangeHandler}
+                        getOptionLabel={(option) => option.fullName}
+                        value={"Nietzsche"}
+                        options={options}
+                        size="small"
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Philosopher" />}
+                    />
+                )
             )
 
         }

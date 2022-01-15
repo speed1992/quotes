@@ -19,7 +19,7 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                         {...propsToSend}
                     />
                 </div>
-                
+
                 <div className="mobile-column">
                     <WordLengthSearch isMobile={true} vlistRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
                         {...propsToSend}
@@ -39,7 +39,9 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                     <Select
                         options={OPTIONS}
                         defaultOption={currentPhilosopher}
-                        onChangeHandler={({ target: { value: philosopher } }) => {
+                        onChangeHandler={(event) => {
+                            debugger;
+                            if (!philosopher && philosopher == undefined) philosopher = OPTIONS[philosopher].value;
                             function callback() {
                                 setCurrentPhilosopher(philosopher);
                                 changeQuotesData(philosopher);
