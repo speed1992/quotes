@@ -651,6 +651,48 @@ const data = [{
     fullNameInOtherLanguages: {
         hi: "विलियम शेक्सपीयर"
     }
+}, {
+    value: "EDGAR_ALLAN_POE",
+    displayName: "Edgar Allan Poe",
+    fullName: "Edgar Allan Poe",
+    fullNameInOtherLanguages: {
+        hi: "एडगर एलन पो"
+    }
+}, {
+    value: "TAGORE",
+    displayName: "Rabindranath Tagore",
+    fullName: "Rabindranath Tagore",
+    fullNameInOtherLanguages: {
+        hi: "रबीन्द्रनाथ टैगोर"
+    }
+}, {
+    value: "JACK_KEROUAC",
+    displayName: "Jack Kerouac",
+    fullName: "Jack Kerouac",
+    fullNameInOtherLanguages: {
+        hi: "जैक केरौअक"
+    }
+}, {
+    value: "FITZGERALD",
+    displayName: "Fitzgerald",
+    fullName: "F. Scott Fitzgerald",
+    fullNameInOtherLanguages: {
+        hi: "एफ. स्कॉट फिट्जरग्राल्ड"
+    }
+}, {
+    value: "COCO_CHANEL",
+    displayName: "Coco Chanel",
+    fullName: "Coco Chanel",
+    fullNameInOtherLanguages: {
+        hi: "कोको शनैल"
+    }
+}, {
+    value: "ANAIS_NIN",
+    displayName: "Anaïs Nin",
+    fullName: "Anaïs Nin",
+    fullNameInOtherLanguages: {
+        hi: "अनाइस निन"
+    }
 }
 ]
 doOperationsOnData(data);
