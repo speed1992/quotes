@@ -1,4 +1,5 @@
 {
+  "homepage": "http://speed1992.github.io/quotes/",
   "name": "quotes-app",
   "version": "0.1.0",
   "private": true,
@@ -9,6 +10,7 @@
     "bottleneck": "^2.19.5",
     "copy-to-clipboard": "^3.3.1",
     "fs": "^0.0.1-security",
+    "gh-pages": "^3.2.3",
     "heroku-client": "^3.1.0",
     "lodash.debounce": "^4.0.8",
     "lodash.isempty": "^4.4.0",
@@ -23,6 +25,8 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build-cache-clear": "node ./clear-cache/updateBuildDate.js && react-scripts build",
     "build": "react-scripts build",
     "start": "REACT_APP_CURRENT_GIT_SHA=`git rev-parse --short HEAD` react-scripts start",
