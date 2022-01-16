@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Segoe UI';
   src: url('fonts/SEGOEUI.TTF')  format('truetype');
-  font-display: swap;
+  font-display: fallback;
 }
 
 * {
