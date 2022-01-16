@@ -1,11 +1,10 @@
 import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
+import { getPhilosopherObjectIndex } from "../../static/utils/utils";
 import { currentPhilosopher } from "../../utils/staticDataUtils";
 import "./select.css";
 
 const Select = ({ options, onChangeHandler, isMobile }) => {
-    // const newOptions = options.map((option) => option.fullName);
-
     const renderSelect = () => {
         if (isMobile) {
             return (
@@ -18,9 +17,10 @@ const Select = ({ options, onChangeHandler, isMobile }) => {
             return (
                 currentPhilosopher !== undefined && (
                     <Autocomplete
+                        disableClearable
                         onChange={onChangeHandler}
                         getOptionLabel={(option) => option.fullName}
-                        value={"Nietzsche"}
+                        value={options[getPhilosopherObjectIndex(currentPhilosopher)]}
                         options={options}
                         size="small"
                         sx={{ width: 300 }}

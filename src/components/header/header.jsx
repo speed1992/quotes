@@ -39,9 +39,8 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                     <Select
                         options={OPTIONS}
                         defaultOption={currentPhilosopher}
-                        onChangeHandler={(event) => {
+                        onChangeHandler={(_, { value: philosopher }) => {
                             debugger;
-                            if (!philosopher && philosopher == undefined) philosopher = OPTIONS[philosopher].value;
                             function callback() {
                                 setCurrentPhilosopher(philosopher);
                                 changeQuotesData(philosopher);
