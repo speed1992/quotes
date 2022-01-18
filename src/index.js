@@ -4,11 +4,11 @@ import { App } from './App';
 import './index.css';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
-// const AppNoCacheOnProdPush = withClearCache(App);
+const AppNoCacheOnProdPush = withClearCache(App);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppNoCacheOnProdPush />
   </React.StrictMode>,
   document.getElementById('root')
 );

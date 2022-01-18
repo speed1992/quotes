@@ -25,7 +25,7 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "npm run build-cache-clear",
     "deploy": "gh-pages -d build",
     "build-cache-clear": "node ./clear-cache/updateBuildDate.js && react-scripts build",
     "build": "react-scripts build",
