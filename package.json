@@ -25,9 +25,9 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "predeploy": "npm run build-cache-clear",
+    "predeploy": "npm run clear-prod-cache",
     "deploy": "gh-pages -d build",
-    "build-cache-clear": "node ./clear-cache/updateBuildDate.js && react-scripts build",
+    "clear-prod-cache": "node ./clear-cache/updateBuildDate.js && react-scripts build",
     "build": "react-scripts build",
     "start": "REACT_APP_CURRENT_GIT_SHA=`git rev-parse --short HEAD` react-scripts start",
     "test": "react-scripts test",
