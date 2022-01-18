@@ -11,7 +11,7 @@ export const doOperationsOnData = (data) => {
     // Sorting except the first element
     const allElement = data.shift();
     if (!sortFeatureDisabled())
-        data.sort((a, b) => a.displayName.localeCompare(b.displayName))
+        data.sort((a, b) => a.fullName.localeCompare(b.fullName))
     data.unshift(allElement);
 
     data.forEach(element => {
