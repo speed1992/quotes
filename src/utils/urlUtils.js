@@ -28,6 +28,14 @@ export function translateFeatureKey() {
     else return false
 }
 
+export function audioFeatureKey() {
+    var query = getQueryParams(document.location.search);
+    let audioValue = query.audio ? query.audio.toLowerCase() : null;
+    if (audioValue === "true" || audioValue)
+        return true
+    else return false
+}
+
 export function adminFeatureKey() {
     var query = getQueryParams(document.location.search);
     let admin = query.admin ? query.admin.toLowerCase() : null;

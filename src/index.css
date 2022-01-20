@@ -31,3 +31,9 @@ body{
 .ListItemEven {
   background-color: #f6f6f6;
 }
+
+.sound-icon{
+  height: auto;
+  width: 25px;
+  cursor:pointer;
+}
