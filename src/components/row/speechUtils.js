@@ -2,29 +2,28 @@ import { currentData } from "../../utils/staticDataUtils";
 
 export async function play(index) {
     var synth = window.speechSynthesis;
-    console.log("synth.speaking", synth.speaking)
-    if (synth.speaking) {
-        console.log("paused")
-        synth.cancel();
+    var isSpeaking = synth.speaking
+    console.log("synth.speaking", isSpeaking)
+    if (isSpeaking) {
+        console.log("synth.speaking")
     }
     else {
         console.log("playing audio")
+        let p = new Promise(resolve => cancel = resolve);
         for (let i = index; i < currentData.length; i++) {
-            await getNextAudio(currentData[i])
+            // if ()
+                await getNextAudio(currentData[i])
         }
     }
-    
-    
+
+
+
     function getNextAudio(message) {
         let audio = new SpeechSynthesisUtterance(message);
         window.speechSynthesis.speak(audio);
-        return new Promise((resolve,reject) => { 
-	    	audio.onend = resolve;
+        return new Promise((resolve, reject) => {
+            audio.onend = resolve;
         });
-  }
-    
-    
-    
-    
+    }
 }
 
