@@ -35,9 +35,11 @@ function withClearCache(Component) {
                         currentVersionDate
                     );
                     if (shouldForceRefresh) {
+                        console.log("Force reload happening")
                         setIsLatestBuildDate(false);
                         refreshCacheAndReload();
                     } else {
+                        console.log("Serving the old version as it is the latest")
                         setIsLatestBuildDate(true);
                     }
                 }).catch((e) => console.log(e));
