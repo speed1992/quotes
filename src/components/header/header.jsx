@@ -1,5 +1,7 @@
+import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import React from "react";
+import translateImage from "../../static/assets/images/translate.png";
 import OPTIONS from "../../static/philosophers-data";
 import { lazyLoadAllAssets, lazyLoadAsset } from "../../static/utils/utils";
 import { currentPhilosopher, setCurrentPhilosopher } from "../../utils/staticDataUtils";
@@ -9,8 +11,10 @@ import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import "./header.css";
 
-export function Header({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching }) {
+
+export function Header({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
+
     return (
         <div className="header">
             <div className="row">
@@ -60,6 +64,7 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
 
                         }} />
                 </div>
+
                 <div className="mobile-column">
                     <Select
                         isMobile={true}
@@ -85,6 +90,17 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
 
                         }} />
                 </div>
+
+                <div className="column">
+                    <span>Translate</span>
+                    <Switch checked={translateKey} onChange={({ target: { checked } }) => setTranslateKey(checked)} />
+                </div>
+
+                <div className="mobile-column">
+                    <span><img className="translate-img" src={translateImage} alt="Toggle to translate" /></span>
+                    <Switch size="small" checked={translateKey} onChange={({ target: { checked } }) => setTranslateKey(checked)} />
+                </div>
+
             </div>
             <div className="row">
                 {searchText !== "" ? <span>Search Results: {searchText}</span> : null}
