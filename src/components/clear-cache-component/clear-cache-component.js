@@ -2,9 +2,15 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import buildDate from '../../static/buildDate.json';
 
+const logDates = (...dates) => {
+    dates.map((date) => console.log(moment(date).format('MMMM Do YYYY, h:mm:ss a')))
+}
+
 const buildDateGreaterThan = (latestDate, currentDate) => {
     const momLatestDateTime = moment(new Date(latestDate));
     const momCurrentDateTime = moment(new Date(currentDate));
+
+    logDates(latestDate, currentDate)
 
     if (momLatestDateTime.isAfter(momCurrentDateTime)) {
         return true;
