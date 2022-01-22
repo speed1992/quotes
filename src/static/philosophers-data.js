@@ -693,6 +693,34 @@ const data = [{
     fullNameInOtherLanguages: {
         hi: "अनाइस निन"
     }
+}, {
+    value: "MAX_STIRNER",
+    displayName: "Max Stirner",
+    fullName: "Max Stirner",
+    fullNameInOtherLanguages: {
+        hi: "मैक्स स्टिरनर"
+    },
+}, {
+    value: "PERICLES",
+    displayName: "Pericles",
+    fullName: "Pericles",
+    fullNameInOtherLanguages: {
+        hi: "पेरिक्लेस"
+    },
+}, {
+    value: "DEMOCRITUS",
+    displayName: "Democritus",
+    fullName: "Democritus",
+    fullNameInOtherLanguages: {
+        hi: "डेमोक्रिटस"
+    },
+}, {
+    value: "ANTON_CHEKHOV",
+    displayName: "Anton Chekhov",
+    fullName: "Anton Chekhov",
+    fullNameInOtherLanguages: {
+        hi: "एंटोन चेखोव"
+    },
 }
 ]
 doOperationsOnData(data);
