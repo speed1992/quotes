@@ -6,7 +6,7 @@ import { Row } from "../row/row";
 import "./quotes-list.css";
 import { getPhilosopherFullName, getPhilosopherFullName_i10n } from "./utils/utils";
 
-function QuotesList({ listRef, width, height, searchText, start, end, triggerChange, translateKey }) {
+function QuotesList({ listRef, width, height, searchText, start, end, triggerChange, translateKey, audio, setAudio }) {
 
     const philosopherFullName = getPhilosopherFullName();
     const philosopherFullName_i10n = getPhilosopherFullName_i10n();
@@ -25,7 +25,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, triggerCha
                 itemSize={600}
                 width={width}
                 ref={listRef}
-                itemData={{ searchText, start, end, triggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }}
+                itemData={{ searchText, start, end, triggerChange, philosopherFullName, philosopherFullName_i10n, translateKey, audio, setAudio }}
             >
                 {Row}
             </List>}

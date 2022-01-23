@@ -19,6 +19,7 @@ export const HomePage = () => {
     const [end, setEnd] = useState("");
     const [isFetching, setIsFetching] = useState(false);
     const [translateKey, setTranslateKey] = useLocalStorage("TRANSLATE", true);
+    const [audio, setAudio] = useState({ isPlaying: true })
 
     useEffect(() => {
         getCurrentPhilosopherFromLocalStorage();
@@ -34,7 +35,7 @@ export const HomePage = () => {
         scrollToFirstRow(listRef)
     }, [start, end, searchText])
 
-    const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey }
+    const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey, audio, setAudio }
 
     const renderList = () =>
         < AutoSizer >
