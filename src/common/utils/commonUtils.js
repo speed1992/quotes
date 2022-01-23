@@ -6,3 +6,5 @@ export const renderAppAccordingToTheEnv = () => {
     const AppNoCacheOnProdPush = withClearCache(App);
     return (isAppInDevMode() ? App : AppNoCacheOnProdPush)
 }
+
+export const isUndefined = (value) => typeof value === 'undefined' 
