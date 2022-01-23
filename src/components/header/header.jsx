@@ -8,8 +8,6 @@ import { scrollToMemorizedRow } from "../../utils/utils";
 import { changeQuotesData } from "../quotes-list/utils/utils";
 import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
-import "./header.css";
-
 
 export function Header({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
