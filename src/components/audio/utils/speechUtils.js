@@ -1,4 +1,4 @@
-import { currentData } from "../../common/utils/staticDataUtils";
+import { currentData } from "../../../common/utils/staticDataUtils";
 
 export function play(index) {
     var synth = window.speechSynthesis;
