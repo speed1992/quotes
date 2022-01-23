@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
 import AutoSizer from "react-virtualized-auto-sizer";
-import { useDidMountEffect } from "../../utils/custom-hooks-utils";
-import { getCurrentPhilosopherFromLocalStorage, useLocalStorage } from "../../utils/localStorageUtils";
-import { combinedSearch } from "../../utils/searchUtils";
-import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
-import { scrollToFirstRow } from "../../utils/utils";
+import { useDidMountEffect } from "../../common/utils/custom-hooks-utils";
+import { getCurrentPhilosopherFromLocalStorage, useLocalStorage } from "../../common/utils/localStorageUtils";
+import { combinedSearch } from "../../common/utils/searchUtils";
+import { currentData, currentPhilosopher } from "../../common/utils/staticDataUtils";
+import { scrollToFirstRow } from "../../common/utils/utils";
 import { Layout } from "../layout/layout";
 import { LazyLoadQuoteList } from "../lazy-load-quote-list/lazy-load-quote-list";
 import { Loader } from "../loader/loader";

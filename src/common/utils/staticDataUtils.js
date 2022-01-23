@@ -1,4 +1,4 @@
-import PHILOSOPHERS_DATA from "../static/philosophers-data";
+import PHILOSOPHERS_DATA from "../../static/philosophers-data";
 
 export let currentPhilosopher;
 

@@ -1,8 +1,8 @@
 import { debounce } from 'lodash';
 import { useSnackbar } from 'react-simple-snackbar';
+import { currentData } from "../../common/utils/staticDataUtils";
+import { audioFeatureKey } from '../../common/utils/urlUtils';
 import soundLogo from "../../static/assets/images/sound.png";
-import { currentData } from "../../utils/staticDataUtils";
-import { audioFeatureKey } from '../../utils/urlUtils';
 import { Translate } from '../translate/translate';
 import { play } from './speechUtils';
 import { evaluateClassNames } from './style-utils';

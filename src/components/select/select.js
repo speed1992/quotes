@@ -1,7 +1,7 @@
 import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
+import { currentPhilosopher } from "../../common/utils/staticDataUtils";
 import { getPhilosopherObjectIndex } from "../../static/utils/utils";
-import { currentPhilosopher } from "../../utils/staticDataUtils";
 import "./select.css";
 
 const Select = ({ options, onChangeHandler, isMobile }) => {

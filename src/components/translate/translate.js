@@ -1,4 +1,4 @@
-import { adminFeatureKey } from "../../utils/urlUtils";
+import { adminFeatureKey } from "../../common/utils/urlUtils";
 import { devModeSignature, rowClickHandler, rowClickHandlerFoBothQuotes } from "../row/utils";
 import { useTranslation } from "./custom-hooks/custom-hooks";
 

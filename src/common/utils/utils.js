@@ -1,4 +1,4 @@
-import { getPhilosopherData } from "../static/utils/utils";
+import { getPhilosopherData } from "../../static/utils/utils";
 import { currentData, currentPhilosopher } from "./staticDataUtils";
 
 export const scrollToFirstRow = (listRef) => {

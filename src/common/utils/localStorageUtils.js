@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { checkIfNull } from "../components/home-page/utils/utils";
+import { checkIfNull } from "../../components/home-page/utils/utils";
 import { setCurrentPhilosopher } from "./staticDataUtils";
 
 export const getCurrentPhilosopherFromLocalStorage = () => {

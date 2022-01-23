@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import { retryTenTimes } from '../../utils/apiUtils';
-import { sortFeatureDisabled } from '../../utils/urlUtils';
+import { retryTenTimes } from '../../common/utils/apiUtils';
+import { sortFeatureDisabled } from '../../common/utils/urlUtils';
 import PHILOSOPHERS_DATA from "../philosophers-data";
 
 export const addPhilosopherNameToQuote = (quote, philosopherFullName) => `${quote} ― ${philosopherFullName}`

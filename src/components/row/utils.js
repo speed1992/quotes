@@ -1,7 +1,7 @@
 
 import copy from 'copy-to-clipboard';
-import { currentPhilosopher } from '../../utils/staticDataUtils';
-import { insert, setCharAt } from '../../utils/stringUtils';
+import { currentPhilosopher } from '../../common/utils/staticDataUtils';
+import { insert, setCharAt } from '../../common/utils/stringUtils';
 
 export function copyQuoteText(quoteText, philosopherFullName) {
     if (philosopherFullName.toLowerCase().trim() === "all") {

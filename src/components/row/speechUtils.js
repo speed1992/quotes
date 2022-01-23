@@ -1,4 +1,4 @@
-import { currentData } from "../../utils/staticDataUtils";
+import { currentData } from "../../common/utils/staticDataUtils";
 
 export async function play(index) {
     var synth = window.speechSynthesis;
@@ -12,7 +12,7 @@ export async function play(index) {
         let p = new Promise(resolve => cancel = resolve);
         for (let i = index; i < currentData.length; i++) {
             // if ()
-                await getNextAudio(currentData[i])
+            await getNextAudio(currentData[i])
         }
     }
 

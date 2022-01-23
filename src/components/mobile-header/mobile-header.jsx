@@ -1,8 +1,8 @@
 import Switch from '@mui/material/Switch';
 import React from "react";
+import { currentPhilosopher } from "../../common/utils/staticDataUtils";
 import translateImage from "../../static/assets/images/translate.png";
 import OPTIONS from "../../static/philosophers-data";
-import { currentPhilosopher } from "../../utils/staticDataUtils";
 import { onPhilosopherSelectChange } from '../desktop-header/utils/utils';
 import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";

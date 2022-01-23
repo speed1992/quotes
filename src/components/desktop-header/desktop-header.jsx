@@ -1,8 +1,8 @@
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import React from "react";
+import { currentPhilosopher } from "../../common/utils/staticDataUtils";
 import OPTIONS from "../../static/philosophers-data";
-import { currentPhilosopher } from "../../utils/staticDataUtils";
 import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import { onPhilosopherSelectChange } from './utils/utils';

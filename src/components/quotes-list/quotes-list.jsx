@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { FixedSizeList as List } from "react-window";
-import { currentData } from "../../utils/staticDataUtils";
-import { scrollToMemorizedRow } from "../../utils/utils";
+import { currentData } from "../../common/utils/staticDataUtils";
+import { scrollToMemorizedRow } from "../../common/utils/utils";
 import { Row } from "../row/row";
 import "./quotes-list.css";
 import { getPhilosopherFullName, getPhilosopherFullName_i10n } from "./utils/utils";

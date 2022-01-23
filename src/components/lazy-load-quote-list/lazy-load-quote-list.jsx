@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { lazyLoadAllAssets, lazyLoadAsset } from "../../static/utils/utils";
-import { currentPhilosopher } from "../../utils/staticDataUtils";
+import { currentPhilosopher } from "../../common/utils/staticDataUtils";
 import { Loader } from "../loader/loader";
 import QuotesList from "../quotes-list/quotes-list";
 import { changeQuotesData } from "../quotes-list/utils/utils";

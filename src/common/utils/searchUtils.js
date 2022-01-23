@@ -1,4 +1,4 @@
-import { changeQuotesData, searchByWordLength } from "../components/quotes-list/utils/utils.js";
+import { changeQuotesData, searchByWordLength } from "../../components/quotes-list/utils/utils.js";
 import { currentPhilosopher } from "./staticDataUtils.js";
 import { search } from "./utils.js";
 
