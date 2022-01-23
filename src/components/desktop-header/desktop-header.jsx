@@ -9,7 +9,6 @@ import { onPhilosopherSelectChange } from './utils/utils';
 
 export function DesktopHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
-    console.log("translateKey", translateKey)
     return (
         <div className="header">
             <div className="row">
@@ -29,7 +28,7 @@ export function DesktopHeader({ listRef, setSearchText, searchText, setTriggerCh
                     />
                 </div>
                 <div className="column">
-                    <span>Translate</span>
+                    <span className='vertically'>Translate</span>
                     <Switch checked={translateKey} onChange={({ target: { checked } }) => setTranslateKey(checked)} />
                 </div>
             </div>
