@@ -18,11 +18,9 @@ export function DesktopHeader({ listRef, setSearchText, searchText, setTriggerCh
                         {...propsToSend}
                     />
                 </div>
-
                 <div className="column">
                     <TextField className="wordSearch" id="outlined-search" label="Search" type="search" size="small" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />
                 </div>
-
                 <div className="column">
                     <Select
                         options={OPTIONS}
@@ -30,14 +28,11 @@ export function DesktopHeader({ listRef, setSearchText, searchText, setTriggerCh
                         onChangeHandler={(_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, triggerChange, listRef, setTriggerChange, setIsFetching, setStart, setEnd, setSearchText })}
                     />
                 </div>
-
                 <div className="column">
                     <span>Translate</span>
                     <Switch checked={translateKey} onChange={({ target: { checked } }) => setTranslateKey(checked)} />
                 </div>
-
             </div>
         </div>
     )
-
 }
