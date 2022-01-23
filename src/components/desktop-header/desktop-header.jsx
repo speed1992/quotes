@@ -9,7 +9,7 @@ import { onPhilosopherSelectChange } from './utils/utils';
 
 export function DesktopHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
-
+    console.log("translateKey", translateKey)
     return (
         <div className="header">
             <div className="row">
