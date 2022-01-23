@@ -2,16 +2,17 @@ import { currentData } from "../../common/utils/staticDataUtils";
 
 export async function play(index) {
     var synth = window.speechSynthesis;
-    var isSpeaking = synth.speaking
+    var isSpeaking = synth.speaking;
+    var stop = false;
     console.log("synth.speaking", isSpeaking)
     if (isSpeaking) {
+        stop = true;
         console.log("synth.speaking")
     }
     else {
         console.log("playing audio")
-        let p = new Promise(resolve => cancel = resolve);
         for (let i = index; i < currentData.length; i++) {
-            // if ()
+            if (stop) break;
             await getNextAudio(currentData[i])
         }
     }
