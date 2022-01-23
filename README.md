@@ -1,4 +1,4 @@
-# Quotes app Under Construction/Maintainence
+# Quotes app
 
 ## Demo : https://speed1992.github.io/quotes/
 
