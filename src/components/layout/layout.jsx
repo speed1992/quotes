@@ -1,12 +1,12 @@
 import React from "react";
-import { Header } from "../header/header";
-import "../header/header.css";
-import { MobileHeader } from "../mobile-header/header";
+import { DesktopHeader } from "../desktop-header/desktop-header";
+import { MobileHeader } from "../mobile-header/mobile-header";
+import "./layout.css";
 
 export const Layout = (props) => (
     <>
         <div className="desktop">
-            <Header {...props} />
+            <DesktopHeader {...props} />
         </div>
         <div className="mobile">
             <MobileHeader {...props} />
