@@ -35,7 +35,6 @@ export function isAppInDevMode() {
 }
 
 export function rowClickHandlerFoBothQuotes({ openSnackbar, quote: { hindi, english }, philosopherNames: { englishFullname, hindiFullname }, index }) {
-    debugger
     copyBothQuotesText({ hindiQuote: hindi, englishQuote: english }, { englishFullname, hindiFullname })
     openSnackbar('Copied!', 1000);
 }

@@ -1,6 +1,6 @@
 import Switch from '@mui/material/Switch';
-import TextField from '@mui/material/TextField';
 import React from "react";
+import translateImage from "../../static/assets/images/translate.png";
 import OPTIONS from "../../static/philosophers-data";
 import { lazyLoadAllAssets, lazyLoadAsset } from "../../static/utils/utils";
 import { currentPhilosopher, setCurrentPhilosopher } from "../../utils/staticDataUtils";
@@ -11,27 +11,30 @@ import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import "./header.css";
 
 
-export function Header({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey }) {
+export function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
 
     return (
         <div className="header">
             <div className="row">
-                <div className="column">
-                    <WordLengthSearch listRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
+
+                <div className="mobile-column">
+                    <WordLengthSearch isMobile={true} vlistRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
                         {...propsToSend}
                     />
                 </div>
 
-                <div className="column">
-                    <TextField className="wordSearch" id="outlined-search" label="Search" type="search" size="small" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />
+                <div className="mobile-column">
+                    <input className="wordSearch" type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
+                    />
                 </div>
 
-                <div className="column">
+                <div className="mobile-column">
                     <Select
+                        isMobile={true}
                         options={OPTIONS}
                         defaultOption={currentPhilosopher}
-                        onChangeHandler={(_, { value: philosopher }) => {
+                        onChangeHandler={({ target: { value: philosopher } }) => {
                             function callback() {
                                 setCurrentPhilosopher(philosopher);
                                 changeQuotesData(philosopher);
@@ -52,9 +55,9 @@ export function Header({ listRef, setSearchText, searchText, setTriggerChange, t
                         }} />
                 </div>
 
-                <div className="column">
-                    <span>Translate</span>
-                    <Switch checked={translateKey} onChange={({ target: { checked } }) => setTranslateKey(checked)} />
+                <div className="mobile-column">
+                    <span><img className="translate-img" src={translateImage} alt="Toggle to translate" /></span>
+                    <Switch size="small" checked={translateKey} onChange={({ target: { checked } }) => setTranslateKey(checked)} />
                 </div>
 
             </div>

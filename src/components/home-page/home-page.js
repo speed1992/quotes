@@ -6,7 +6,7 @@ import { getCurrentPhilosopherFromLocalStorage, useLocalStorage } from "../../ut
 import { combinedSearch } from "../../utils/searchUtils";
 import { currentData, currentPhilosopher } from "../../utils/staticDataUtils";
 import { scrollToFirstRow } from "../../utils/utils";
-import { Header } from "../header/header";
+import { Layout } from "../layout/layout";
 import { LazyLoadQuoteList } from "../lazy-load-quote-list/lazy-load-quote-list";
 import { Loader } from "../loader/loader";
 import "./home-page.css";
@@ -46,7 +46,7 @@ export const HomePage = () => {
     return (
         <>
             {isFetching ? <Loader /> : (<>
-                <Header {...propsToSend} />
+                <Layout {...propsToSend} />
                 <div className="content">
                     {renderList()}
                 </div>

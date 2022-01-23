@@ -35,13 +35,11 @@
         padding: 0 5px 0 0;
         display: inline-block!important;
     }
-    .mobile{
-        display: block!important;
-    }
+    
     .mobile-column:last-child {
         padding-right: 0;
     }
-    .column,.desktop{
+    .column{
         display: none!important;
     }
     .translate-img{
@@ -51,6 +49,6 @@
     }
 }
 
-.mobile-column,.mobile {
+.mobile-column {
     display:none;
 }
