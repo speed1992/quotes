@@ -28,7 +28,7 @@ export function DesktopHeader({ listRef, setSearchText, searchText, setTriggerCh
                     />
                 </div>
                 <div className="column">
-                    <span className='vertically'>Translate</span>
+                    <span className='vertically-middle'>Translate</span>
                     <Switch checked={translateKey} onChange={({ target: { checked } }) => setTranslateKey(checked)} />
                 </div>
             </div>
