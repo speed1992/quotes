@@ -25,25 +25,32 @@
 
 @media only screen and (max-width: 400px) {
     .wordSearch{
-        width: 100px;
+        width: 90px;
         padding-left: 4px;
     }
     .header{
         margin-top: 1vh;
     }   
     .mobile-column {
-        padding: 0 15px 0 0;
+        padding: 0 5px 0 0;
         display: inline-block!important;
     }
-    
+    .mobile{
+        display: block!important;
+    }
     .mobile-column:last-child {
         padding-right: 0;
     }
-    .column{
+    .column,.desktop{
         display: none!important;
+    }
+    .translate-img{
+        height: 20px;
+        width: auto;
+        vertical-align: middle;
     }
 }
 
-.mobile-column {
+.mobile-column,.mobile {
     display:none;
 }

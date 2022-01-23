@@ -1,5 +1,5 @@
 import { App } from "../../App";
-import withClearCache from "../../components/clear-cache-component/clear-cache-component";
+import withClearCache from "../../components/clear-cache/clear-cache";
 import { isAppInDevMode } from "../../components/row/utils";
 
 export const renderAppAccordingToTheEnv = () => {
