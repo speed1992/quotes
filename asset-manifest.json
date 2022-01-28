@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/quotes/static/css/main.ac3f674c.css",
-    "main.js": "/quotes/static/js/main.90cf47d9.js",
+    "main.js": "/quotes/static/js/main.81734d45.js",
     "static/js/8731.be227776.chunk.js": "/quotes/static/js/8731.be227776.chunk.js",
     "static/js/4366.1b6a687f.chunk.js": "/quotes/static/js/4366.1b6a687f.chunk.js",
     "static/js/4950.0f5971f6.chunk.js": "/quotes/static/js/4950.0f5971f6.chunk.js",
@@ -18,6 +18,7 @@
     "static/js/9500.567886d2.chunk.js": "/quotes/static/js/9500.567886d2.chunk.js",
     "static/js/2140.59795d5e.chunk.js": "/quotes/static/js/2140.59795d5e.chunk.js",
     "static/js/9966.aaa3ec34.chunk.js": "/quotes/static/js/9966.aaa3ec34.chunk.js",
+    "static/js/6387.ffde1ad2.chunk.js": "/quotes/static/js/6387.ffde1ad2.chunk.js",
     "static/js/7802.cb724a1e.chunk.js": "/quotes/static/js/7802.cb724a1e.chunk.js",
     "static/js/935.9de1881a.chunk.js": "/quotes/static/js/935.9de1881a.chunk.js",
     "static/js/3441.8b5f6489.chunk.js": "/quotes/static/js/3441.8b5f6489.chunk.js",
@@ -108,10 +109,10 @@
     "service-worker.js": "/quotes/service-worker.js",
     "index.html": "/quotes/index.html",
     "main.ac3f674c.css.map": "/quotes/static/css/main.ac3f674c.css.map",
-    "main.90cf47d9.js.map": "/quotes/static/js/main.90cf47d9.js.map"
+    "main.81734d45.js.map": "/quotes/static/js/main.81734d45.js.map"
   },
   "entrypoints": [
     "static/css/main.ac3f674c.css",
-    "static/js/main.90cf47d9.js"
+    "static/js/main.81734d45.js"
   ]
 }
