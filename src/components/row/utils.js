@@ -34,7 +34,8 @@ export function isAppInDevMode() {
     return process.env.NODE_ENV !== "production"
 }
 
-export function rowClickHandlerFoBothQuotes({ openSnackbar, quote: { hindi, english }, philosopherNames: { englishFullname, hindiFullname }, index }) {
+export function rowClickHandlerFoBothQuotes({ openSnackbar, quote: { hindi, english }, philosopherNames: { englishFullname, hindiFullname }, index }, event) {
+    event.stopPropagation();
     copyBothQuotesText({ hindiQuote: hindi, englishQuote: english }, { englishFullname, hindiFullname })
     openSnackbar('Copied!', 1000);
 }
