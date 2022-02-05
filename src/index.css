@@ -4,22 +4,35 @@
   font-display: fallback;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   font-family: 'Segoe UI'!important;
 }
 
-html, body, #root {
+html{
   height: 100%;
   overflow: hidden;
+  font-size: 62.5%;
+}
+
+.desktop .column *{
+  font-size: 1.6rem!important;
 }
 
 body{
-  margin-top:0
+  height: 100%;
+  overflow: hidden;
+  font-size: 1.6rem;
+}
+
+body{
+  margin-top: 0
 }
 
 .List {
-  border: 1px solid #d9dddd;
+  border: 0.1rem solid #d9dddd;
 }
 
 .ListItemEven, .ListItemOdd {
@@ -34,6 +47,6 @@ body{
 
 .sound-icon{
   height: auto;
-  width: 25px;
+  width: 2.5rem;
   cursor:pointer;
 }

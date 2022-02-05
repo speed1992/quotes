@@ -1,11 +1,11 @@
 @media only screen and (min-width: 320px) {
     .mobile-column .smallInput {
-        width: 23px;
+        width: 2.3rem;
     } 
 }
 
 @media only screen and (min-width: 700px) {
     .smallInput {
-        width: 70px;
+        width: 7rem;
     }
 }
