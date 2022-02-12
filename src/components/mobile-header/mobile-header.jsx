@@ -7,7 +7,7 @@ import { onPhilosopherSelectChange } from '../desktop-header/utils/utils';
 import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 
-export function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey }) {
+function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
 
     return (
@@ -32,10 +32,15 @@ export function MobileHeader({ listRef, setSearchText, searchText, setTriggerCha
                 </div>
                 <div className="mobile-column">
                     <span><img className="translate-img" src={translateImage} alt="Toggle to translate" /></span>
-                    <Switch size="small" checked={translateKey} onChange={({ target: { checked } }) => setTranslateKey(checked)} />
+                    <Switch size="small" checked={translateKey} onChange={({ target: { checked } }) => {
+                        setTranslateKey(checked);
+                        setTriggerChange(!triggerChange);
+                    }} />
                 </div>
 
             </div>
         </div>
     )
 }
+
+export default MobileHeader;

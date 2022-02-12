@@ -7,7 +7,7 @@ import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import { onPhilosopherSelectChange } from './utils/utils';
 
-export function DesktopHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey }) {
+function DesktopHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
     return (
         <div className="header">
@@ -29,9 +29,14 @@ export function DesktopHeader({ listRef, setSearchText, searchText, setTriggerCh
                 </div>
                 <div className="column">
                     <span className='vertically'>Translate</span>
-                    <Switch checked={translateKey} onChange={({ target: { checked } }) => setTranslateKey(checked)} />
+                    <Switch checked={translateKey} onChange={({ target: { checked } }) => {
+                        setTranslateKey(checked)
+                        setTriggerChange(!triggerChange);
+                    }} />
                 </div>
             </div>
         </div>
     )
 }
+
+export default DesktopHeader;
