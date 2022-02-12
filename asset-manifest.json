@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/quotes/static/css/main.d70ffa6e.css",
-    "main.js": "/quotes/static/js/main.c76b9e4b.js",
+    "main.css": "/quotes/static/css/main.fce69a3d.css",
+    "main.js": "/quotes/static/js/main.901b92c7.js",
     "static/js/8731.be227776.chunk.js": "/quotes/static/js/8731.be227776.chunk.js",
     "static/js/4366.1b6a687f.chunk.js": "/quotes/static/js/4366.1b6a687f.chunk.js",
     "static/js/4950.0f5971f6.chunk.js": "/quotes/static/js/4950.0f5971f6.chunk.js",
@@ -113,8 +113,8 @@
     "static/media/SEGOEUI.TTF": "/quotes/static/media/SEGOEUI.904177516a6c6c681d51.TTF",
     "service-worker.js": "/quotes/service-worker.js",
     "index.html": "/quotes/index.html",
-    "main.d70ffa6e.css.map": "/quotes/static/css/main.d70ffa6e.css.map",
-    "main.c76b9e4b.js.map": "/quotes/static/js/main.c76b9e4b.js.map",
+    "main.fce69a3d.css.map": "/quotes/static/css/main.fce69a3d.css.map",
+    "main.901b92c7.js.map": "/quotes/static/js/main.901b92c7.js.map",
     "107.468f8c5d.chunk.css.map": "/quotes/static/css/107.468f8c5d.chunk.css.map",
     "107.0da24b44.chunk.js.map": "/quotes/static/js/107.0da24b44.chunk.js.map",
     "2188.468f8c5d.chunk.css.map": "/quotes/static/css/2188.468f8c5d.chunk.css.map",
@@ -122,7 +122,7 @@
     "4989.b59970eb.chunk.js.map": "/quotes/static/js/4989.b59970eb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d70ffa6e.css",
-    "static/js/main.c76b9e4b.js"
+    "static/css/main.fce69a3d.css",
+    "static/js/main.901b92c7.js"
   ]
 }
