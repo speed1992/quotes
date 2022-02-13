@@ -2,19 +2,15 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import buildDate from '../../static/buildDate.json';
 
-const logDates = (dates) => {
-    for (var key in dates) {
-        if (dates.hasOwnProperty(key)) {
-            console.log(key, moment(dates[key]).format('MMMM Do YYYY, h:mm:ss a'));
-        }
-    }
+const logDates = (...dates) => {
+    dates.map((date) => console.log(moment(date).format('MMMM Do YYYY, h:mm:ss a')))
 }
 
 const buildDateGreaterThan = (latestDate, currentDate) => {
     const momLatestDateTime = moment(new Date(latestDate));
     const momCurrentDateTime = moment(new Date(currentDate));
 
-    logDates({ latestVersion: latestDate, prevVersion: currentDate })
+    logDates(latestDate, currentDate)
 
     if (momLatestDateTime.isAfter(momCurrentDateTime)) {
         return true;
