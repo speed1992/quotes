@@ -1,24 +1,16 @@
-import React, { Suspense } from "react";
-import { useCheckMobileScreen } from "../../common/utils/custom-hooks-utils";
+import React from "react";
+import DesktopHeader from "../desktop-header/desktop-header";
+import MobileHeader from "../mobile-header/mobile-header";
 import "./layout.css";
 
-export const Layout = (props) => {
-    const isMobile = useCheckMobileScreen();
+export const Layout = (props) => (
+    <>
+        <div className="desktop">
+            <DesktopHeader {...props} />
+        </div>
+        <div className="mobile">
+            <MobileHeader {...props} />
+        </div>
 
-    const renderLayout = () => {
-        if (isMobile) {
-            const MobileHeader = React.lazy(() => import('../mobile-header/mobile-header'));
-            return (<div className="mobile"><MobileHeader {...props} /></div>)
-        }
-        else {
-            const DesktopHeader = React.lazy(() => import('../desktop-header/desktop-header'));
-            return (<div className="desktop"><DesktopHeader {...props} /> </div>)
-        }
-    }
-
-    return (
-        <Suspense fallback={""}>
-            {renderLayout()}
-        </Suspense>
-    )
-}
+    </>
+)
