@@ -23,7 +23,7 @@ export const doOperationsOnData = (data) => {
 export const lazyLoadAsset = (philosopherName, callback) => {
     return new Promise((resolve, reject) => {
         const fileName = philosopherName.toLowerCase()
-        retryTenTimes(() => import("../assets/" + fileName + ".json"))
+        retryTenTimes(() => import("../assets/quotes/" + fileName + ".json"))
             .then((data) => {
                 callback && callback();
                 addPhilosopherInGlobalData(philosopherName, data?.default)
@@ -39,7 +39,7 @@ export const lazyLoadAllAssets = (callback) => {
         PHILOSOPHERS_DATA.forEach(({ value: philosopherName, fullName: philosopherFullName }) => {
             if (philosopherName !== "ALL") {
                 const fileName = philosopherName.toLowerCase()
-                const promise = retryTenTimes(() => import("../assets/" + fileName + ".json"))
+                const promise = retryTenTimes(() => import("../assets/quotes/" + fileName + ".json"))
                     .then((data) => {
                         callback && callback();
                         const convertedQuotes = convertQuoteArray(data?.default, philosopherFullName)
