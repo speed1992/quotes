@@ -41,4 +41,4 @@ export const search = (searchText) => {
     return filteredQuotes;
 }
 
-export const isMobile = () => ((window.innerWidth <= 800) && (window.innerHeight <= 600))
+export const isMobile = () => (window.innerWidth <= 600)

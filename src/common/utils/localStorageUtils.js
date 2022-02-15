@@ -7,9 +7,7 @@ export const getCurrentPhilosopherFromLocalStorage = () => {
         let lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher');
         if (checkIfNull(lastReadPhilosopher)) lastReadPhilosopher = "NIETZSCHE";
         setCurrentPhilosopher(lastReadPhilosopher);
-    } catch (e) {
-
-    }
+    } catch (e) { }
 }
 
 function getStorageValue(key, defaultValue) {
