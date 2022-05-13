@@ -57,7 +57,7 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
 
     return (
         <OutsideAlerter callback={() => setSuggestions([])}>
-            <div className="TypeAheadDropDown dropDown">
+            <div className="TypeAheadDropDown">
                 <input type="text"
                     onFocus={onFocusHandler}
                     onChange={onTextChange}

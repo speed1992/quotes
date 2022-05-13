@@ -4,15 +4,31 @@
 }
  */
 .TypeAheadDropDown{
+    max-width: 10.9rem;
     position: relative!important;
     z-index: 9999999999999999;
 }
+
 .TypeAheadDropDown input{
     width: 100%;
-    padding:1.5px 2px;
-    border: 1px solid #333;
+    padding: 0.1rem;
+    padding-left: 0.4rem;
+    padding-right: 1.7rem;
     outline: none;
-    border-radius: 2px;
+}
+
+.TypeAheadDropDown::after{
+    transform: rotate(45deg);
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    pointer-events: none;
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 5px);
+    right: 6px;
+    width: 7px;
+    height: 7px;
 }
 
 .TypeAheadDropDown ul{
