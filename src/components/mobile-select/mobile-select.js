@@ -17,7 +17,7 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
         let suggestions = [];
         const value = e.target.value;
         if (value.length > 0) {
-            const regex = new RegExp(`^${value}`, `i`);
+            const regex = new RegExp(`${value}`, `i`);
             suggestions = options.filter(({ fullName }) => regex.test(fullName));
         }
 
