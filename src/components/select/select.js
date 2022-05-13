@@ -1,16 +1,27 @@
 import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
 import { currentPhilosopher } from "../../common/utils/staticDataUtils";
-import { getPhilosopherObjectIndex } from "../../static/utils/utils";
+import { adminFeatureKey } from "../../common/utils/urlUtils";
+import { getCurrentPhilosopherFullname, getPhilosopherObjectIndex } from "../../static/utils/utils";
+import MobileSelect from "../mobile-select/mobile-select";
 import "./select.css";
 
 const Select = ({ options, onChangeHandler, isMobile }) => {
     const renderSelect = () => {
         if (isMobile) {
             return (
-                <select className="dropDown" onChange={onChangeHandler} value={currentPhilosopher}>
-                    {options && options.map(({ id, fullName, value }) => <option key={id} value={value}>{fullName}</option>)}
-                </select>
+                <>
+                    {adminFeatureKey() ?
+                        <MobileSelect
+                            onChangeHandler={onChangeHandler}
+                            value={getCurrentPhilosopherFullname()}
+                            placeholder={"Search philosopher"}
+                            options={options} />
+                        :
+                        <select className="dropDown" onChange={onChangeHandler} value={currentPhilosopher}>
+                            {options && options.map(({ id, fullName, value }) => <option key={id} value={value}>{fullName}</option>)}
+                        </select>}
+                </>
             )
         }
         else {

@@ -20,14 +20,6 @@ export function sortFeatureDisabled() {
     else return false
 }
 
-export function translateFeatureKey() {
-    var query = getQueryParams(document.location.search);
-    let translateValue = query.translate ? query.translate.toLowerCase() : null;
-    if (translateValue === "true" || translateValue)
-        return true
-    else return false
-}
-
 export function audioFeatureKey() {
     var query = getQueryParams(document.location.search);
     let audioValue = query.audio ? query.audio.toLowerCase() : null;
