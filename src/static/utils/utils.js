@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { retryTenTimes } from '../../common/utils/apiUtils';
+import { currentPhilosopher } from '../../common/utils/staticDataUtils';
 import { sortFeatureDisabled } from '../../common/utils/urlUtils';
 import PHILOSOPHERS_DATA from "../philosophers-data";
 
@@ -18,6 +19,23 @@ export const doOperationsOnData = (data) => {
         element.id = uuidv4()
     });
     return data
+}
+
+export const addPhilosopherInGlobalData = (philosopherName, quotes) => {
+    if (philosopherName.trim().toLowerCase() === "all") {
+        const index = getPhilosopherObjectIndex(philosopherName);
+        let existingQuotes;
+        if (PHILOSOPHERS_DATA[index].quotes === undefined)
+            existingQuotes = [];
+        else {
+            existingQuotes = PHILOSOPHERS_DATA[index].quotes
+        }
+        PHILOSOPHERS_DATA[index].quotes = [...existingQuotes, ...quotes]
+    } else {
+        const index = getPhilosopherObjectIndex(philosopherName);
+        PHILOSOPHERS_DATA[index].quotes = quotes;
+    }
+
 }
 
 export const lazyLoadAsset = (philosopherName, callback) => {
@@ -59,19 +77,8 @@ export const getPhilosopherObjectIndex = (philosopherName) => PHILOSOPHERS_DATA.
 
 export const getPhilosopherData = (philosopherName) => PHILOSOPHERS_DATA.filter(({ value }) => value === philosopherName)[0]
 
-export const addPhilosopherInGlobalData = (philosopherName, quotes) => {
-    if (philosopherName.trim().toLowerCase() === "all") {
-        const index = getPhilosopherObjectIndex(philosopherName);
-        let existingQuotes;
-        if (PHILOSOPHERS_DATA[index].quotes === undefined)
-            existingQuotes = [];
-        else {
-            existingQuotes = PHILOSOPHERS_DATA[index].quotes
-        }
-        PHILOSOPHERS_DATA[index].quotes = [...existingQuotes, ...quotes]
-    } else {
-        const index = getPhilosopherObjectIndex(philosopherName);
-        PHILOSOPHERS_DATA[index].quotes = quotes;
-    }
 
+export const getCurrentPhilosopherFullname = () => {
+    const currentPhilosopherData = PHILOSOPHERS_DATA[getPhilosopherObjectIndex(currentPhilosopher)]
+    return currentPhilosopherData.fullName;
 }

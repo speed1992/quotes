@@ -1,7 +1,7 @@
 import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
 import { currentPhilosopher } from "../../common/utils/staticDataUtils";
-import { getPhilosopherObjectIndex } from "../../static/utils/utils";
+import { getCurrentPhilosopherFullname, getPhilosopherObjectIndex } from "../../static/utils/utils";
 import MobileSelect from "../mobile-select/mobile-select";
 import "./select.css";
 
@@ -10,10 +10,18 @@ const Select = ({ options, onChangeHandler, isMobile }) => {
         if (isMobile) {
             return (
                 <>
-                    <MobileSelect onChange={onChangeHandler} value={currentPhilosopher} items={options} />
+                    <MobileSelect
+                        onChangeHandler={onChangeHandler}
+                        value={getCurrentPhilosopherFullname()}
+                        placeholder={"Search philosopher"}
+                        options={options} />
+
+                    {
+                    /* 
+                        @Todo : Remove this code after development of mobile-select
                     <select className="dropDown" onChange={onChangeHandler} value={currentPhilosopher}>
                         {options && options.map(({ id, fullName, value }) => <option key={id} value={value}>{fullName}</option>)}
-                    </select>
+                    </select> */}
                 </>
             )
         }
