@@ -35,3 +35,11 @@ export function adminFeatureKey() {
         return true
     else return false
 }
+
+export function newSelectFeatureKey() {
+    var query = getQueryParams(document.location.search);
+    let newSelect = query.newSelect ? query.newSelect.toLowerCase() : null;
+    if (newSelect === "true" || newSelect)
+        return true
+    else return false
+}

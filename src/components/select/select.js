@@ -1,7 +1,7 @@
 import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
 import { currentPhilosopher } from "../../common/utils/staticDataUtils";
-import { adminFeatureKey } from "../../common/utils/urlUtils";
+import { newSelectFeatureKey } from "../../common/utils/urlUtils";
 import { getCurrentPhilosopherFullname, getPhilosopherObjectIndex } from "../../static/utils/utils";
 import MobileSelect from "../mobile-select/mobile-select";
 import "./select.css";
@@ -11,7 +11,7 @@ const Select = ({ options, onChangeHandler, isMobile }) => {
         if (isMobile) {
             return (
                 <>
-                    {adminFeatureKey() ?
+                    {newSelectFeatureKey() ?
                         <MobileSelect
                             onChangeHandler={onChangeHandler}
                             value={getCurrentPhilosopherFullname()}
