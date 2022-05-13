@@ -2,7 +2,9 @@ import { debounce } from 'lodash';
 import { useSnackbar } from 'react-simple-snackbar';
 import { isUndefined } from '../../common/utils/commonUtils';
 import { currentData } from "../../common/utils/staticDataUtils";
+import { audioFeatureKey, quoteImageFeatureKey } from '../../common/utils/urlUtils';
 import { Audio } from '../audio/audio';
+import { GenerateQuoteImage } from '../generate-quote-image/generateQuoteImage';
 import { Translate } from '../translate/translate';
 import { evaluateClassNames } from './style-utils';
 import { rememberScrollPosition, rowClickHandler } from './utils';
@@ -16,12 +18,13 @@ export const Row = ({ data: { searchText, start, end, triggerChange, philosopher
 
     if (!isUndefined(currentData[index]))
         return (
-            <div onMouseMove={debouncedHandler} onTouchStart={debouncedHandler} key={index} className={evaluateClassNames(index)} style={style}>
+            <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler} >
                 <span onClick={rowClickHandler.bind(this, { quote: currentData[index], ...propsToSend })}>
                     {quotationText}
                 </span>
                 {translateKey ? <Translate inputText={currentData[index]} {...propsToSend} /> : null}
-                <Audio index={index} />
+                {audioFeatureKey() ? <Audio index={index} /> : null}
+                {quoteImageFeatureKey() ? <GenerateQuoteImage quotationText={quotationText} philosopherFullName={philosopherFullName} /> : null}
             </div >
         )
 };

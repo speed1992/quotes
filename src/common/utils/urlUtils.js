@@ -43,3 +43,11 @@ export function newSelectFeatureKey() {
         return true
     else return false
 }
+
+export function quoteImageFeatureKey() {
+    var query = getQueryParams(document.location.search);
+    let quoteImage = query.quoteImage ? query.quoteImage.toLowerCase() : null;
+    if (quoteImage === "true" || quoteImage)
+        return true
+    else return false
+}
