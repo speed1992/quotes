@@ -14,14 +14,17 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
     }
 
     const onTextChange = (e) => {
-        let suggestions = [];
         const value = e.target.value;
-        if (value.length > 0) {
-            const regex = new RegExp(`${value}`, `i`);
-            suggestions = options.filter(({ fullName }) => regex.test(fullName));
-        }
+        if (value === "") setSuggestions(options)
+        else {
+            let suggestions = [];
+            if (value.length > 0) {
+                const regex = new RegExp(`${value}`, `i`);
+                suggestions = options.filter(({ fullName }) => regex.test(fullName));
+            }
 
-        setSuggestions(suggestions);
+            setSuggestions(suggestions);
+        }
         setSearchText(value);
     }
 
