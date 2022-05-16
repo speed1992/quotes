@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useSnackbar } from 'react-simple-snackbar';
 import { isUndefined } from '../../common/utils/commonUtils';
 import { currentData } from "../../common/utils/staticDataUtils";
-import { audioFeatureKey, quoteImageFeatureKey } from '../../common/utils/urlUtils';
+import { audioFeatureKey } from '../../common/utils/urlUtils';
 import { Audio } from '../audio/audio';
 import { GenerateQuoteImage } from '../generate-quote-image/generateQuoteImage';
 import { Translate } from '../translate/translate';
@@ -29,7 +29,9 @@ export const Row = ({ data: { searchText, start, end, triggerChange, philosopher
                 </span>
                 {translateKey ? <Translate inputText={currentData[index]} {...propsToSend} /> : null}
                 {audioFeatureKey() ? <Audio index={index} /> : null}
-                {quoteImageFeatureKey() ? < GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} /> : null}
+                {/* {quoteImageFeatureKey() ?  */}
+                < GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
+                {/* : null} */}
             </div >
         )
 };
