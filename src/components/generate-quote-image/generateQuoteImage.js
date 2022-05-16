@@ -2,12 +2,17 @@ import download from 'downloadjs';
 import * as htmlToImage from 'html-to-image';
 import React from 'react';
 
-export const GenerateQuoteImage = ({ quoteRef, quotationText, philosopherFullName }) => {
+export const GenerateQuoteImage = ({ quoteRef }) => {
 
     const onClickHandler = () => {
-        htmlToImage.toPng(quoteRef.current)
+        htmlToImage.toJpeg(
+            quoteRef.current,
+            {
+                quality: 1,
+                style: { background: "white" },
+            })
             .then(function (dataUrl) {
-                download(dataUrl, 'quote.png');
+                download(dataUrl, 'quote.jpg');
             });
     }
 
