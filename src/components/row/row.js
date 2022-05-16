@@ -13,7 +13,7 @@ import { rememberScrollPosition, rowClickHandler } from './utils';
 export const Row = ({ data: { searchText, start, end, triggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }, index, style }) => {
     const quoteRef = useRef();
     const [openSnackbar] = useSnackbar()
-    const quotationText = `${index + 1}. ${currentData[index]}`;
+    const quotationText = currentData[index];
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
 
     const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index), 100)
@@ -21,6 +21,7 @@ export const Row = ({ data: { searchText, start, end, triggerChange, philosopher
     if (!isUndefined(currentData[index]))
         return (
             <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler} >
+                <span>{index + 1}</span>
                 <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: currentData[index], ...propsToSend })}>
                     "{quotationText}"
 

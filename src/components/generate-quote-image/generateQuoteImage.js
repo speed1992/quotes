@@ -5,9 +5,9 @@ import React from 'react';
 export const GenerateQuoteImage = ({ quoteRef, quotationText, philosopherFullName }) => {
 
     const onClickHandler = () => {
-        htmlToImage.toJpeg(quoteRef.current)
+        htmlToImage.toPng(quoteRef.current)
             .then(function (dataUrl) {
-                download(dataUrl, 'quote.jpg');
+                download(dataUrl, 'quote.png');
             });
     }
 
