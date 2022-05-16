@@ -1,25 +1,14 @@
-import html2canvas from 'html2canvas';
+import download from 'downloadjs';
+import * as htmlToImage from 'html-to-image';
 import React from 'react';
 
-export const GenerateQuoteImage = ({ quotationText, philosopherFullName }) => {
+export const GenerateQuoteImage = ({ quoteRef, quotationText, philosopherFullName }) => {
 
-    const onClickHandler = async () => {
-        const element = <><div>{quotationText}</div><div>{philosopherFullName}</div></>;
-        const canvas = await html2canvas(element);
-
-        const data = canvas.toDataURL('image/jpg');
-        const link = document.createElement('a');
-
-        if (typeof link.download === 'string') {
-            link.href = data;
-            link.download = 'image.jpg';
-
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        } else {
-            window.open(data);
-        }
+    const onClickHandler = () => {
+        htmlToImage.toJpeg(quoteRef.current)
+            .then(function (dataUrl) {
+                download(dataUrl, 'quote.jpg');
+            });
     }
 
     return (
