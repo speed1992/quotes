@@ -22,7 +22,9 @@ export const Row = ({ data: { searchText, start, end, triggerChange, philosopher
         return (
             <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler} >
                 <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: currentData[index], ...propsToSend })}>
-                    {quotationText} ― {philosopherFullName}
+                    "{quotationText}"
+
+                    ― {philosopherFullName}
                 </span>
                 {translateKey ? <Translate inputText={currentData[index]} {...propsToSend} /> : null}
                 {audioFeatureKey() ? <Audio index={index} /> : null}
