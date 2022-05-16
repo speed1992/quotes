@@ -1,12 +1,7 @@
-/* .TypeAheadDropDown{
-     position: relative;
-     z-index: 99999;
-}
- */
 .TypeAheadDropDown{
     max-width: 10.9rem;
     position: relative!important;
-    z-index: 9999999999999999;
+    z-index: 2;
 }
 
 .TypeAheadDropDown input{
