@@ -6,6 +6,7 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
     const [suggestions, setSuggestions] = useState([]);
     const [searchText, setSearchText] = useState([]);
 
+    // eslint-disable-next-line
     useEffect(() => setSearchText(value), []);
 
     const onFocusHandler = (e) => {

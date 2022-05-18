@@ -36,18 +36,10 @@ export function adminFeatureKey() {
     else return false
 }
 
-export function newSelectFeatureKey() {
+export function readFeatureKey() {
     var query = getQueryParams(document.location.search);
-    let newSelect = query.newSelect ? query.newSelect.toLowerCase() : null;
-    if (newSelect === "true" || newSelect)
-        return true
-    else return false
-}
-
-export function quoteImageFeatureKey() {
-    var query = getQueryParams(document.location.search);
-    let quoteImage = query.quoteImage ? query.quoteImage.toLowerCase() : null;
-    if (quoteImage === "true" || quoteImage)
+    let read = query.read ? query.read.toLowerCase() : null;
+    if (read === "true" || read)
         return true
     else return false
 }

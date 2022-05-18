@@ -10,14 +10,19 @@ export const getCurrentPhilosopherFromLocalStorage = () => {
     } catch (e) { }
 }
 
-function getStorageValue(key, defaultValue) {
-    // getting stored value
+export function getStorageValue(key, defaultValue) {
     const saved = localStorage.getItem(key);
     const initial = JSON.parse(saved);
-    if (initial === undefined || initial === "undefined" || initial === "null" || initial === null)
+    if (initial === undefined || initial === "undefined" || initial === "null" || initial === null) {
+        setStorageValue(defaultValue);
         return defaultValue;
+    }
     else
         return initial;
+}
+
+export function setStorageValue(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
 }
 
 export const useLocalStorage = (key, defaultValue) => {
@@ -26,7 +31,6 @@ export const useLocalStorage = (key, defaultValue) => {
     });
 
     useEffect(() => {
-        // storing input name
         localStorage.setItem(key, JSON.stringify(value));
     }, [key, value]);
 
