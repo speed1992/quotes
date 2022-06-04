@@ -11,27 +11,39 @@ import { Translate } from '../translate/translate';
 import { evaluateClassNames } from './style-utils';
 import { rememberScrollPosition, rowClickHandler } from './utils';
 
-export const Row = ({ data: { searchText, start, end, triggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }, index, style }) => {
+export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }, index, style }) => {
     const quoteRef = useRef();
     const [openSnackbar] = useSnackbar()
     const quotationText = currentData[index];
-    const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
 
-    const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index), 100)
+    if (typeof quotationText !== "object") {
 
-    if (!isUndefined(currentData[index]))
-        return (
-            <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler} >
-                {/* <span>{index + 1}.</span> */}
-                <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: currentData[index], ...propsToSend })}>
-                    "{quotationText}"
+        const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
 
-                    ― {philosopherFullName}
-                </span>
-                {translateKey ? <Translate inputText={currentData[index]} {...propsToSend} /> : null}
-                {audioFeatureKey() ? <Audio index={index} /> : null}
-                <GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
-                {readFeatureKey() ? <MarkAsRead index={index} /> : null}
-            </div >
-        )
+        const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index), 100)
+
+        if (!isUndefined(quotationText))
+            return (
+                <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler} >
+                    <span>{index + 1}.</span>
+                    <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: currentData[index], ...propsToSend })}>
+                        "{quotationText}"
+
+                        ― {philosopherFullName}
+                    </span>
+
+                    {translateKey ? <Translate inputText={currentData[index]} {...propsToSend} /> : null}
+                    {audioFeatureKey() ? <Audio index={index} /> : null}
+                    <GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
+                    {readFeatureKey() ?
+
+                        <MarkAsRead index={index} setTriggerChange={setTriggerChange} />
+
+                        : null}
+                </div >
+            )
+    }
+    else {
+        return null
+    }
 };

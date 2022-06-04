@@ -1,15 +1,14 @@
-import { getStorageValue, setStorageValue } from "../../common/utils/localStorageUtils";
-import { READ_ARRAY_LOCALSTORAGE_KEY } from "./constants";
+import { getReadArrayFromLocalStorage, setReadArrayFromLocalStorage } from "../../common/utils/localStorageUtils";
+import { removeReadData } from "../../common/utils/staticDataUtils";
 
-export const MarkAsRead = ({ index }) => {
-    let readQuotesArr = getStorageValue(READ_ARRAY_LOCALSTORAGE_KEY, []);
+export const MarkAsRead = ({ index, setTriggerChange }) => {
+    var readQuotesArr = getReadArrayFromLocalStorage();
 
     const clickHandler = () => {
-        readQuotesArr.push(index);
-        readQuotesArr = [...new Set(readQuotesArr)];
-        setStorageValue(READ_ARRAY_LOCALSTORAGE_KEY, readQuotesArr);
-        
+        setReadArrayFromLocalStorage(readQuotesArr, index)
+        removeReadData(setTriggerChange);
     }
 
     return (<button onClick={clickHandler}>Mark as Read</button>)
 }
+

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { checkIfNull } from "../../components/home-page/utils/utils";
-import { setCurrentPhilosopher } from "./staticDataUtils";
+import { currentPhilosopher, setCurrentPhilosopher } from "./staticDataUtils";
 
 export const getCurrentPhilosopherFromLocalStorage = () => {
     try {
@@ -14,7 +14,7 @@ export function getStorageValue(key, defaultValue) {
     const saved = localStorage.getItem(key);
     const initial = JSON.parse(saved);
     if (initial === undefined || initial === "undefined" || initial === "null" || initial === null) {
-        setStorageValue(defaultValue);
+        setStorageValue(key, defaultValue);
         return defaultValue;
     }
     else
@@ -36,3 +36,15 @@ export const useLocalStorage = (key, defaultValue) => {
 
     return [value, setValue];
 };
+
+export function getReadArrayFromLocalStorage() {
+    const READ_ARRAY_LOCALSTORAGE_KEY = `${currentPhilosopher}-MARKED_AS_READ`;
+    return getStorageValue(READ_ARRAY_LOCALSTORAGE_KEY, []);
+}
+
+export function setReadArrayFromLocalStorage(readQuotesArr, index) {
+    const READ_ARRAY_LOCALSTORAGE_KEY = `${currentPhilosopher}-MARKED_AS_READ`;
+    readQuotesArr.push(index);
+    readQuotesArr = [...new Set(readQuotesArr)];
+    setStorageValue(READ_ARRAY_LOCALSTORAGE_KEY, readQuotesArr);
+}

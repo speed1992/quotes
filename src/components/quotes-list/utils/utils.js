@@ -1,11 +1,14 @@
 import { isEmpty } from "lodash";
-import { changeData, currentPhilosopher } from "../../../common/utils/staticDataUtils";
+import { changeData, currentPhilosopher, removeReadData } from "../../../common/utils/staticDataUtils";
+import { readFeatureKey } from "../../../common/utils/urlUtils";
 import OPTIONS from "../../../static/philosophers-data";
 import { getPhilosopherData } from "../../../static/utils/utils";
 
 export const changeQuotesData = (philosopherName) => {
     const { quotes } = getPhilosopherData(philosopherName)
     changeData(quotes)
+    if (readFeatureKey())
+        removeReadData();
 }
 
 export const getPhilosopherFullName = () => {
