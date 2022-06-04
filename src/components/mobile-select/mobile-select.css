@@ -42,8 +42,8 @@
 .TypeAheadDropDown li{
     background-color: rgb(253, 253, 253);
     padding-left: 0.5rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     cursor: pointer;
 }
 
