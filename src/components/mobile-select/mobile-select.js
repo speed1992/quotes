@@ -6,7 +6,7 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
     const [suggestions, setSuggestions] = useState([]);
     const [searchText, setSearchText] = useState([]);
 
-    useEffect(() => setSearchText(value), []);
+    useEffect(() => setSearchText(value), [value]);
 
     const onFocusHandler = (e) => {
         setSearchText("");
