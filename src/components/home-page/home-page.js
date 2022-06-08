@@ -31,7 +31,7 @@ export const HomePage = () => {
 
     useDidMountEffect(() => {
         combinedSearch(searchText, start, end)
-        // scrollToFirstRow(listRef)
+        scrollToFirstRow(listRef)
     }, [start, end, searchText])
 
     const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey }

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import List from 'react-virtualized/dist/commonjs/List';
 import { currentData } from "../../common/utils/staticDataUtils";
-import { getScrollPosition, scrollToMemorizedRow } from "../../common/utils/utils";
+import { scrollToMemorizedRow } from "../../common/utils/utils";
 import { Row } from "../row/row";
 import "./quotes-list.css";
 import { getPhilosopherFullName, getPhilosopherFullName_i10n } from "./utils/utils";
@@ -11,14 +11,12 @@ function NoRowsRenderer() {
 }
 
 function QuotesList({ listRef, width, height, searchText, start, end, triggerChange, translateKey }) {
-
     const philosopherFullName = getPhilosopherFullName();
     const philosopherFullName_i10n = getPhilosopherFullName_i10n();
 
     useEffect(() => {
-        // scrollToMemorizedRow(listRef)
-        // eslint-disable-next-line
-    }, [listRef.current])
+        scrollToMemorizedRow(listRef)
+    }, [listRef])
 
     return (
         <>
@@ -31,7 +29,6 @@ function QuotesList({ listRef, width, height, searchText, start, end, triggerCha
                 ref={listRef}
                 rowRenderer={props => <Row data={{ searchText, start, end, triggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }} {...props} />}
                 noRowsRenderer={NoRowsRenderer}
-                scrollToIndex={getScrollPosition(listRef)}
             />}
         </>
     )
