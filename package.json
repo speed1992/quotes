@@ -19,8 +19,6 @@
     "react-scripts": "5.0.0",
     "react-simple-snackbar": "^1.1.11",
     "react-virtualized": "^9.22.3",
-    "react-virtualized-auto-sizer": "^1.0.6",
-    "react-window": "^1.8.6",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
