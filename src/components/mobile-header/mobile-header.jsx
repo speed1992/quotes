@@ -4,6 +4,7 @@ import { currentPhilosopher } from "../../common/utils/staticDataUtils";
 import translateImage from "../../static/assets/images/translate.png";
 import OPTIONS from "../../static/philosophers-data";
 import { onPhilosopherSelectChange } from '../desktop-header/utils/utils';
+import { SlideOutMenuContainer } from "../mobile-menu/mobile-menu";
 import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 
@@ -14,6 +15,7 @@ function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, tr
         <div className="header">
             <div className="row">
                 <div className="mobile-column">
+                    <SlideOutMenuContainer />
                     <WordLengthSearch isMobile={true} vlistRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
                         {...propsToSend}
                     />
