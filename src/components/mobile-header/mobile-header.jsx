@@ -13,33 +13,33 @@ function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, tr
 
     return (
         <div className="header">
-            <div className="row">
-                <div className="mobile-column">
-                    <SlideOutMenuContainer />
-                    <WordLengthSearch isMobile={true} vlistRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
-                        {...propsToSend}
-                    />
-                </div>
-                <div className="mobile-column">
-                    <input className="wordSearch" type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
-                    />
-                </div>
-                <div className="mobile-column">
-                    <Select
-                        isMobile={true}
-                        options={OPTIONS}
-                        defaultOption={currentPhilosopher}
-                        onChangeHandler={({ target: { value: philosopher } }) => onPhilosopherSelectChange({ philosopher, triggerChange, listRef, setTriggerChange, setIsFetching, setStart, setEnd, setSearchText })}
-                    />
-                </div>
-                <div className="mobile-column">
-                    <span><img className="translate-img" src={translateImage} alt="Toggle to translate" /></span>
-                    <Switch size="small" checked={translateKey} onChange={({ target: { checked } }) => {
-                        setTranslateKey(checked);
-                        setTriggerChange(!triggerChange);
-                    }} />
-                </div>
+            <div className="mobile-column">
+                <SlideOutMenuContainer setTranslateKey={setTranslateKey} setTriggerChange={setTriggerChange} triggerChange={triggerChange} translateKey={translateKey} />
+            </div>
+            <div className="mobile-column">
+                <WordLengthSearch isMobile={true} vlistRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
+                    {...propsToSend}
+                />
+            </div>
+            <div className="mobile-column">
+                <input className="wordSearch" type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
+                />
+            </div>
+            {/* <div className="mobile-column">
+                <Select
+                    isMobile={true}
+                    options={OPTIONS}
+                    defaultOption={currentPhilosopher}
+                    onChangeHandler={({ target: { value: philosopher } }) => onPhilosopherSelectChange({ philosopher, triggerChange, listRef, setTriggerChange, setIsFetching, setStart, setEnd, setSearchText })}
+                />
 
+            </div> */}
+            <div className="mobile-column">
+                <span><img className="translate-img" src={translateImage} alt="Toggle to translate" /></span>
+                <Switch size="small" checked={translateKey} onChange={({ target: { checked } }) => {
+                    setTranslateKey(checked);
+                    setTriggerChange(!triggerChange);
+                }} />
             </div>
         </div>
     )
