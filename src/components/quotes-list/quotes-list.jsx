@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
-import { FixedSizeList as List } from "react-window";
+import List from 'react-virtualized/dist/commonjs/List';
 import { currentData } from "../../common/utils/staticDataUtils";
-import { scrollToMemorizedRow } from "../../common/utils/utils";
+import { getScrollPosition, scrollToMemorizedRow } from "../../common/utils/utils";
 import { Row } from "../row/row";
 import "./quotes-list.css";
 import { getPhilosopherFullName, getPhilosopherFullName_i10n } from "./utils/utils";
+
+function NoRowsRenderer() {
+    return (<>No Search Results!</>)
+}
 
 function QuotesList({ listRef, width, height, searchText, start, end, triggerChange, translateKey }) {
 
@@ -12,7 +16,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, triggerCha
     const philosopherFullName_i10n = getPhilosopherFullName_i10n();
 
     useEffect(() => {
-        scrollToMemorizedRow(listRef)
+        // scrollToMemorizedRow(listRef)
         // eslint-disable-next-line
     }, [listRef.current])
 
@@ -21,14 +25,14 @@ function QuotesList({ listRef, width, height, searchText, start, end, triggerCha
             {philosopherFullName !== undefined && <List
                 className="List"
                 height={height}
-                itemCount={currentData.length}
-                itemSize={600}
+                rowCount={currentData.length}
+                rowHeight={600}
                 width={width}
                 ref={listRef}
-                itemData={{ searchText, start, end, triggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }}
-            >
-                {Row}
-            </List>}
+                rowRenderer={props => <Row data={{ searchText, start, end, triggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }} {...props} />}
+                noRowsRenderer={NoRowsRenderer}
+                scrollToIndex={getScrollPosition(listRef)}
+            />}
         </>
     )
 }

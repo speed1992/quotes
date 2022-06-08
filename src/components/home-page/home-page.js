@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
-import AutoSizer from "react-virtualized-auto-sizer";
+import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import { useDidMountEffect } from "../../common/utils/custom-hooks-utils";
 import { getCurrentPhilosopherFromLocalStorage, useLocalStorage } from "../../common/utils/localStorageUtils";
 import { combinedSearch } from "../../common/utils/searchUtils";
@@ -31,13 +31,13 @@ export const HomePage = () => {
 
     useDidMountEffect(() => {
         combinedSearch(searchText, start, end)
-        scrollToFirstRow(listRef)
+        // scrollToFirstRow(listRef)
     }, [start, end, searchText])
 
     const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey }
 
     const renderList = () =>
-        < AutoSizer >
+        <AutoSizer>
             {({ height, width }) => (
                 <LazyLoadQuoteList {...propsToSend} width={width} height={height} />
             )}

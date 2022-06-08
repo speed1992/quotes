@@ -26,6 +26,13 @@ export const scrollToMemorizedRow = (listRef) => {
     }
 }
 
+export const getScrollPosition = (listRef) => {
+    if (currentData.length > 0 && listRef.current) {
+        let scrollPosition = JSON.parse(localStorage.getItem(currentPhilosopher + '-scrollPosition'));
+        return scrollPosition;
+    }
+}
+
 export const search = (searchText) => {
     const obj = getPhilosopherData(currentPhilosopher);
     const { quotes } = obj;
