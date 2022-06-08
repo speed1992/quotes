@@ -26,7 +26,7 @@ export function LazyLoadQuoteList(props) {
     }
     useEffect(() => {
         lazyInit()
-    }, []);
+    }, [currentPhilosopher]);
 
     return (isFetching ? <Loader /> : <QuotesList {...props} />)
 }
