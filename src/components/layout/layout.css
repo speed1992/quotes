@@ -1,7 +1,7 @@
 .header{
-    max-height: 30vh;
-    margin-top: 2vh;
-    margin-bottom: 1vh;
+    height: 3.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .column {
@@ -29,7 +29,9 @@
         padding-left: .4rem;
     }
     .header{
-        margin-top: 1vh;
+        height: 1.5rem;
+        margin-top: 0.6rem;
+        margin-bottom: 1.4rem;
     }   
     .mobile-column {
         padding: 0 .5rem 0 0;
