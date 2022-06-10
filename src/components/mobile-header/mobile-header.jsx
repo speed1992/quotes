@@ -1,7 +1,5 @@
-import Switch from '@mui/material/Switch';
 import React from "react";
 import { currentPhilosopher } from "../../common/utils/staticDataUtils";
-import translateImage from "../../static/assets/images/translate.png";
 import OPTIONS from "../../static/philosophers-data";
 import { onPhilosopherSelectChange } from '../desktop-header/utils/utils';
 import { SlideOutMenuContainer } from "../mobile-menu/mobile-menu";
@@ -25,22 +23,15 @@ function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, tr
                 <input className="wordSearch" type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
                 />
             </div>
-            {/* <div className="mobile-column">
+            <div className="mobile-column">
                 <Select
                     isMobile={true}
                     options={OPTIONS}
                     defaultOption={currentPhilosopher}
                     onChangeHandler={({ target: { value: philosopher } }) => onPhilosopherSelectChange({ philosopher, triggerChange, listRef, setTriggerChange, setIsFetching, setStart, setEnd, setSearchText })}
                 />
-
-            </div> */}
-            <div className="mobile-column">
-                <span><img className="translate-img" src={translateImage} alt="Toggle to translate" /></span>
-                <Switch size="small" checked={translateKey} onChange={({ target: { checked } }) => {
-                    setTranslateKey(checked);
-                    setTriggerChange(!triggerChange);
-                }} />
             </div>
+
         </div>
     )
 }

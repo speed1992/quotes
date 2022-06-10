@@ -23,6 +23,16 @@
     vertical-align: -webkit-baseline-middle;
 }
 
+.translate-img{
+    height: 2.5rem;
+    width: auto;
+    vertical-align: middle;
+}
+
+.vertically{
+    vertical-align: middle;
+}
+
 @media only screen and (max-width: 40rem) {
     .wordSearch{
         width: 9rem;
