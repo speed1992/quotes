@@ -29,9 +29,7 @@ export const Row = ({ data: { searchText, start, end, triggerChange, philosopher
                 </span>
                 {translateKey ? <Translate inputText={currentData[index]} {...propsToSend} /> : null}
                 {audioFeatureKey() ? <Audio index={index} /> : null}
-                {/* {quoteImageFeatureKey() ?  */}
                 < GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
-                {/* : null} */}
             </div >
         )
 };

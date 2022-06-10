@@ -1,14 +1,15 @@
 import Switch from '@mui/material/Switch';
 import React, { useState } from 'react';
+import { wipFeatureKey } from '../../common/utils/urlUtils';
 import translateImage from "../../static/assets/images/translate.png";
 import OutsideAlerter from '../outside-alerter/outside-alerter';
+import { SignIn } from '../sign-in/sign-in';
 import { SORTING_BY_ALPHABETS, SORTING_BY_LATEST } from './constants';
 import './mobile-menu.css';
 
-export function SlideOutMenuContainer({ setTranslateKey, setTriggerChange, triggerChange, translateKey }) {
+export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, translateKey, markedMode, setMarkedMode }) {
 
-    const WIP = true;
-
+    const [modalVisible, setModalVisible] = useState(false);
     const [visible, toggleVisible] = useState(false)
     const [sortButtonText, setSortButtonText] = useState(SORTING_BY_LATEST)
 
@@ -38,9 +39,29 @@ export function SlideOutMenuContainer({ setTranslateKey, setTriggerChange, trigg
                         </span>
                     </li>
 
-                    {!WIP ? <li>
-                        <button onClick={onClickSortButtonHandler}>{sortButtonText}</button>
-                    </li> : null}
+                    {!wipFeatureKey() ?
+                        (
+                            <>
+                                <li>
+                                    <button onClick={onClickSortButtonHandler}>{sortButtonText}</button>
+                                </li>
+                                <li>
+                                    <span className="">
+                                        {/* <img className="translate-img" src={""} alt="" /> */}
+                                        Marked Mode
+                                        <Switch size="small" checked={markedMode} onChange={({ target: { checked } }) => {
+                                            if (markedMode)
+                                                setMarkedMode(false);
+                                        }} />
+                                    </span>
+
+                                </li>
+                                <li>
+                                    <SignIn setMarkedMode={setMarkedMode} modalVisible={modalVisible} setModalVisible={setModalVisible} />
+                                </li>
+
+                            </>
+                        ) : null}
 
                 </ul>
             </OutsideAlerter>

@@ -2,17 +2,17 @@ import React from "react";
 import { currentPhilosopher } from "../../common/utils/staticDataUtils";
 import OPTIONS from "../../static/philosophers-data";
 import { onPhilosopherSelectChange } from '../desktop-header/utils/utils';
-import { SlideOutMenuContainer } from "../mobile-menu/mobile-menu";
+import { MobileMenu } from "../mobile-menu/mobile-menu";
 import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 
-function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey }) {
+function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
 
     return (
         <div className="header">
             <div className="mobile-column">
-                <SlideOutMenuContainer setTranslateKey={setTranslateKey} setTriggerChange={setTriggerChange} triggerChange={triggerChange} translateKey={translateKey} />
+                <MobileMenu setTranslateKey={setTranslateKey} setTriggerChange={setTriggerChange} triggerChange={triggerChange} translateKey={translateKey} markedMode={markedMode} setMarkedMode={setMarkedMode} />
             </div>
             <div className="mobile-column">
                 <WordLengthSearch isMobile={true} vlistRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
