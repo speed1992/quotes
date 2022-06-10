@@ -1,10 +1,10 @@
-.TypeAheadDropDown{
+.typeAheadDropDown{
     max-width: 10.9rem;
     position: relative!important;
     z-index: 2;
 }
 
-.TypeAheadDropDown input{
+.typeAheadDropDown input{
     width: 100%;
     padding: 0.1rem;
     padding-left: 0.4rem;
@@ -12,7 +12,7 @@
     outline: none;
 }
 
-.TypeAheadDropDown::after{
+.typeAheadDropDown::after{
     transform: rotate(45deg);
     border-right: 1px solid #000;
     border-bottom: 1px solid #000;
@@ -26,32 +26,34 @@
     height: 7px;
 }
 
-.TypeAheadDropDown ul{
+.typeAheadDropDown ul{
     position: absolute;
-    border: 1px solid #333;
-    width:15rem;
-    max-height: 30rem;
+    border: 1px solid #eee;
+    width:18rem;
+    max-height: 28.5rem;
     font-size: 1.4rem!important;
     overflow: scroll;
     list-style-type: none;
-    padding-left: 0.2rem;
     margin: 0;
-    border: none;
 }
 
-.TypeAheadDropDown li{
+.typeAheadDropDown li{
     background-color: rgb(253, 253, 253);
-    padding-left: 0.5rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.7rem;
     cursor: pointer;
 }
 
-.TypeAheadDropDown li:not(:first-child) {
+.typeAheadDropDown li:not(:first-child) {
     border-top: 1px solid #eee;
 }
 
-.TypeAheadDropDown li:hover{
+.typeAheadDropDown li:hover{
     background: lightgray;
     text-decoration: underline;
+}
+
+.typeAheadDropDown .dropDownList{
+    position:absolute;
+    right: 0.1rem;
+
 }
