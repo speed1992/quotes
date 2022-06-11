@@ -36,17 +36,14 @@ export function adminFeatureKey() {
     else return false
 }
 
-<<<<<<< HEAD
 export function readFeatureKey() {
     var query = getQueryParams(document.location.search);
     let read = query.read ? query.read.toLowerCase() : null;
     if (read === "true" || read)
-=======
-export function wipFeatureKey() {
-    var query = getQueryParams(document.location.search);
-    let wip = query.wip ? query.wip.toLowerCase() : null;
-    if (wip === "true" || wip)
->>>>>>> object-migration
-        return true
-    else return false
-}
+        export function wipFeatureKey() {
+            var query = getQueryParams(document.location.search);
+            let wip = query.wip ? query.wip.toLowerCase() : null;
+            if (wip === "true" || wip)
+                return true
+            else return false
+        }

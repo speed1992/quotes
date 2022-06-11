@@ -1,6 +1,14 @@
 [
     {
         "id": 1,
-        "quote": "Plato was bore"
+        "quote": "Plato was bore!"
+    },
+    {
+        "id": 2,
+        "quote": "God is dead."
+    },
+    {
+        "id": 3,
+        "quote": "Was that life? well then, once more!"
     }
 ]
