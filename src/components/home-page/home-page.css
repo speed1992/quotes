@@ -1,3 +1,9 @@
 .content{
-    min-height: 90vh;
+    min-height: calc(100vh - 6rem);
+}
+
+@media only screen and (max-width: 40rem) {
+    .content{
+        min-height: calc(100vh - 10rem);
+    }
 }

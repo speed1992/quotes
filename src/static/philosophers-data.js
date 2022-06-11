@@ -601,33 +601,176 @@ const data = [{
     fullName: "Max Stirner",
     fullNameInOtherLanguages: {
         hi: "मैक्स स्टिरनर"
-    },
+    }
 }, {
     value: "PERICLES",
     fullName: "Pericles",
     fullNameInOtherLanguages: {
         hi: "पेरिक्लेस"
-    },
+    }
 }, {
     value: "DEMOCRITUS",
     fullName: "Democritus",
     fullNameInOtherLanguages: {
         hi: "डेमोक्रिटस"
-    },
+    }
 }, {
     value: "ANTON_CHEKHOV",
     fullName: "Anton Chekhov",
     fullNameInOtherLanguages: {
         hi: "एंटोन चेखोव"
-    },
+    }
 }, {
     value: "CHUCK_PALAHNIUK",
     fullName: "Chuck Palahniuk",
     fullNameInOtherLanguages: {
         hi: "चक पालाह्न्युक"
     }
-}
-]
+}, {
+    value: "STALIN",
+    fullName: "Joseph Stalin",
+    fullNameInOtherLanguages: {
+        hi: "जोसेफ़ स्टालिन"
+    }
+}, {
+    value: "PLUTARCH",
+    fullName: "Plutarch",
+    fullNameInOtherLanguages: {
+        hi: "प्लूटार्क"
+    }
+}, {
+    value: "EPICURUS",
+    fullName: "Epicurus",
+    fullNameInOtherLanguages: {
+        hi: "एपिकुरुस"
+    }
+}, {
+    value: "WODEHOUSE",
+    fullName: "P.G. Wodehouse",
+    fullNameInOtherLanguages: {
+        hi: "पी.जी. वुडहाउस"
+    }
+}, {
+    value: "HEMINGWAY",
+    fullName: "Ernest Hemingway",
+    fullNameInOtherLanguages: {
+        hi: "अर्नेस्ट हेमिंग्वे"
+    }
+}, {
+    value: "LACAN",
+    fullName: "Jacques Lacan",
+    fullNameInOtherLanguages: {
+        hi: "ॹाक लाकाँ"
+    }
+}, {
+    value: "HARUKI_MURAKAMI",
+    fullName: "Haruki Murakami",
+    fullNameInOtherLanguages: {
+        hi: "हारुकी मुराकामी"
+    }
+}, {
+    value: "LOVECRAFT",
+    fullName: "H. P. Lovecraft",
+    fullNameInOtherLanguages: {
+        hi: "एच.पी. लवक्राफ्ट"
+    }
+}, {
+    value: "CICERO",
+    fullName: "Cicero",
+    fullNameInOtherLanguages: {
+        hi: "सिसरो"
+    }
+}, {
+    value: "EMILY_DICKINSON",
+    fullName: "Emily Dickinson",
+    fullNameInOtherLanguages: {
+        hi: "एमिली डिकिंसन"
+    }
+}, {
+    value: "HOMER",
+    fullName: "Homer",
+    fullNameInOtherLanguages: {
+        hi: "होमर"
+    }
+}, {
+    value: "ROLLO_MAY",
+    fullName: "Rollo May",
+    fullNameInOtherLanguages: {
+        hi: "रोलो मे"
+    }
+}, {
+    value: "JAMES_BALDWIN",
+    fullName: "James Baldwin",
+    fullNameInOtherLanguages: {
+        hi: "जेम्स बाल्डविन"
+    }
+}, {
+    value: "JOE_ROGAN",
+    fullName: "Joe Rogan",
+    fullNameInOtherLanguages: {
+        hi: "जो रोगन"
+    }
+}, {
+    value: "MARX",
+    fullName: "Karl Marx",
+    fullNameInOtherLanguages: {
+        hi: "कार्ल मार्क्स"
+    }
+}, {
+    value: "PYTHAGORAS",
+    fullName: "Pythagoras",
+    fullNameInOtherLanguages: {
+        hi: "पाइथागोरस"
+    }
+}, {
+    value: "CHOMSKY",
+    fullName: "Noam Chomsky",
+    fullNameInOtherLanguages: {
+        hi: "नोम चोम्स्की"
+    }
+}, {
+    value: "WILLIAM_JAMES",
+    fullName: "William James",
+    fullNameInOtherLanguages: {
+        hi: "विलियम जेम्स"
+    }
+}, {
+    value: "SOLZHENITSYN",
+    fullName: "Aleksandr Solzhenitsyn",
+    fullNameInOtherLanguages: {
+        hi: "अलेक्सान्द्र सोल्शेनीत्सिन"
+    }
+}, {
+    value: "SNOWDEN",
+    fullName: "Edward Snowden",
+    fullNameInOtherLanguages: {
+        hi: "एड्वर्ड स्नोडेन"
+    }
+}, {
+    value: "TYSON",
+    fullName: "Mike Tyson",
+    fullNameInOtherLanguages: {
+        hi: "माइक टायसन"
+    }
+}, {
+    value: "LENIN",
+    fullName: "Vladimir Lenin",
+    fullNameInOtherLanguages: {
+        hi: "व्लादीमिर लेनिन"
+    }
+}, {
+    value: "PICASSO",
+    fullName: "Pablo Picasso",
+    fullNameInOtherLanguages: {
+        hi: "पाब्लो पिकासो"
+    }
+}, {
+    value: "AESCHYLUS",
+    fullName: "Aeschylus",
+    fullNameInOtherLanguages: {
+        hi: "एस्चिलस"
+    }
+}];
 
 doOperationsOnData(data);
 

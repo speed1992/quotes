@@ -14,6 +14,7 @@ import { rememberScrollPosition, rowClickHandler } from './utils';
 export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }, index, style }) => {
     const quoteRef = useRef();
     const [openSnackbar] = useSnackbar()
+<<<<<<< HEAD
     const quotationText = currentData[index];
 
     if (typeof quotationText !== "object") {
@@ -46,4 +47,25 @@ export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerC
     else {
         return null
     }
+=======
+    const quotationText = currentData[index]["quote"];
+    const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
+
+    const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index), 100)
+
+    if (!isUndefined(currentData[index]))
+        return (
+            <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler} >
+                {/* <span>{index + 1}.</span> */}
+                <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: currentData[index], ...propsToSend })}>
+                    "{quotationText}"
+
+                    ― {philosopherFullName}
+                </span>
+                {translateKey ? <Translate inputText={currentData[index]} {...propsToSend} /> : null}
+                {audioFeatureKey() ? <Audio index={index} /> : null}
+                < GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
+            </div >
+        )
+>>>>>>> object-migration
 };

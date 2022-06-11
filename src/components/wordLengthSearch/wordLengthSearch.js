@@ -6,9 +6,9 @@ export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText, 
     const renderComponent = () => {
         if (isMobile) {
             return (
-                <> <input className="smallInput" name="start" type="number" min="1" value={start} onChange={({ target: { value } }) => setStart(value)} />{` to `} <input className="smallInput" name="end" type="number" min="0" value={end} onChange={({ target: { value } }) => setEnd(value)} />
+                <>
+                    <input className="smallInput" name="start" type="number" min="1" value={start} onChange={({ target: { value } }) => setStart(value)} />{` to `} <input className="smallInput" name="end" type="number" min="0" value={end} onChange={({ target: { value } }) => setEnd(value)} />
                 </>
-
             )
         }
         else {

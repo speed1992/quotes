@@ -9,7 +9,8 @@ export const Layout = (props) => {
     return (
         <Suspense fallback={""}>
             {
-                isMobile() ? (<div className="mobile"><MobileHeader {...props} /></div>)
+                isMobile() ?
+                    (<div className="mobile"><MobileHeader {...props} /></div>)
                     :
                     (<div className="desktop"><DesktopHeader {...props} /> </div>)}
         </Suspense>

@@ -9,16 +9,11 @@ const Select = ({ options, onChangeHandler, isMobile }) => {
     const renderSelect = () => {
         if (isMobile) {
             return (
-                <>
-                    <MobileSelect
-                        onChangeHandler={onChangeHandler}
-                        value={getCurrentPhilosopherFullname()}
-                        placeholder={"Search philosopher"}
-                        options={options} />
-                    {/*                         <select className="dropDown" onChange={onChangeHandler} value={currentPhilosopher}>
-                            {options && options.map(({ id, fullName, value }) => <option key={id} value={value}>{fullName}</option>)}
-                        </select>} */}
-                </>
+                <MobileSelect
+                    onChangeHandler={onChangeHandler}
+                    value={getCurrentPhilosopherFullname()}
+                    placeholder={"Search philosopher"}
+                    options={options} />
             )
         }
         else {

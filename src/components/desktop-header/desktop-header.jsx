@@ -1,6 +1,7 @@
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import React from "react";
+import translateImage from "../../static/assets/images/translate.png";
 import { currentPhilosopher } from "../../common/utils/staticDataUtils";
 import OPTIONS from "../../static/philosophers-data";
 import Select from "../select/select";
@@ -28,11 +29,14 @@ function DesktopHeader({ listRef, setSearchText, searchText, setTriggerChange, t
                     />
                 </div>
                 <div className="column">
-                    <span className='vertically'>Translate</span>
-                    <Switch checked={translateKey} onChange={({ target: { checked } }) => {
-                        setTranslateKey(checked)
-                        setTriggerChange(!triggerChange);
-                    }} />
+                    <span>
+                        <img className="translate-img" src={translateImage} alt="Toggle to translate" />
+                        <span className='vertically'></span> Translate
+                        <Switch checked={translateKey} onChange={({ target: { checked } }) => {
+                            setTranslateKey(checked)
+                            setTriggerChange(!triggerChange);
+                        }} />
+                    </span>
                 </div>
             </div>
         </div>

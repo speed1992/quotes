@@ -6,8 +6,12 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
     const [suggestions, setSuggestions] = useState([]);
     const [searchText, setSearchText] = useState([]);
 
+<<<<<<< HEAD
     // eslint-disable-next-line
     useEffect(() => setSearchText(value), []);
+=======
+    useEffect(() => setSearchText(value), [value]);
+>>>>>>> object-migration
 
     const onFocusHandler = (e) => {
         setSearchText("");
@@ -46,7 +50,7 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
             return null;
         }
         return (
-            <ul>
+            <ul class="dropDownList">
                 {suggestions && suggestions.map(
                     ({ id, fullName, value }) =>
                         <li
@@ -61,7 +65,7 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
 
     return (
         <OutsideAlerter callback={() => setSuggestions([])}>
-            <div className="TypeAheadDropDown">
+            <div className="typeAheadDropDown">
                 <input type="text"
                     onFocus={onFocusHandler}
                     onChange={onTextChange}
