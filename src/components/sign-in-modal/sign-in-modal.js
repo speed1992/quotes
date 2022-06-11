@@ -6,11 +6,12 @@ export const SignInModal = ({ setModalVisible, setMarkedMode }) => {
     const [userName, setUserName] = useState('');
 
     const signInUser = () => {
-
         //if api success
-        setMarkedMode(true);
-        setModalVisible(false);
-
+        fetch("https:localhost:3000").then((response) => response.json())
+            .then((response) => {
+                setMarkedMode(true);
+                setModalVisible(false);
+            })
     }
 
     return (
