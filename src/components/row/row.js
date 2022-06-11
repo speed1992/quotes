@@ -13,7 +13,7 @@ import { rememberScrollPosition, rowClickHandler } from './utils';
 export const Row = ({ data: { searchText, start, end, triggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }, index, style }) => {
     const quoteRef = useRef();
     const [openSnackbar] = useSnackbar()
-    const quotationText = currentData[index];
+    const quotationText = currentData[index]["quote"];
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
 
     const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index), 100)

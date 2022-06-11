@@ -24,7 +24,7 @@ export const searchByWordLength = (start, end, quotes) => {
     if (quotes !== undefined) {
         if (typeof start === "string" && start.trim() === "") start = 0;
 
-        const newData = quotes.filter(quote => {
+        const newData = quotes.filter(({ quote }) => {
             const wordCount = getWordCount(quote)
 
             if (end && end !== "") {

@@ -22,7 +22,7 @@ export const scrollToMemorizedRow = (listRef) => {
 export const search = (searchText) => {
     const obj = getPhilosopherData(currentPhilosopher);
     const { quotes } = obj;
-    const filteredQuotes = quotes && quotes.filter(quote => {
+    const filteredQuotes = quotes && quotes.filter(({ quote }) => {
         if ((quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0)) {
             return false
         }
