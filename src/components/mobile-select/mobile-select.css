@@ -29,12 +29,13 @@
 .typeAheadDropDown ul{
     position: absolute;
     border: 1px solid #eee;
-    width:18rem;
+    width:14rem;
     max-height: 28.5rem;
     font-size: 1.4rem!important;
     overflow: scroll;
     list-style-type: none;
     margin: 0;
+    padding-left:0;
 }
 
 .typeAheadDropDown li{
