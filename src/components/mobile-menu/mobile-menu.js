@@ -14,9 +14,12 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
     const [sortButtonText, setSortButtonText] = useState(SORTING_BY_LATEST)
 
     const onClickSortButtonHandler = () => {
-        if (sortButtonText === SORTING_BY_LATEST)
+        if (sortButtonText === SORTING_BY_LATEST) {
+            doOperationsOnData("alphabetical");
             setSortButtonText(SORTING_BY_ALPHABETS);
+        }
         else {
+            doOperationsOnData("latest");
             setSortButtonText(SORTING_BY_LATEST);
         }
     }
