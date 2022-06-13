@@ -774,6 +774,6 @@ const data = [{
 
 allocateIdsToData();
 
-doOperationsOnData();
+doOperationsOnData("alphabetical");
 
 export default data
