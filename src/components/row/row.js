@@ -22,18 +22,18 @@ export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerC
     if (!isUndefined(currentData[index]))
         return (
             <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler} >
-                <span>{currentData[index]["id"]}.</span>
+                {/* <span>{currentData[index]["id"]}.</span> */}
                 <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: currentData[index], ...propsToSend })}>
                     "{quotationText}"
 
                     ― {philosopherFullName}
                 </span>
-                
+
                 {translateKey ? <Translate inputText={currentData[index]} {...propsToSend} /> : null}
                 {audioFeatureKey() ? <Audio index={index} /> : null}
-                
+
                 < GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
-                
+
                 <MarkAsRead index={currentData[index]["id"]} setTriggerChange={setTriggerChange} />
             </div >
         )
