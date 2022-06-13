@@ -1,23 +1,27 @@
-import { getReadArrayFromLocalStorage } from "./localStorageUtils";
 
 export let currentPhilosopher;
 
 export let currentData = [];
+
 
 export const changeData = (newData) => {
     currentData = JSON.parse(JSON.stringify(newData));
 }
 
 export const removeReadData = (setTriggerChange) => {
-    const readQuotesArray = getReadArrayFromLocalStorage();
+    return new Promise(async (resolve) => {
+        let readQuotesArray = [];
 
-    readQuotesArray.forEach(element => {
-        const newObject = { quote: currentData[element], read: true };
-        currentData[element] = newObject;
+        await fetch("https://jsonblob.com/api/985437161566519296").then(response => response.json())
+            .then(response => {
+                readQuotesArray = response;
+            })
+
+        const newData = currentData.filter(({ id }, _) => readQuotesArray.indexOf(id) === -1);
+        changeData(newData);
+        setTriggerChange();
+        resolve();
     });
-    // const newData = currentData.filter((_, index) => readQuotesArray.indexOf(index) === -1);
-
-    // setTriggerChange();
 }
 
 export const setCurrentPhilosopher = (name) => {

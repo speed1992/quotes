@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { currentPhilosopher } from "../../common/utils/staticDataUtils";
+import { currentPhilosopher, removeReadData } from "../../common/utils/staticDataUtils";
 import { lazyLoadAllAssets, lazyLoadAsset } from "../../static/utils/utils";
 import { Loader } from "../loader/loader";
 import QuotesList from "../quotes-list/quotes-list";
@@ -17,6 +17,7 @@ export function LazyLoadQuoteList(props) {
                     await lazyLoadAsset(currentPhilosopher)
 
                 changeQuotesData(currentPhilosopher)
+                await removeReadData();
                 setIsFetching(false)
             }
         }

@@ -10,7 +10,7 @@ function NoRowsRenderer() {
     return (<>No Search Results!</>)
 }
 
-function QuotesList({ listRef, width, height, searchText, start, end, triggerChange, translateKey }) {
+function QuotesList({ listRef, width, height, searchText, start, end, triggerChange, setTriggerChange, translateKey }) {
     const philosopherFullName = getPhilosopherFullName();
     const philosopherFullName_i10n = getPhilosopherFullName_i10n();
 
@@ -27,7 +27,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, triggerCha
                 rowHeight={600}
                 width={width}
                 ref={listRef}
-                rowRenderer={props => <Row data={{ searchText, start, end, triggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }} {...props} />}
+                rowRenderer={props => <Row data={{ searchText, start, end, triggerChange, setTriggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }} {...props} />}
                 noRowsRenderer={NoRowsRenderer}
             />}
         </>
