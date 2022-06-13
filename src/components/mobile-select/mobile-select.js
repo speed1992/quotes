@@ -45,7 +45,7 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
             return null;
         }
         return (
-            <ul class="dropDownList">
+            <ul className="dropDownList">
                 {suggestions && suggestions.map(
                     ({ id, fullName, value }) =>
                         <li
