@@ -1,5 +1,5 @@
 import Switch from '@mui/material/Switch';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { wipFeatureKey } from '../../common/utils/urlUtils';
 import { doOperationsOnData } from "../../static/utils/utils";
 import translateImage from "../../static/assets/images/translate.png";
@@ -8,7 +8,7 @@ import { SignIn } from '../sign-in/sign-in';
 import { SORTING_BY_ALPHABETS, SORTING_BY_LATEST } from './constants';
 import './mobile-menu.css';
 import PHILOSOPHERS_DATA from "../../static/philosophers-data";
-import { useLocalStorage } from '../../common/utils/localStorageUtils';
+import { getStorageValue, useLocalStorage } from '../../common/utils/localStorageUtils';
 
 export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, translateKey, markedMode, setMarkedMode }) {
 
@@ -29,6 +29,10 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
             setSorting("latest");
         }
     }
+
+    useEffect(() => {
+        setSorting(getStorageValue("SORT", "alphabetical"))
+    }, [sorting]);
 
     return (
         <>
