@@ -8,9 +8,10 @@ export const addPhilosopherNameToQuote = (quote, philosopherFullName) => `${quot
 
 export const convertQuoteArray = (quoteArr, philosopherFullName) => quoteArr.map((quote) => addPhilosopherNameToQuote(quote, philosopherFullName))
 
-export const allocateIdsToData = data => data.forEach((element,index) => {element.id = index});
+export const allocateIdsToData = () => PHILOSOPHERS_DATA.forEach((element,index) => {element.id = index});
 
-export const doOperationsOnData = (data, sortingMethod) => {
+export const doOperationsOnData = (sortingMethod) => {
+    const data = PHILOSOPHERS_DATA;
     // Sorting except the first element
     const allElement = data.shift();
     if (sortingMethod === "alphabetical")
