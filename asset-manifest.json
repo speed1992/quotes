@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/quotes/static/css/main.26849b61.css",
-    "main.js": "/quotes/static/js/main.5ef6d05b.js",
+    "main.js": "/quotes/static/js/main.bad23891.js",
     "static/js/9005.58edb227.chunk.js": "/quotes/static/js/9005.58edb227.chunk.js",
     "static/js/2251.858a8ae3.chunk.js": "/quotes/static/js/2251.858a8ae3.chunk.js",
     "static/js/548.fd5e6367.chunk.js": "/quotes/static/js/548.fd5e6367.chunk.js",
@@ -130,7 +130,7 @@
     "static/js/9149.b72874d0.chunk.js": "/quotes/static/js/9149.b72874d0.chunk.js",
     "static/js/9314.f4cdccb6.chunk.js": "/quotes/static/js/9314.f4cdccb6.chunk.js",
     "static/css/6232.279b3e3b.chunk.css": "/quotes/static/css/6232.279b3e3b.chunk.css",
-    "static/js/6232.1b2c33e2.chunk.js": "/quotes/static/js/6232.1b2c33e2.chunk.js",
+    "static/js/6232.e6c3fca0.chunk.js": "/quotes/static/js/6232.e6c3fca0.chunk.js",
     "static/css/2188.e865ca9a.chunk.css": "/quotes/static/css/2188.e865ca9a.chunk.css",
     "static/js/2188.d3f69fe0.chunk.js": "/quotes/static/js/2188.d3f69fe0.chunk.js",
     "static/js/5312.dbd77b3f.chunk.js": "/quotes/static/js/5312.dbd77b3f.chunk.js",
@@ -138,15 +138,15 @@
     "service-worker.js": "/quotes/service-worker.js",
     "index.html": "/quotes/index.html",
     "main.26849b61.css.map": "/quotes/static/css/main.26849b61.css.map",
-    "main.5ef6d05b.js.map": "/quotes/static/js/main.5ef6d05b.js.map",
+    "main.bad23891.js.map": "/quotes/static/js/main.bad23891.js.map",
     "6232.279b3e3b.chunk.css.map": "/quotes/static/css/6232.279b3e3b.chunk.css.map",
-    "6232.1b2c33e2.chunk.js.map": "/quotes/static/js/6232.1b2c33e2.chunk.js.map",
+    "6232.e6c3fca0.chunk.js.map": "/quotes/static/js/6232.e6c3fca0.chunk.js.map",
     "2188.e865ca9a.chunk.css.map": "/quotes/static/css/2188.e865ca9a.chunk.css.map",
     "2188.d3f69fe0.chunk.js.map": "/quotes/static/js/2188.d3f69fe0.chunk.js.map",
     "5312.dbd77b3f.chunk.js.map": "/quotes/static/js/5312.dbd77b3f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.26849b61.css",
-    "static/js/main.5ef6d05b.js"
+    "static/js/main.bad23891.js"
   ]
 }
