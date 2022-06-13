@@ -1,5 +1,5 @@
 import {
-    doOperationsOnData
+    doOperationsOnData, allocateIdsToData
 } from "./utils/utils";
 
 const data = [{
@@ -771,6 +771,8 @@ const data = [{
         hi: "एस्चिलस"
     }
 }];
+
+allocateIdsToData(data);
 
 doOperationsOnData(data);
 
