@@ -8,7 +8,7 @@ export const addPhilosopherNameToQuote = (quote, philosopherFullName) => `${quot
 
 export const convertQuoteArray = (quoteArr, philosopherFullName) => quoteArr.map((quote) => addPhilosopherNameToQuote(quote, philosopherFullName))
 
-export const allocateIdsToData = data => data.map((element,index) => {element.id = index});
+export const allocateIdsToData = data => data.forEach((element,index) => {element.id = index});
 
 export const doOperationsOnData = (data, sortingMethod) => {
     // Sorting except the first element
@@ -19,8 +19,6 @@ export const doOperationsOnData = (data, sortingMethod) => {
         data.sort((a, b) => a.id.localeCompare(b.id))
    
     data.unshift(allElement);
-
-    return data
 }
 
 export const addPhilosopherInGlobalData = (philosopherName, quotes) => {
