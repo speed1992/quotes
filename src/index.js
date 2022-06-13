@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { App } from './App';
 import { renderAppAccordingToTheEnv } from './common/utils/commonUtils';
 import './index.css';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
-const Application = renderAppAccordingToTheEnv();
-
 ReactDOM.render(
   <React.StrictMode>
-    <Application />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
