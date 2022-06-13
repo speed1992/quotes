@@ -39,7 +39,7 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
                         </span>
                     </li>
 
-                    {!wipFeatureKey() ?
+                    {wipFeatureKey() ?
                         (
                             <>
                                 <li>
