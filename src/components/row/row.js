@@ -28,10 +28,13 @@ export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerC
 
                     ― {philosopherFullName}
                 </span>
+                
                 {translateKey ? <Translate inputText={currentData[index]} {...propsToSend} /> : null}
                 {audioFeatureKey() ? <Audio index={index} /> : null}
+                
                 < GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
-                {readFeatureKey() ? <MarkAsRead index={currentData[index]["id"]} setTriggerChange={setTriggerChange} /> : null}
+                
+                <MarkAsRead index={currentData[index]["id"]} setTriggerChange={setTriggerChange} />
             </div >
         )
 };

@@ -1,24 +1,22 @@
-import { v4 as uuidv4 } from 'uuid';
 import { retryTenTimes } from '../../common/utils/apiUtils';
 import { currentPhilosopher } from '../../common/utils/staticDataUtils';
-import { sortFeatureDisabled } from '../../common/utils/urlUtils';
 import PHILOSOPHERS_DATA from "../philosophers-data";
 
 export const addPhilosopherNameToQuote = (quote, philosopherFullName) => `${quote} ― ${philosopherFullName}`
 
 export const convertQuoteArray = (quoteArr, philosopherFullName) => quoteArr.map((quote) => addPhilosopherNameToQuote(quote, philosopherFullName))
 
-export const doOperationsOnData = (data) => {
+export const allocateIdsToData = (data) => data.forEach((element, index) => { element.id = index });
+
+export const doOperationsOnData = (data, sortingMethod) => {
     // Sorting except the first element
     const allElement = data.shift();
-    if (!sortFeatureDisabled())
+    if (sortingMethod === "alphabetical")
         data.sort((a, b) => a.fullName.localeCompare(b.fullName))
-    data.unshift(allElement);
+    else
+        data.sort((a, b) => b.id - a.id)
 
-    data.forEach(element => {
-        element.id = uuidv4()
-    });
-    return data
+    data.unshift(allElement);
 }
 
 export const addPhilosopherInGlobalData = (philosopherName, quotes) => {

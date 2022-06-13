@@ -11,6 +11,7 @@ export const getCurrentPhilosopherFromLocalStorage = () => {
 }
 
 export function getStorageValue(key, defaultValue) {
+    // getting stored value
     const saved = localStorage.getItem(key);
     const initial = JSON.parse(saved);
     if (initial === undefined || initial === "undefined" || initial === "null" || initial === null) {

@@ -1,4 +1,6 @@
+import { getStorageValue } from "../common/utils/localStorageUtils";
 import {
+    allocateIdsToData,
     doOperationsOnData
 } from "./utils/utils";
 
@@ -772,6 +774,8 @@ const data = [{
     }
 }];
 
-doOperationsOnData(data);
+allocateIdsToData(data);
+
+doOperationsOnData(data, getStorageValue("SORT", "alphabetical"));
 
 export default data
