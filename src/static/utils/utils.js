@@ -14,7 +14,7 @@ export const doOperationsOnData = (data, sortingMethod) => {
     if (sortingMethod === "alphabetical")
         data.sort((a, b) => a.fullName.localeCompare(b.fullName))
     else
-        data.sort((a, b) => a.id - b.id)
+        data.sort((a, b) => b.id - a.id)
 
     data.unshift(allElement);
 }
