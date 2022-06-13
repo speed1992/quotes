@@ -17,7 +17,7 @@ export function LazyLoadQuoteList(props) {
                     await lazyLoadAsset(currentPhilosopher)
 
                 changeQuotesData(currentPhilosopher)
-                await removeReadData();
+                removeReadData();
                 setIsFetching(false)
             }
         }

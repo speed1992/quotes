@@ -22,7 +22,7 @@ export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerC
     if (!isUndefined(currentData[index]))
         return (
             <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler} >
-                {/* <span>{index + 1}.</span> */}
+                <span>{currentData[index]["id"]}.</span>
                 <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: currentData[index], ...propsToSend })}>
                     "{quotationText}"
 
@@ -31,7 +31,7 @@ export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerC
                 {translateKey ? <Translate inputText={currentData[index]} {...propsToSend} /> : null}
                 {audioFeatureKey() ? <Audio index={index} /> : null}
                 < GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
-                {readFeatureKey() ? <MarkAsRead index={index} setTriggerChange={setTriggerChange} /> : null}
+                {readFeatureKey() ? <MarkAsRead index={currentData[index]["id"]} setTriggerChange={setTriggerChange} /> : null}
             </div >
         )
 };
