@@ -1,6 +1,7 @@
 import Switch from '@mui/material/Switch';
 import React, { useState } from 'react';
 import { wipFeatureKey } from '../../common/utils/urlUtils';
+import { doOperationsOnData } from "../../static/utils/utils";
 import translateImage from "../../static/assets/images/translate.png";
 import OutsideAlerter from '../outside-alerter/outside-alerter';
 import { SignIn } from '../sign-in/sign-in';
