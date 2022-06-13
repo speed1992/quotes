@@ -772,8 +772,8 @@ const data = [{
     }
 }];
 
-allocateIdsToData(data);
+allocateIdsToData();
 
-doOperationsOnData(data);
+doOperationsOnData();
 
 export default data
