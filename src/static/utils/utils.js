@@ -8,16 +8,18 @@ export const addPhilosopherNameToQuote = (quote, philosopherFullName) => `${quot
 
 export const convertQuoteArray = (quoteArr, philosopherFullName) => quoteArr.map((quote) => addPhilosopherNameToQuote(quote, philosopherFullName))
 
-export const doOperationsOnData = (data) => {
+export const allocateIdsToData = data => data.map((element,index) => {element.id = index});
+
+export const doOperationsOnData = (data, sortingMethod) => {
     // Sorting except the first element
     const allElement = data.shift();
-    if (!sortFeatureDisabled())
+    if (sortingMethod === "alphabetical")
         data.sort((a, b) => a.fullName.localeCompare(b.fullName))
+    else
+        data.sort((a, b) => a.id.localeCompare(b.id))
+   
     data.unshift(allElement);
 
-    data.forEach(element => {
-        element.id = uuidv4()
-    });
     return data
 }
 
