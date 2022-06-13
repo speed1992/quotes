@@ -18,21 +18,23 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
     const [sorting, setSorting] = useLocalStorage("SORT", "alphabetical");
 
     const onClickSortButtonHandler = () => {
-        if (sortButtonText === SORTING_BY_LATEST) {
-            doOperationsOnData(PHILOSOPHERS_DATA, "alphabetical");
-            setSortButtonText(SORTING_BY_ALPHABETS);
+        if (sorting === "latest")
             setSorting("alphabetical");
-        }
-        else {
-            doOperationsOnData(PHILOSOPHERS_DATA, "latest");
-            setSortButtonText(SORTING_BY_LATEST);
+        else
             setSorting("latest");
-        }
     }
 
     useEffect(() => {
         setSorting(getStorageValue("SORT", "alphabetical"))
-    }, [sorting]);
+        if (sorting === "latest") {
+            doOperationsOnData(PHILOSOPHERS_DATA, "latest");
+            setSortButtonText(SORTING_BY_ALPHABETS);
+        }
+        else {
+            doOperationsOnData(PHILOSOPHERS_DATA, "alphabetical");
+            setSortButtonText(SORTING_BY_LATEST);
+        }
+    }, [sorting, setSorting]);
 
     return (
         <>
