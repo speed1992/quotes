@@ -17,11 +17,13 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
     const [sortButtonText, setSortButtonText] = useState(SORTING_BY_LATEST)
     const [sorting, setSorting] = useLocalStorage("SORT", "alphabetical");
 
-    const onClickSortButtonHandler = () => {
-        if (sorting === "latest")
-            setSorting("alphabetical");
-        else
+    const onClickSortButtonHandler = (event) => {
+        const id = event.target.id;
+
+        if (id === "latest")
             setSorting("latest");
+        else
+            setSorting("alphabetical");
     }
 
     useEffect(() => {
@@ -54,7 +56,22 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
                         </span>
                     </li>
                     <li>
-                        <button onClick={onClickSortButtonHandler}>{sortButtonText}</button>
+                        Sort philosophers:
+                        <div>
+                            <input type="radio" id="latest" name="sortType"
+                                onClick={onClickSortButtonHandler}
+                                checked={sorting === "latest" ? true : false}
+                            />
+                            <label for="latest">Lastest</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="alphabetic" name="sortType"
+                                onClick={onClickSortButtonHandler}
+                                checked={sorting === "alphabetical" ? true : false}
+                            />
+                            <label for="alphabetic">Alphabetic</label>
+                        </div>
+
                     </li>
 
                     {wipFeatureKey() ?
