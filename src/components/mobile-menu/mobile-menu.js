@@ -34,17 +34,6 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
         }
     }, [sorting, setSorting]);
 
-    useEffect(() => {
-        if (markedMode === true) {
-            console.log("markedMode", markedMode)
-            removeReadData()
-        }
-        else if (markedMode === false) {
-            console.log("markedMode", markedMode)
-            resetData()
-        }
-    }, [markedMode]);
-
     return (
         <>
             <OutsideAlerter callback={() => toggleVisible(false)}>
@@ -84,9 +73,11 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
                         <Switch size="small" checked={markedMode} onChange={({ target: { checked } }) => {
                             if (checked) {
                                 setMarkedMode(true);
+                                removeReadData()
                             }
                             else {
                                 setMarkedMode(false);
+                                resetData()
                             }
                         }} />
                     </li>

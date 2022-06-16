@@ -11,6 +11,7 @@ export const changeData = (newData) => {
 
 export const resetData = () => {
     const index = getPhilosopherObjectIndex(currentPhilosopher);
+    // console.log(PHILOSOPHERS_DATA[index]["quotes"].length);
     currentData = JSON.parse(JSON.stringify(PHILOSOPHERS_DATA[index]["quotes"]));
 }
 
@@ -27,6 +28,9 @@ export const removeReadData = (setTriggerChange = null) => {
         readQuotesArray = getStorageValue(READ_ARRAY_LOCALSTORAGE_KEY, [])
 
         const newData = currentData.filter(({ id }, _) => readQuotesArray.indexOf(id) === -1);
+
+        console.log(newData.length);
+
         changeData(newData);
         setTriggerChange && setTriggerChange();
         resolve();

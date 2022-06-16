@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { currentPhilosopher, removeReadData } from "../../common/utils/staticDataUtils";
+import { currentPhilosopher, removeReadData, resetData } from "../../common/utils/staticDataUtils";
 import { lazyLoadAllAssets, lazyLoadAsset } from "../../static/utils/utils";
 import { Loader } from "../loader/loader";
 import QuotesList from "../quotes-list/quotes-list";
@@ -7,6 +7,7 @@ import { changeQuotesData } from "../quotes-list/utils/utils";
 
 export function LazyLoadQuoteList(props) {
     const [isFetching, setIsFetching] = useState(true);
+    const { markedMode } = props;
 
     async function lazyInit() {
         try {
@@ -17,6 +18,14 @@ export function LazyLoadQuoteList(props) {
                     await lazyLoadAsset(currentPhilosopher)
 
                 changeQuotesData(currentPhilosopher)
+                if (markedMode === true) {
+                    console.log("Lazy load markedMode", markedMode)
+                    removeReadData()
+                }
+                else if (markedMode === false) {
+                    console.log("Lazy load markedMode", markedMode)
+                    resetData()
+                }
                 // removeReadData();
                 setIsFetching(false)
             }

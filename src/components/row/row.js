@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useSnackbar } from 'react-simple-snackbar';
 import { isUndefined } from '../../common/utils/commonUtils';
 import { currentData } from "../../common/utils/staticDataUtils";
-import { audioFeatureKey, readFeatureKey } from '../../common/utils/urlUtils';
+import { audioFeatureKey } from '../../common/utils/urlUtils';
 import { Audio } from '../audio/audio';
 import { GenerateQuoteImage } from '../generate-quote-image/generateQuoteImage';
 import { MarkAsRead } from '../mark-as-read/mark-as-read';
@@ -31,12 +31,12 @@ export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerC
 
                 {translateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
                 {audioFeatureKey() ? <Audio index={index} /> : null}
-                
-<div>
-                < GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
 
-                <MarkAsRead index={currentData[index]["id"]} setTriggerChange={setTriggerChange} />
-            </div >
-</div>
+                <div>
+                    < GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
+
+                    <MarkAsRead index={currentData[index]["id"]} setTriggerChange={setTriggerChange} />
+                </div >
+            </div>
         )
 };
