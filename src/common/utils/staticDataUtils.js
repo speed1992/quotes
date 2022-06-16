@@ -1,15 +1,20 @@
+import PHILOSOPHERS_DATA from "../../static/philosophers-data";
+import { getPhilosopherObjectIndex } from "../../static/utils/utils";
 import { getStorageValue } from "./localStorageUtils";
-
 export let currentPhilosopher;
 
 export let currentData = [];
-
 
 export const changeData = (newData) => {
     currentData = JSON.parse(JSON.stringify(newData));
 }
 
-export const removeReadData = (setTriggerChange) => {
+export const resetData = () => {
+    const index = getPhilosopherObjectIndex(currentPhilosopher);
+    currentData = JSON.parse(JSON.stringify(PHILOSOPHERS_DATA[index]["quotes"]));
+}
+
+export const removeReadData = (setTriggerChange = null) => {
     return new Promise(async (resolve) => {
         let readQuotesArray = [];
 
@@ -23,7 +28,7 @@ export const removeReadData = (setTriggerChange) => {
 
         const newData = currentData.filter(({ id }, _) => readQuotesArray.indexOf(id) === -1);
         changeData(newData);
-        setTriggerChange();
+        setTriggerChange && setTriggerChange();
         resolve();
     });
 }

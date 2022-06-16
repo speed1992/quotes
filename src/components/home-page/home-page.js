@@ -28,7 +28,7 @@ export const HomePage = () => {
 
     useEffect(() => {
         setTriggerChange(!triggerChange)
-    }, [currentData, searchText, currentPhilosopher, start, end])
+    }, [currentData, searchText, currentPhilosopher, start, end, markedMode])
 
     useDidMountEffect(() => {
         combinedSearch(searchText, start, end)

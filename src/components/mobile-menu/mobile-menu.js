@@ -1,20 +1,18 @@
 import Switch from '@mui/material/Switch';
-import React, { useState, useEffect } from 'react';
-import { wipFeatureKey } from '../../common/utils/urlUtils';
-import { doOperationsOnData } from "../../static/utils/utils";
-import translateImage from "../../static/assets/images/translate.png";
-import OutsideAlerter from '../outside-alerter/outside-alerter';
-import { SignIn } from '../sign-in/sign-in';
-import { SORTING_BY_ALPHABETS, SORTING_BY_LATEST } from './constants';
-import './mobile-menu.css';
-import PHILOSOPHERS_DATA from "../../static/philosophers-data";
+import React, { useEffect, useState } from 'react';
 import { getStorageValue, useLocalStorage } from '../../common/utils/localStorageUtils';
+import { removeReadData, resetData } from '../../common/utils/staticDataUtils';
+import { wipFeatureKey } from '../../common/utils/urlUtils';
+import translateImage from "../../static/assets/images/translate.png";
+import PHILOSOPHERS_DATA from "../../static/philosophers-data";
+import { doOperationsOnData } from "../../static/utils/utils";
+import OutsideAlerter from '../outside-alerter/outside-alerter';
+import './mobile-menu.css';
 
 export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, translateKey, markedMode, setMarkedMode }) {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [visible, toggleVisible] = useState(false)
-    const [sortButtonText, setSortButtonText] = useState(SORTING_BY_LATEST)
     const [sorting, setSorting] = useLocalStorage("SORT", "alphabetical");
 
     const onClickSortButtonHandler = (event) => {
@@ -30,13 +28,22 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
         setSorting(getStorageValue("SORT", "alphabetical"))
         if (sorting === "latest") {
             doOperationsOnData(PHILOSOPHERS_DATA, "latest");
-            setSortButtonText(SORTING_BY_ALPHABETS);
         }
         else {
             doOperationsOnData(PHILOSOPHERS_DATA, "alphabetical");
-            setSortButtonText(SORTING_BY_LATEST);
         }
     }, [sorting, setSorting]);
+
+    useEffect(() => {
+        if (markedMode === true) {
+            console.log("markedMode", markedMode)
+            removeReadData()
+        }
+        else if (markedMode === false) {
+            console.log("markedMode", markedMode)
+            resetData()
+        }
+    }, [markedMode]);
 
     return (
         <>
@@ -71,25 +78,26 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
                             />
                             <label for="alphabetic">Alphabetic</label>
                         </div>
-
+                    </li>
+                    <li>
+                        Marked Mode
+                        <Switch size="small" checked={markedMode} onChange={({ target: { checked } }) => {
+                            if (checked) {
+                                setMarkedMode(true);
+                            }
+                            else {
+                                setMarkedMode(false);
+                            }
+                        }} />
                     </li>
 
                     {wipFeatureKey() ?
                         (
                             <>
-                                <li>
-                                    <span className="">
-                                        {/* <img className="translate-img" src={""} alt="" /> */}
-                                        Marked Mode
-                                        <Switch size="small" checked={markedMode} onChange={({ target: { checked } }) => {
-                                            if (markedMode)
-                                                setMarkedMode(false);
-                                        }} />
-                                    </span>
-                                </li>
-                                <li>
+
+                                {/* <li>
                                     <SignIn setMarkedMode={setMarkedMode} modalVisible={modalVisible} setModalVisible={setModalVisible} />
-                                </li>
+                                </li> */}
 
                             </>
                         ) : null}
