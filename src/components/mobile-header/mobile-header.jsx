@@ -14,11 +14,8 @@ function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, tr
 
     const [quoteCounts, setQuoteCounts] = useState({ totalQuoteCount: "NA", readCount: "NA", unreadCount: "NA" });
 
-
     useEffect(() => {
-
         if (!isFetching) {
-
             const totalQuoteCount = getCurrentTotalQuotesCount();
             const readCount = getReadArrayFromLocalStorage().length;
             const unreadCount = totalQuoteCount - readCount;
