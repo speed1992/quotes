@@ -1,14 +1,12 @@
 import { isEmpty } from "lodash";
 import { changeData, currentPhilosopher, removeReadData } from "../../../common/utils/staticDataUtils";
-import { readFeatureKey } from "../../../common/utils/urlUtils";
 import OPTIONS from "../../../static/philosophers-data";
 import { getPhilosopherData } from "../../../static/utils/utils";
 
 export const changeQuotesData = (philosopherName) => {
     const { quotes } = getPhilosopherData(philosopherName)
     changeData(quotes)
-    if (readFeatureKey())
-        removeReadData();
+    removeReadData();
 }
 
 export const getPhilosopherFullName = () => {
@@ -46,6 +44,7 @@ export const searchByWordLength = (start, end, quotes) => {
         });
 
         changeData(newData);
+        removeReadData()
     }
 
 }

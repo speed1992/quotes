@@ -29,8 +29,6 @@ export const removeReadData = (setTriggerChange = null) => {
 
         const newData = currentData.filter(({ id }, _) => readQuotesArray.indexOf(id) === -1);
 
-        console.log(newData.length);
-
         changeData(newData);
         setTriggerChange && setTriggerChange();
         resolve();

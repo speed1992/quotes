@@ -30,7 +30,6 @@ export function LazyLoadQuoteList(props) {
                         resetData()
                     }
                 }
-                removeReadData();
                 setIsFetching(false)
             }
         }
