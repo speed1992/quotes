@@ -80,3 +80,15 @@ export const getCurrentPhilosopherFullname = () => {
     const currentPhilosopherData = PHILOSOPHERS_DATA[getPhilosopherObjectIndex(currentPhilosopher)]
     return currentPhilosopherData.fullName;
 }
+
+export const getCurrentTotalQuotesCount = () => {
+    const data = PHILOSOPHERS_DATA.filter(({ value }) => value === currentPhilosopher)[0]
+    try {
+        return data.quotes.length;
+    }
+    catch (e) {
+        return "NA"
+    }
+}
+
+
