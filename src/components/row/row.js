@@ -14,7 +14,7 @@ import { rememberScrollPosition, rowClickHandler } from './utils';
 export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }, index, style }) => {
     const quoteRef = useRef();
     const [openSnackbar] = useSnackbar()
-    const quotationText = currentData[index]["quote"];
+    const { quote: quotationText, id: quotationId } = currentData[index];
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
 
     const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index), 100)
@@ -33,9 +33,9 @@ export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerC
                 {audioFeatureKey() ? <Audio index={index} /> : null}
 
                 <div>
-                    < GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
+                    <GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
 
-                    <MarkAsRead index={currentData[index]["id"]} setTriggerChange={setTriggerChange} />
+                    <MarkAsRead index={quotationId} setTriggerChange={setTriggerChange} />
                 </div >
             </div>
         )

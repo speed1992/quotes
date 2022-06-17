@@ -12,7 +12,7 @@ export function copyQuoteText(quoteText, philosopherFullName) {
         copy(updatedQuoteText);
     }
     else
-        copy(`"${quoteText}"\n\n― ${philosopherFullName}`);
+        copy(`"${quoteText}"\n\n${philosopherFullName}`);
 }
 
 export function rememberScrollPosition(searchText, start, end, index) {

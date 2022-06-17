@@ -68,24 +68,23 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
                             <label for="alphabetic">Alphabetic</label>
                         </div>
                     </li>
-                    <li>
-                        Marked Mode
-                        <Switch size="small" checked={markedMode} onChange={({ target: { checked } }) => {
-                            if (checked) {
-                                setMarkedMode(true);
-                                removeReadData()
-                            }
-                            else {
-                                setMarkedMode(false);
-                                resetData()
-                            }
-                        }} />
-                    </li>
 
                     {wipFeatureKey() ?
                         (
                             <>
-
+                                <li>
+                                    Marked Mode
+                                    <Switch size="small" checked={markedMode} onChange={({ target: { checked } }) => {
+                                        if (checked) {
+                                            setMarkedMode(true);
+                                            removeReadData()
+                                        }
+                                        else {
+                                            setMarkedMode(false);
+                                            resetData()
+                                        }
+                                    }} />
+                                </li>
                                 {/* <li>
                                     <SignIn setMarkedMode={setMarkedMode} modalVisible={modalVisible} setModalVisible={setModalVisible} />
                                 </li> */}
