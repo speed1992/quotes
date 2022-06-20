@@ -3,7 +3,7 @@ import { getReadArrayFromLocalStorage } from '../../common/utils/localStorageUti
 import { getCurrentTotalQuotesCount } from '../../static/utils/utils';
 import styles from "./breadcrumb.module.css";
 
-export function Breadcrumb({ isFetching }) {
+function Breadcrumb({ isFetching }) {
 
     const [quoteCounts, setQuoteCounts] = useState({ totalQuoteCount: "NA", readCount: "NA", unreadCount: "NA" });
 
@@ -31,3 +31,5 @@ export function Breadcrumb({ isFetching }) {
         </>
     )
 }
+
+export default Breadcrumb;

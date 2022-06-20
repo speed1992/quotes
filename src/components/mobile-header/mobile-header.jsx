@@ -1,11 +1,11 @@
 import React, { Suspense, useState } from "react";
 import { currentPhilosopher } from "../../common/utils/staticDataUtils";
 import OPTIONS from "../../static/philosophers-data";
-import { Breadcrumb } from "../breadcrumb/breadcrumb";
 import { onPhilosopherSelectChange } from '../desktop-header/utils/utils';
 import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 const MobileMenu = React.lazy(() => import('../mobile-menu/mobile-menu'));
+const Breadcrumb = React.lazy(() => import('../breadcrumb/breadcrumb'));
 
 function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
@@ -18,7 +18,6 @@ function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, tr
                     (<Suspense fallback={""}>
                         <MobileMenu setTranslateKey={setTranslateKey} setTriggerChange={setTriggerChange} triggerChange={triggerChange} translateKey={translateKey} markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} toggleVisible={toggleVisible} />
                     </Suspense>)}
-
                 <div onClick={() => toggleVisible(!visible)}>
                     ☰Menu
                 </div>
@@ -40,7 +39,9 @@ function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, tr
                     onChangeHandler={({ target: { value: philosopher } }) => onPhilosopherSelectChange({ philosopher, triggerChange, listRef, setTriggerChange, setIsFetching, setStart, setEnd, setSearchText })}
                 />
             </div>
-            <Breadcrumb isFetching={isFetching} />
+            <Suspense fallback={""}>
+                <Breadcrumb isFetching={isFetching} />
+            </Suspense>
         </div >
     )
 }
