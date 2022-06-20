@@ -1,19 +1,27 @@
-import React from "react";
+import React, { Suspense, useState } from "react";
 import { currentPhilosopher } from "../../common/utils/staticDataUtils";
 import OPTIONS from "../../static/philosophers-data";
 import { Breadcrumb } from "../breadcrumb/breadcrumb";
 import { onPhilosopherSelectChange } from '../desktop-header/utils/utils';
-import { MobileMenu } from "../mobile-menu/mobile-menu";
 import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
+const MobileMenu = React.lazy(() => import('../mobile-menu/mobile-menu'));
 
 function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
+    const [visible, toggleVisible] = useState(false);
 
     return (
         <div className="header">
             <div className="mobile-column">
-                <MobileMenu setTranslateKey={setTranslateKey} setTriggerChange={setTriggerChange} triggerChange={triggerChange} translateKey={translateKey} markedMode={markedMode} setMarkedMode={setMarkedMode} />
+                {visible &&
+                    (<Suspense fallback={""}>
+                        <MobileMenu setTranslateKey={setTranslateKey} setTriggerChange={setTriggerChange} triggerChange={triggerChange} translateKey={translateKey} markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} toggleVisible={toggleVisible} />
+                    </Suspense>)}
+
+                <div onClick={() => toggleVisible(!visible)}>
+                    ☰Menu
+                </div>
             </div>
             <div className="mobile-column">
                 <WordLengthSearch isMobile={true} vlistRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}

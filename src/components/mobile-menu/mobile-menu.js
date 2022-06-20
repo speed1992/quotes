@@ -1,5 +1,5 @@
 import Switch from '@mui/material/Switch';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { getStorageValue, useLocalStorage } from '../../common/utils/localStorageUtils';
 import { removeReadData, resetData } from '../../common/utils/staticDataUtils';
 import { wipFeatureKey } from '../../common/utils/urlUtils';
@@ -9,10 +9,9 @@ import { doOperationsOnData } from "../../static/utils/utils";
 import OutsideAlerter from '../outside-alerter/outside-alerter';
 import './mobile-menu.css';
 
-export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, translateKey, markedMode, setMarkedMode }) {
+function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, translateKey, markedMode, setMarkedMode, visible, toggleVisible }) {
 
-    const [modalVisible, setModalVisible] = useState(false);
-    const [visible, toggleVisible] = useState(false)
+    // const [modalVisible, setModalVisible] = useState(false);
     const [sorting, setSorting] = useLocalStorage("SORT", "alphabetical");
 
     const onClickSortButtonHandler = (event) => {
@@ -37,9 +36,7 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
     return (
         <>
             <OutsideAlerter callback={() => toggleVisible(false)}>
-                <div id="slide_nav_button" onClick={() => toggleVisible(!visible)}>
-                    ☰Menu
-                </div>
+
                 <ul id='slide_menu' style={{ display: (visible ? 'block' : 'none') }}>
                     <li>
                         <span className="mobile-translate-switch">
@@ -56,16 +53,16 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
                         <div>
                             <input type="radio" id="latest" name="sortType"
                                 onClick={onClickSortButtonHandler}
-                                checked={sorting === "latest" ? true : false}
+                                defaultChecked={sorting === "latest" ? true : false}
                             />
-                            <label for="latest">Lastest</label>
+                            <label htmlFor="latest">Lastest</label>
                         </div>
                         <div>
                             <input type="radio" id="alphabetic" name="sortType"
                                 onClick={onClickSortButtonHandler}
-                                checked={sorting === "alphabetical" ? true : false}
+                                defaultChecked={sorting === "alphabetical" ? true : false}
                             />
-                            <label for="alphabetic">Alphabetic</label>
+                            <label htmlFor="alphabetic">Alphabetic</label>
                         </div>
                     </li>
 
@@ -97,3 +94,5 @@ export function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, t
         </>
     );
 }
+
+export default MobileMenu;
