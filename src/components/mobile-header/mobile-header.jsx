@@ -10,9 +10,10 @@ const Breadcrumb = React.lazy(() => import('../breadcrumb/breadcrumb'));
 function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
     const [visible, toggleVisible] = useState(false);
+    const headerHeight = markedMode ? "3.5rem" : "1.5rem";
 
     return (
-        <div className="header">
+        <div className="header" style={{ height: headerHeight }}>
             <div className="mobile-column">
                 {visible &&
                     (<Suspense fallback={""}>
@@ -39,9 +40,10 @@ function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, tr
                     onChangeHandler={({ target: { value: philosopher } }) => onPhilosopherSelectChange({ philosopher, triggerChange, listRef, setTriggerChange, setIsFetching, setStart, setEnd, setSearchText })}
                 />
             </div>
-            <Suspense fallback={""}>
-                <Breadcrumb isFetching={isFetching} />
-            </Suspense>
+            {markedMode &&
+                (<Suspense fallback={""}>
+                    <Breadcrumb isFetching={isFetching} />
+                </Suspense>)}
         </div >
     )
 }

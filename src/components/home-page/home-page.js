@@ -31,7 +31,7 @@ export const HomePage = () => {
     }, [currentData, searchText, currentPhilosopher, start, end, markedMode])
 
     useDidMountEffect(() => {
-        combinedSearch(searchText, start, end)
+        combinedSearch(searchText, start, end, markedMode)
         scrollToFirstRow(listRef)
     }, [start, end, searchText])
 

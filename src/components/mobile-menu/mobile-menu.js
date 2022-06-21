@@ -1,12 +1,13 @@
 import Switch from '@mui/material/Switch';
 import React, { useEffect } from 'react';
 import { getStorageValue, useLocalStorage } from '../../common/utils/localStorageUtils';
-import { removeReadData, resetData } from '../../common/utils/staticDataUtils';
-import { wipFeatureKey } from '../../common/utils/urlUtils';
+import { currentPhilosopher, resetData } from '../../common/utils/staticDataUtils';
+// import { wipFeatureKey } from '../../common/utils/urlUtils';
 import translateImage from "../../static/assets/images/translate.png";
 import PHILOSOPHERS_DATA from "../../static/philosophers-data";
 import { doOperationsOnData } from "../../static/utils/utils";
 import OutsideAlerter from '../outside-alerter/outside-alerter';
+import { changeQuotesData } from '../quotes-list/utils/utils';
 import './mobile-menu.css';
 
 function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, translateKey, markedMode, setMarkedMode, visible, toggleVisible }) {
@@ -66,28 +67,28 @@ function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, translat
                         </div>
                     </li>
 
-                    {wipFeatureKey() ?
-                        (
-                            <>
-                                <li>
-                                    Marked Mode
-                                    <Switch size="small" checked={markedMode} onChange={({ target: { checked } }) => {
-                                        if (checked) {
-                                            setMarkedMode(true);
-                                            removeReadData()
-                                        }
-                                        else {
-                                            setMarkedMode(false);
-                                            resetData()
-                                        }
-                                    }} />
-                                </li>
-                                {/* <li>
+                    {/* {wipFeatureKey() ?
+                        ( */}
+                    <>
+                        <li>
+                            Marked Mode
+                            <Switch size="small" checked={markedMode} onChange={({ target: { checked } }) => {
+                                if (checked) {
+                                    setMarkedMode(true);
+                                    changeQuotesData(currentPhilosopher, true)
+                                }
+                                else {
+                                    setMarkedMode(false);
+                                    resetData()
+                                }
+                            }} />
+                        </li>
+                        {/* <li>
                                     <SignIn setMarkedMode={setMarkedMode} modalVisible={modalVisible} setModalVisible={setModalVisible} />
                                 </li> */}
 
-                            </>
-                        ) : null}
+                    </>
+                    {/* ) : null} */}
 
                 </ul>
             </OutsideAlerter>
