@@ -11,7 +11,7 @@ import { Translate } from '../translate/translate';
 import { evaluateClassNames } from './style-utils';
 import { rememberScrollPosition, rowClickHandler } from './utils';
 
-export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerChange, philosopherFullName, philosopherFullName_i10n, translateKey }, index, style }) => {
+export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerChange, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode }, index, style }) => {
     const quoteRef = useRef();
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentData[index];
@@ -35,7 +35,8 @@ export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerC
                 <div>
                     <GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
 
-                    <MarkAsRead index={quotationId} setTriggerChange={setTriggerChange} />
+                    {markedMode &&
+                        <MarkAsRead index={quotationId} setTriggerChange={setTriggerChange} />}
                 </div >
             </div>
         )
