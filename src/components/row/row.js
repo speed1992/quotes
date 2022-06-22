@@ -1,15 +1,15 @@
 import { debounce } from 'lodash';
-import { useRef } from "react";
+import { lazy, Suspense, useRef } from "react";
 import { useSnackbar } from 'react-simple-snackbar';
 import { isUndefined } from '../../common/utils/commonUtils';
 import { currentData } from "../../common/utils/staticDataUtils";
 import { audioFeatureKey } from '../../common/utils/urlUtils';
-import { Audio } from '../audio/audio';
 import { GenerateQuoteImage } from '../generate-quote-image/generateQuoteImage';
 import { MarkAsRead } from '../mark-as-read/mark-as-read';
 import { Translate } from '../translate/translate';
 import { evaluateClassNames } from './style-utils';
 import { rememberScrollPosition, rowClickHandler } from './utils';
+const Audio = lazy(() => import('../audio/audio'));
 
 export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerChange, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode }, index, style }) => {
     const quoteRef = useRef();
@@ -30,7 +30,7 @@ export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerC
                 </span>
 
                 {translateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
-                {audioFeatureKey() ? <Audio index={index} /> : null}
+                {audioFeatureKey() && (<Suspense fallback={""}><Audio index={index} /></Suspense>)}
 
                 <div>
                     <GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />

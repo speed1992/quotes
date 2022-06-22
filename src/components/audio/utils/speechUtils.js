@@ -17,7 +17,8 @@ export async function play(index) {
     else {
         for (let i = index; i < currentData.length; i++) {
             console.log("playing audio");
-            await Promise.race([p, getNextAudio(currentData[i])])
+            console.log(currentData[i]["quote"]);
+            await Promise.race([p, getNextAudio(currentData[i]["quote"])])
         }
     }
 }
