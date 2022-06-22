@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkquotes_app=self.webpackChunkquotes_app||[]).push([[5927],{5927:function(e,n,t){t.r(n);var u=t(7396),a=t(771),r=t(184);n.default=function(e){var n=e.index,t=e.setTriggerChange,s=(0,u.V7)();return(0,r.jsx)("button",{onClick:function(){(0,u.Gc)(s,n),(0,a.HL)(t)},children:"Mark as Read"})}}}]);
+//# sourceMappingURL=5927.61a9c0f1.chunk.js.map
