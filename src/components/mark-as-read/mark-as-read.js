@@ -1,7 +1,7 @@
 import { getReadArrayFromLocalStorage, setReadArrayFromLocalStorage } from "../../common/utils/localStorageUtils";
 import { removeReadData } from "../../common/utils/staticDataUtils";
 
-export const MarkAsRead = ({ index, setTriggerChange }) => {
+const MarkAsRead = ({ index, setTriggerChange }) => {
     var readQuotesArr = getReadArrayFromLocalStorage();
 
     const clickHandler = () => {
@@ -12,3 +12,4 @@ export const MarkAsRead = ({ index, setTriggerChange }) => {
     return (<button onClick={clickHandler}>Mark as Read</button>)
 }
 
+export default MarkAsRead;
