@@ -27,6 +27,7 @@ export function LazyLoadQuoteList(props) {
     }
     useEffect(() => {
         lazyInit()
+        // eslint-disable-next-line
     }, [currentPhilosopher]);
 
     return (isFetching ? <Loader /> : <QuotesList {...props} />)
