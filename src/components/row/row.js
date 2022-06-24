@@ -33,13 +33,12 @@ export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerC
 
                 <div>
                     <GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
-
+                    <Audio index={index} />
                     {markedMode &&
                         (<Suspense fallback={""}>
                             <MarkAsRead index={quotationId} setTriggerChange={setTriggerChange} />
                         </Suspense>)
                     }
-                    <Audio index={index} />
                 </div >
             </div>
         )
