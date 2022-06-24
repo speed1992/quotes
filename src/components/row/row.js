@@ -18,11 +18,9 @@ export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerC
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
 
     const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index), 100)
-
     if (!isUndefined(currentData[index]))
         return (
             <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler} >
-                {/* <span>{currentData[index]["id"]}.</span> */}
                 <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
                     "{quotationText}"
 
@@ -31,7 +29,7 @@ export const Row = ({ data: { searchText, start, end, triggerChange, setTriggerC
 
                 {translateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
 
-                <div>
+                <div style={{ position: "absolute", top: "50rem" }}>
                     <GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
                     <Audio index={index} />
                     {markedMode &&
