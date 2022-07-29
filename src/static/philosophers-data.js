@@ -772,6 +772,42 @@ const data = [{
     fullNameInOtherLanguages: {
         hi: "एस्चिलस"
     }
+}, {
+    value: "CHAPLIN",
+    fullName: "Charlie Chaplin",
+    fullNameInOtherLanguages: {
+        hi: "चार्ली चैप्लिन"
+    },
+}, {
+    value: "GEORGE_CARLIN",
+    fullName: "George Carlin",
+    fullNameInOtherLanguages: {
+        hi: "जॉर्ज कार्लिन"
+    },
+}, {
+    value: "IRVIN_YALOM",
+    fullName: "Irvin D. Yalom",
+    fullNameInOtherLanguages: {
+        hi: "इरविन यालोम"
+    },
+}, {
+    value: "PIAGET",
+    fullName: "Jean Piaget",
+    fullNameInOtherLanguages: {
+        hi: "जीन पियाजे"
+    },
+}, {
+    value: "MANSON",
+    fullName: "Charles Manson",
+    fullNameInOtherLanguages: {
+        hi: "चार्ल्स मैनसन"
+    },
+}, {
+    value: "TROTSKY",
+    fullName: "Leon Trotsky",
+    fullNameInOtherLanguages: {
+        hi: "लियोन ट्रोट्स्की"
+    }
 }];
 
 allocateIdsToData(data);
