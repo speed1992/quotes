@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
-export const homePageSlice = createSlice({
-    name: 'home',
+export const philosophersDataSlice = createSlice({
+    name: 'philosophersData',
     initialState: {
         value: 0,
     },
@@ -23,6 +23,6 @@ export const homePageSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = homePageSlice.actions
+export const { increment, decrement, incrementByAmount } = philosophersDataSlice.actions
 
-export default homePageSlice.reducer
+export default philosophersDataSlice.reducer

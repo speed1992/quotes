@@ -21,6 +21,7 @@
     "react-scripts": "5.0.0",
     "react-simple-snackbar": "^1.1.11",
     "react-virtualized": "^9.22.3",
+    "redux-persist": "^6.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

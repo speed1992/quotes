@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import { useDidMountEffect } from "../../common/utils/custom-hooks-utils";
 import { getCurrentPhilosopherFromLocalStorage, useLocalStorage } from "../../common/utils/localStorageUtils";
@@ -10,6 +11,7 @@ import { Layout } from "../layout/layout";
 import { LazyLoadQuoteList } from "../lazy-load-quote-list/lazy-load-quote-list";
 import { Loader } from "../loader/loader";
 import "./home-page.css";
+import { increment } from "./homePageReduxSlice/homePageReduxSlice";
 
 export const HomePage = () => {
     const listRef = useRef()
@@ -20,8 +22,10 @@ export const HomePage = () => {
     const [isFetching, setIsFetching] = useState(false);
     const [translateKey, setTranslateKey] = useLocalStorage("TRANSLATE", false);
     const [markedMode, setMarkedMode] = useLocalStorage("MARKED_MODE", false);
+    const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(increment());
         getCurrentPhilosopherFromLocalStorage();
         setTriggerChange(!triggerChange)
     }, [])
