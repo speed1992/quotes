@@ -10,7 +10,15 @@ export const GenerateQuoteImage = ({ quoteRef }) => {
             quoteRef.current,
             {
                 quality: 1,
-                style: { background: "white" },
+                style: {
+                    background: "white",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    fontSize: "3rem",
+                },
+                width: 1080,
+                height: 1080
             })
             .then(function (dataUrl) {
                 download(dataUrl, `quote-${uuidv4()}.jpg`);
