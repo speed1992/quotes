@@ -30,7 +30,7 @@
     "path": "^0.12.7"
   },
   "scripts": {
-    "predeploy": "git push && CI=false && react-scripts build",
+    "predeploy": "git push && react-scripts build",
     "deploy": "gh-pages -d build",
     "clear-prod-cache": "node ./clear-cache/updateBuildDate.js && react-scripts build",
     "build": "react-scripts build",
