@@ -1,48 +1,30 @@
 import { currentData } from "../../../common/utils/staticDataUtils";
 
-export async function play(index, synth, setTriggerChange) {
-    // console.log("index", index)
-    console.log("synth inside play", synth.speaking)
-    // synth.talking = true;
-    setTriggerChange();
+export async function play(index) {
+    var synth = window.speechSynthesis,
+        isSpeaking = synth.speaking;
 
-    try {
+    let cancel = () => { };
+    cancel();
+
+    let p = new Promise(resolve => cancel = resolve);
+
+    console.log("synth.speaking", isSpeaking)
+    if (isSpeaking) {
+        console.log("synth.speaking", isSpeaking)
+        console.log("cancelling all the promises")
+    }
+    else {
         for (let i = index; i < currentData.length; i++) {
-            // console.log("Inside for loop")
-            var message = currentData[index]['quote'];
-            await playCurrentQuote(synth, message);
+            console.log("playing audio");
+            console.log(currentData[i]["quote"]);
+            await Promise.race([p, getNextAudio(currentData[i]["quote"])])
         }
     }
-    catch (e) {
-        console.log("inside catch")
-    }
 }
 
-async function playCurrentQuote(synth, message) {
-
-    return new Promise((resolve, reject) => {
-
-        // console.log("Inside playCurrentQuote")
-        const utterThis = new SpeechSynthesisUtterance(message);
-        synth.speak(utterThis);
-
-        utterThis.onend = function (event) {
-            // console.log("SpeechSynthesisUtterance.onend");
-            resolve();
-        };
-
-        utterThis.onpause = function (event) {
-            // console.log("SpeechSynthesisUtterance.onend");
-            reject();
-        };
-
-    });
-
-}
-
-export async function pause(synth, setTriggerChange) {
-    synth.pause();
-    // synth.cancel();
-    console.log("synth inside pause", synth.speaking)
-    setTriggerChange();
+function getNextAudio(message) {
+    let audio = new SpeechSynthesisUtterance(message);
+    window.speechSynthesis.speak(audio);
+    return new Promise((resolve, reject) => audio.onend = resolve);
 }

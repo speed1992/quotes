@@ -3,19 +3,13 @@ import soundLogo from "../../static/assets/images/sound.png";
 import styles from "./audio.module.css";
 import { play } from './utils/speechUtils';
 
-const Audio = ({ index, synth, setTriggerChange }) => {
+const Audio = ({ index }) => {
     return (
-
         <>
-            {(<button onClick={play.bind(this, index, synth, setTriggerChange)}>
+            {(<button onClick={play.bind(this, index)}>
                 <img className={styles.soundIcon} src={soundLogo} alt="Play Quotes" />
                 Play Audio
             </button>)}
-
-            {/* {(<button onClick={pause.bind(this, synth, setTriggerChange)} >
-                <img className={styles.soundIcon} src={soundLogo} alt="Play Quotes" />
-                Pause Audio
-            </button >)} */}
         </>
     )
 }
