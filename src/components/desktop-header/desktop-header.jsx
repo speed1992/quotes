@@ -1,14 +1,15 @@
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import React from "react";
+import { currentPhilosopher, resetData } from "../../common/utils/staticDataUtils";
 import translateImage from "../../static/assets/images/translate.png";
-import { currentPhilosopher } from "../../common/utils/staticDataUtils";
 import OPTIONS from "../../static/philosophers-data";
+import { changeQuotesData } from '../quotes-list/utils/utils';
 import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import { onPhilosopherSelectChange } from './utils/utils';
 
-function DesktopHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey }) {
+function DesktopHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
     return (
         <div className="header">
@@ -35,6 +36,21 @@ function DesktopHeader({ listRef, setSearchText, searchText, setTriggerChange, t
                         <Switch checked={translateKey} onChange={({ target: { checked } }) => {
                             setTranslateKey(checked)
                             setTriggerChange(!triggerChange);
+                        }} />
+                    </span>
+                </div>
+                <div className="column">
+                    <span>
+                        <span className='vertically'></span>  Marked Mode
+                        <Switch checked={markedMode} onChange={({ target: { checked } }) => {
+                            if (checked) {
+                                setMarkedMode(true);
+                                changeQuotesData(currentPhilosopher, true)
+                            }
+                            else {
+                                setMarkedMode(false);
+                                resetData()
+                            }
                         }} />
                     </span>
                 </div>
