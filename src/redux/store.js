@@ -1,12 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { getPersistConfig } from 'redux-deep-persist';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import philosophersDataReducer from '../components/home-page/homePageReduxSlice/homePageReduxSlice';
 
-const persistConfig = {
+const persistConfig = getPersistConfig({
     key: 'root',
     storage,
-}
+    blacklist: [
+        'currentData',
+        'originalData',
+    ],
+    rootReducer: philosophersDataReducer, // your root reducer must be also passed here
+})
 
 const philosophersDataSlice = persistReducer(persistConfig, philosophersDataReducer)
 

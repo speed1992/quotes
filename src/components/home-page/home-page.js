@@ -1,34 +1,39 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import { useDidMountEffect } from "../../common/utils/custom-hooks-utils";
-import { getCurrentPhilosopherFromLocalStorage, useLocalStorage } from "../../common/utils/localStorageUtils";
+import { useLocalStorage } from "../../common/utils/localStorageUtils";
 import { combinedSearch } from "../../common/utils/searchUtils";
-import { currentData, currentPhilosopher } from "../../common/utils/staticDataUtils";
 import { scrollToFirstRow } from "../../common/utils/utils";
+import { setCurrentDataRedux, setCurrentPhilosopherRedux, setEndRedux, setMarkedModeRedux, setOriginalDataRedux, setSearchTextRedux, setStartRedux } from "../../components/home-page/homePageReduxSlice/homePageReduxSlice";
 import { Layout } from "../layout/layout";
 import { LazyLoadQuoteList } from "../lazy-load-quote-list/lazy-load-quote-list";
 import { Loader } from "../loader/loader";
 import "./home-page.css";
-import { increment } from "./homePageReduxSlice/homePageReduxSlice";
+
 
 export const HomePage = () => {
     const listRef = useRef()
-    const [searchText, setSearchText] = useState('');
     const [triggerChange, setTriggerChange] = useState(0);
-    const [start, setStart] = useState(1);
-    const [end, setEnd] = useState("");
+    const start = useSelector(state => state.philosophersData.start);
+    const end = useSelector(state => state.philosophersData.end);
+    const searchText = useSelector(state => state.philosophersData.searchText);
+    const currentPhilosopher = useSelector(state => state.philosophersData.currentPhilosopher);
+    const currentData = useSelector(state => state.philosophersData.currentData);
+    const markedMode = useSelector(state => state.philosophersData.markedMode);
     const [isFetching, setIsFetching] = useState(false);
     const [translateKey, setTranslateKey] = useLocalStorage("TRANSLATE", false);
-    const [markedMode, setMarkedMode] = useLocalStorage("MARKED_MODE", false);
+    //Redux-Work
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(increment());
-        getCurrentPhilosopherFromLocalStorage();
-        setTriggerChange(!triggerChange)
-    }, [])
+    const setStart = (value) => dispatch(setStartRedux(value));
+    const setEnd = (value) => dispatch(setEndRedux(value));
+    const setSearchText = (value) => dispatch(setSearchTextRedux(value));
+    const setMarkedMode = (value) => dispatch(setMarkedModeRedux(value));
+    const setCurrentPhilosopher = (name) => dispatch(setCurrentPhilosopherRedux(name))
+    const setCurrentData = (data) => dispatch(setCurrentDataRedux(data))
+    const setOriginalData = (data) => dispatch(setOriginalDataRedux(data))
 
     useEffect(() => {
         setTriggerChange(!triggerChange)
@@ -39,7 +44,7 @@ export const HomePage = () => {
         scrollToFirstRow(listRef)
     }, [start, end, searchText, markedMode])
 
-    const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey, markedMode, setMarkedMode }
+    const propsToSend = { setSearchText, searchText, setTriggerChange, triggerChange, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, setCurrentData, setOriginalData, currentData }
 
     const renderList = () =>
         <AutoSizer>

@@ -1,14 +1,5 @@
 import { useEffect, useState } from "react";
-import { checkIfNull } from "../../components/home-page/utils/utils";
-import { currentPhilosopher, setCurrentPhilosopher } from "./staticDataUtils";
-
-export const getCurrentPhilosopherFromLocalStorage = () => {
-    try {
-        let lastReadPhilosopher = localStorage.getItem('lastReadPhilosopher');
-        if (checkIfNull(lastReadPhilosopher)) lastReadPhilosopher = "NIETZSCHE";
-        setCurrentPhilosopher(lastReadPhilosopher);
-    } catch (e) { }
-}
+import { currentPhilosopher } from "./staticDataUtils";
 
 export function getStorageValue(key, defaultValue) {
     // getting stored value

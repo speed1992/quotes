@@ -28,9 +28,3 @@ export const removeReadData = (setTriggerChange = null) => {
         resolve();
     });
 }
-
-export const setCurrentPhilosopher = (name) => {
-    currentPhilosopher = name;
-    localStorage.setItem("lastReadPhilosopher", currentPhilosopher)
-    // useDispatch(increment());
-}

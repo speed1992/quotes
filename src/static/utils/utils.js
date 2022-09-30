@@ -36,12 +36,12 @@ export const addPhilosopherInGlobalData = (philosopherName, quotes) => {
 
 }
 
-export const lazyLoadAsset = (philosopherName, callback) => {
+export const lazyLoadAsset = (philosopherName, callbacks) => {
     return new Promise((resolve, reject) => {
         const fileName = philosopherName.toLowerCase()
         retryTenTimes(() => import("../assets/quotes/" + fileName + ".json"))
             .then((data) => {
-                callback && callback();
+                callbacks && callbacks.map((callback) => callback(data));
                 addPhilosopherInGlobalData(philosopherName, data?.default)
                 resolve();
             })
