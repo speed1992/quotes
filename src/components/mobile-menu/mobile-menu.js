@@ -1,8 +1,10 @@
 import Switch from '@mui/material/Switch';
 import React, { useEffect } from 'react';
-import { getStorageValue, useLocalStorage } from '../../common/utils/localStorageUtils';
+import { useDispatch, useSelector } from 'react-redux';
+import { getStorageValue } from '../../common/utils/localStorageUtils';
 import { currentPhilosopher, resetData } from '../../common/utils/staticDataUtils';
 // import { wipFeatureKey } from '../../common/utils/urlUtils';
+import { setSortingRedux } from "../../components/home-page/homePageReduxSlice/homePageReduxSlice";
 import translateImage from "../../static/assets/images/translate.png";
 import PHILOSOPHERS_DATA from "../../static/philosophers-data";
 import { doOperationsOnData } from "../../static/utils/utils";
@@ -11,9 +13,10 @@ import { changeQuotesData } from '../quotes-list/utils/utils';
 import './mobile-menu.css';
 
 function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, translateKey, markedMode, setMarkedMode, visible, toggleVisible }) {
-
     // const [modalVisible, setModalVisible] = useState(false);
-    const [sorting, setSorting] = useLocalStorage("SORT", "alphabetical");
+    const dispatch = useDispatch();
+    const sorting = useSelector(state => state.philosophersData.sorting);
+    const setSorting = (value) => dispatch(setSortingRedux(value))
 
     const onClickSortButtonHandler = (event) => {
         const id = event.target.id;

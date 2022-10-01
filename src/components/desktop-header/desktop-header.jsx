@@ -1,21 +1,20 @@
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import React from "react";
-import { currentPhilosopher, resetData } from "../../common/utils/staticDataUtils";
+import { resetData } from "../../common/utils/staticDataUtils";
 import translateImage from "../../static/assets/images/translate.png";
-import OPTIONS from "../../static/philosophers-data";
 import { changeQuotesData } from '../quotes-list/utils/utils';
 import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import { onPhilosopherSelectChange } from './utils/utils';
 
-function DesktopHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode }) {
+function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, options }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
     return (
         <div className="header">
             <div className="row">
                 <div className="column">
-                    <WordLengthSearch listRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
+                    <WordLengthSearch listRef={listRef}
                         {...propsToSend}
                     />
                 </div>
@@ -24,9 +23,9 @@ function DesktopHeader({ listRef, setSearchText, searchText, setTriggerChange, t
                 </div>
                 <div className="column">
                     <Select
-                        options={OPTIONS}
-                        defaultOption={currentPhilosopher}
-                        onChangeHandler={(_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, triggerChange, listRef, setTriggerChange, setIsFetching, setStart, setEnd, setSearchText })}
+                        options={options}
+                        currentPhilosopher={currentPhilosopher}
+                        onChangeHandler={(_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText })}
                     />
                 </div>
                 <div className="column">
@@ -35,7 +34,6 @@ function DesktopHeader({ listRef, setSearchText, searchText, setTriggerChange, t
                         <span className='vertically'></span> Translate
                         <Switch checked={translateKey} onChange={({ target: { checked } }) => {
                             setTranslateKey(checked)
-                            setTriggerChange(!triggerChange);
                         }} />
                     </span>
                 </div>

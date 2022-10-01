@@ -1,6 +1,5 @@
 import { isEmpty } from "lodash";
-import { changeData, currentPhilosopher, removeReadData } from "../../../common/utils/staticDataUtils";
-import OPTIONS from "../../../static/philosophers-data";
+import { changeData, removeReadData } from "../../../common/utils/staticDataUtils";
 import { getPhilosopherData } from "../../../static/utils/utils";
 
 export const changeQuotesData = (philosopherName, markedMode = false) => {
@@ -10,14 +9,14 @@ export const changeQuotesData = (philosopherName, markedMode = false) => {
         removeReadData();
 }
 
-export const getPhilosopherFullName = () => {
-    const currentIndex = OPTIONS.filter(({ value }) => currentPhilosopher === value);
+export const getPhilosopherFullName = ({ currentPhilosopher, options }) => {
+    const currentIndex = options.filter(({ value }) => currentPhilosopher === value);
     if (!isEmpty(currentIndex))
         return currentIndex && currentIndex[0].fullName;
 }
 
-export const getPhilosopherFullName_i10n = () => {
-    const currentIndex = OPTIONS.filter(({ value }) => currentPhilosopher === value);
+export const getPhilosopherFullName_i10n = ({ currentPhilosopher, options }) => {
+    const currentIndex = options.filter(({ value }) => currentPhilosopher === value);
     if (!isEmpty(currentIndex))
         return currentIndex && currentIndex[0].fullNameInOtherLanguages;
 }

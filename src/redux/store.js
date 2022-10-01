@@ -10,6 +10,7 @@ const persistConfig = getPersistConfig({
     blacklist: [
         'currentData',
         'originalData',
+        'options'
     ],
     rootReducer: philosophersDataReducer, // your root reducer must be also passed here
 })

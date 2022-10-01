@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import OPTIONS from "../../../static/philosophers-data"
 
 export const philosophersDataSlice = createSlice({
     name: 'philosophersData',
@@ -9,7 +10,10 @@ export const philosophersDataSlice = createSlice({
         searchText: "",
         markedMode: false,
         currentData: {},
-        originalData: {}
+        originalData: {},
+        translate: false,
+        sorting: "alphabetical",
+        options: OPTIONS
     },
     reducers: {
         increment: (state) => {
@@ -46,10 +50,15 @@ export const philosophersDataSlice = createSlice({
         setOriginalDataRedux: (state, { payload }) => {
             state.originalData = payload
         },
+        setTranslateRedux: (state, { payload }) => {
+            state.translate = payload
+        },
+        setSortingRedux: (state, { payload }) => {
+            state.sorting = payload
+        },
     },
 })
 
-// Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setOriginalDataRedux } = philosophersDataSlice.actions
+export const { increment, decrement, incrementByAmount, setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setOriginalDataRedux, setTranslateRedux, setSortingRedux } = philosophersDataSlice.actions
 
 export default philosophersDataSlice.reducer

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { lazyLoadAllAssets, lazyLoadAsset } from "../../static/utils/utils";
 import { Loader } from "../loader/loader";
 import QuotesList from "../quotes-list/quotes-list";
-import { changeQuotesData } from "../quotes-list/utils/utils";
 
 export function LazyLoadQuoteList(props) {
     const [isFetching, setIsFetching] = useState(true);
@@ -17,7 +16,7 @@ export function LazyLoadQuoteList(props) {
                     await lazyLoadAsset(currentPhilosopher, [setCurrentData, setOriginalData])
                 }
 
-                changeQuotesData(currentPhilosopher, markedMode)
+                // changeQuotesData(currentPhilosopher, markedMode)
                 setIsFetching(false)
             }
             else {

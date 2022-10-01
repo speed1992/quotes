@@ -1,13 +1,11 @@
 import React, { Suspense, useState } from "react";
-import { currentPhilosopher } from "../../common/utils/staticDataUtils";
-import OPTIONS from "../../static/philosophers-data";
 import { onPhilosopherSelectChange } from '../desktop-header/utils/utils';
 import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 const MobileMenu = React.lazy(() => import('../mobile-menu/mobile-menu'));
 const Breadcrumb = React.lazy(() => import('../breadcrumb/breadcrumb'));
 
-function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode }) {
+function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, options }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
     const [visible, toggleVisible] = useState(false);
     const headerHeight = markedMode ? "3.5rem" : "1.5rem";
@@ -35,8 +33,8 @@ function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, tr
             <div className="mobile-column">
                 <Select
                     isMobile={true}
-                    options={OPTIONS}
-                    defaultOption={currentPhilosopher}
+                    options={options}
+                    currentPhilosopher={currentPhilosopher}
                     onChangeHandler={({ target: { value: philosopher } }) => onPhilosopherSelectChange({ philosopher, triggerChange, listRef, setTriggerChange, setIsFetching, setStart, setEnd, setSearchText })}
                 />
             </div>

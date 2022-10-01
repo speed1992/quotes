@@ -1,11 +1,11 @@
 import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
-import { currentPhilosopher } from "../../common/utils/staticDataUtils";
 import { getCurrentPhilosopherFullname, getPhilosopherObjectIndex } from "../../static/utils/utils";
 import MobileSelect from "../mobile-select/mobile-select";
 import "./select.css";
 
-const Select = ({ options, onChangeHandler, isMobile }) => {
+const Select = ({ options, currentPhilosopher, onChangeHandler, isMobile }) => {
+
     const renderSelect = () => {
         if (isMobile) {
             return (
@@ -17,22 +17,20 @@ const Select = ({ options, onChangeHandler, isMobile }) => {
             )
         }
         else {
+            console.log(options)
             return (
-                currentPhilosopher !== undefined && (
-                    <Autocomplete
-                        disableClearable
-                        onChange={onChangeHandler}
-                        getOptionLabel={(option) => option.fullName}
-                        value={options[getPhilosopherObjectIndex(currentPhilosopher)]}
-                        options={options}
-                        size="small"
-                        sx={{ width: 210 }}
-                        renderInput={(params) => <TextField {...params} label="Philosopher" />}
-                        ListboxProps={{ style: { maxHeight: '80vh' }, position: "bottom-start" }}
-                    />
-                )
+                <Autocomplete
+                    disableClearable
+                    onChange={onChangeHandler}
+                    getOptionLabel={(option) => option.fullName}
+                    value={options[getPhilosopherObjectIndex({currentPhilosopher, options})]}
+                    options={options}
+                    size="small"
+                    sx={{ width: 210 }}
+                    renderInput={(params) => <TextField {...params} label="Philosopher" />}
+                    ListboxProps={{ style: { maxHeight: '80vh' }, position: "bottom-start" }}
+                />
             )
-
         }
     }
 

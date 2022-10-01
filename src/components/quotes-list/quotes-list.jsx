@@ -8,9 +8,9 @@ function NoRowsRenderer() {
     return (<>No Search Results!</>)
 }
 
-function QuotesList({ listRef, width, height, searchText, start, end, triggerChange, setTriggerChange, translateKey, markedMode, currentData }) {
-    const philosopherFullName = getPhilosopherFullName();
-    const philosopherFullName_i10n = getPhilosopherFullName_i10n();
+function QuotesList({ listRef, width, height, searchText, start, end, triggerChange, setTriggerChange, translateKey, markedMode, currentData, options, currentPhilosopher }) {
+    const philosopherFullName = getPhilosopherFullName({ currentPhilosopher, options });
+    const philosopherFullName_i10n = getPhilosopherFullName_i10n({ currentPhilosopher, options });
     useEffect(() => {
         // scrollToMemorizedRow(listRef)
     }, [listRef])

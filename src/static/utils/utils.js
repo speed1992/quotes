@@ -42,7 +42,6 @@ export const lazyLoadAsset = (philosopherName, callbacks) => {
         retryTenTimes(() => import("../assets/quotes/" + fileName + ".json"))
             .then((data) => {
                 callbacks && callbacks.map((callback) => callback(data));
-                addPhilosopherInGlobalData(philosopherName, data?.default)
                 resolve();
             })
             .catch(e => reject(e));
@@ -70,7 +69,7 @@ export const lazyLoadAllAssets = (callback) => {
     });
 };
 
-export const getPhilosopherObjectIndex = (philosopherName) => PHILOSOPHERS_DATA.findIndex(({ value }) => value === philosopherName);
+export const getPhilosopherObjectIndex = ({ currentPhilosopher, options }) => options.findIndex(({ value }) => value === currentPhilosopher);
 
 
 export const getPhilosopherData = (philosopherName) => PHILOSOPHERS_DATA.filter(({ value }) => value === philosopherName)[0]
