@@ -8,7 +8,7 @@ import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import { onPhilosopherSelectChange } from './utils/utils';
 
-function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, options }) {
+function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, options,setOptions, setCurrentData }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
     return (
         <div className="header">
@@ -25,7 +25,7 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
                     <Select
                         options={options}
                         currentPhilosopher={currentPhilosopher}
-                        onChangeHandler={(_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText })}
+                        onChangeHandler={(_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData,options,setOptions })}
                     />
                 </div>
                 <div className="column">

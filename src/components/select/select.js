@@ -17,13 +17,12 @@ const Select = ({ options, currentPhilosopher, onChangeHandler, isMobile }) => {
             )
         }
         else {
-            console.log(options)
             return (
                 <Autocomplete
                     disableClearable
                     onChange={onChangeHandler}
                     getOptionLabel={(option) => option.fullName}
-                    value={options[getPhilosopherObjectIndex({currentPhilosopher, options})]}
+                    value={options[getPhilosopherObjectIndex(currentPhilosopher, options )]}
                     options={options}
                     size="small"
                     sx={{ width: 210 }}

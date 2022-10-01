@@ -19,29 +19,31 @@ export const doOperationsOnData = (data, sortingMethod) => {
     data.unshift(allElement);
 }
 
-export const addPhilosopherInGlobalData = (philosopherName, quotes) => {
+export const addPhilosopherInGlobalData = (philosopherName,{options,setOptions}, quotes) => {
+    const newOptions = JSON.parse(JSON.stringify(options));
     if (philosopherName.trim().toLowerCase() === "all") {
-        const index = getPhilosopherObjectIndex(philosopherName);
+        const index = getPhilosopherObjectIndex(philosopherName,options);
         let existingQuotes;
-        if (PHILOSOPHERS_DATA[index].quotes === undefined)
+        if (newOptions[index].quotes === undefined)
             existingQuotes = [];
         else {
-            existingQuotes = PHILOSOPHERS_DATA[index].quotes
+            existingQuotes = newOptions[index].quotes
         }
-        PHILOSOPHERS_DATA[index].quotes = [...existingQuotes, ...quotes]
+        newOptions[index].quotes = [...existingQuotes, ...quotes]
     } else {
-        const index = getPhilosopherObjectIndex(philosopherName);
-        PHILOSOPHERS_DATA[index].quotes = quotes;
+        const index = getPhilosopherObjectIndex(philosopherName,options);
+        newOptions[index].quotes = quotes;
     }
-
+    setOptions(newOptions);
 }
 
-export const lazyLoadAsset = (philosopherName, callbacks) => {
+export const lazyLoadAsset = (philosopherName,{options,setOptions}, callbacks) => {
     return new Promise((resolve, reject) => {
         const fileName = philosopherName.toLowerCase()
         retryTenTimes(() => import("../assets/quotes/" + fileName + ".json"))
             .then((data) => {
                 callbacks && callbacks.map((callback) => callback(data));
+                addPhilosopherInGlobalData(philosopherName, {options,setOptions}, data?.default)
                 resolve();
             })
             .catch(e => reject(e));
@@ -69,11 +71,9 @@ export const lazyLoadAllAssets = (callback) => {
     });
 };
 
-export const getPhilosopherObjectIndex = ({ currentPhilosopher, options }) => options.findIndex(({ value }) => value === currentPhilosopher);
+export const getPhilosopherObjectIndex = ( philosopher, options ) =>options.findIndex(({ value }) => value === philosopher)
 
-
-export const getPhilosopherData = (philosopherName) => PHILOSOPHERS_DATA.filter(({ value }) => value === philosopherName)[0]
-
+export const getPhilosopherData = ({philosopher,options}) =>  options.filter(({ value }) => value === philosopher)[0]
 
 export const getCurrentPhilosopherFullname = () => {
     const currentPhilosopherData = PHILOSOPHERS_DATA[getPhilosopherObjectIndex(currentPhilosopher)]

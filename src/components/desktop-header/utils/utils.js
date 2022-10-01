@@ -2,10 +2,10 @@ import { scrollToMemorizedRow } from "../../../common/utils/utils";
 import { lazyLoadAllAssets, lazyLoadAsset } from "../../../static/utils/utils";
 import { changeQuotesData } from "../../quotes-list/utils/utils";
 
-export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher }) {
+export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData,options,setOptions }) {
     function callback() {
         setCurrentPhilosopher(philosopher);
-        changeQuotesData(philosopher);
+        changeQuotesData({philosopher, setCurrentData,options});
         scrollToMemorizedRow(listRef);
         setIsFetching(false);
     }
@@ -18,5 +18,5 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
         lazyLoadAllAssets().then(callback);
 
     else
-        lazyLoadAsset(philosopher).then(callback);
+        lazyLoadAsset(philosopher,{options,setOptions}).then(callback);
 }

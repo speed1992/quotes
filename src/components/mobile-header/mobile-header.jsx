@@ -5,8 +5,8 @@ import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 const MobileMenu = React.lazy(() => import('../mobile-menu/mobile-menu'));
 const Breadcrumb = React.lazy(() => import('../breadcrumb/breadcrumb'));
 
-function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, triggerChange, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, options }) {
-    const propsToSend = { start, end, setStart, setEnd, setSearchText }
+function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode,setCurrentData, currentPhilosopher, setCurrentPhilosopher, options,setOptions }) {
+    const propsToSend = { start, end, setStart, setEnd, setSearchText, setCurrentData }
     const [visible, toggleVisible] = useState(false);
     const headerHeight = markedMode ? "3.5rem" : "1.5rem";
 
@@ -15,16 +15,14 @@ function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, tr
             <div className="mobile-column">
                 {visible &&
                     (<Suspense fallback={""}>
-                        <MobileMenu setTranslateKey={setTranslateKey} setTriggerChange={setTriggerChange} triggerChange={triggerChange} translateKey={translateKey} markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} toggleVisible={toggleVisible} />
+                        <MobileMenu setTranslateKey={setTranslateKey} translateKey={translateKey} markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} toggleVisible={toggleVisible} />
                     </Suspense>)}
                 <div onClick={() => toggleVisible(!visible)}>
                     ☰Menu
                 </div>
             </div>
             <div className="mobile-column">
-                <WordLengthSearch isMobile={true} vlistRef={listRef} setTriggerChange={setTriggerChange} triggerChange={triggerChange}
-                    {...propsToSend}
-                />
+                <WordLengthSearch isMobile={true} vlistRef={listRef}  {...propsToSend}         />
             </div>
             <div className="mobile-column">
                 <input className="wordSearch" type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)}
@@ -35,7 +33,7 @@ function MobileHeader({ listRef, setSearchText, searchText, setTriggerChange, tr
                     isMobile={true}
                     options={options}
                     currentPhilosopher={currentPhilosopher}
-                    onChangeHandler={({ target: { value: philosopher } }) => onPhilosopherSelectChange({ philosopher, triggerChange, listRef, setTriggerChange, setIsFetching, setStart, setEnd, setSearchText })}
+                    onChangeHandler={({ target: { value: philosopher } }) => onPhilosopherSelectChange({ philosopher, listRef,  setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData,options,setOptions })}
                 />
             </div>
             {markedMode &&

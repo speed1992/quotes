@@ -2,9 +2,9 @@ import { isEmpty } from "lodash";
 import { changeData, removeReadData } from "../../../common/utils/staticDataUtils";
 import { getPhilosopherData } from "../../../static/utils/utils";
 
-export const changeQuotesData = (philosopherName, markedMode = false) => {
-    const { quotes } = getPhilosopherData(philosopherName)
-    changeData(quotes)
+export const changeQuotesData = ({philosopher, setCurrentData,options}, markedMode = false) => {
+    const { quotes } = getPhilosopherData({philosopher,options})
+    setCurrentData(quotes)
     if (markedMode)
         removeReadData();
 }
