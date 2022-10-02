@@ -6,7 +6,7 @@ export const changeQuotesData = ({philosopher, setCurrentData,options}, markedMo
     const { quotes } = getPhilosopherData({philosopher,options})
     setCurrentData(quotes)
     if (markedMode)
-        removeReadData();
+        removeReadData(setCurrentData);
 }
 
 export const getPhilosopherFullName = ({ currentPhilosopher, options }) => {
@@ -21,7 +21,7 @@ export const getPhilosopherFullName_i10n = ({ currentPhilosopher, options }) => 
         return currentIndex && currentIndex[0].fullNameInOtherLanguages;
 }
 
-export const searchByWordLength = (start, end, quotes, markedMode) => {
+export const searchByWordLength = (start, end, quotes, markedMode,setCurrentData) => {
     if (quotes !== undefined) {
         if (typeof start === "string" && start.trim() === "") start = 0;
 
@@ -43,9 +43,9 @@ export const searchByWordLength = (start, end, quotes, markedMode) => {
             return false;
         });
 
-        changeData(newData);
+        changeData(newData,setCurrentData);
         if (markedMode)
-            removeReadData()
+            removeReadData(setCurrentData)
     }
 
 }

@@ -1,15 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
-import { useDidMountEffect } from "../../common/utils/custom-hooks-utils";
 import { combinedSearch } from "../../common/utils/searchUtils";
 import { scrollToFirstRow } from "../../common/utils/utils";
-import { setCurrentDataRedux, setCurrentPhilosopherRedux, setEndRedux, setMarkedModeRedux, setOptionsRedux, setSearchTextRedux, setStartRedux, setTranslateRedux } from "../../components/home-page/homePageReduxSlice/homePageReduxSlice";
+import { setCurrentDataRedux, setCurrentPhilosopherRedux, setEndRedux, setMarkedModeRedux, setOptionsRedux, setQuotesLoadedRedux, setSearchTextRedux, setStartRedux, setTranslateRedux } from "../../components/home-page/homePageReduxSlice/homePageReduxSlice";
 import { Layout } from "../layout/layout";
 import { LazyLoadQuoteList } from "../lazy-load-quote-list/lazy-load-quote-list";
 import { Loader } from "../loader/loader";
-import "./home-page.css";
+import styles from "./home-page.module.css";
 
 export const HomePage = () => {
     const listRef = useRef();
@@ -21,6 +20,7 @@ export const HomePage = () => {
     const currentData = useSelector(state => state.philosophersData.currentData);
     const markedMode = useSelector(state => state.philosophersData.markedMode);
     const options = useSelector(state => state.philosophersData.options);
+    const quotesLoaded = useSelector(state => state.philosophersData.quotesLoaded);
     const translateKey = useSelector(state => state.philosophersData.translate);
     const [isFetching, setIsFetching] = useState(false);
 
@@ -32,13 +32,14 @@ export const HomePage = () => {
     const setCurrentData = (data) => dispatch(setCurrentDataRedux(data))
     const setTranslateKey = (value) => dispatch(setTranslateRedux(value))
     const setOptions = (value) => dispatch(setOptionsRedux(value))
+    const setQuotesLoaded = (value) => dispatch(setQuotesLoadedRedux(value))
 
-    useDidMountEffect(() => {
-        combinedSearch(searchText, start, end, markedMode)
-        scrollToFirstRow(listRef)
-    }, [start, end, searchText, markedMode])
+    useEffect(() => {
+            combinedSearch({searchText, start, end,philosopher:currentPhilosopher,setCurrentData,options}, markedMode)
+            scrollToFirstRow(listRef)
+    }, [start, end, searchText, markedMode,quotesLoaded])
 
-    const propsToSend = { setSearchText, searchText, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, setCurrentData, currentData, options,setOptions }
+    const propsToSend = { setSearchText, searchText, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, setCurrentData, currentData, options,setOptions,setQuotesLoaded }
 
     const renderList = () =>
         <AutoSizer>
@@ -51,7 +52,7 @@ export const HomePage = () => {
         <>
             {isFetching ? <Loader /> : (<>
                 <Layout {...propsToSend} />
-                <div className="content">
+                <div className={styles.content}>
                     {renderList()}
                 </div>
             </>)

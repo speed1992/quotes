@@ -19,19 +19,21 @@ export const scrollToMemorizedRow = (listRef) => {
     }
 }
 
-export const search = (searchText) => {
-    const obj = getPhilosopherData(currentPhilosopher);
+export const search = ({searchText,philosopher,options}) => {
+    const obj = getPhilosopherData({philosopher,options})
     const { quotes } = obj;
-    const filteredQuotes = quotes && quotes.filter(({ quote }) => {
-        if ((quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0)) {
-            return false
-        }
-        else {
-            return true;
-        }
-    });
+    if(quotes!==undefined){
+        const filteredQuotes = quotes.filter(({ quote }) => {
+            if ((quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0)) {
+                return false
+            }
+            else {
+                return true;
+            }
+        });
+        return filteredQuotes;
+    }
 
-    return filteredQuotes;
 }
 
 export const isMobile = () => (window.innerWidth <= 600)

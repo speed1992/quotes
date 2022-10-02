@@ -8,7 +8,7 @@ import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import { onPhilosopherSelectChange } from './utils/utils';
 
-function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, options,setOptions, setCurrentData }) {
+function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, options,setOptions, setCurrentData,setQuotesLoaded }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
     return (
         <div className="header">
@@ -25,7 +25,7 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
                     <Select
                         options={options}
                         currentPhilosopher={currentPhilosopher}
-                        onChangeHandler={(_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData,options,setOptions })}
+                        onChangeHandler={(_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData,options,setOptions,setQuotesLoaded })}
                     />
                 </div>
                 <div className="column">
@@ -43,7 +43,7 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
                         <Switch checked={markedMode} onChange={({ target: { checked } }) => {
                             if (checked) {
                                 setMarkedMode(true);
-                                changeQuotesData(currentPhilosopher, true)
+                                changeQuotesData({philosopher:currentPhilosopher, setCurrentData,options}, true)
                             }
                             else {
                                 setMarkedMode(false);

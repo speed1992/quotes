@@ -1,19 +1,15 @@
 import Switch from '@mui/material/Switch';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStorageValue } from '../../common/utils/localStorageUtils';
-import { currentPhilosopher, resetData } from '../../common/utils/staticDataUtils';
-// import { wipFeatureKey } from '../../common/utils/urlUtils';
+import { resetData } from '../../common/utils/staticDataUtils';
 import { setSortingRedux } from "../../components/home-page/homePageReduxSlice/homePageReduxSlice";
 import translateImage from "../../static/assets/images/translate.png";
-import PHILOSOPHERS_DATA from "../../static/philosophers-data";
 import { doOperationsOnData } from "../../static/utils/utils";
 import OutsideAlerter from '../outside-alerter/outside-alerter';
 import { changeQuotesData } from '../quotes-list/utils/utils';
 import './mobile-menu.css';
 
-function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, translateKey, markedMode, setMarkedMode, visible, toggleVisible }) {
-    // const [modalVisible, setModalVisible] = useState(false);
+function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, visible, toggleVisible,currentPhilosopher,setCurrentData,options,setOptions }) {
     const dispatch = useDispatch();
     const sorting = useSelector(state => state.philosophersData.sorting);
     const setSorting = (value) => dispatch(setSortingRedux(value))
@@ -28,14 +24,13 @@ function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, translat
     }
 
     useEffect(() => {
-        setSorting(getStorageValue("SORT", "alphabetical"))
         if (sorting === "latest") {
-            doOperationsOnData(PHILOSOPHERS_DATA, "latest");
+            doOperationsOnData({data:options,setOptions}, "latest");
         }
         else {
-            doOperationsOnData(PHILOSOPHERS_DATA, "alphabetical");
+            doOperationsOnData({options,setOptions}, "alphabetical");
         }
-    }, [sorting, setSorting]);
+    }, [sorting,options,setOptions]);
 
     return (
         <>
@@ -48,7 +43,6 @@ function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, translat
                             Translate
                             <Switch size="small" checked={translateKey} onChange={({ target: { checked } }) => {
                                 setTranslateKey(checked);
-                                setTriggerChange(!triggerChange);
                             }} />
                         </span>
                     </li>
@@ -69,30 +63,19 @@ function MobileMenu({ setTranslateKey, setTriggerChange, triggerChange, translat
                             <label htmlFor="alphabetic">Alphabetic</label>
                         </div>
                     </li>
-
-                    {/* {wipFeatureKey() ?
-                        ( */}
-                    <>
-                        <li>
-                            Marked Mode
-                            <Switch size="small" checked={markedMode} onChange={({ target: { checked } }) => {
-                                if (checked) {
-                                    setMarkedMode(true);
-                                    changeQuotesData(currentPhilosopher, true)
-                                }
-                                else {
-                                    setMarkedMode(false);
-                                    resetData()
-                                }
-                            }} />
-                        </li>
-                        {/* <li>
-                                    <SignIn setMarkedMode={setMarkedMode} modalVisible={modalVisible} setModalVisible={setModalVisible} />
-                                </li> */}
-
-                    </>
-                    {/* ) : null} */}
-
+                    <li>
+                        Marked Mode
+                        <Switch size="small" checked={markedMode} onChange={({ target: { checked } }) => {
+                            if (checked) {
+                                setMarkedMode(true);
+                                changeQuotesData({philosopher:currentPhilosopher, setCurrentData,options}, true)
+                            }
+                            else {
+                                setMarkedMode(false);
+                                resetData()
+                            }
+                        }} />
+                    </li>
                 </ul>
             </OutsideAlerter>
         </>

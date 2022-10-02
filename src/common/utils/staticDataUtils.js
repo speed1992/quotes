@@ -5,8 +5,9 @@ export let currentPhilosopher;
 
 export let currentData = [];
 
-export const changeData = (newData) => {
-    currentData = JSON.parse(JSON.stringify(newData));
+export const changeData = (newData, setCurrentData) => {
+    let currentData = JSON.parse(JSON.stringify(newData));
+    setCurrentData(currentData);
 }
 
 export const resetData = () => {
@@ -14,7 +15,7 @@ export const resetData = () => {
     currentData = JSON.parse(JSON.stringify(PHILOSOPHERS_DATA[index]["quotes"]));
 }
 
-export const removeReadData = (setTriggerChange = null) => {
+export const removeReadData = (setCurrentData) => {
     return new Promise(async (resolve) => {
         let readQuotesArray = [];
         const READ_ARRAY_LOCALSTORAGE_KEY = `${currentPhilosopher}-MARKED_AS_READ`;
@@ -23,8 +24,7 @@ export const removeReadData = (setTriggerChange = null) => {
 
         const newData = currentData.filter(({ id }, _) => readQuotesArray.indexOf(id) === -1);
 
-        changeData(newData);
-        setTriggerChange && setTriggerChange();
+        changeData(newData,setCurrentData);
         resolve();
     });
 }

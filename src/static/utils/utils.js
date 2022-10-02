@@ -8,7 +8,7 @@ export const convertQuoteArray = (quoteArr, philosopherFullName) => quoteArr.map
 
 export const allocateIdsToData = (data) => data.forEach((element, index) => { element.id = index });
 
-export const doOperationsOnData = (data, sortingMethod) => {
+export const doOperationsOnData = ({data,setOptions}, sortingMethod) => {
     // Sorting except the first element
     const allElement = data.shift();
     if (sortingMethod === "alphabetical")
@@ -37,13 +37,14 @@ export const addPhilosopherInGlobalData = (philosopherName,{options,setOptions},
     setOptions(newOptions);
 }
 
-export const lazyLoadAsset = (philosopherName,{options,setOptions}, callbacks) => {
+export const lazyLoadAsset = (philosopherName,{options,setOptions},setQuotesLoaded, callbacks) => {
     return new Promise((resolve, reject) => {
         const fileName = philosopherName.toLowerCase()
         retryTenTimes(() => import("../assets/quotes/" + fileName + ".json"))
             .then((data) => {
                 callbacks && callbacks.map((callback) => callback(data));
-                addPhilosopherInGlobalData(philosopherName, {options,setOptions}, data?.default)
+                addPhilosopherInGlobalData(philosopherName, {options,setOptions}, data?.default);
+                setQuotesLoaded(true)
                 resolve();
             })
             .catch(e => reject(e));

@@ -12,7 +12,8 @@ export const philosophersDataSlice = createSlice({
         currentData: {},
         translate: false,
         sorting: "alphabetical",
-        options: OPTIONS
+        options: OPTIONS,
+        quotesLoaded: false
     },
     reducers: {
         increment: (state) => {
@@ -27,6 +28,9 @@ export const philosophersDataSlice = createSlice({
         },
         incrementByAmount: (state, action) => {
             state.value += action.payload
+        },
+        setQuotesLoadedRedux: (state, { payload }) => {
+            state.quotesLoaded = payload
         },
         setCurrentPhilosopherRedux: (state, { payload }) => {
             state.currentPhilosopher = payload
@@ -58,6 +62,6 @@ export const philosophersDataSlice = createSlice({
     },
 })
 
-export const { increment, decrement, incrementByAmount, setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setTranslateRedux, setSortingRedux,setOptionsRedux } = philosophersDataSlice.actions
+export const { increment, decrement, incrementByAmount, setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setTranslateRedux, setSortingRedux,setOptionsRedux,setQuotesLoadedRedux } = philosophersDataSlice.actions
 
 export default philosophersDataSlice.reducer

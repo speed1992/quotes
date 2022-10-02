@@ -5,8 +5,8 @@ import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 const MobileMenu = React.lazy(() => import('../mobile-menu/mobile-menu'));
 const Breadcrumb = React.lazy(() => import('../breadcrumb/breadcrumb'));
 
-function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode,setCurrentData, currentPhilosopher, setCurrentPhilosopher, options,setOptions }) {
-    const propsToSend = { start, end, setStart, setEnd, setSearchText, setCurrentData }
+function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode,setCurrentData, currentPhilosopher, setCurrentPhilosopher, options,setOptions,setQuotesLoaded }) {
+    const propsToSend = { start, end, setStart, setEnd, setSearchText, setCurrentData, }
     const [visible, toggleVisible] = useState(false);
     const headerHeight = markedMode ? "3.5rem" : "1.5rem";
 
@@ -33,7 +33,7 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
                     isMobile={true}
                     options={options}
                     currentPhilosopher={currentPhilosopher}
-                    onChangeHandler={({ target: { value: philosopher } }) => onPhilosopherSelectChange({ philosopher, listRef,  setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData,options,setOptions })}
+                    onChangeHandler={({ target: { value: philosopher } }) => onPhilosopherSelectChange({ philosopher, listRef,  setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData,options,setOptions,setQuotesLoaded })}
                 />
             </div>
             {markedMode &&
