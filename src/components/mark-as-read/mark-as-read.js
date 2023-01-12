@@ -1,11 +1,9 @@
-import { getReadArrayFromLocalStorage, setReadArrayFromLocalStorage } from '../../common/utils/localStorageUtils'
+import { setReadArrayFromLocalStorage } from '../../common/utils/localStorageUtils'
 import { removeReadData } from '../../common/utils/staticDataUtils'
 
-const MarkAsRead = ({ index, setCurrentData, currentPhilosopher }) => {
-    var readQuotesArr = getReadArrayFromLocalStorage()
-
+const MarkAsRead = ({ index, setCurrentData, currentPhilosopher, markedQuotes, setMarkedQuotes }) => {
     const clickHandler = () => {
-        setReadArrayFromLocalStorage(readQuotesArr, index, currentPhilosopher)
+        setReadArrayFromLocalStorage({ markedQuotes, setMarkedQuotes }, index, currentPhilosopher)
         removeReadData(setCurrentData)
     }
 

@@ -5,7 +5,7 @@ import QuotesList from "../quotes-list/quotes-list";
 
 export function LazyLoadQuoteList(props) {
     const [isFetching, setIsFetching] = useState(true);
-    const { markedMode, currentPhilosopher, setCurrentData, setOriginalData,options,setOptions,setQuotesLoaded } = props;
+    const { currentPhilosopher, setCurrentData,options,setOptions,setQuotesLoaded } = props;
 
     async function lazyInit() {
         try {

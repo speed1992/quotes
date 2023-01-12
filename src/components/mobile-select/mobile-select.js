@@ -5,7 +5,6 @@ import './mobile-select.css'
 export default function MobileSelect({ options, onChangeHandler, placeholder, value }) {
     const [suggestions, setSuggestions] = useState([])
     const [searchText, setSearchText] = useState([])
-    console.log('searchText', searchText)
     useEffect(() => setSearchText(value), [value])
 
     const onFocusHandler = (e) => {
