@@ -11,7 +11,7 @@ const Select = ({ options, currentPhilosopher, onChangeHandler, isMobile }) => {
             return (
                 <MobileSelect
                     onChangeHandler={onChangeHandler}
-                    value={getCurrentPhilosopherFullname()}
+                    value={getCurrentPhilosopherFullname(currentPhilosopher, options)}
                     placeholder={"Search philosopher"}
                     options={options} />
             )

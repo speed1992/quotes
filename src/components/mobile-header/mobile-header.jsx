@@ -5,7 +5,7 @@ import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 const MobileMenu = React.lazy(() => import('../mobile-menu/mobile-menu'));
 const Breadcrumb = React.lazy(() => import('../breadcrumb/breadcrumb'));
 
-function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode,setCurrentData, currentPhilosopher, setCurrentPhilosopher, options,setOptions,setQuotesLoaded }) {
+function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode,setCurrentData, currentPhilosopher, setCurrentPhilosopher, options, setOptions,setQuotesLoaded }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText, setCurrentData, }
     const [visible, toggleVisible] = useState(false);
     const headerHeight = markedMode ? "3.5rem" : "1.5rem";
@@ -15,7 +15,7 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
             <div className="mobile-column">
                 {visible &&
                     (<Suspense fallback={""}>
-                        <MobileMenu setTranslateKey={setTranslateKey} translateKey={translateKey} markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} toggleVisible={toggleVisible} />
+                        <MobileMenu setTranslateKey={setTranslateKey} translateKey={translateKey} markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} options={options} setOptions={setOptions} toggleVisible={toggleVisible} />
                     </Suspense>)}
                 <div onClick={() => toggleVisible(!visible)}>
                     ☰Menu

@@ -1,57 +1,52 @@
-import { isEmpty } from "lodash";
-import { changeData, removeReadData } from "../../../common/utils/staticDataUtils";
-import { getPhilosopherData } from "../../../static/utils/utils";
+import { isEmpty } from 'lodash'
+import { changeData } from '../../../common/utils/staticDataUtils'
+import { getPhilosopherData } from '../../../static/utils/utils'
 
-export const changeQuotesData = ({philosopher, setCurrentData,options}, markedMode = false) => {
-    const { quotes } = getPhilosopherData({philosopher,options})
+export const changeQuotesData = ({ philosopher, setCurrentData, options }, markedMode = false) => {
+    const { quotes } = getPhilosopherData({ philosopher, options })
     setCurrentData(quotes)
-    if (markedMode)
-        removeReadData(setCurrentData);
+    // if (markedMode)
+    //     removeReadData(setCurrentData);
 }
 
 export const getPhilosopherFullName = ({ currentPhilosopher, options }) => {
-    const currentIndex = options.filter(({ value }) => currentPhilosopher === value);
-    if (!isEmpty(currentIndex))
-        return currentIndex && currentIndex[0].fullName;
+    const currentIndex = options.filter(({ value }) => currentPhilosopher === value)
+    if (!isEmpty(currentIndex)) return currentIndex && currentIndex[0].fullName
 }
 
 export const getPhilosopherFullName_i10n = ({ currentPhilosopher, options }) => {
-    const currentIndex = options.filter(({ value }) => currentPhilosopher === value);
-    if (!isEmpty(currentIndex))
-        return currentIndex && currentIndex[0].fullNameInOtherLanguages;
+    const currentIndex = options.filter(({ value }) => currentPhilosopher === value)
+    if (!isEmpty(currentIndex)) return currentIndex && currentIndex[0].fullNameInOtherLanguages
 }
 
-export const searchByWordLength = (start, end, quotes, markedMode,setCurrentData) => {
+export const searchByWordLength = (start, end, quotes, markedMode, setCurrentData) => {
     if (quotes !== undefined) {
-        if (typeof start === "string" && start.trim() === "") start = 0;
+        if (typeof start === 'string' && start.trim() === '') start = 0
 
         const newData = quotes.filter(({ quote }) => {
             const wordCount = getWordCount(quote)
 
-            if (end && end !== "") {
+            if (end && end !== '') {
                 if (wordCount >= start && wordCount <= end) {
-                    return true;
+                    return true
                 }
             }
-            if (end === "") {
-
+            if (end === '') {
                 if (wordCount >= start) {
                     return true
                 }
             }
 
-            return false;
-        });
+            return false
+        })
 
-        changeData(newData,setCurrentData);
-        if (markedMode)
-            removeReadData(setCurrentData)
+        changeData(newData, setCurrentData)
+        // if (markedMode) removeReadData(setCurrentData)
     }
-
 }
 
 export function getWordCount(str) {
-    return str.split(' ')
-        .filter(function (n) { return n !== '' })
-        .length;
+    return str.split(' ').filter(function (n) {
+        return n !== ''
+    }).length
 }

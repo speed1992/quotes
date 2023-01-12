@@ -1,31 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import OutsideAlerter from '../outside-alerter/outside-alerter';
-import './mobile-select.css';
+import React, { useEffect, useState } from 'react'
+import OutsideAlerter from '../outside-alerter/outside-alerter'
+import './mobile-select.css'
 
 export default function MobileSelect({ options, onChangeHandler, placeholder, value }) {
-    const [suggestions, setSuggestions] = useState([]);
-    const [searchText, setSearchText] = useState([]);
-
-    useEffect(() => setSearchText(value), [value]);
+    const [suggestions, setSuggestions] = useState([])
+    const [searchText, setSearchText] = useState([])
+    console.log('searchText', searchText)
+    useEffect(() => setSearchText(value), [value])
 
     const onFocusHandler = (e) => {
-        setSearchText("");
+        setSearchText('')
         setSuggestions(options)
     }
 
     const onTextChange = (e) => {
-        const value = e.target.value;
-        if (value === "") setSuggestions(options)
+        debugger
+        const value = e.target.value
+        if (value === '') setSuggestions(options)
         else {
-            let suggestions = [];
+            let suggestions = []
             if (value.length > 0) {
-                const regex = new RegExp(`${value}`, `i`);
-                suggestions = options.filter(({ fullName }) => regex.test(fullName));
+                const regex = new RegExp(`${value}`, `i`)
+                suggestions = options.filter(({ fullName }) => regex.test(fullName))
             }
 
-            setSuggestions(suggestions);
+            setSuggestions(suggestions)
         }
-        setSearchText(value);
+        setSearchText(value)
     }
 
     const onBlurHandler = () => {
@@ -33,43 +34,36 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
     }
 
     const suggestionSelected = (fullName, value) => {
+        debugger
         if (value !== undefined) {
-            setSuggestions([]);
-            setSearchText(fullName);
+            setSuggestions([])
+            setSearchText(fullName)
             onChangeHandler({ target: { value } })
         }
     }
 
     const renderSuggestions = () => {
         if (suggestions.length === 0) {
-            return null;
+            return null
         }
         return (
             <ul className="dropDownList">
-                {suggestions && suggestions.map(
-                    ({ id, fullName, value }) =>
-                        <li
-                            key={id} value={value}
-                            onClick={(e) => suggestionSelected(fullName, value)}>
+                {suggestions &&
+                    suggestions.map(({ id, fullName, value }) => (
+                        <li key={id} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
                             {fullName}
                         </li>
-                )}
-            </ul >
+                    ))}
+            </ul>
         )
     }
 
     return (
         <OutsideAlerter callback={() => setSuggestions([])}>
             <div className="typeAheadDropDown">
-                <input type="text"
-                    onFocus={onFocusHandler}
-                    onChange={onTextChange}
-                    placeholder={placeholder}
-                    value={searchText}
-                    onBlur={onBlurHandler}
-                />
+                <input type="text" onFocus={onFocusHandler} onChange={onTextChange} placeholder={placeholder} value={searchText} onBlur={onBlurHandler} />
                 {renderSuggestions()}
             </div>
-        </OutsideAlerter >
-    );
+        </OutsideAlerter>
+    )
 }
