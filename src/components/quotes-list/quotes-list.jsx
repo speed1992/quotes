@@ -19,7 +19,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, translateK
         index, ...others
     }) {
         return (
-            <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote: currentData[index] }} {...others} />
+            <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote: currentData[index], currentPhilosopher }} {...others} />
         );
     }
 

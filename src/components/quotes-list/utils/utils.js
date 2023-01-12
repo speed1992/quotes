@@ -1,12 +1,11 @@
 import { isEmpty } from 'lodash'
-import { changeData } from '../../../common/utils/staticDataUtils'
+import { changeData, removeReadData } from '../../../common/utils/staticDataUtils'
 import { getPhilosopherData } from '../../../static/utils/utils'
 
-export const changeQuotesData = ({ philosopher, setCurrentData, options }, markedMode = false) => {
+export const changeQuotesData = ({ philosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes }) => {
     const { quotes } = getPhilosopherData({ philosopher, options })
     setCurrentData(quotes)
-    // if (markedMode)
-    //     removeReadData(setCurrentData);
+    if (markedMode) removeReadData({ currentPhilosopher: philosopher, markedMode, markedQuotes, setMarkedQuotes, currentData, setCurrentData })
 }
 
 export const getPhilosopherFullName = ({ currentPhilosopher, options }) => {
@@ -19,7 +18,7 @@ export const getPhilosopherFullName_i10n = ({ currentPhilosopher, options }) => 
     if (!isEmpty(currentIndex)) return currentIndex && currentIndex[0].fullNameInOtherLanguages
 }
 
-export const searchByWordLength = (start, end, quotes, markedMode, setCurrentData) => {
+export const searchByWordLength = (start, end, quotes, { markedMode, markedQuotes, setMarkedQuotes }, { currentData, setCurrentData }) => {
     if (quotes !== undefined) {
         if (typeof start === 'string' && start.trim() === '') start = 0
 

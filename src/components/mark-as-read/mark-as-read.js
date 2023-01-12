@@ -1,15 +1,15 @@
-import { getReadArrayFromLocalStorage, setReadArrayFromLocalStorage } from "../../common/utils/localStorageUtils";
-import { removeReadData } from "../../common/utils/staticDataUtils";
+import { getReadArrayFromLocalStorage, setReadArrayFromLocalStorage } from '../../common/utils/localStorageUtils'
+import { removeReadData } from '../../common/utils/staticDataUtils'
 
-const MarkAsRead = ({ index,setCurrentData }) => {
-    var readQuotesArr = getReadArrayFromLocalStorage();
+const MarkAsRead = ({ index, setCurrentData, currentPhilosopher }) => {
+    var readQuotesArr = getReadArrayFromLocalStorage()
 
     const clickHandler = () => {
-        setReadArrayFromLocalStorage(readQuotesArr, index)
-        removeReadData(setCurrentData);
+        setReadArrayFromLocalStorage(readQuotesArr, index, currentPhilosopher)
+        removeReadData(setCurrentData)
     }
 
-    return (<button onClick={clickHandler}>Mark as Read</button>)
+    return <button onClick={clickHandler}>Mark as Read</button>
 }
 
-export default MarkAsRead;
+export default MarkAsRead

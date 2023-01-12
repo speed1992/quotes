@@ -1,19 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
-import OPTIONS from "../../../static/philosophers-data"
+import OPTIONS from '../../../static/philosophers-data'
 
 export const philosophersDataSlice = createSlice({
     name: 'philosophersData',
     initialState: {
-        currentPhilosopher: "NIETZSCHE",
+        currentPhilosopher: 'NIETZSCHE',
         start: 1,
-        end: "",
-        searchText: "",
+        end: '',
+        searchText: '',
         markedMode: false,
+        markedQuotes: {},
         currentData: {},
         translate: false,
-        sorting: "alphabetical",
+        sorting: 'alphabetical',
         options: OPTIONS,
-        quotesLoaded: false
+        quotesLoaded: false,
     },
     reducers: {
         increment: (state) => {
@@ -59,9 +60,12 @@ export const philosophersDataSlice = createSlice({
         setSortingRedux: (state, { payload }) => {
             state.sorting = payload
         },
+        setMarkedQuotes: (state, { payload }) => {
+            state.markedQuotes = payload
+        },
     },
 })
 
-export const { increment, decrement, incrementByAmount, setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setTranslateRedux, setSortingRedux,setOptionsRedux,setQuotesLoadedRedux } = philosophersDataSlice.actions
+export const { increment, decrement, incrementByAmount, setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setTranslateRedux, setSortingRedux, setOptionsRedux, setQuotesLoadedRedux, setMarkedQuotes } = philosophersDataSlice.actions
 
 export default philosophersDataSlice.reducer
