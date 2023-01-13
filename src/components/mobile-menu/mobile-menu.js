@@ -1,14 +1,12 @@
 import Switch from '@mui/material/Switch'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { resetData } from '../../common/utils/staticDataUtils'
 import { setSortingRedux } from '../../components/home-page/homePageReduxSlice/homePageReduxSlice'
 import translateImage from '../../static/assets/images/translate.png'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
-import { changeQuotesData } from '../quotes-list/utils/utils'
 import './mobile-menu.css'
 
-function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, visible, toggleVisible, currentPhilosopher, setCurrentData, options, setOptions }) {
+function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, visible, toggleVisible, currentPhilosopher, currentData, setCurrentData, options, markedQuotes, setMarkedQuotes }) {
     const dispatch = useDispatch()
     const sorting = useSelector((state) => state.philosophersData.sorting)
     const setSorting = (value) => dispatch(setSortingRedux(value))
@@ -23,6 +21,19 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
     //     }
     //     // eslint-disable-next-line react-hooks/exhaustive-deps
     // }, [sorting])
+
+    useEffect(() => {
+        // changeQuotesData(
+        //     {
+        //         philosopher: currentPhilosopher,
+        //         currentData,
+        //         setCurrentData,
+        //         options,
+        //     },
+        //     { markedMode, markedQuotes, setMarkedQuotes }
+        // )
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [markedMode])
 
     return (
         <>
@@ -60,17 +71,9 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                             onChange={({ target: { checked } }) => {
                                 if (checked) {
                                     setMarkedMode(true)
-                                    changeQuotesData(
-                                        {
-                                            philosopher: currentPhilosopher,
-                                            setCurrentData,
-                                            options,
-                                        },
-                                        true
-                                    )
                                 } else {
                                     setMarkedMode(false)
-                                    resetData()
+                                    // resetData()
                                 }
                             }}
                         />

@@ -13,7 +13,6 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
     }
 
     const onTextChange = (e) => {
-        debugger
         const value = e.target.value
         if (value === '') setSuggestions(options)
         else {
@@ -33,7 +32,6 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
     }
 
     const suggestionSelected = (fullName, value) => {
-        debugger
         if (value !== undefined) {
             setSuggestions([])
             setSearchText(fullName)

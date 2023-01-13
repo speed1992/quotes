@@ -5,7 +5,7 @@ import { getPhilosopherData } from '../../../static/utils/utils'
 export const changeQuotesData = ({ philosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes }) => {
     const { quotes } = getPhilosopherData({ philosopher, options })
     setCurrentData(quotes)
-    if (markedMode) removeReadData({ currentPhilosopher: philosopher, markedMode, markedQuotes, setMarkedQuotes, currentData, setCurrentData })
+    if (markedMode !== undefined) removeReadData({ currentPhilosopher: philosopher, markedMode, markedQuotes, setMarkedQuotes, currentData, setCurrentData })
 }
 
 export const getPhilosopherFullName = ({ currentPhilosopher, options }) => {
@@ -39,7 +39,7 @@ export const searchByWordLength = (start, end, quotes, { markedMode, markedQuote
             return false
         })
 
-        changeData(newData, setCurrentData)
+        // changeQuotesData(newData, setCurrentData)
         // if (markedMode) removeReadData(setCurrentData)
     }
 }

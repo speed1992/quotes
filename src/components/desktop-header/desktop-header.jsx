@@ -1,9 +1,7 @@
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import React from "react";
-import { resetData } from "../../common/utils/staticDataUtils";
 import translateImage from "../../static/assets/images/translate.png";
-import { changeQuotesData } from '../quotes-list/utils/utils';
 import Select from "../select/select";
 import { WordLengthSearch } from "../wordLengthSearch/wordLengthSearch";
 import { onPhilosopherSelectChange } from './utils/utils';
@@ -43,11 +41,10 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
                         <Switch checked={markedMode} onChange={({ target: { checked } }) => {
                             if (checked) {
                                 setMarkedMode(true);
-                                changeQuotesData({philosopher:currentPhilosopher, setCurrentData,options}, true)
                             }
                             else {
                                 setMarkedMode(false);
-                                resetData()
+                                // resetData()
                             }
                         }} />
                     </span>

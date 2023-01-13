@@ -24,7 +24,7 @@ export const removeReadData = ({ currentPhilosopher, markedMode, markedQuotes, s
 
         const newData = currentData.filter(({ id }, _) => readQuotesArray.indexOf(id) === -1)
 
-        changeData(newData, setCurrentData)
+        // changeData(newData, setCurrentData)
         resolve()
     })
 }

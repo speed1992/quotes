@@ -10,7 +10,7 @@ export const philosophersDataSlice = createSlice({
         searchText: '',
         markedMode: false,
         markedQuotes: {},
-        currentData: {},
+        currentData: [],
         translate: false,
         sorting: 'alphabetical',
         options: OPTIONS,
@@ -49,7 +49,9 @@ export const philosophersDataSlice = createSlice({
             state.markedMode = payload
         },
         setCurrentDataRedux: (state, { payload }) => {
-            state.currentData = payload
+            if (Array.isArray(payload)) {
+                state.currentData = payload
+            }
         },
         setOptionsRedux: (state, { payload }) => {
             state.options = payload
