@@ -8,7 +8,7 @@ function NoRowsRenderer() {
     return (<>No Search Results!</>)
 }
 
-function QuotesList({ listRef, width, height, searchText, start, end, translateKey, markedMode, currentData, options, currentPhilosopher,markedQuotes, setMarkedQuotes }) {
+function QuotesList({ listRef, width, height, searchText, start, end, translateKey, markedMode, currentData,setCurrentData, options, currentPhilosopher,markedQuotes, setMarkedQuotes }) {
     const philosopherFullName = getPhilosopherFullName({ currentPhilosopher, options });
     const philosopherFullName_i10n = getPhilosopherFullName_i10n({ currentPhilosopher, options });
     useEffect(() => {
@@ -19,9 +19,11 @@ function QuotesList({ listRef, width, height, searchText, start, end, translateK
         index, ...others
     }) {
         return (
-            <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote: currentData[index], currentPhilosopher,markedQuotes, setMarkedQuotes }} {...others} />
+            <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentData,setCurrentData, currentQuote: currentData[index], currentPhilosopher,markedQuotes, setMarkedQuotes }} {...others} />
         );
     }
+
+    console.log("currentData.length", currentData.length);
 
     return (
         <List

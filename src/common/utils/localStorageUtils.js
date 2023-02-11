@@ -33,10 +33,14 @@ export function getReadArrayFromLocalStorage() {
 }
 
 export function setReadArrayFromLocalStorage({ markedQuotes, setMarkedQuotes }, index, currentPhilosopher) {
-    let readQuotesArr = markedQuotes[currentPhilosopher]
+    let readQuotesArr = [];
+    let newMarkedQuotes = JSON.parse(JSON.stringify(markedQuotes));
+    if(newMarkedQuotes[currentPhilosopher] !== undefined){
+        readQuotesArr = newMarkedQuotes[currentPhilosopher]
+    }
     // const READ_ARRAY_LOCALSTORAGE_KEY = `${currentPhilosopher}-MARKED_AS_READ`
     readQuotesArr.push(index)
     readQuotesArr = [...new Set(readQuotesArr)]
-    markedQuotes[currentPhilosopher] = readQuotesArr
-    setMarkedQuotes(markedQuotes)
+    newMarkedQuotes[currentPhilosopher] = readQuotesArr
+    setMarkedQuotes(newMarkedQuotes)
 }

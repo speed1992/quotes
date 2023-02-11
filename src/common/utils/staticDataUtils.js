@@ -1,6 +1,5 @@
 import PHILOSOPHERS_DATA from '../../static/philosophers-data'
 import { getPhilosopherObjectIndex } from '../../static/utils/utils'
-import { getStorageValue } from './localStorageUtils'
 export let currentPhilosopher
 
 export let currentData = []
@@ -15,16 +14,16 @@ export const resetData = () => {
     currentData = JSON.parse(JSON.stringify(PHILOSOPHERS_DATA[index]['quotes']))
 }
 
-export const removeReadData = ({ currentPhilosopher, markedMode, markedQuotes, setMarkedQuotes, currentData, setCurrentData }) => {
-    return new Promise(async (resolve) => {
-        let readQuotesArray = []
-        const READ_ARRAY_LOCALSTORAGE_KEY = `${currentPhilosopher}-MARKED_AS_READ`
+export const removeReadData = ({ index, currentPhilosopher, markedMode, markedQuotes, setMarkedQuotes, currentData, setCurrentData }) => {
+        let readQuotesArray = [];
 
-        readQuotesArray = getStorageValue(READ_ARRAY_LOCALSTORAGE_KEY, [])
+        // const READ_ARRAY_LOCALSTORAGE_KEY = `${currentPhilosopher}-MARKED_AS_READ`
 
-        const newData = currentData.filter(({ id }, _) => readQuotesArray.indexOf(id) === -1)
-
-        // changeData(newData, setCurrentData)
-        resolve()
-    })
+        // readQuotesArray = getStorageValue(READ_ARRAY_LOCALSTORAGE_KEY, [])
+        if(markedQuotes[currentPhilosopher] !== undefined){
+            readQuotesArray = [...markedQuotes[currentPhilosopher]];
+        }
+            readQuotesArray.push(index);
+            const newData = currentData.filter(({ id }, _) => readQuotesArray.indexOf(id) === -1)
+            setCurrentData(JSON.parse(JSON.stringify(newData)))
 }
