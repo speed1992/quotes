@@ -10,7 +10,7 @@ import { rememberScrollPosition, rowClickHandler } from './utils'
 
 const MarkAsRead = lazy(() => import('../mark-as-read/mark-as-read'))
 
-export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData,setCurrentData }, index, style }) => {
+export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData }, index, style }) => {
     const quoteRef = useRef()
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
@@ -20,9 +20,8 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
     if (!isUndefined(currentQuote))
         return (
             <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
-              
                 <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
-                {quotationId}. "{quotationText}" ― {philosopherFullName}
+                    "{quotationText}" ― {philosopherFullName}
                 </span>
 
                 {translateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
@@ -32,7 +31,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                     <Audio index={index} />
                     {markedMode && (
                         <Suspense fallback={''}>
-                            <MarkAsRead index={quotationId} currentPhilosopher={currentPhilosopher} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData}/>
+                            <MarkAsRead index={quotationId} currentPhilosopher={currentPhilosopher} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} />
                         </Suspense>
                     )}
                 </div>
