@@ -19,7 +19,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, translateK
         return <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentData, setCurrentData, currentQuote: currentData[index], currentPhilosopher, markedQuotes, setMarkedQuotes }} {...others} />
     }
 
-    return <List className="List" height={height} rowCount={currentData.length} rowHeight={600} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={NoRowsRenderer} />
+    return <List className="List" height={height} rowCount={currentData.length} rowHeight={600} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={NoRowsRenderer} style={{ padding: '1rem' }} />
 }
 
 export default QuotesList

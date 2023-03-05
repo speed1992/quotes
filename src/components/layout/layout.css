@@ -66,3 +66,7 @@
 .mobile-column,.mobile {
     display:none;
 }
+
+.darkTheme .header input{
+    border: 1px solid #fff;
+}
