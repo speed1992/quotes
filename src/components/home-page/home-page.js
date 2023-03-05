@@ -44,24 +44,30 @@ export const HomePage = () => {
     useEffect(() => {
         combinedSearch({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
         scrollToFirstRow(listRef)
-    }, [start, end, searchText, markedMode, quotesLoaded])
+    }, [start, end, searchText, markedMode, quotesLoaded, markedQuotes])
 
     useEffect(() => {
-        var root = document.getElementsByTagName("html")[0];
+        var root = document.getElementsByTagName('html')[0]
         if (darkMode) {
-          root.setAttribute( "class", "darkTheme" );
+            root.setAttribute('class', 'darkTheme')
         } else {
-          root.setAttribute("class","");
+            root.setAttribute('class', '')
         }
-      }, [darkMode]);
+    }, [darkMode])
 
-    const propsToSend = { setSearchText, searchText, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, setCurrentData, currentData, options, setOptions, setQuotesLoaded, markedQuotes, setMarkedQuotes,originalData,setOriginalData,setDarkMode }
+    const propsToSend = { setSearchText, searchText, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, setCurrentData, currentData, options, setOptions, setQuotesLoaded, markedQuotes, setMarkedQuotes, originalData, setOriginalData, setDarkMode }
 
     const renderList = () => <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
 
     return (
         <>
-            {isFetching ? <Loader /> : (<><Layout {...propsToSend} /> <div className={styles.content}>{renderList()}</div></>)}
+            {isFetching ? (
+                <Loader />
+            ) : (
+                <>
+                    <Layout {...propsToSend} /> <div className={styles.content}>{renderList()}</div>
+                </>
+            )}
         </>
     )
 }
