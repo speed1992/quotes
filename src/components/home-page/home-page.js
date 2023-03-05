@@ -40,7 +40,7 @@ export const HomePage = () => {
     const setMarkedQuotes = (value) => dispatch(setMarkedQuotesRedux(value))
 
     useEffect(() => {
-        combinedSearch({ searchText, start, end, philosopher: currentPhilosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
+        combinedSearch({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
         scrollToFirstRow(listRef)
     }, [start, end, searchText, markedMode, quotesLoaded])
 
@@ -50,14 +50,7 @@ export const HomePage = () => {
 
     return (
         <>
-            {isFetching ? (
-                <Loader />
-            ) : (
-                <>
-                    <Layout {...propsToSend} />
-                    <div className={styles.content}>{renderList()}</div>
-                </>
-            )}
+            {isFetching ? <Loader /> : (<><Layout {...propsToSend} /> <div className={styles.content}>{renderList()}</div></>)}
         </>
     )
 }

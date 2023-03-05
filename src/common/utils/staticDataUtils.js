@@ -20,7 +20,7 @@ export const removeReadData = ({ index, currentPhilosopher, markedMode, markedQu
         // const READ_ARRAY_LOCALSTORAGE_KEY = `${currentPhilosopher}-MARKED_AS_READ`
 
         // readQuotesArray = getStorageValue(READ_ARRAY_LOCALSTORAGE_KEY, [])
-        if(markedQuotes[currentPhilosopher] !== undefined){
+        if(markedQuotes && markedQuotes[currentPhilosopher] !== undefined){
             readQuotesArray = [...markedQuotes[currentPhilosopher]];
         }
             readQuotesArray.push(index);

@@ -15,7 +15,7 @@ function UnreadCounter({ isFetching, currentData, originalData, markedQuotes,cur
         }
 
 
-    }, [isFetching]);
+    }, [currentPhilosopher, isFetching, markedQuotes, originalData.length]);
 
     const { totalQuoteCount, readCount, unreadCount } = quoteCounts;
 

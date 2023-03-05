@@ -1,11 +1,9 @@
-import { isEmpty } from 'lodash'
-import { changeData, removeReadData } from '../../../common/utils/staticDataUtils'
-import { getPhilosopherData } from '../../../static/utils/utils'
+import { isEmpty } from 'lodash';
+import { removeReadData } from '../../../common/utils/staticDataUtils';
 
-export const changeQuotesData = ({ philosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes }) => {
-    const { quotes } = getPhilosopherData({ philosopher, options })
-    setCurrentData(quotes)
-    if (markedMode !== undefined) removeReadData({ currentPhilosopher: philosopher, markedMode, markedQuotes, setMarkedQuotes, currentData, setCurrentData })
+export const changeQuotesData = ({ currentPhilosopher, currentData, setCurrentData, options }, { markedMode = null, markedQuotes, setMarkedQuotes }) => {
+    if (currentData ) setCurrentData(currentData)
+    if (markedMode !== undefined && markedMode) removeReadData({ currentPhilosopher, markedMode, markedQuotes, setMarkedQuotes, currentData, setCurrentData })
 }
 
 export const getPhilosopherFullName = ({ currentPhilosopher, options }) => {
@@ -18,7 +16,7 @@ export const getPhilosopherFullName_i10n = ({ currentPhilosopher, options }) => 
     if (!isEmpty(currentIndex)) return currentIndex && currentIndex[0].fullNameInOtherLanguages
 }
 
-export const searchByWordLength = (start, end, quotes, { markedMode, markedQuotes, setMarkedQuotes }, { currentData, setCurrentData }) => {
+export const searchByWordLength = (start, end, quotes, { markedMode, markedQuotes, setMarkedQuotes }, { currentData, originalData, setCurrentData,currentPhilosopher }) => {
     if (quotes !== undefined) {
         if (typeof start === 'string' && start.trim() === '') start = 0
 
@@ -38,8 +36,7 @@ export const searchByWordLength = (start, end, quotes, { markedMode, markedQuote
 
             return false
         })
-
-        // changeQuotesData(newData, setCurrentData)
+        changeQuotesData({currentData:newData, setCurrentData, currentPhilosopher},{markedMode,markedQuotes,setMarkedQuotes})
         // if (markedMode) removeReadData(setCurrentData)
     }
 }

@@ -1,4 +1,3 @@
-import { getPhilosopherData } from "../../static/utils/utils";
 import { currentData, currentPhilosopher } from "./staticDataUtils";
 
 export const scrollToFirstRow = (listRef) => {
@@ -19,11 +18,10 @@ export const scrollToMemorizedRow = (listRef) => {
     }
 }
 
-export const search = ({searchText,philosopher,options}) => {
-    const obj = getPhilosopherData({philosopher,options})
-    const { quotes } = obj;
-    if(quotes!==undefined){
-        const filteredQuotes = quotes.filter(({ quote }) => {
+export const search = ({searchText, currentData, setCurrentData}) => {
+
+    if(currentData!==undefined){
+        const filteredQuotes = currentData.filter(({ quote }) => {
             if ((quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0)) {
                 return false
             }
@@ -31,9 +29,10 @@ export const search = ({searchText,philosopher,options}) => {
                 return true;
             }
         });
+        setCurrentData(filteredQuotes);
         return filteredQuotes;
     }
-
+    
 }
 
 export const isMobile = () => (window.innerWidth <= 600)
