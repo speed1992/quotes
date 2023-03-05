@@ -29,11 +29,7 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                             type="checkbox"
                             checked={markedMode}
                             onClick={({ target: { checked } }) => {
-                                if (checked) {
-                                    setMarkedMode(true)
-                                } else {
-                                    setMarkedMode(false)
-                                }
+                                setMarkedMode(checked)
                             }}
                         />
                     </li>
@@ -43,11 +39,7 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                             type="checkbox"
                             checked={darkMode}
                             onClick={({ target: { checked } }) => {
-                                if (checked) {
-                                    setDarkMode(true)
-                                } else {
-                                    setDarkMode(false)
-                                }
+                                setDarkMode(checked)
                             }}
                         />
                     </li>
