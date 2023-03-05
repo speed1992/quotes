@@ -37,7 +37,6 @@ export const searchByWordLength = (start, end, quotes, { markedMode, markedQuote
             return false
         })
         changeQuotesData({currentData:newData, setCurrentData, currentPhilosopher},{markedMode,markedQuotes,setMarkedQuotes})
-        // if (markedMode) removeReadData(setCurrentData)
     }
 }
 
