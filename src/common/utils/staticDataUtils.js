@@ -1,5 +1,6 @@
 import PHILOSOPHERS_DATA from '../../static/philosophers-data'
 import { getPhilosopherObjectIndex } from '../../static/utils/utils'
+import { getStorageValue } from './localStorageUtils'
 export let currentPhilosopher
 
 export let currentData = []
@@ -17,11 +18,12 @@ export const resetData = () => {
 export const removeReadData = ({ index, currentPhilosopher, markedMode, markedQuotes, setMarkedQuotes, currentData, setCurrentData }) => {
         let readQuotesArray = [];
 
-        // const READ_ARRAY_LOCALSTORAGE_KEY = `${currentPhilosopher}-MARKED_AS_READ`
+        const READ_ARRAY_LOCALSTORAGE_KEY = `${currentPhilosopher}-MARKED_AS_READ`
 
-        // readQuotesArray = getStorageValue(READ_ARRAY_LOCALSTORAGE_KEY, [])
+        readQuotesArray = getStorageValue(READ_ARRAY_LOCALSTORAGE_KEY, [])
+
         if(markedQuotes && markedQuotes[currentPhilosopher] !== undefined){
-            readQuotesArray = [...markedQuotes[currentPhilosopher]];
+            readQuotesArray = [...readQuotesArray,...markedQuotes[currentPhilosopher]];
         }
             readQuotesArray.push(index);
             const newData = currentData.filter(({ id }, _) => readQuotesArray.indexOf(id) === -1)

@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
-import { currentPhilosopher } from './staticDataUtils'
+import { useEffect, useState } from 'react';
+import { currentPhilosopher } from './staticDataUtils';
 
 export function getStorageValue(key, defaultValue) {
     // getting stored value
+    debugger;
     const saved = localStorage.getItem(key)
     const initial = JSON.parse(saved)
     if (initial === undefined || initial === 'undefined' || initial === 'null' || initial === null) {
