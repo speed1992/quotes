@@ -29,7 +29,7 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                             type="checkbox"
                             checked={markedMode}
                             onClick={({ target: { checked } }) => {
-                                setMarkedMode(checked)
+                                setMarkedMode(!checked)
                             }}
                         />
                     </li>
