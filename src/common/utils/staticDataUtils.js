@@ -28,10 +28,10 @@ export const removeReadData = ({ index, currentPhilosopher, markedMode, markedQu
         }
 
         if((markedQuotes && markedQuotes[currentPhilosopher] !== undefined) ){
-            debugger
             readQuotesArray = [...readQuotesArray,...markedQuotes[currentPhilosopher]];
         }
-            readQuotesArray.push(index);
-            const newData = currentData.filter(({ id }, _) => readQuotesArray.indexOf(id) === -1)
-            setCurrentData(JSON.parse(JSON.stringify(newData)))
+
+        if (index) readQuotesArray.push(index);
+        const newData = currentData.filter(({ id }, _) => readQuotesArray.indexOf(id) === -1)
+        setCurrentData(JSON.parse(JSON.stringify(newData)))
 }
