@@ -57,3 +57,7 @@ button{
   background-color: #000!important;
   color: #fff!important;
 }
+
+.darkTheme button {
+  border: 1px solid #fff!important;
+}
