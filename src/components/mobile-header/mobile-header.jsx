@@ -10,10 +10,9 @@ const UnreadCounter = React.lazy(() => import('../unread-counter/unread-counter'
 function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, markedQuotes, currentData, setCurrentData, currentPhilosopher, originalData, setCurrentPhilosopher, options, setOptions, setQuotesLoaded }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText, setCurrentData }
     const [visible, toggleVisible] = useState(false)
-    const headerHeight = '3.5rem';
 
     return (
-        <div className="header" style={{ height: headerHeight }}>
+        <div className="header">
             <div className="mobile-column">
                 {visible && (
                     <Suspense fallback={''}>
