@@ -1,11 +1,11 @@
-import download from 'downloadjs';
-import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import translateImage from '../../static/assets/images/translate.png';
-import OutsideAlerter from '../outside-alerter/outside-alerter';
-import './mobile-menu.css';
+import download from 'downloadjs'
+import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import translateImage from '../../static/assets/images/translate.png'
+import OutsideAlerter from '../outside-alerter/outside-alerter'
+import './mobile-menu.css'
 
-function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, visible, toggleVisible, currentPhilosopher, currentData, setCurrentData, setOptions, markedQuotes, setMarkedQuotes,darkMode, setDarkMode }) {
+function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, visible, toggleVisible, currentPhilosopher, currentData, setCurrentData, setOptions, markedQuotes, setMarkedQuotes, darkMode, setDarkMode }) {
     return (
         <>
             <OutsideAlerter callback={() => toggleVisible(false)}>
@@ -14,9 +14,10 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                         <span className="mobile-translate-switch">
                             <img className="translate-img" src={translateImage} alt="Toggle to translate" />
                             Translate
-                            <input type="checkbox"
+                            <input
+                                type="checkbox"
                                 checked={translateKey}
-                                onChange={({ target: { checked } }) => {
+                                onClick={({ target: { checked } }) => {
                                     setTranslateKey(checked)
                                 }}
                             />
@@ -24,9 +25,10 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                     </li>
                     <li>
                         Marked Mode
-                        <input type="checkbox"
+                        <input
+                            type="checkbox"
                             checked={markedMode}
-                            onChange={({ target: { checked } }) => {
+                            onClick={({ target: { checked } }) => {
                                 if (checked) {
                                     setMarkedMode(true)
                                 } else {
@@ -37,21 +39,26 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                     </li>
                     <li>
                         Dark Mode
-                        <input type="checkbox"
-                        checked={darkMode}
-                        onChange={({ target: { checked } }) => {
-                            if (checked) {
-                            setDarkMode(true);
-                            } else {
-                            setDarkMode(false);
-                            }
-                        }}
+                        <input
+                            type="checkbox"
+                            checked={darkMode}
+                            onClick={({ target: { checked } }) => {
+                                if (checked) {
+                                    setDarkMode(true)
+                                } else {
+                                    setDarkMode(false)
+                                }
+                            }}
                         />
                     </li>
                     <li>
-                       <button onClick={()=>{
-                            download(JSON.stringify(window.localStorage), `local-storage-${uuidv4()}.txt`);
-                    }}>Download Storage</button>
+                        <button
+                            onClick={() => {
+                                download(JSON.stringify(window.localStorage), `local-storage-${uuidv4()}.txt`)
+                            }}
+                        >
+                            Download Storage
+                        </button>
                     </li>
                 </ul>
             </OutsideAlerter>
