@@ -1,11 +1,8 @@
-import React from 'react';
+import React from 'react'
+import styles from './breadcrumb.module.css'
 
-function Breadcrumb({children}) {
-    return (
-        <>
-         {children}
-        </>
-    )
+function Breadcrumb({ children }) {
+    return <span className={styles.alignment}>{children}</span>
 }
 
-export default Breadcrumb;
+export default Breadcrumb
