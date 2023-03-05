@@ -41,8 +41,9 @@ body{
   justify-content: center;
 }
 
-.ListItemEven {
-  background-color: #f6f6f6;
+.darkTheme * {
+  background-color: #000!important;
+  color: #fff!important;
 }
 
 button{
@@ -51,11 +52,6 @@ button{
 
 *,*:focus,*:hover{
   outline:none;
-}
-
-.darkTheme * {
-  background-color: #000!important;
-  color: #fff!important;
 }
 
 .darkTheme button {
