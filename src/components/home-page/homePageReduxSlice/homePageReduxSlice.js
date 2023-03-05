@@ -16,6 +16,7 @@ export const philosophersDataSlice = createSlice({
         sorting: 'alphabetical',
         options: OPTIONS.reverse(),
         quotesLoaded: false,
+        darkMode: false
     },
     reducers: {
         increment: (state) => {
@@ -65,15 +66,15 @@ export const philosophersDataSlice = createSlice({
         setTranslateRedux: (state, { payload }) => {
             state.translate = payload
         },
-        setSortingRedux: (state, { payload }) => {
-            state.sorting = payload
-        },
         setMarkedQuotesRedux: (state, { payload }) => {
             state.markedQuotes = payload
+        },
+        setDarkModeRedux: (state, { payload }) => {
+            state.darkMode = payload
         },
     },
 })
 
-export const { increment, decrement, incrementByAmount, setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setTranslateRedux, setSortingRedux, setOptionsRedux, setQuotesLoadedRedux, setMarkedQuotesRedux,setOrginalDataRedux } = philosophersDataSlice.actions
+export const { increment, decrement, incrementByAmount, setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setTranslateRedux, setOptionsRedux,setDarkModeRedux, setQuotesLoadedRedux, setMarkedQuotesRedux,setOrginalDataRedux } = philosophersDataSlice.actions
 
 export default philosophersDataSlice.reducer

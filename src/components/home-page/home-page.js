@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import { combinedSearch } from '../../common/utils/searchUtils'
 import { scrollToFirstRow } from '../../common/utils/utils'
-import { setCurrentDataRedux, setCurrentPhilosopherRedux, setEndRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setOrginalDataRedux, setQuotesLoadedRedux, setSearchTextRedux, setStartRedux, setTranslateRedux } from '../../components/home-page/homePageReduxSlice/homePageReduxSlice'
+import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setOrginalDataRedux, setQuotesLoadedRedux, setSearchTextRedux, setStartRedux, setTranslateRedux } from '../../components/home-page/homePageReduxSlice/homePageReduxSlice'
 import { Layout } from '../layout/layout'
 import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
 import { Loader } from '../loader/loader'
@@ -24,6 +24,7 @@ export const HomePage = () => {
     const quotesLoaded = useSelector((state) => state.philosophersData.quotesLoaded)
     const translateKey = useSelector((state) => state.philosophersData.translate)
     const markedQuotes = useSelector((state) => state.philosophersData.markedQuotes)
+    const darkMode = useSelector((state) => state.philosophersData.darkMode)
 
     const [isFetching, setIsFetching] = useState(false)
 
@@ -38,13 +39,23 @@ export const HomePage = () => {
     const setOptions = (value) => dispatch(setOptionsRedux(value))
     const setQuotesLoaded = (value) => dispatch(setQuotesLoadedRedux(value))
     const setMarkedQuotes = (value) => dispatch(setMarkedQuotesRedux(value))
+    const setDarkMode = (value) => dispatch(setDarkModeRedux(value))
 
     useEffect(() => {
         combinedSearch({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
         scrollToFirstRow(listRef)
     }, [start, end, searchText, markedMode, quotesLoaded])
 
-    const propsToSend = { setSearchText, searchText, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, setCurrentData, currentData, options, setOptions, setQuotesLoaded, markedQuotes, setMarkedQuotes,originalData,setOriginalData }
+    useEffect(() => {
+        var root = document.getElementsByTagName("html")[0];
+        if (darkMode) {
+          root.setAttribute( "class", "darkTheme" );
+        } else {
+          root.setAttribute("class","");
+        }
+      }, [darkMode]);
+
+    const propsToSend = { setSearchText, searchText, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, setCurrentData, currentData, options, setOptions, setQuotesLoaded, markedQuotes, setMarkedQuotes,originalData,setOriginalData,setDarkMode }
 
     const renderList = () => <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
 
