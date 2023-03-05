@@ -10,7 +10,7 @@ const UnreadCounter = React.lazy(() => import('../unread-counter/unread-counter'
 function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, markedQuotes, currentData, setCurrentData, currentPhilosopher, originalData, setCurrentPhilosopher, options, setOptions, setQuotesLoaded }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText, setCurrentData }
     const [visible, toggleVisible] = useState(false)
-    const headerHeight = markedMode ? '3.5rem' : '1.5rem'
+    const headerHeight = '3.5rem';
 
     return (
         <div className="header" style={{ height: headerHeight }}>
@@ -31,14 +31,12 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
             <div className="mobile-column">
                 <Select isMobile={true} options={options} currentPhilosopher={currentPhilosopher} onChangeHandler={({ target: { value: philosopher } }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData, options, setOptions, setQuotesLoaded })} />
             </div>
-            {markedMode && (
-                <Suspense fallback={''}>
-                    <Breadcrumb>
-                        <QuotesFound found={currentData.length} />
-                        <UnreadCounter isFetching={isFetching} currentData={currentData} originalData={originalData} markedQuotes={markedQuotes} currentPhilosopher={currentPhilosopher} />
-                    </Breadcrumb>
-                </Suspense>
-            )}
+            <Suspense fallback={''}>
+                <Breadcrumb>
+                    <QuotesFound markedMode={markedMode} found={currentData.length} />
+                    {markedMode && <UnreadCounter isFetching={isFetching} currentData={currentData} originalData={originalData} markedQuotes={markedQuotes} currentPhilosopher={currentPhilosopher} />}
+                </Breadcrumb>
+            </Suspense>
         </div>
     )
 }

@@ -14,15 +14,11 @@ export const allocateIdsToData = (data) =>
 export const doOperationsOnData = ({ data, setData }, sortingMethod) => {
     data = data.slice()
 
-    // Sorting except the first element
-    const allElement = data.shift()
-
     if (sortingMethod === 'alphabetical') data.sort((a, b) => a.fullName.localeCompare(b.fullName))
     else data.sort((a, b) => b.id - a.id)
 
     console.log(data)
 
-    data.unshift(allElement)
     setData(data)
 }
 

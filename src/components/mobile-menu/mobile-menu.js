@@ -1,39 +1,17 @@
 import Switch from '@mui/material/Switch'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSortingRedux } from '../../components/home-page/homePageReduxSlice/homePageReduxSlice'
 import translateImage from '../../static/assets/images/translate.png'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
 import './mobile-menu.css'
 
-function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, visible, toggleVisible, currentPhilosopher, currentData, setCurrentData, options, markedQuotes, setMarkedQuotes }) {
+function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, visible, toggleVisible, currentPhilosopher, currentData, setCurrentData, setOptions, markedQuotes, setMarkedQuotes }) {
     const dispatch = useDispatch()
     const sorting = useSelector((state) => state.philosophersData.sorting)
     const setSorting = (value) => dispatch(setSortingRedux(value))
 
     const onClickSortButtonHandler = ({ target: { id } }) => setSorting(id)
-
-    // useEffect(() => {
-    //     if (sorting === 'latest') {
-    //         doOperationsOnData({ data: options, setData: setOptions }, sorting)
-    //     } else {
-    //         doOperationsOnData({ data: options, setData: setOptions }, sorting)
-    //     }
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [sorting])
-
-    useEffect(() => {
-        // changeQuotesData(
-        //     {
-        //         philosopher: currentPhilosopher,
-        //         currentData,
-        //         setCurrentData,
-        //         options,
-        //     },
-        //     { markedMode, markedQuotes, setMarkedQuotes }
-        // )
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [markedMode])
 
     return (
         <>

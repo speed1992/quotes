@@ -1,11 +1,4 @@
 const data = [
-    // {
-    //     value: 'ALL',
-    //     fullName: 'All',
-    //     fullNameInOtherLanguages: {
-    //         hi: '',
-    //     },
-    // },
     {
         value: 'NIETZSCHE',
         fullName: 'Friedrich Nietzsche',

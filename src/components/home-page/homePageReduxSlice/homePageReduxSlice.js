@@ -14,7 +14,7 @@ export const philosophersDataSlice = createSlice({
         originalData: [],
         translate: false,
         sorting: 'alphabetical',
-        options: OPTIONS,
+        options: OPTIONS.reverse(),
         quotesLoaded: false,
     },
     reducers: {
