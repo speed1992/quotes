@@ -1,10 +1,12 @@
-import Switch from '@mui/material/Switch'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setSortingRedux } from '../../components/home-page/homePageReduxSlice/homePageReduxSlice'
-import translateImage from '../../static/assets/images/translate.png'
-import OutsideAlerter from '../outside-alerter/outside-alerter'
-import './mobile-menu.css'
+import Switch from '@mui/material/Switch';
+import download from 'downloadjs';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import { setSortingRedux } from '../../components/home-page/homePageReduxSlice/homePageReduxSlice';
+import translateImage from '../../static/assets/images/translate.png';
+import OutsideAlerter from '../outside-alerter/outside-alerter';
+import './mobile-menu.css';
 
 function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, visible, toggleVisible, currentPhilosopher, currentData, setCurrentData, setOptions, markedQuotes, setMarkedQuotes }) {
     const dispatch = useDispatch()
@@ -55,6 +57,11 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                                 }
                             }}
                         />
+                    </li>
+                    <li>
+                       <button onClick={()=>{
+                            download(JSON.stringify(window.localStorage), `local-storage-${uuidv4()}.txt`);
+                    }}>Download Storage</button>
                     </li>
                 </ul>
             </OutsideAlerter>
