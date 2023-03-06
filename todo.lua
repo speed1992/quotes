@@ -1,4 +1,3 @@
-react 18
 canvas
 
 
