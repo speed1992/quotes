@@ -10,7 +10,7 @@ import { rememberScrollPosition, rowClickHandler } from './utils'
 
 const MarkAsRead = lazy(() => import('../mark-as-read/mark-as-read'))
 
-export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData }, index, style }) => {
+export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index }, style }) => {
     const quoteRef = useRef()
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
@@ -28,7 +28,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
 
                 <div style={{ position: 'absolute', top: '50rem' }}>
                     <GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
-                    <Audio index={index} />
+                    <Audio index={index} currentData={currentData} />
                     {markedMode && (
                         <Suspense fallback={''}>
                             <MarkAsRead index={quotationId} currentPhilosopher={currentPhilosopher} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} />

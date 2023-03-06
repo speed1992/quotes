@@ -17,7 +17,7 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                             <input
                                 type="checkbox"
                                 checked={translateKey}
-                                onClick={({ target: { checked } }) => {
+                                onChange={({ target: { checked } }) => {
                                     setTranslateKey(checked)
                                 }}
                             />
@@ -38,7 +38,7 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                         <input
                             type="checkbox"
                             checked={darkMode}
-                            onClick={({ target: { checked } }) => {
+                            onChange={({ target: { checked } }) => {
                                 setDarkMode(checked)
                             }}
                         />
