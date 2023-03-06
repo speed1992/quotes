@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { currentPhilosopher } from './staticDataUtils';
+import { useEffect, useState } from 'react'
+import { currentPhilosopher } from './staticDataUtils'
 
 export function getStorageValue(key, defaultValue) {
     // getting stored value
@@ -30,17 +30,4 @@ export const useLocalStorage = (key, defaultValue) => {
 export function getReadArrayFromLocalStorage() {
     const READ_ARRAY_LOCALSTORAGE_KEY = `${currentPhilosopher}-MARKED_AS_READ`
     return getStorageValue(READ_ARRAY_LOCALSTORAGE_KEY, [])
-}
-
-export function setReadArrayFromLocalStorage({ markedQuotes, setMarkedQuotes }, index, currentPhilosopher) {
-    let readQuotesArr = [];
-    let newMarkedQuotes = JSON.parse(JSON.stringify(markedQuotes));
-    if(newMarkedQuotes[currentPhilosopher] !== undefined){
-        readQuotesArr = newMarkedQuotes[currentPhilosopher]
-    }
-    // const READ_ARRAY_LOCALSTORAGE_KEY = `${currentPhilosopher}-MARKED_AS_READ`
-    readQuotesArr.push(index)
-    readQuotesArr = [...new Set(readQuotesArr)]
-    newMarkedQuotes[currentPhilosopher] = readQuotesArr
-    setMarkedQuotes(newMarkedQuotes)
 }
