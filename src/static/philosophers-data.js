@@ -974,6 +974,27 @@ const data = [
             hi: 'हेनरीक इब्सेन',
         },
     },
+    {
+        value: 'MURAKAMI',
+        fullName: 'Haruki Murakami',
+        fullNameInOtherLanguages: {
+            hi: 'हरुकी मुराकामी',
+        },
+    },
+    {
+        value: 'MARK_TWAIN',
+        fullName: 'Mark Twain',
+        fullNameInOtherLanguages: {
+            hi: 'मार्क ट्वेन',
+        },
+    },
+    {
+        value: 'STANISLAVSKI',
+        fullName: 'Konstantin Stanislavski',
+        fullNameInOtherLanguages: {
+            hi: 'कोस्टेंटिन स्टैनिस्लावस्की',
+        },
+    },
 ]
 
 // allocateIdsToData(data);
