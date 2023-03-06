@@ -44,7 +44,7 @@ export const HomePage = () => {
     useEffect(() => {
         combinedSearch({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
         scrollToFirstRow(listRef)
-    }, [start, end, searchText, markedMode, quotesLoaded, markedQuotes])
+    }, [start, end, searchText, markedMode, quotesLoaded, Object.keys(markedQuotes).length])
 
     useEffect(() => {
         var root = document.getElementsByTagName('html')[0]
