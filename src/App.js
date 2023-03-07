@@ -9,7 +9,7 @@ export const App = () => (
     <ErrorBoundary>
         <BrowserRouter>
             <SnackbarProvider>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={''}>
                     <Routes>
                         <Route path={ROUTES.homepage.route} element={<ROUTES.homepage.component />} />
                         <Route path={ROUTES.image.route} element={<ROUTES.image.component />} />
