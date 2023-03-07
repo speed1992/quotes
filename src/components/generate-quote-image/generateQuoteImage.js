@@ -22,7 +22,7 @@ const GenerateQuoteImage = (props) => {
         <>
             <div className={`${styles.fontFredericka} `} ref={exportRef}>
                 <div className={`${styles.alignment}`}>
-                    <p className={`${styles.fullWidth}`}>{quotationText}</p>
+                    <p className={`${styles.fullWidth}`}>"{quotationText}"</p>
                     <p>{philosopherFullName}</p>
                 </div>
             </div>
