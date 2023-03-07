@@ -1,4 +1,4 @@
-import { currentData, currentPhilosopher } from "./staticDataUtils";
+import { currentData, currentPhilosopher } from './staticDataUtils'
 
 export const scrollToFirstRow = (listRef) => {
     if (currentData.length > 0 && listRef.current) {
@@ -8,31 +8,27 @@ export const scrollToFirstRow = (listRef) => {
 
 export const scrollToMemorizedRow = (listRef) => {
     if (currentData.length > 0 && listRef.current) {
-        let scrollPosition = JSON.parse(localStorage.getItem(currentPhilosopher + '-scrollPosition'));
+        let scrollPosition = JSON.parse(localStorage.getItem(currentPhilosopher + '-scrollPosition'))
 
-        if (typeof scrollPosition !== undefined && scrollPosition !== "undefined" && scrollPosition && scrollPosition > 0) {
-            listRef.current.scrollToRow(scrollPosition);
+        if (typeof scrollPosition !== undefined && scrollPosition !== 'undefined' && scrollPosition && scrollPosition > 0) {
+            listRef.current.scrollToRow(scrollPosition)
         } else {
-            scrollToFirstRow(listRef);
+            scrollToFirstRow(listRef)
         }
     }
 }
 
-export const search = ({searchText, currentData, setCurrentData}) => {
-
-    if(currentData!==undefined){
+export const search = ({ searchText, currentData, setCurrentData }) => {
+    if (currentData !== undefined) {
         const filteredQuotes = currentData.filter(({ quote }) => {
-            if ((quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0)) {
+            if (quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0) {
                 return false
+            } else {
+                return true
             }
-            else {
-                return true;
-            }
-        });
-        setCurrentData(filteredQuotes);
-        return filteredQuotes;
+        })
+        return filteredQuotes
     }
-    
 }
 
-export const isMobile = () => (window.innerWidth <= 600)
+export const isMobile = () => window.innerWidth <= 600

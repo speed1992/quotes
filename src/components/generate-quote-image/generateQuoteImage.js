@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
 import ROUTES from '../../routes/routes'
 import styles from './generateQuoteImage.module.css'
 import exportAsImage from './utils/utils'
@@ -14,7 +15,7 @@ const GenerateQuoteImage = (props) => {
     const exportRef = useRef()
 
     useEffect(() => {
-        exportAsImage(exportRef.current, `${philosopherFullName}-quote.png`).then(() => navigate(ROUTES.homepage.route))
+        exportAsImage(exportRef.current, `${philosopherFullName}-quote-${uuidv4()}.png`).then(() => navigate(ROUTES.homepage.route))
     }, [])
 
     return (

@@ -1,8 +1,8 @@
-import { isEmpty } from 'lodash';
-import { removeReadData } from '../../../common/utils/staticDataUtils';
+import { isEmpty } from 'lodash'
+import { removeReadData } from '../../../common/utils/staticDataUtils'
 
 export const changeQuotesData = ({ currentPhilosopher, currentData, setCurrentData, options }, { markedMode = null, markedQuotes, setMarkedQuotes }) => {
-    if (currentData ) setCurrentData(currentData)
+    if (currentData) setCurrentData(currentData)
     if (markedMode !== undefined && markedMode) removeReadData({ currentPhilosopher, markedMode, markedQuotes, setMarkedQuotes, currentData, setCurrentData })
 }
 
@@ -16,7 +16,8 @@ export const getPhilosopherFullName_i10n = ({ currentPhilosopher, options }) => 
     if (!isEmpty(currentIndex)) return currentIndex && currentIndex[0].fullNameInOtherLanguages
 }
 
-export const searchByWordLength = (start, end, quotes, { markedMode, markedQuotes, setMarkedQuotes }, { currentData, originalData, setCurrentData,currentPhilosopher }) => {
+export const searchByWordLength = (start, end, quotes, { markedMode, markedQuotes, setMarkedQuotes }, { currentData, originalData, setCurrentData, currentPhilosopher }) => {
+    debugger
     if (quotes !== undefined) {
         if (typeof start === 'string' && start.trim() === '') start = 0
 
@@ -36,7 +37,7 @@ export const searchByWordLength = (start, end, quotes, { markedMode, markedQuote
 
             return false
         })
-        changeQuotesData({currentData:newData, setCurrentData, currentPhilosopher},{markedMode,markedQuotes,setMarkedQuotes})
+        changeQuotesData({ currentData: newData, setCurrentData, currentPhilosopher }, { markedMode, markedQuotes, setMarkedQuotes })
     }
 }
 
