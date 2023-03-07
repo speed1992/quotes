@@ -10,7 +10,7 @@ import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
 import { Loader } from '../loader/loader'
 import styles from './home-page.module.css'
 
-export const HomePage = () => {
+const HomePage = () => {
     const listRef = useRef()
     const dispatch = useDispatch()
     const start = useSelector((state) => state.philosophersData.start)
@@ -71,3 +71,5 @@ export const HomePage = () => {
         </>
     )
 }
+
+export default HomePage

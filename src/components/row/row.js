@@ -1,9 +1,10 @@
 import { debounce } from 'lodash'
 import { lazy, Suspense, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { useSnackbar } from 'react-simple-snackbar'
 import { isUndefined } from '../../common/utils/commonUtils'
+import ROUTES from '../../routes/routes'
 import Audio from '../audio/audio'
-import { GenerateQuoteImage } from '../generate-quote-image/generateQuoteImage'
 import { Translate } from '../translate/translate'
 import { evaluateClassNames } from './style-utils'
 import { rememberScrollPosition, rowClickHandler } from './utils'
@@ -27,7 +28,10 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                 {translateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
 
                 <div style={{ position: 'absolute', top: '50rem' }}>
-                    <GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} />
+                    <Link to={ROUTES.image.route} state={{ currentQuote, philosopherFullName }}>
+                        Download Image
+                    </Link>
+                    {/* <GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} /> */}
                     <Audio index={index} currentData={currentData} />
                     {markedMode && (
                         <Suspense fallback={''}>
