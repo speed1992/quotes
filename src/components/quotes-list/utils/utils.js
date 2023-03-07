@@ -17,7 +17,6 @@ export const getPhilosopherFullName_i10n = ({ currentPhilosopher, options }) => 
 }
 
 export const searchByWordLength = (start, end, quotes, { markedMode, markedQuotes, setMarkedQuotes }, { currentData, originalData, setCurrentData, currentPhilosopher }) => {
-    debugger
     if (quotes !== undefined) {
         if (typeof start === 'string' && start.trim() === '') start = 0
 
