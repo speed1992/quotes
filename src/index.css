@@ -4,9 +4,9 @@
   font-display: fallback;
 }
 
-*,
-*::before,
-*::after {
+.homepage *,
+.homepage *::before,
+.homepage *::after {
   box-sizing: border-box;
   font-family: 'Segoe UI'!important;
 }
@@ -54,10 +54,10 @@ button{
   outline:none;
 }
 
-.darkTheme button {
+.darkTheme .homepage button {
   border: 1px solid #fff!important;
 }
 
-.darkTheme div[class*="Snackbar_snackbar-wrapper"]{
+.darkTheme .homepage div[class*="Snackbar_snackbar-wrapper"]{
   border: 1px solid #fff!important;
 }

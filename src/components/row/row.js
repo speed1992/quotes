@@ -28,9 +28,11 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                 {translateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
 
                 <div style={{ position: 'absolute', top: '50rem' }}>
-                    <Link to={ROUTES.image.route} state={{ currentQuote, philosopherFullName }}>
-                        Download Image
-                    </Link>
+                    <button>
+                        <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName }}>
+                            Download Image
+                        </Link>
+                    </button>
                     {/* <GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} /> */}
                     <Audio index={index} currentData={currentData} />
                     {markedMode && (
