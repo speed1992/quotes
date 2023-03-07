@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import ROUTES from '../../routes/routes'
 import styles from './generateQuoteImage.module.css'
 import exportAsImage from './utils/utils'
 
@@ -7,10 +8,12 @@ const GenerateQuoteImage = (props) => {
     let {
         state: { quotationText, philosopherFullName },
     } = useLocation()
+    const navigate = useNavigate()
+
     const exportRef = useRef()
 
     useEffect(() => {
-        exportAsImage(exportRef.current, 'test')
+        exportAsImage(exportRef.current, 'test').then(() => navigate(ROUTES.homepage.route))
     }, [])
 
     return (
