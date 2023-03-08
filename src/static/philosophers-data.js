@@ -995,8 +995,13 @@ const data = [
             hi: 'कोस्टेंटिन स्टैनिस्लावस्की',
         },
     },
+    {
+        value: 'AYN_RAND',
+        fullName: 'Ayn Rand',
+        fullNameInOtherLanguages: {
+            hi: 'Ayn Rand',
+        },
+    },
 ]
-
-// allocateIdsToData(data);
 
 export default data
