@@ -1002,6 +1002,13 @@ const data = [
             hi: 'Ayn Rand',
         },
     },
+    {
+        value: 'HOBBES',
+        fullName: 'Thomas Hobbes',
+        fullNameInOtherLanguages: {
+            hi: 'थॉमस हॉब्स',
+        },
+    },
 ]
 
 export default data
