@@ -288,7 +288,7 @@ const data = [
     },
     {
         value: 'ZIZEK',
-        fullName: 'Slavoj Žižek',
+        fullName: 'Slavoj Zižek',
         fullNameInOtherLanguages: {
             hi: 'स्लावोज ज़िज़ेक',
         },
