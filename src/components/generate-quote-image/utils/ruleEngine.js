@@ -35,7 +35,7 @@ export const ruleEngine = {
     makeDecision: function (value) {
         for (let i = 0; i <= rules.length; i++) {
             const returnValue = rules[i](value)
-            if (returnValue) return returnValue
+            if (returnValue) return returnValue * 1.15
         }
     },
 }
