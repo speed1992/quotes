@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
-
 .fontFredericka{
     width: 100vw;
     height: 100vw;
     position: relative;
     font-family: sans-serif;
-  line-height: 1.1;
+    line-height: 1.1;
 }
 
 .alignment{
