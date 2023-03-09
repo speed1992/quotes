@@ -26,7 +26,7 @@ export const exportAsImage = async (element, imageFileName) => {
     }
     html.style.width = htmlWidth + 'px'
     body.style.width = bodyWidth + 'px'
-    const canvas = await html2canvas(element, { scale: 6 })
+    const canvas = await html2canvas(element, { scale: 2 })
     const image = canvas.toDataURL('image/png', 1.0)
     downloadImage(image, imageFileName)
     html.style.width = null
