@@ -33,7 +33,6 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                             Download Image
                         </Link>
                     </button>
-                    {/* <GenerateQuoteImage quoteRef={quoteRef} quotationText={quotationText} philosopherFullName={philosopherFullName} /> */}
                     <Audio index={index} currentData={currentData} />
                     {markedMode && (
                         <Suspense fallback={''}>

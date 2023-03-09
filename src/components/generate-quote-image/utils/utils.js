@@ -14,7 +14,7 @@ const downloadImage = (blob, fileName) => {
     fakeLink.remove()
 }
 
-const exportAsImage = async (element, imageFileName) => {
+export const exportAsImage = async (element, imageFileName) => {
     const html = document.getElementsByTagName('html')[0]
     const body = document.getElementsByTagName('body')[0]
     let htmlWidth = html.clientWidth
@@ -32,5 +32,3 @@ const exportAsImage = async (element, imageFileName) => {
     html.style.width = null
     body.style.width = null
 }
-
-export default exportAsImage

@@ -1,0 +1,41 @@
+const rules = [
+    function (value) {
+        if (value <= 20) return 2.2
+    },
+    function (value) {
+        if (value > 20 && value <= 30) return 2.1
+    },
+    function (value) {
+        if (value > 30 && value <= 40) return 2.0
+    },
+    function (value) {
+        if (value > 40 && value <= 50) return 1.9
+    },
+    function (value) {
+        if (value > 50 && value <= 60) return 1.8
+    },
+    function (value) {
+        if (value > 60 && value <= 70) return 1.7
+    },
+    function (value) {
+        if (value > 70 && value <= 80) return 1.6
+    },
+    function (value) {
+        if (value > 80 && value <= 90) return 1.5
+    },
+    function (value) {
+        if (value > 90) return 1.4
+    },
+    function () {
+        return 1.4
+    },
+]
+
+export const ruleEngine = {
+    makeDecision: function (value) {
+        for (let i = 0; i <= rules.length; i++) {
+            const returnValue = rules[i](value)
+            if (returnValue) return returnValue
+        }
+    },
+}
