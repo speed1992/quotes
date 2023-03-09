@@ -1,14 +1,10 @@
-@font-face {
-  font-family: 'Segoe UI';
-  src: url('static/fonts/SEGOEUI.TTF')  format('truetype');
-  font-display: fallback;
-}
 
 .homepage *,
 .homepage *::before,
 .homepage *::after {
   box-sizing: border-box;
-  font-family: 'Segoe UI'!important;
+  font-family: sans-serif!important;
+  line-height: 1.2;
 }
 
 html{

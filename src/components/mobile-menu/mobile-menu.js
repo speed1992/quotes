@@ -49,7 +49,7 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                                 download(JSON.stringify(window.localStorage), `local-storage-${uuidv4()}.txt`)
                             }}
                         >
-                            Download Storage
+                            Backup Read Data
                         </button>
                     </li>
                 </ul>
