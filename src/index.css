@@ -58,6 +58,6 @@ button{
   border: 1px solid #fff!important;
 }
 
-.darkTheme .homepage div[class*="Snackbar_snackbar-wrapper"]{
+.darkTheme div[class*="Snackbar_snackbar-wrapper"]{
   border: 1px solid #fff!important;
 }
