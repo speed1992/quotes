@@ -20,12 +20,14 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
     const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index), 100)
     if (!isUndefined(currentQuote))
         return (
-            <div id="row" key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
-                <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
-                    "{quotationText}" ― {philosopherFullName}
-                </span>
+            <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
+                <span className="row">
+                    <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
+                        "{quotationText}" ― {philosopherFullName}
+                    </span>
 
-                {translateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
+                    {translateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
+                </span>
 
                 <div style={{ position: 'absolute', top: '50rem' }}>
                     <button>
