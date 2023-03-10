@@ -63,7 +63,7 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                                 dispatch(setVoiceSpeedRedux(event.target.value / 10))
                             }}
                             class="voiceSpeed"
-                            type="number"
+                            type="text"
                             value={voiceSpeed * 10}
                         />
                     </li>
