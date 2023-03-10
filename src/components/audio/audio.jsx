@@ -8,14 +8,10 @@ const Audio = ({ index, currentData }) => {
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)
 
     return (
-        <>
-            {
-                <button onClick={play.bind(this, index, currentData, voiceSpeed)}>
-                    <img className={styles.soundIcon} src={soundLogo} alt="Play Quotes" />
-                    Play Audio
-                </button>
-            }
-        </>
+        <button onClick={play.bind(this, index, currentData, voiceSpeed)}>
+            <img className={styles.soundIcon} src={soundLogo} alt="Play Quotes" />
+            Play Audio
+        </button>
     )
 }
 

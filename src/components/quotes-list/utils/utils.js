@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash'
+import { isObjEmpty } from '../../../common/utils/commonUtils'
 import { removeReadData } from '../../../common/utils/staticDataUtils'
 
 export const changeQuotesData = ({ currentPhilosopher, currentData, setCurrentData, options }, { markedMode = null, markedQuotes, setMarkedQuotes }) => {
@@ -8,12 +8,12 @@ export const changeQuotesData = ({ currentPhilosopher, currentData, setCurrentDa
 
 export const getPhilosopherFullName = ({ currentPhilosopher, options }) => {
     const currentIndex = options.filter(({ value }) => currentPhilosopher === value)
-    if (!isEmpty(currentIndex)) return currentIndex && currentIndex[0].fullName
+    if (!isObjEmpty(currentIndex)) return currentIndex && currentIndex[0].fullName
 }
 
 export const getPhilosopherFullName_i10n = ({ currentPhilosopher, options }) => {
     const currentIndex = options.filter(({ value }) => currentPhilosopher === value)
-    if (!isEmpty(currentIndex)) return currentIndex && currentIndex[0].fullNameInOtherLanguages
+    if (!isObjEmpty(currentIndex)) return currentIndex && currentIndex[0].fullNameInOtherLanguages
 }
 
 export const searchByWordLength = (start, end, quotes, { markedMode, markedQuotes, setMarkedQuotes }, { currentData, originalData, setCurrentData, currentPhilosopher }) => {
