@@ -9,6 +9,7 @@ import { Layout } from '../layout/layout'
 import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
 import { Loader } from '../loader/loader'
 import styles from './home-page.module.css'
+import { setDarkModeClassOnHTMLTag } from './utils/utils'
 
 const HomePage = () => {
     const listRef = useRef()
@@ -47,12 +48,7 @@ const HomePage = () => {
     }, [start, end, searchText, markedMode, quotesLoaded, currentData.length, markedQuotes[currentPhilosopher]?.quotes?.length])
 
     useEffect(() => {
-        var root = document.getElementsByTagName('html')[0]
-        if (darkMode) {
-            root.setAttribute('class', 'darkTheme')
-        } else {
-            root.setAttribute('class', '')
-        }
+        setDarkModeClassOnHTMLTag(darkMode)
     }, [darkMode])
 
     const propsToSend = { setSearchText, searchText, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, setCurrentData, currentData, options, setOptions, setQuotesLoaded, markedQuotes, setMarkedQuotes, originalData, setOriginalData, setDarkMode }

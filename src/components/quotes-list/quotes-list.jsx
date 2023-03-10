@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import List from 'react-virtualized/dist/commonjs/List'
 import { Row } from '../row/row'
 import './quotes-list.css'
@@ -11,15 +11,32 @@ function NoRowsRenderer() {
 function QuotesList({ listRef, width, height, searchText, start, end, translateKey, markedMode, currentData, setCurrentData, options, currentPhilosopher, markedQuotes, setMarkedQuotes }) {
     const philosopherFullName = getPhilosopherFullName({ currentPhilosopher, options })
     const philosopherFullName_i10n = getPhilosopherFullName_i10n({ currentPhilosopher, options })
-    useEffect(() => {
-        // scrollToMemorizedRow(listRef)
-    }, [listRef])
+
+    // useEffect(() => {
+    // scrollToMemorizedRow(listRef)
+    // }, [listRef])
 
     function rowRenderer({ index, ...others }) {
         return <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentData, setCurrentData, currentQuote: currentData[index], index, currentPhilosopher, markedQuotes, setMarkedQuotes }} {...others} />
     }
 
-    return <List className="List" height={height} rowCount={currentData.length} rowHeight={600} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={NoRowsRenderer} style={{ padding: '1rem' }} />
+    const decideRowHeight = () => {
+        if (start < 40) {
+            return 600
+        }
+        if (start > 40 && start <= 60) {
+            return 800
+        }
+        if (start > 60 && start >= 100) {
+            return 1200
+        }
+        if (start > 100) {
+            return 2000
+        }
+        return 600
+    }
+
+    return <List className="List" height={height} rowCount={currentData.length} rowHeight={decideRowHeight} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={NoRowsRenderer} style={{ padding: '1rem' }} />
 }
 
 export default QuotesList
