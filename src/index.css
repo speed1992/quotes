@@ -4,11 +4,11 @@
 .homepage *::after {
   box-sizing: border-box;
   font-family: sans-serif!important;
-  line-height: 1.1;
 }
 
 .row{
   font-size: 1.7rem;
+  line-height: 1.2;
 }
 
 html{
