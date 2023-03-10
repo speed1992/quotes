@@ -21,6 +21,10 @@
 	border-bottom: 1px solid #b4b4b4;
 }
 
+#slide_menu .voiceSpeed{
+	width: 3rem
+}
+
 
 /* #slide_menu li:hover {
 	width: 201px;
