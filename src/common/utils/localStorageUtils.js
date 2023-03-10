@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { currentPhilosopher } from './staticDataUtils'
 
 export function getStorageValue(key, defaultValue) {
     // getting stored value
@@ -25,9 +24,4 @@ export const useLocalStorage = (key, defaultValue) => {
     }, [key, value])
 
     return [value, setValue]
-}
-
-export function getReadArrayFromLocalStorage() {
-    const READ_ARRAY_LOCALSTORAGE_KEY = `${currentPhilosopher}-MARKED_AS_READ`
-    return getStorageValue(READ_ARRAY_LOCALSTORAGE_KEY, [])
 }

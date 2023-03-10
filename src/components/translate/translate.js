@@ -1,22 +1,23 @@
-import { adminFeatureKey } from "../../common/utils/urlUtils";
-import { devModeSignature, rowClickHandler, rowClickHandlerFoBothQuotes } from "../row/utils";
-import { useTranslation } from "./custom-hooks/custom-hooks";
+import { Link } from 'react-router-dom'
+import ROUTES from '../../routes/routes'
+import { rowClickHandler } from '../row/utils'
+import { useTranslation } from './custom-hooks/custom-hooks'
 
-export const Translate = ({ inputText, from = "en", to = "hi", openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }) => {
+export const Translate = ({ inputText, from = 'en', to = 'hi', openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }) => {
     const translationOutput = useTranslation({ inputText, from, to })
-    const philosopherFullnameIn_SelectedLanguage = philosopherFullName_i10n[to];
-    return (
-        (
-            translationOutput !== "" && translationOutput !== undefined && translationOutput ?
-                (
-                    <span key={index} onClick={rowClickHandler.bind(this, { openSnackbar, searchText, start, end, quote: translationOutput, philosopherFullName: philosopherFullnameIn_SelectedLanguage, index })}> {translationOutput}
-                        {adminFeatureKey() ? < button onClick={rowClickHandlerFoBothQuotes.bind(this, { openSnackbar, searchText, start, end, quote: { hindi: translationOutput, english: inputText }, philosopherNames: { englishFullname: philosopherFullName, hindiFullname: philosopherFullnameIn_SelectedLanguage }, index })} >
-                            Copy Both!{devModeSignature()}
-                        </button > : null}
-                    </span >
-                )
-                : null
-        )
+    const philosopherFullnameIn_SelectedLanguage = philosopherFullName_i10n[to]
 
-    )
+    return translationOutput !== '' && translationOutput !== undefined && translationOutput ? (
+        <>
+            <span key={index} onClick={rowClickHandler.bind(this, { openSnackbar, searchText, start, end, quote: translationOutput, philosopherFullName: philosopherFullnameIn_SelectedLanguage, index })}>
+                {translationOutput}
+            </span>
+
+            <button>
+                <Link to={ROUTES.image.route} state={{ translationOutput, philosopherFullnameIn_SelectedLanguage }}>
+                    Download Image
+                </Link>
+            </button>
+        </>
+    ) : null
 }

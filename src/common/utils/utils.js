@@ -1,20 +1,6 @@
-import { currentData, currentPhilosopher } from './staticDataUtils'
-
 export const scrollToFirstRow = (listRef) => {
-    if (currentData.length > 0 && listRef.current) {
+    if (listRef.current) {
         listRef.current.scrollToRow(0)
-    }
-}
-
-export const scrollToMemorizedRow = (listRef) => {
-    if (currentData.length > 0 && listRef.current) {
-        let scrollPosition = JSON.parse(localStorage.getItem(currentPhilosopher + '-scrollPosition'))
-
-        if (typeof scrollPosition !== undefined && scrollPosition !== 'undefined' && scrollPosition && scrollPosition > 0) {
-            listRef.current.scrollToRow(scrollPosition)
-        } else {
-            scrollToFirstRow(listRef)
-        }
     }
 }
 

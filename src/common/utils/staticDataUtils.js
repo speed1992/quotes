@@ -1,19 +1,4 @@
-import PHILOSOPHERS_DATA from '../../static/philosophers-data'
-import { getPhilosopherObjectIndex } from '../../static/utils/utils'
 import { getStorageValue } from './localStorageUtils'
-export let currentPhilosopher
-
-export let currentData = []
-
-export const changeData = (newData, setCurrentData) => {
-    let currentData = JSON.parse(JSON.stringify(newData))
-    setCurrentData(currentData)
-}
-
-export const resetData = () => {
-    const index = getPhilosopherObjectIndex(currentPhilosopher)
-    currentData = JSON.parse(JSON.stringify(PHILOSOPHERS_DATA[index]['quotes']))
-}
 
 export const removeReadData = ({ index, currentPhilosopher, markedMode, markedQuotes, setMarkedQuotes, currentData, setCurrentData }) => {
     let newMarkedQuotes = JSON.parse(JSON.stringify(markedQuotes))

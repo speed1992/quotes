@@ -1,22 +1,18 @@
-import { scrollToMemorizedRow } from "../../../common/utils/utils";
-import { lazyLoadAllAssets, lazyLoadAsset } from "../../../static/utils/utils";
-import { changeQuotesData } from "../../quotes-list/utils/utils";
+import { lazyLoadAllAssets, lazyLoadAsset } from '../../../static/utils/utils'
+import { changeQuotesData } from '../../quotes-list/utils/utils'
 
-export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData,setCurrentData,options,setOptions,setQuotesLoaded,markedMode,markedQuotes, setMarkedQuotes }) {
+export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, setQuotesLoaded, markedMode, markedQuotes, setMarkedQuotes }) {
     function callback() {
-        setCurrentPhilosopher(philosopher);
+        setCurrentPhilosopher(philosopher)
         changeQuotesData({ philosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
-        scrollToMemorizedRow(listRef);
-        setIsFetching(false);
+        // scrollToMemorizedRow(listRef);
+        setIsFetching(false)
     }
-    setStart(1);
-    setEnd("");
-    setSearchText('');
-    setIsFetching(true);
+    setStart(1)
+    setEnd('')
+    setSearchText('')
+    setIsFetching(true)
 
-    if (philosopher.trim().toLowerCase() === "all")
-        lazyLoadAllAssets().then(callback);
-
-    else
-        lazyLoadAsset(philosopher,{options,setOptions},setQuotesLoaded,[]).then(callback);
+    if (philosopher.trim().toLowerCase() === 'all') lazyLoadAllAssets().then(callback)
+    else lazyLoadAsset(philosopher, { options, setOptions }, setQuotesLoaded, []).then(callback)
 }

@@ -1,4 +1,3 @@
-import { debounce } from 'lodash'
 import { lazy, Suspense, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useSnackbar } from 'react-simple-snackbar'
@@ -7,7 +6,7 @@ import ROUTES from '../../routes/routes'
 import Audio from '../audio/audio'
 import { Translate } from '../translate/translate'
 import { evaluateClassNames } from './style-utils'
-import { rememberScrollPosition, rowClickHandler } from './utils'
+import { rowClickHandler } from './utils'
 
 const MarkAsRead = lazy(() => import('../mark-as-read/mark-as-read'))
 
@@ -17,10 +16,9 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
     const { quote: quotationText, id: quotationId } = currentQuote
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
 
-    const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index), 100)
     if (!isUndefined(currentQuote))
         return (
-            <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
+            <div key={index} className={evaluateClassNames(index)} style={style}>
                 <span className="row">
                     <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
                         "{quotationText}" ― {philosopherFullName}

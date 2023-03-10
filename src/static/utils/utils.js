@@ -1,5 +1,4 @@
 import { retryTenTimes } from '../../common/utils/apiUtils'
-import { currentPhilosopher } from '../../common/utils/staticDataUtils'
 import PHILOSOPHERS_DATA from '../philosophers-data'
 
 export const addPhilosopherNameToQuote = (quote, philosopherFullName) => `${quote} ― ${philosopherFullName}`
@@ -81,13 +80,4 @@ export const getPhilosopherData = ({ philosopher, options }) => options.filter((
 export const getCurrentPhilosopherFullname = (currentPhilosopher, options) => {
     const currentPhilosopherData = PHILOSOPHERS_DATA[getPhilosopherObjectIndex(currentPhilosopher, options)]
     return currentPhilosopherData.fullName
-}
-
-export const getCurrentTotalQuotesCount = () => {
-    const data = PHILOSOPHERS_DATA.filter(({ value }) => value === currentPhilosopher)[0]
-    try {
-        return data.quotes.length
-    } catch (e) {
-        return 'NA'
-    }
 }
