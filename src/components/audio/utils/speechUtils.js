@@ -1,4 +1,6 @@
-export async function play(index, currentData, voiceSpeed) {
+import { scrollToMemorizedRow } from '../../../common/utils/utils'
+
+export async function play(index, currentData, voiceSpeed, listRef, scrollPosition, setScrollPosition) {
     var synth = window.speechSynthesis,
         isSpeaking = synth.speaking
 
@@ -7,7 +9,12 @@ export async function play(index, currentData, voiceSpeed) {
 
     let p = new Promise((resolve) => (cancel = resolve))
 
-    if (!isSpeaking) for (let i = index; i < currentData.length; i++) await Promise.race([p, getNextAudio(currentData[i]['quote'], voiceSpeed)])
+    if (!isSpeaking)
+        for (let i = index; i < currentData.length; i++) {
+            setScrollPosition(i)
+            scrollToMemorizedRow(listRef, i, currentData)
+            await Promise.race([p, getNextAudio(currentData[i]['quote'], voiceSpeed)])
+        }
 }
 
 function getNextAudio(message, voiceSpeed) {

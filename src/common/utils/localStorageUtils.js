@@ -5,7 +5,6 @@ export function getStorageValue(key, defaultValue) {
     const saved = localStorage.getItem(key)
     const initial = JSON.parse(saved)
     if (initial === undefined || initial === 'undefined' || initial === 'null' || initial === null) {
-        setStorageValue(key, defaultValue)
         return defaultValue
     } else return initial
 }

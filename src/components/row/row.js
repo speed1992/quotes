@@ -11,13 +11,13 @@ import { rowClickHandler } from './utils'
 
 const MarkAsRead = lazy(() => import('../mark-as-read/mark-as-read'))
 
-export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition }, style }) => {
+export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef }, style }) => {
     const quoteRef = useRef()
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
 
-    const debouncedHandler = debounce(() => setScrollPosition(index))
+    const debouncedHandler = debounce(() => setScrollPosition(index), 300)
 
     if (!isUndefined(currentQuote))
         return (
@@ -35,7 +35,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                             Download Image
                         </Link>
                     </button>
-                    <Audio index={index} currentData={currentData} />
+                    <Audio index={index} currentData={currentData} scrollPosition={scrollPosition} setScrollPosition={setScrollPosition} listRef={listRef} />
                     {markedMode && (
                         <Suspense fallback={''}>
                             <MarkAsRead index={quotationId} currentPhilosopher={currentPhilosopher} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} />

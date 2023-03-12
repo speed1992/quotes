@@ -13,6 +13,7 @@ export const App = () => (
                     <Routes>
                         <Route path={ROUTES.homepage.route} element={<ROUTES.homepage.component />} />
                         <Route path={ROUTES.image.route} element={<ROUTES.image.component />} />
+                        <Route path={ROUTES.report.route} element={<ROUTES.report.component />} />
                     </Routes>
                 </Suspense>
             </SnackbarProvider>

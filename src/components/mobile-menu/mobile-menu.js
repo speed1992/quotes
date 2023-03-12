@@ -1,7 +1,9 @@
 import download from 'downloadjs'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
+import ROUTES from '../../routes/routes'
 import translateImage from '../../static/assets/images/translate.png'
 import { setVoiceSpeedRedux } from '../home-page/homePageRedux/homePageRedux'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
@@ -41,6 +43,11 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                 <li>
                     Voice Speed[1-20]
                     <input onChange={(event) => dispatch(setVoiceSpeedRedux(event.target.value / 10))} className="voiceSpeed" type="number" value={voiceSpeed ? voiceSpeed * 10 : ''} />
+                </li>
+                <li>
+                    <Link to={ROUTES.report.route} style={{ textDecoration: 'none', color: '#000' }}>
+                        <button>Open Report</button>
+                    </Link>
                 </li>
             </ul>
         </OutsideAlerter>

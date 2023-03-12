@@ -13,11 +13,12 @@ function QuotesList({ listRef, width, height, searchText, start, end, translateK
     const philosopherFullName_i10n = getPhilosopherFullName_i10n({ currentPhilosopher, options })
 
     useEffect(() => {
-        scrollToMemorizedRow(listRef, scrollPosition,currentData)
+        scrollToMemorizedRow(listRef, scrollPosition, currentData)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [listRef])
 
     function rowRenderer({ index, ...others }) {
-        return <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentData, setCurrentData, currentQuote: currentData[index], index, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition }} {...others} />
+        return <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentData, setCurrentData, currentQuote: currentData[index], index, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, listRef }} {...others} />
     }
 
     return <List className="List" height={height} rowCount={currentData.length} rowHeight={ruleEngine.makeDecision(rules, { params: { start } })} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={NoRowsRenderer} style={{ padding: '1rem' }} />
