@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid'
 import translateImage from '../../static/assets/images/translate.png'
-import { setVoiceSpeedRedux } from '../home-page/homePageReduxSlice/homePageReduxSlice'
+import { setVoiceSpeedRedux } from '../home-page/homePageRedux/homePageRedux'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
 import './mobile-menu.css'
 

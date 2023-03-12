@@ -11,9 +11,9 @@ function QuotesList({ listRef, width, height, searchText, start, end, translateK
     const philosopherFullName = getPhilosopherFullName({ currentPhilosopher, options })
     const philosopherFullName_i10n = getPhilosopherFullName_i10n({ currentPhilosopher, options })
 
-    useEffect(() => {
-    scrollToMemorizedRow(listRef)
-    }, [listRef])
+    // useEffect(() => {
+    //     scrollToMemorizedRow(listRef, currentData, currentPhilosopher)
+    // }, [listRef])
 
     function rowRenderer({ index, ...others }) {
         return <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentData, setCurrentData, currentQuote: currentData[index], index, currentPhilosopher, markedQuotes, setMarkedQuotes }} {...others} />

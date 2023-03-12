@@ -4,6 +4,18 @@ export const scrollToFirstRow = (listRef) => {
     }
 }
 
+export const scrollToMemorizedRow = (listRef, currentData, currentPhilosopher) => {
+    if (currentData.length > 0 && listRef.current) {
+        let scrollPosition = JSON.parse(localStorage.getItem(currentPhilosopher + '-scrollPosition'))
+
+        if (scrollPosition !== undefined && scrollPosition !== 'undefined' && scrollPosition && scrollPosition > 0) {
+            listRef.current.scrollToRow(scrollPosition)
+        } else {
+            scrollToFirstRow(listRef)
+        }
+    }
+}
+
 export const search = ({ searchText, currentData, setCurrentData }) => {
     if (currentData !== undefined) {
         const filteredQuotes = currentData.filter(({ quote }) => {

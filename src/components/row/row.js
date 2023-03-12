@@ -2,7 +2,6 @@ import { lazy, Suspense, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useSnackbar } from 'react-simple-snackbar'
 import { isUndefined } from '../../common/utils/commonUtils'
-import { debounce } from '../../common/utils/debounce'
 import ROUTES from '../../routes/routes'
 import Audio from '../audio/audio'
 import { Translate } from '../translate/translate'
@@ -17,7 +16,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
     const { quote: quotationText, id: quotationId } = currentQuote
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
 
-    const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index, { quotationText, philosopherFullName }), 100)
+    // const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index, { quotationText, philosopherFullName }), 100)
 
     if (!isUndefined(currentQuote))
         return (
@@ -26,13 +25,12 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                     <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
                         "{quotationText}" ― {philosopherFullName}
                     </span>
-
                     {translateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
                 </span>
 
                 <div style={{ position: 'absolute', bottom: '9rem' }}>
                     <button>
-                        <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName }}>
+                        <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName }} style={{ textDecoration: 'none', color: '#000' }}>
                             Download Image
                         </Link>
                     </button>
