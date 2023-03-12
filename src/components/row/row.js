@@ -2,6 +2,7 @@ import { lazy, Suspense, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useSnackbar } from 'react-simple-snackbar'
 import { isUndefined } from '../../common/utils/commonUtils'
+import { debounce } from '../../common/utils/debounce'
 import ROUTES from '../../routes/routes'
 import Audio from '../audio/audio'
 import { Translate } from '../translate/translate'
@@ -10,17 +11,17 @@ import { rowClickHandler } from './utils'
 
 const MarkAsRead = lazy(() => import('../mark-as-read/mark-as-read'))
 
-export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index }, style }) => {
+export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition }, style }) => {
     const quoteRef = useRef()
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
 
-    // const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index, { quotationText, philosopherFullName }), 100)
+    const debouncedHandler = debounce(() => setScrollPosition(index))
 
     if (!isUndefined(currentQuote))
         return (
-            <div key={index} className={evaluateClassNames(index)} style={style}>
+            <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
                 <span className="row">
                     <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
                         "{quotationText}" ― {philosopherFullName}

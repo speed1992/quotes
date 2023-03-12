@@ -6,7 +6,7 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
     function callback() {
         setCurrentPhilosopher(philosopher)
         changeQuotesData({ philosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
-        // scrollToMemorizedRow(listRef, currentData, philosopher)
+        scrollToMemorizedRow(listRef, currentData, philosopher)
         setIsFetching(false)
     }
     setStart(1)
