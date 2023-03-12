@@ -2,6 +2,7 @@ import { lazy, Suspense, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useSnackbar } from 'react-simple-snackbar'
 import { isUndefined } from '../../common/utils/commonUtils'
+import { debounce } from '../../common/utils/debounce'
 import ROUTES from '../../routes/routes'
 import Audio from '../audio/audio'
 import { Translate } from '../translate/translate'
@@ -15,6 +16,8 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
+
+    const debouncedHandler = debounce(() => rememberScrollPosition(searchText, start, end, index, { quotationText, philosopherFullName }), 100)
 
     if (!isUndefined(currentQuote))
         return (
