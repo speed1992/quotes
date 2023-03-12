@@ -7,7 +7,7 @@
     {
         "label": "Read Count",
         "accessor": "readCount",
-        "sortable": false,
+        "sortable": true,
         "sortbyOrder": "desc"
     }
 ]
