@@ -27,7 +27,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                     {translateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
                 </span>
 
-                <div style={{ position: 'absolute', bottom: '7rem' }}>
+                <div style={{ position: 'absolute', bottom: '9rem' }}>
                     <button>
                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName }}>
                             Download Image

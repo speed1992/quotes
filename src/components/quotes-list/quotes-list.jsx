@@ -1,7 +1,9 @@
 import React from 'react'
 import List from 'react-virtualized/dist/commonjs/List'
+import { ruleEngine } from '../../common/utils/ruleEngine'
 import { Row } from '../row/row'
 import './quotes-list.css'
+import { rules } from './utils/ruleEngine/rules'
 import { getPhilosopherFullName, getPhilosopherFullName_i10n } from './utils/utils'
 
 function NoRowsRenderer() {
@@ -20,23 +22,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, translateK
         return <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentData, setCurrentData, currentQuote: currentData[index], index, currentPhilosopher, markedQuotes, setMarkedQuotes }} {...others} />
     }
 
-    const decideRowHeight = () => {
-        if (start < 40) {
-            return 600
-        }
-        if (start > 40 && start <= 60) {
-            return 800
-        }
-        if (start > 60 && start >= 100) {
-            return 1200
-        }
-        if (start > 100) {
-            return 2000
-        }
-        return 600
-    }
-
-    return <List className="List" height={height} rowCount={currentData.length} rowHeight={decideRowHeight} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={NoRowsRenderer} style={{ padding: '1rem' }} />
+    return <List className="List" height={height} rowCount={currentData.length} rowHeight={ruleEngine.makeDecision(rules, { params: { start } })} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={NoRowsRenderer} style={{ padding: '1rem' }} />
 }
 
 export default QuotesList

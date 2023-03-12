@@ -1,4 +1,4 @@
-const rules = [
+export const rules = [
     function (value) {
         if (value <= 20) return 2.2
     },
@@ -30,12 +30,3 @@ const rules = [
         return 1.8
     },
 ]
-
-export const ruleEngine = {
-    makeDecision: function (value) {
-        for (let i = 0; i <= rules.length; i++) {
-            const returnValue = rules[i](value)
-            if (returnValue) return returnValue * 1.05
-        }
-    },
-}

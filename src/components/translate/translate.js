@@ -14,7 +14,7 @@ export const Translate = ({ inputText, from = 'en', to = 'hi', openSnackbar, sea
             </span>
 
             <button>
-                <Link to={ROUTES.image.route} state={{ translationOutput, philosopherFullnameIn_SelectedLanguage }}>
+                <Link to={ROUTES.image.route} state={{ quotationText: translationOutput, philosopherFullName: philosopherFullnameIn_SelectedLanguage }}>
                     Download Image
                 </Link>
             </button>
