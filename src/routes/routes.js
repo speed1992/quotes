@@ -6,7 +6,7 @@ const Report = React.lazy(() => import('../components/report/report'))
 
 const ROUTES = {
     homepage: {
-        route: '/quotes',
+        route: '/',
         component: HomePage,
     },
     image: {

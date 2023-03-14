@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-pascal-case */
 import React, { Suspense } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import SnackbarProvider from 'react-simple-snackbar'
 import ErrorBoundary from './components/error-boundary/error-boundary'
 import ROUTES from './routes/routes'
 
 export const App = () => (
     <ErrorBoundary>
-        <BrowserRouter>
+        <HashRouter>
             <SnackbarProvider>
                 <Suspense fallback={''}>
                     <Routes>
@@ -17,6 +17,6 @@ export const App = () => (
                     </Routes>
                 </Suspense>
             </SnackbarProvider>
-        </BrowserRouter>
+        </HashRouter>
     </ErrorBoundary>
 )
