@@ -11,7 +11,7 @@ import { rowClickHandler } from './utils'
 
 const MarkAsRead = lazy(() => import('../mark-as-read/mark-as-read'))
 
-export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef }, style }) => {
+export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode }, style }) => {
     const quoteRef = useRef()
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
@@ -31,7 +31,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
 
                 <div style={{ position: 'absolute', bottom: '9rem' }}>
                     <button>
-                        <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName }} style={{ textDecoration: 'none', color: '#000' }}>
+                        <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, currentPhilosopher }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                             Download Image
                         </Link>
                     </button>
