@@ -56,7 +56,7 @@ const HomePage = () => {
     const renderList = () => <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
 
     return (
-        <span className="homepage">
+        <div className={styles.homepage}>
             {isFetching ? (
                 <Loader />
             ) : (
@@ -64,7 +64,7 @@ const HomePage = () => {
                     <Layout {...propsToSend} /> <div className={styles.content}>{renderList()}</div>
                 </>
             )}
-        </span>
+        </div>
     )
 }
 

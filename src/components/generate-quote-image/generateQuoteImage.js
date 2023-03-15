@@ -10,11 +10,7 @@ import { exportAsImage } from './utils/utils'
 
 const GenerateQuoteImage = (props) => {
     let {
-        state: {
-            quotationText,
-            philosopherFullName,
-            // currentPhilosopher
-        },
+        state: { quotationText, philosopherFullName, currentPhilosopher },
     } = useLocation()
     const navigate = useNavigate()
     const exportRef = useRef()
@@ -30,19 +26,21 @@ const GenerateQuoteImage = (props) => {
     }, [darkMode])
 
     try {
-        // const imageName = `${currentPhilosopher}.jpg`
-        // return (
-        //     <div className={`${styles.fontFredericka} `} style={{ fontSize: autoAdjustFont(quotationText) }} ref={exportRef}>
-        //         {<img className={styles.phImage} alt={philosopherFullName} src={require('../../static/assets/images/philosophers/' + imageName)} />}
-        //         <div className={`${styles.alignment}`}>
-        //             <p className={`${styles.fullWidth}`}>"{quotationText}"</p>
-        //             <p>{philosopherFullName}</p>
-        //         </div>
-        //         <div className={`${styles.signature}`}>Instagram: @philosophizetruth</div>
-        //     </div>
-        // )
+        const imageName = `${currentPhilosopher}.jpg`
         return (
             <div className={`${styles.fontFredericka} `} style={{ fontSize: autoAdjustFont(quotationText) }} ref={exportRef}>
+                {<img className={styles.phImage} alt={philosopherFullName} src={require('../../static/assets/images/philosophers/' + imageName)} />}
+                <div className={`${styles.alignment}`}>
+                    <p className={`${styles.backgroundTransparent}`}>"{quotationText}"</p>
+                    <p className={`${styles.backgroundTransparent}`}>{philosopherFullName}</p>
+                </div>
+                <div className={`${styles.signature} ${styles.backgroundTransparent}`}>Instagram: @philosophizetruth</div>
+            </div>
+        )
+    } catch (error) {
+        console.log(error)
+        return (
+            <div className={styles.fontFredericka} style={{ fontSize: autoAdjustFont(quotationText) }} ref={exportRef}>
                 <div className={`${styles.alignmentOld}`}>
                     <p className={`${styles.fullWidthOld}`}>"{quotationText}"</p>
                     <p>{philosopherFullName}</p>
@@ -50,17 +48,6 @@ const GenerateQuoteImage = (props) => {
                 <div className={`${styles.signature}`}>Instagram: @philosophizetruth</div>
             </div>
         )
-    } catch (error) {
-        console.log(error)
-        // return (
-        //     <div className={`${styles.fontFredericka} `} style={{ fontSize: autoAdjustFont(quotationText) }} ref={exportRef}>
-        //         <div className={`${styles.alignmentOld}`}>
-        //             <p className={`${styles.fullWidthOld}`}>"{quotationText}"</p>
-        //             <p>{philosopherFullName}</p>
-        //         </div>
-        //         <div className={`${styles.signature}`}>Instagram: @philosophizetruth</div>
-        //     </div>
-        // )
     }
 }
 
