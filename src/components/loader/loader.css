@@ -39,7 +39,7 @@ div.loading {
 
 .loadingText-primary {
     position: fixed;
-    top: 21rem;
+    top: 18rem;
     text-align: center;
     font-size: 3rem;
     width: 100vw;
@@ -47,7 +47,7 @@ div.loading {
 
 .loadingText-secondary {
     position: fixed;
-    bottom: 24rem;
+    bottom: 21rem;
     text-align: center;
     font-size: 3rem;
     width: 100vw;
