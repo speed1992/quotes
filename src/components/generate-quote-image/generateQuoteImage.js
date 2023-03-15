@@ -34,7 +34,7 @@ const GenerateQuoteImage = (props) => {
                     <p className={`${styles.backgroundTransparent}`}>"{quotationText}"</p>
                     <p className={`${styles.backgroundTransparent}`}>{philosopherFullName}</p>
                 </div>
-                <div className={`${styles.signature} ${styles.backgroundTransparent}`}>Instagram: @philosophizetruth</div>
+                <div className={`${styles.signature}`}>Instagram: @philosophizetruth</div>
             </div>
         )
     } catch (error) {
