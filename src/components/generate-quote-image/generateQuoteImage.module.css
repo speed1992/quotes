@@ -4,7 +4,6 @@
     position: relative;
     font-family: sans-serif;
     line-height: 1.2;
-    /* border: 2px solid #fff; */
 }
 
 .alignment {
@@ -24,7 +23,9 @@
     background-size: cover;
     margin-left: auto;
     margin-right: auto;
-    height: calc(100vw - 4px);
+    object-fit: cover;
+    height: auto;
+    width: calc(100vw - 4px);
     text-align: center;
     display: block;
     position: absolute;
