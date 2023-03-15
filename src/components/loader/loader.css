@@ -47,7 +47,7 @@ div.loading {
 
 .loadingText-secondary {
     position: fixed;
-    bottom: 25rem;
+    bottom: 24rem;
     text-align: center;
     font-size: 3rem;
     width: 100vw;
