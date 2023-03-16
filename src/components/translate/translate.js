@@ -3,7 +3,7 @@ import ROUTES from '../../routes/routes'
 import { rowClickHandler } from '../row/utils'
 import { useTranslation } from './custom-hooks/custom-hooks'
 
-export const Translate = ({ inputText, from = 'en', to = 'hi', openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }) => {
+export const Translate = ({ inputText, from = 'en', to = 'hi', openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode }) => {
     const translationOutput = useTranslation({ inputText, from, to })
     const philosopherFullnameIn_SelectedLanguage = philosopherFullName_i10n[to]
 
@@ -14,8 +14,8 @@ export const Translate = ({ inputText, from = 'en', to = 'hi', openSnackbar, sea
             </span>
 
             <button>
-                <Link to={ROUTES.image.route} state={{ quotationText: translationOutput, philosopherFullName: philosopherFullnameIn_SelectedLanguage }} style={{ textDecoration: 'none', color: '#000' }}>
-                    Download Image
+                <Link to={ROUTES.image.route} state={{ quotationText: translationOutput, philosopherFullName: philosopherFullnameIn_SelectedLanguage, signature: '@jaaginsaan' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
+                    Download Hindi Image
                 </Link>
             </button>
         </>

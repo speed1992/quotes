@@ -44,8 +44,12 @@ const HomePage = () => {
     const setScrollPosition = (value) => dispatch(setScrollPositionRedux(value))
 
     useEffect(() => {
+        setTranslateKey(false)
+    }, [])
+
+    useEffect(() => {
         combinedSearch({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
-    }, [start, end, searchText, markedMode, quotesLoaded, currentData.length, markedQuotes[currentPhilosopher]?.quotes?.length])
+    }, [start, end, searchText, markedMode, quotesLoaded, currentPhilosopher, currentData.length, markedQuotes[currentPhilosopher]?.quotes?.length])
 
     useEffect(() => {
         setDarkModeClassOnHTMLTag(darkMode)

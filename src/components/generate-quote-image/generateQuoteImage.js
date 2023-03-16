@@ -10,11 +10,12 @@ import { exportAsImage } from './utils/utils'
 
 const GenerateQuoteImage = (props) => {
     let {
-        state: { quotationText, philosopherFullName, currentPhilosopher },
+        state: { quotationText, philosopherFullName, signature },
     } = useLocation()
     const navigate = useNavigate()
     const exportRef = useRef()
     const darkMode = useSelector((state) => state.philosophersData.darkMode)
+    const currentPhilosopher = useSelector((state) => state.philosophersData.currentPhilosopher)
 
     useEffect(() => {
         exportAsImage(exportRef.current, `${philosopherFullName}-quote-${uuidv4()}.png`).then(() => navigate(ROUTES.homepage.route))
@@ -34,7 +35,7 @@ const GenerateQuoteImage = (props) => {
                     <p className={`${styles.backgroundTransparent}`}>"{quotationText}"</p>
                     <p className={`${styles.backgroundTransparent}`}>{philosopherFullName}</p>
                 </div>
-                <div className={`${styles.signature}`}>Instagram: @philosophizetruth</div>
+                <div className={`${styles.signature}`}>Instagram: {signature}</div>
             </div>
         )
     } catch (error) {
@@ -45,7 +46,7 @@ const GenerateQuoteImage = (props) => {
                     <p className={`${styles.fullWidthOld}`}>"{quotationText}"</p>
                     <p>{philosopherFullName}</p>
                 </div>
-                <div className={`${styles.signature}`}>Instagram: @philosophizetruth</div>
+                <div className={`${styles.signature}`}>Instagram: {signature}</div>
             </div>
         )
     }

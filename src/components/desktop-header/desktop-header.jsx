@@ -1,7 +1,6 @@
 import Switch from '@mui/material/Switch'
 import TextField from '@mui/material/TextField'
 import React from 'react'
-import translateImage from '../../static/assets/images/translate.png'
 import Select from '../select/select'
 import { WordLengthSearch } from '../wordLengthSearch/wordLengthSearch'
 import { onPhilosopherSelectChange } from './utils/utils'
@@ -19,18 +18,6 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
                 </div>
                 <div className="column">
                     <Select options={options} currentPhilosopher={currentPhilosopher} onChangeHandler={(_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData, options, setOptions, setQuotesLoaded })} />
-                </div>
-                <div className="column">
-                    <span>
-                        <img className="translate-img" src={translateImage} alt="Toggle to translate" />
-                        <span className="vertically"></span> Translate
-                        <Switch
-                            checked={translateKey}
-                            onChange={({ target: { checked } }) => {
-                                setTranslateKey(checked)
-                            }}
-                        />
-                    </span>
                 </div>
                 <div className="column">
                     <span>

@@ -1,4 +1,4 @@
-import { lazy, Suspense, useRef } from 'react'
+import { lazy, Suspense, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSnackbar } from 'react-simple-snackbar'
 import { isUndefined } from '../../common/utils/commonUtils'
@@ -11,27 +11,30 @@ import { rowClickHandler } from './utils'
 
 const MarkAsRead = lazy(() => import('../mark-as-read/mark-as-read'))
 
-export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, translateKey, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode }, style }) => {
+export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode }, style }) => {
     const quoteRef = useRef()
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
-    const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n }
+    const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode }
+    const [localTranslateKey, setLocalTranslateKey] = useState(false)
 
-    const debouncedHandler = debounce(() => setScrollPosition(index), 300)
+    const debouncedHandler = debounce(() => setScrollPosition(index), 500)
 
     if (!isUndefined(currentQuote))
         return (
             <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
-                <span className="row">
+                <span style={{ position: 'absolute', top: '20rem' }} className="row">
                     <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
                         "{quotationText}" ― {philosopherFullName}
                     </span>
-                    {translateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
                 </span>
+                <div style={{ position: 'absolute', top: '30rem' }} className="row">
+                    {localTranslateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
+                </div>
 
-                <div style={{ position: 'absolute', bottom: '9rem' }}>
+                <div style={{ position: 'absolute', bottom: '8rem' }}>
                     <button>
-                        <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, currentPhilosopher }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
+                        <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: '@philosophizetruth' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                             Download Image
                         </Link>
                     </button>
@@ -41,6 +44,9 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                             <MarkAsRead index={quotationId} currentPhilosopher={currentPhilosopher} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} />
                         </Suspense>
                     )}
+                    <button style={{ margin: '2px auto', display: 'table' }} onClick={() => setLocalTranslateKey(true)}>
+                        Translate
+                    </button>
                 </div>
             </div>
         )

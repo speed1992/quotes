@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import ROUTES from '../../routes/routes'
-import translateImage from '../../static/assets/images/translate.png'
 import { setVoiceSpeedRedux } from '../home-page/homePageRedux/homePageRedux'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
 import './mobile-menu.css'
@@ -16,13 +15,6 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
     return (
         <OutsideAlerter callback={() => toggleVisible(false)}>
             <ul id="slide_menu" style={{ display: visible ? 'block' : 'none' }}>
-                <li>
-                    <span className="mobile-translate-switch">
-                        <img className="translate-img" src={translateImage} alt="Toggle to translate" />
-                        Translate
-                        <input type="checkbox" checked={translateKey} onChange={({ target: { checked } }) => setTranslateKey(checked)} />
-                    </span>
-                </li>
                 <li>
                     Marked Mode
                     <input type="checkbox" checked={markedMode} onChange={({ target: { checked } }) => setMarkedMode(checked)} />
