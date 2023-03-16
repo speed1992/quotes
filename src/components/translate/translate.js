@@ -10,7 +10,7 @@ export const Translate = ({ inputText, from = 'en', to = 'hi', openSnackbar, sea
     return translationOutput !== '' && translationOutput !== undefined && translationOutput ? (
         <>
             <span key={index} onClick={rowClickHandler.bind(this, { openSnackbar, searchText, start, end, quote: translationOutput, philosopherFullName: philosopherFullnameIn_SelectedLanguage, index })}>
-                {translationOutput}
+                {translationOutput} ― {philosopherFullName_i10n}
             </span>
 
             <button>
