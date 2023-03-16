@@ -35,7 +35,7 @@ const GenerateQuoteImage = (props) => {
                     <p className={`${styles.backgroundTransparent}`}>"{quotationText}"</p>
                     <p className={`${styles.backgroundTransparent}`}>{philosopherFullName}</p>
                 </div>
-                <div className={`${styles.signature}`}>Instagram: {signature}</div>
+                <div className={`${styles.signature}`}>{signature}</div>
             </div>
         )
     } catch (error) {
@@ -46,7 +46,7 @@ const GenerateQuoteImage = (props) => {
                     <p className={`${styles.fullWidthOld}`}>"{quotationText}"</p>
                     <p>{philosopherFullName}</p>
                 </div>
-                <div className={`${styles.signature}`}>Instagram: {signature}</div>
+                <div className={`${styles.signature}`}>{signature}</div>
             </div>
         )
     }

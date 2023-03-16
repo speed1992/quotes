@@ -34,7 +34,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
 
                 <div style={{ position: 'absolute', bottom: '8rem' }}>
                     <button>
-                        <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: '@philosophizetruth' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
+                        <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                             Download Image
                         </Link>
                     </button>
