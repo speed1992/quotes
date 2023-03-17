@@ -9,7 +9,7 @@ export const rules = [
         if (value > 30 && value <= 40) return 2.2
     },
     function (value) {
-        if (value > 40 && value <= 50) return 1.8
+        if (value > 40 && value <= 50) return 2.0
     },
     function (value) {
         if (value > 50 && value <= 60) return 1.7
