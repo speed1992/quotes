@@ -6,9 +6,9 @@ import { debounce } from '../../common/utils/debounce'
 import ROUTES from '../../routes/routes'
 import Audio from '../audio/audio'
 import { Translate } from '../translate/translate'
+import styles from './row.module.css'
 import { evaluateClassNames } from './style-utils'
 import { rowClickHandler } from './utils'
-
 const MarkAsRead = lazy(() => import('../mark-as-read/mark-as-read'))
 
 export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode }, style }) => {
@@ -32,7 +32,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                     {localTranslateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
                 </div>
 
-                <div style={{ position: 'absolute', bottom: '8rem' }}>
+                <div className={styles.actionItems} style={{ position: 'absolute', bottom: '5rem' }}>
                     <button>
                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                             Download Image

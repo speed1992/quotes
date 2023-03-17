@@ -1,30 +1,30 @@
 export const rules = [
     function (value) {
-        if (value <= 20) return 2.2
+        if (value <= 20) return 2.6
     },
     function (value) {
-        if (value > 20 && value <= 30) return 2.15
+        if (value > 20 && value <= 30) return 2.3
     },
     function (value) {
-        if (value > 30 && value <= 40) return 2.1
+        if (value > 30 && value <= 40) return 2.2
     },
     function (value) {
-        if (value > 40 && value <= 50) return 2.05
+        if (value > 40 && value <= 50) return 1.8
     },
     function (value) {
-        if (value > 50 && value <= 60) return 2.0
+        if (value > 50 && value <= 60) return 1.7
     },
     function (value) {
-        if (value > 60 && value <= 70) return 1.95
+        if (value > 60 && value <= 70) return 1.6
     },
     function (value) {
-        if (value > 70 && value <= 80) return 1.9
+        if (value > 70 && value <= 80) return 1.5
     },
     function (value) {
-        if (value > 80 && value <= 90) return 1.85
+        if (value > 80 && value <= 90) return 1.4
     },
     function (value) {
-        if (value > 90) return 1.8
+        if (value > 90) return 1.3
     },
     function () {
         return 1.8

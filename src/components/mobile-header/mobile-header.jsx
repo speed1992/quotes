@@ -19,7 +19,7 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
                         <MobileMenu setTranslateKey={setTranslateKey} translateKey={translateKey} markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} options={options} setOptions={setOptions} toggleVisible={toggleVisible} darkMode={darkMode} setDarkMode={setDarkMode} />
                     </Suspense>
                 )}
-                <div onClick={() => toggleVisible(!visible)}>☰Menu</div>
+                <div onClick={() => toggleVisible(!visible)}>☰</div>
             </div>
             <div className="mobile-column">
                 <WordLengthSearch isMobile={true} vlistRef={listRef} {...propsToSend} />
