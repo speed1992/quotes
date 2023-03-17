@@ -1,5 +1,5 @@
 .typeAheadDropDown {
-    max-width: 10.9rem;
+    max-width: 11.9rem;
     position: relative !important;
     z-index: 2;
 }
@@ -58,7 +58,6 @@
 .typeAheadDropDown .dropDownList {
     position: absolute;
     right: 0.1rem;
-
 }
 
 .darkTheme .typeAheadDropDown::after {
