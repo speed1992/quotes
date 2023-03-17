@@ -28,11 +28,11 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                         "{quotationText}" ― {philosopherFullName}
                     </span>
                 </span>
-                <div style={{ position: 'absolute', top: '30rem' }} className="row">
+                <div style={{ position: 'absolute', top: '34rem' }} className="row">
                     {localTranslateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
                 </div>
 
-                <div className={styles.actionItems} style={{ position: 'absolute', bottom: '34rem' }}>
+                <div className={styles.actionItems} style={{ position: 'absolute', bottom: '5rem' }}>
                     <button>
                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                             Download Image
