@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { limiter } from "../../../common/settings/bottleneck.settings";
 import { hitTranslationAPI } from "../utils/utils";
 
 export function useTranslation({ inputText, from, to }) {
@@ -10,7 +9,7 @@ export function useTranslation({ inputText, from, to }) {
         const controller = new AbortController()
         const signal = controller.signal
 
-        const wrapped = limiter.wrap(hitTranslationAPI.bind(this, { inputText, from, to, signal }));
+        const wrapped = hitTranslationAPI.bind(this, { inputText, from, to, signal });
 
         wrapped()
             .then(response => response.json())
