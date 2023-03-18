@@ -1,6 +1,6 @@
 .fontFredericka {
     width: calc(100vw - 4px);
-    height: 100vw;
+    height: calc(100vw - 4px);
     position: relative;
     font-family: sans-serif;
     line-height: 1.2;
