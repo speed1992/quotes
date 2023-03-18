@@ -1,5 +1,5 @@
 .fontFredericka {
-    width: 100vw;
+    width: calc(100vw - 4px);
     height: 100vw;
     position: relative;
     font-family: sans-serif;
@@ -25,12 +25,13 @@
     margin-right: auto;
     object-fit: cover;
     height: auto;
-    width: calc(100vw);
+    width: calc(100vw - 4px);
     text-align: center;
     display: block;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    border: 0;
 }
 
 .alignmentOld {
@@ -62,4 +63,8 @@
 
 .quotationColor {
     color: white;
+}
+
+.borderWhite {
+    border: 2px solid #fff;
 }

@@ -19,7 +19,6 @@ const GenerateQuoteImage = (props) => {
 
     useEffect(() => {
         exportAsImage(exportRef.current, `${philosopherFullName}-quote-${uuidv4()}.png`).then(() => navigate(ROUTES.homepage.route))
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -29,24 +28,28 @@ const GenerateQuoteImage = (props) => {
     try {
         const imageName = `${currentPhilosopher}.jpg`
         return (
-            <div className={`${styles.fontFredericka} `} style={{ fontSize: autoAdjustFont(quotationText) }} ref={exportRef}>
-                {<img className={styles.phImage} alt={philosopherFullName} src={require('../../static/assets/images/philosophers/' + imageName)} />}
-                <div className={`${styles.alignment} ${styles.quotationColor}`}>
-                    <p className={`${styles.backgroundTransparent}`}>"{quotationText}"</p>
-                    <p className={`${styles.backgroundTransparent}`}>{philosopherFullName}</p>
+            <div className={`${styles.borderWhite}`} ref={exportRef}>
+                <div className={`${styles.fontFredericka} `} style={{ fontSize: autoAdjustFont(quotationText) }}>
+                    {<img className={styles.phImage} alt={philosopherFullName} src={require('../../static/assets/images/philosophers/' + imageName)} />}
+                    <div className={`${styles.alignment} ${styles.quotationColor}`}>
+                        <p className={`${styles.backgroundTransparent}`}>"{quotationText}"</p>
+                        <p className={`${styles.backgroundTransparent}`}>{philosopherFullName}</p>
+                    </div>
+                    <div className={`${styles.signature}`}>{signature}</div>
                 </div>
-                <div className={`${styles.signature}`}>{signature}</div>
             </div>
         )
     } catch (error) {
         console.log(error)
         return (
-            <div className={styles.fontFredericka} style={{ fontSize: autoAdjustFont(quotationText) }} ref={exportRef}>
-                <div className={`${styles.alignmentOld}`}>
-                    <p className={`${styles.fullWidthOld}`}>"{quotationText}"</p>
-                    <p>{philosopherFullName}</p>
+            <div className={`${styles.borderWhite}`} ref={exportRef}>
+                <div className={styles.fontFredericka} style={{ fontSize: autoAdjustFont(quotationText) }}>
+                    <div className={`${styles.alignmentOld}`}>
+                        <p className={`${styles.fullWidthOld}`}>"{quotationText}"</p>
+                        <p>{philosopherFullName}</p>
+                    </div>
+                    <div className={`${styles.signature}`}>{signature}</div>
                 </div>
-                <div className={`${styles.signature}`}>{signature}</div>
             </div>
         )
     }
