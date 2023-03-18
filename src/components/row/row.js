@@ -32,7 +32,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                     {localTranslateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
                 </div>
 
-                <div className={styles.actionItems} style={{ position: 'absolute', bottom: '5rem' }}>
+                <div className={styles.actionItems} style={{ position: 'absolute', bottom: '6rem' }}>
                     <button>
                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                             Download Image
