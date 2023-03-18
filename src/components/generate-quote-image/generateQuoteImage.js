@@ -19,7 +19,7 @@ const GenerateQuoteImage = (props) => {
 
     useEffect(() => {
         exportAsImage(exportRef.current, `${philosopherFullName}-quote-${uuidv4()}.png`).then(() => navigate(ROUTES.homepage.route))
-    }, [])
+    }, [navigate, philosopherFullName])
 
     useEffect(() => {
         setDarkModeClassOnHTMLTag(darkMode)
