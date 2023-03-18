@@ -23,12 +23,12 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
     if (!isUndefined(currentQuote))
         return (
             <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
-                <span style={{ position: 'absolute', top: '20rem' }} className="row">
+                <span style={{ position: 'absolute', top: '25rem' }} className="row">
                     <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
                         "{quotationText}" ― {philosopherFullName}
                     </span>
                 </span>
-                <div style={{ position: 'absolute', top: '34rem' }} className="row">
+                <div style={{ position: 'absolute', top: '39rem' }} className="row">
                     {localTranslateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
                 </div>
 

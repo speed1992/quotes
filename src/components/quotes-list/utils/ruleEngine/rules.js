@@ -1,9 +1,9 @@
 export const rules = [
     function (value, { start }) {
-        if (start <= 20) return 700
+        if (start <= 20) return 500
     },
     function (value, { start }) {
-        if (start > 20 && start <= 40) return 800
+        if (start > 20 && start <= 40) return 600
     },
     function (value, { start }) {
         if (start > 40 && start <= 60) return 1000
