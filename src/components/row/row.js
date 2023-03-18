@@ -23,16 +23,16 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
     if (!isUndefined(currentQuote))
         return (
             <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
-                <span style={{ position: 'absolute', top: '20rem' }} className="row">
+                <span style={{ position: 'absolute', top: '10rem' }} className="row">
                     <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
                         "{quotationText}" ― {philosopherFullName}
                     </span>
                 </span>
-                <div style={{ position: 'absolute', top: '34rem' }} className="row">
+                <div style={{ position: 'absolute', top: '26rem' }} className="row">
                     {localTranslateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
                 </div>
 
-                <div className={styles.actionItems} style={{ position: 'absolute', bottom: '6rem' }}>
+                <div className={styles.actionItems} style={{ position: 'absolute', bottom: '5rem' }}>
                     <button>
                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                             Download Image

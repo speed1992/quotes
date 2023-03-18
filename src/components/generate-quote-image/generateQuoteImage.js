@@ -31,7 +31,7 @@ const GenerateQuoteImage = (props) => {
         return (
             <div className={`${styles.fontFredericka} `} style={{ fontSize: autoAdjustFont(quotationText) }} ref={exportRef}>
                 {<img className={styles.phImage} alt={philosopherFullName} src={require('../../static/assets/images/philosophers/' + imageName)} />}
-                <div className={`${styles.alignment}`}>
+                <div className={`${styles.alignment} ${styles.quotationColor}`}>
                     <p className={`${styles.backgroundTransparent}`}>"{quotationText}"</p>
                     <p className={`${styles.backgroundTransparent}`}>{philosopherFullName}</p>
                 </div>
