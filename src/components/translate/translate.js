@@ -6,7 +6,6 @@ import { useTranslation } from './custom-hooks/custom-hooks'
 export const Translate = ({ inputText, from = 'en', to = 'hi', openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode }) => {
     const translationOutput = useTranslation({ inputText, from, to })
     const philosopherFullnameIn_SelectedLanguage = philosopherFullName_i10n[to]
-    console.log('philosopherFullnameIn_SelectedLanguage', philosopherFullnameIn_SelectedLanguage)
 
     return translationOutput !== '' && translationOutput !== undefined && translationOutput ? (
         <>
