@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import ROUTES from '../../routes/routes'
 import { setDarkModeClassOnHTMLTag } from '../home-page/utils/utils'
-import styles from './generateQuoteImage.module.css'
-import { autoAdjustFont } from './utils/fontutils'
+import QuoteWithImage from '../quote-with-image/quote-with-image'
+import QuoteWithoutImage from '../quote-without-image/quote-without-image'
 import { exportAsImage } from './utils/utils'
 
-const GenerateQuoteImage = (props) => {
+const GenerateQuoteImage = () => {
     let {
         state: { quotationText, philosopherFullName, signature },
     } = useLocation()
@@ -16,6 +16,8 @@ const GenerateQuoteImage = (props) => {
     const exportRef = useRef()
     const darkMode = useSelector((state) => state.philosophersData.darkMode)
     const currentPhilosopher = useSelector((state) => state.philosophersData.currentPhilosopher)
+
+    const propsToSend = { exportRef, quotationText, philosopherFullName, signature }
 
     useEffect(() => {
         exportAsImage(exportRef.current, `${philosopherFullName}-quote-${uuidv4()}.png`).then(() => navigate(ROUTES.homepage.route))
@@ -27,31 +29,10 @@ const GenerateQuoteImage = (props) => {
 
     try {
         const imageName = `${currentPhilosopher}.jpg`
-        return (
-            <div className={`${styles.borderWhite}`} ref={exportRef}>
-                <div className={`${styles.fontFredericka} `} style={{ fontSize: autoAdjustFont(quotationText) }}>
-                    {<img className={styles.phImage} alt={philosopherFullName} src={require('../../static/assets/images/philosophers/' + imageName)} />}
-                    <div className={`${styles.alignment} ${styles.quotationColor}`}>
-                        <p className={`${styles.backgroundTransparent}`}>"{quotationText}"</p>
-                        <p className={`${styles.backgroundTransparent}`}>{philosopherFullName}</p>
-                    </div>
-                    <div className={`${styles.signature}`}>{signature}</div>
-                </div>
-            </div>
-        )
+        require('../../static/assets/images/philosophers/' + imageName)
+        return <QuoteWithImage {...propsToSend} imageName={imageName} />
     } catch (error) {
-        console.log(error)
-        return (
-            <div className={`${styles.borderWhite}`} ref={exportRef}>
-                <div className={styles.fontFredericka} style={{ fontSize: autoAdjustFont(quotationText) }}>
-                    <div className={`${styles.alignmentOld}`}>
-                        <p className={`${styles.fullWidthOld}`}>"{quotationText}"</p>
-                        <p>{philosopherFullName}</p>
-                    </div>
-                    <div className={`${styles.signature}`}>{signature}</div>
-                </div>
-            </div>
-        )
+        return <QuoteWithoutImage {...propsToSend} />
     }
 }
 
