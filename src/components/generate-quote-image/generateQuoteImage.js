@@ -1,39 +1,20 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { useSelector } from 'react-redux'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { v4 as uuidv4 } from 'uuid'
-import ROUTES from '../../routes/routes'
-import { setDarkModeClassOnHTMLTag } from '../home-page/utils/utils'
+import { useLocation } from 'react-router-dom'
 import QuoteWithImage from '../quote-with-image/quote-with-image'
 import QuoteWithoutImage from '../quote-without-image/quote-without-image'
-import { exportAsImage, shareQuote } from './utils/utils'
+import { useCreateQuoteImage } from './utils/hooks'
 
 const GenerateQuoteImage = () => {
     let {
         state: { quotationText, philosopherFullName, signature, share = false },
     } = useLocation()
-    const navigate = useNavigate()
     const exportRef = useRef()
-    const darkMode = useSelector((state) => state.philosophersData.darkMode)
     const currentPhilosopher = useSelector((state) => state.philosophersData.currentPhilosopher)
 
     const propsToSend = { exportRef, quotationText, philosopherFullName, signature }
 
-    useEffect(() => {
-        ;(async function () {
-            const filename = `${philosopherFullName}-quote-${uuidv4()}.png`
-            if (share !== undefined) {
-                await shareQuote(exportRef.current, filename)
-            } else {
-                await exportAsImage(exportRef.current, filename)
-            }
-            navigate(ROUTES.homepage.route)
-        })()
-    }, [navigate, philosopherFullName, share])
-
-    useEffect(() => {
-        setDarkModeClassOnHTMLTag(darkMode)
-    }, [darkMode])
+    useCreateQuoteImage(philosopherFullName, share, exportRef)
 
     try {
         const imageName = `${currentPhilosopher}.jpg`
