@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 module.exports.getClockTime = function () {
     var now = new Date()
     var hour = now.getHours()
@@ -24,4 +26,31 @@ module.exports.getClockTime = function () {
     // }
     var timeString = hour + ':' + minute + ' ' + ap
     return timeString
+}
+
+module.exports.getDateInLocalFormat = function () {
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+    var currentdate = new Date()
+    var datetime = currentdate.getDate() + ' ' + monthNames[currentdate.getMonth()] + ' ' + currentdate.getFullYear() + ' @ ' + module.exports.getClockTime()
+
+    return datetime
+}
+
+module.exports.createFile = function (filename) {
+    return new Promise((resolve, reject) => {
+        fs.open(filename, 'r', function (err, fd) {
+            if (err) {
+                fs.writeFile(filename, '', function (err) {
+                    if (err) {
+                        reject()
+                        console.log(err)
+                    }
+                    resolve()
+                })
+            } else {
+                resolve()
+            }
+        })
+    })
 }
