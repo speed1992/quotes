@@ -32,3 +32,34 @@ export const exportAsImage = async (element, imageFileName) => {
     html.style.width = null
     body.style.width = null
 }
+
+export const shareQuote = async (element, imageFileName) => {
+    // iife here
+    ;(async () => {
+        if (!('share' in navigator)) {
+            return
+        }
+        // `element` is the HTML element you want to share.
+        // `backgroundColor` is the desired background color.
+        const canvas = await html2canvas(element, { scale: 3 })
+        canvas.toBlob(async (blob) => {
+            // Even if you want to share just one file you need to
+            // send them as an array of files.
+            const files = [new File([blob], imageFileName, { type: blob.type })]
+            const shareData = {
+                files,
+            }
+            if (navigator.canShare(shareData)) {
+                try {
+                    await navigator.share(shareData)
+                } catch (err) {
+                    if (err.name !== 'AbortError') {
+                        console.error(err.name, err.message)
+                    }
+                }
+            } else {
+                console.warn('Sharing not supported', shareData)
+            }
+        })
+    })()
+}

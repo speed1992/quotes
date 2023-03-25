@@ -44,8 +44,11 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                             <MarkAsRead index={quotationId} currentPhilosopher={currentPhilosopher} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} />
                         </Suspense>
                     )}
-                    <button style={{ margin: '2px auto', display: 'table' }} onClick={() => setLocalTranslateKey(true)}>
-                        Translate
+                    <button onClick={() => setLocalTranslateKey(true)}>Translate</button>
+                    <button>
+                        <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth', share: true }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
+                            Share
+                        </Link>
                     </button>
                 </div>
             </div>

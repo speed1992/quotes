@@ -6,11 +6,11 @@ import ROUTES from '../../routes/routes'
 import { setDarkModeClassOnHTMLTag } from '../home-page/utils/utils'
 import QuoteWithImage from '../quote-with-image/quote-with-image'
 import QuoteWithoutImage from '../quote-without-image/quote-without-image'
-import { exportAsImage } from './utils/utils'
+import { exportAsImage, shareQuote } from './utils/utils'
 
 const GenerateQuoteImage = () => {
     let {
-        state: { quotationText, philosopherFullName, signature },
+        state: { quotationText, philosopherFullName, signature, share = false },
     } = useLocation()
     const navigate = useNavigate()
     const exportRef = useRef()
@@ -20,8 +20,16 @@ const GenerateQuoteImage = () => {
     const propsToSend = { exportRef, quotationText, philosopherFullName, signature }
 
     useEffect(() => {
-        exportAsImage(exportRef.current, `${philosopherFullName}-quote-${uuidv4()}.png`).then(() => navigate(ROUTES.homepage.route))
-    }, [navigate, philosopherFullName])
+        ;(async function () {
+            const filename = `${philosopherFullName}-quote-${uuidv4()}.png`
+            if (share !== undefined) {
+                await shareQuote(exportRef.current, filename)
+            } else {
+                await exportAsImage(exportRef.current, filename)
+            }
+            navigate(ROUTES.homepage.route)
+        })()
+    }, [navigate, philosopherFullName, share])
 
     useEffect(() => {
         setDarkModeClassOnHTMLTag(darkMode)
