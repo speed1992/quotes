@@ -8,6 +8,8 @@ import { setVoiceSpeedRedux } from '../home-page/homePageRedux/homePageRedux'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
 import './mobile-menu.css'
 
+const BuildInfo = React.lazy(() => import('../build-info/build-info'));
+
 function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, visible, toggleVisible, currentPhilosopher, currentData, setCurrentData, setOptions, markedQuotes, setMarkedQuotes, darkMode, setDarkMode }) {
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)
 
@@ -40,6 +42,9 @@ function MobileMenu({ setTranslateKey, translateKey, markedMode, setMarkedMode, 
                     <Link to={ROUTES.report.route} style={{ textDecoration: 'none', color: '#000' }}>
                         <button>Open Report</button>
                     </Link>
+                </li>
+                <li>
+                    <BuildInfo/>
                 </li>
             </ul>
         </OutsideAlerter>

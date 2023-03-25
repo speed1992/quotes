@@ -32,12 +32,14 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "fs": "^0.0.1-security",
     "prettier": "^2.8.4"
   },
   "scripts": {
+    "build-date": "node ./src/scripts/build.js",
     "predeploy": "git push && react-scripts build",
     "deploy": "gh-pages -d build",
-    "build": "react-scripts build",
+    "build": "npm run build-date && react-scripts build",
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
