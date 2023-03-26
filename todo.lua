@@ -1,7 +1,0 @@
-canvas
-
-
-
-refactor
-eslint
-jest
