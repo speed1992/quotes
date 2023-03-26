@@ -1,1 +1,0 @@
-release: node heroku/release.js
