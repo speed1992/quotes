@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { isUndefined } from '../../../common/utils/commonUtils'
 import { getPhilosopherFullName } from '../../quotes-list/utils/utils'
 
-export const createData = ({ markedQuotes, originalData, options, setData }) => {
+export const createData = ({ markedQuotes, options, setData }) => {
     const data = []
     for (const key in markedQuotes) {
         if (markedQuotes.hasOwnProperty(key)) {
