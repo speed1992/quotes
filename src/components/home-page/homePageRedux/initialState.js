@@ -8,7 +8,6 @@ export const INITIAL_STATE = {
     markedMode: false,
     markedQuotes: {},
     currentData: [],
-    originalData: [],
     translate: false,
     sorting: 'alphabetical',
     options: OPTIONS.reverse(),

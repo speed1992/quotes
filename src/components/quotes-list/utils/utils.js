@@ -16,7 +16,7 @@ export const getPhilosopherFullName_i10n = ({ currentPhilosopher, options }) => 
     if (!isObjEmpty(currentIndex)) return currentIndex && currentIndex[0].fullNameInOtherLanguages
 }
 
-export const searchByWordLength = (start, end, quotes, { markedMode, markedQuotes, setMarkedQuotes }, { currentData, originalData, setCurrentData, currentPhilosopher }) => {
+export const searchByWordLength = (start, end, quotes, { markedMode, markedQuotes, setMarkedQuotes }, { setCurrentData, currentPhilosopher }) => {
     if (quotes !== undefined) {
         if (typeof start === 'string' && start.trim() === '') start = 0
 

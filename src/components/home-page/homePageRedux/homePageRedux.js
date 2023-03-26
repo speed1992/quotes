@@ -26,9 +26,6 @@ export const philosophersDataSlice = createSlice({
         setCurrentDataRedux: (state, { payload }) => {
             if (Array.isArray(payload)) state.currentData = payload
         },
-        setOrginalDataRedux: (state, { payload }) => {
-            if (Array.isArray(payload)) state.originalData = payload
-        },
         setOptionsRedux: (state, { payload }) => {
             state.options = payload
         },
@@ -52,4 +49,4 @@ export const philosophersDataSlice = createSlice({
 
 export default philosophersDataSlice.reducer
 
-export const { setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setTranslateRedux, setOptionsRedux, setDarkModeRedux, setQuotesLoadedRedux, setMarkedQuotesRedux, setOrginalDataRedux, setVoiceSpeedRedux, setScrollPositionRedux } = philosophersDataSlice.actions
+export const { setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setTranslateRedux, setOptionsRedux, setDarkModeRedux, setQuotesLoadedRedux, setMarkedQuotesRedux, setVoiceSpeedRedux, setScrollPositionRedux } = philosophersDataSlice.actions

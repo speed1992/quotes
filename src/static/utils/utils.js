@@ -16,8 +16,6 @@ export const doOperationsOnData = ({ data, setData }, sortingMethod) => {
     if (sortingMethod === 'alphabetical') data.sort((a, b) => a.fullName.localeCompare(b.fullName))
     else data.sort((a, b) => b.id - a.id)
 
-    console.log(data)
-
     setData(data)
 }
 
@@ -76,6 +74,8 @@ export const lazyLoadAllAssets = (callback) => {
 export const getPhilosopherObjectIndex = (philosopher, options) => options.findIndex(({ value }) => value === philosopher)
 
 export const getPhilosopherData = ({ philosopher, options }) => options.filter(({ value }) => value === philosopher)[0]
+
+export const getPhilosopherQuotes = ({ philosopher, options }) => options.filter(({ value }) => value === philosopher)[0]?.quotes
 
 export const getCurrentPhilosopherFullname = (currentPhilosopher, options) => {
     const currentPhilosopherData = PHILOSOPHERS_DATA[getPhilosopherObjectIndex(currentPhilosopher, options)]
