@@ -5,7 +5,7 @@ import Select from '../select/select'
 import { WordLengthSearch } from '../wordLengthSearch/wordLengthSearch'
 import { onPhilosopherSelectChange } from './utils/utils'
 
-function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, options, setOptions, setCurrentData, setQuotesLoaded }) {
+function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, options, setOptions, setCurrentData, setQuotesLoaded }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
     return (
         <div className="header">

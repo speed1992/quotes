@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import { combinedSearch } from '../../common/utils/searchUtils'
-import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setQuotesLoadedRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setTranslateRedux } from '../../components/home-page/homePageRedux/homePageRedux'
+import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setQuotesLoadedRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux } from '../../components/home-page/homePageRedux/homePageRedux'
 import { getPhilosopherQuotes } from '../../static/utils/utils'
 import { Layout } from '../layout/layout'
 import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
@@ -22,7 +22,6 @@ const HomePage = () => {
     const markedMode = useSelector((state) => state.philosophersData.markedMode)
     const options = useSelector((state) => state.philosophersData.options)
     const quotesLoaded = useSelector((state) => state.philosophersData.quotesLoaded)
-    const translateKey = useSelector((state) => state.philosophersData.translate)
     const markedQuotes = useSelector((state) => state.philosophersData.markedQuotes)
     const darkMode = useSelector((state) => state.philosophersData.darkMode)
     const scrollPosition = useSelector((state) => state.philosophersData.scrollPosition)
@@ -35,16 +34,11 @@ const HomePage = () => {
     const setMarkedMode = (value) => dispatch(setMarkedModeRedux(value))
     const setCurrentPhilosopher = (name) => dispatch(setCurrentPhilosopherRedux(name))
     const setCurrentData = (data) => dispatch(setCurrentDataRedux(data))
-    const setTranslateKey = (value) => dispatch(setTranslateRedux(value))
     const setOptions = (value) => dispatch(setOptionsRedux(value))
     const setQuotesLoaded = (value) => dispatch(setQuotesLoadedRedux(value))
     const setMarkedQuotes = (value) => dispatch(setMarkedQuotesRedux(value))
     const setDarkMode = (value) => dispatch(setDarkModeRedux(value))
     const setScrollPosition = (value) => dispatch(setScrollPositionRedux(value))
-
-    useEffect(() => {
-        setTranslateKey(false)
-    }, [])
 
     useEffect(() => {
         if (originalData) {
@@ -56,7 +50,7 @@ const HomePage = () => {
         setDarkModeClassOnHTMLTag(darkMode)
     }, [darkMode])
 
-    const propsToSend = { setSearchText, searchText, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, setCurrentData, currentData, options, setOptions, setQuotesLoaded, markedQuotes, setMarkedQuotes, originalData, darkMode, setDarkMode, scrollPosition, setScrollPosition }
+    const propsToSend = { setSearchText, searchText, listRef, start, setStart, end, setEnd, setIsFetching, isFetching, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, setCurrentData, currentData, options, setOptions, setQuotesLoaded, markedQuotes, setMarkedQuotes, originalData, darkMode, setDarkMode, scrollPosition, setScrollPosition }
 
     const renderList = () => <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
 

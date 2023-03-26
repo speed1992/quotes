@@ -8,11 +8,10 @@ export const INITIAL_STATE = {
     markedMode: false,
     markedQuotes: {},
     currentData: [],
-    translate: false,
     sorting: 'alphabetical',
     options: OPTIONS.reverse(),
     quotesLoaded: false,
     darkMode: false,
-    voiceSpeed: 5,
+    voiceSpeed: 0.5,
     scrollPosition: null,
 }

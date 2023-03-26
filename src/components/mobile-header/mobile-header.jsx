@@ -7,7 +7,7 @@ const MobileMenu = React.lazy(() => import('../mobile-menu/mobile-menu'))
 const Breadcrumb = React.lazy(() => import('../breadcrumb/breadcrumb'))
 const UnreadCounter = React.lazy(() => import('../unread-counter/unread-counter'))
 
-function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, translateKey, setTranslateKey, markedMode, setMarkedMode, markedQuotes, currentData, setCurrentData, currentPhilosopher, originalData, setCurrentPhilosopher, options, setOptions, setQuotesLoaded, darkMode, setDarkMode }) {
+function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, markedMode, setMarkedMode, markedQuotes, currentData, setCurrentData, currentPhilosopher, originalData, setCurrentPhilosopher, options, setOptions, setQuotesLoaded, darkMode, setDarkMode }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText, setCurrentData }
     const [visible, toggleVisible] = useState(false)
 
@@ -16,10 +16,12 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
             <div className="mobile-column">
                 {visible && (
                     <Suspense fallback={''}>
-                        <MobileMenu setTranslateKey={setTranslateKey} translateKey={translateKey} markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} options={options} setOptions={setOptions} toggleVisible={toggleVisible} darkMode={darkMode} setDarkMode={setDarkMode} />
+                        <MobileMenu markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} options={options} setOptions={setOptions} toggleVisible={toggleVisible} darkMode={darkMode} setDarkMode={setDarkMode} />
                     </Suspense>
                 )}
-                <div onClick={() => toggleVisible(!visible)}>☰</div>
+                <div style={{ paddingLeft: '0.5rem', paddingRight: '0.5rem' }} onClick={() => toggleVisible(!visible)}>
+                    ☰
+                </div>
             </div>
             <div className="mobile-column">
                 <WordLengthSearch isMobile={true} vlistRef={listRef} {...propsToSend} />
