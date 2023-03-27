@@ -6,23 +6,23 @@ import getStoredState from 'redux-persist/es/getStoredState'
 import storage from 'redux-persist/lib/storage'
 import philosophersDataReducer from '../components/home-page/homePageRedux/homePageRedux'
 
+// old storage method
 const persistConfig = getPersistConfig({
     key: 'root',
     storage,
     blacklist: ['currentData', 'originalData', 'options', 'quotesLoaded'],
-    rootReducer: philosophersDataReducer, // your root reducer must be also passed here
+    rootReducer: philosophersDataReducer,
 })
 
+// new storage method
 const newPersistConfig = getPersistConfig({
     key: 'root',
     storage: DBstorage('myDB'),
     blacklist: ['currentData', 'originalData', 'options', 'quotesLoaded'],
-    rootReducer: philosophersDataReducer, // your root reducer must be also passed here
+    rootReducer: philosophersDataReducer,
     migrate: async (state) => {
-        debugger
         if (state === undefined) {
             const asyncState = await getStoredState(persistConfig)
-            console.log(asyncState)
             return asyncState
         } else return state
     },
