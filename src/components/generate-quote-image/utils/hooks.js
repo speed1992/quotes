@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { v4 as uuidv4 } from 'uuid'
+import { uuidv4 } from '../../../common/utils/commonUtils'
 import ROUTES from '../../../routes/routes'
 import { setDarkModeClassOnHTMLTag } from '../../home-page/utils/utils'
 import { exportAsImage, shareQuote } from './utils'
