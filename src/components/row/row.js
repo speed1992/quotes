@@ -25,7 +25,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
             <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
                 <span style={{ position: 'absolute', top: '10rem' }} className="row">
                     <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
-                        "{quotationText}" ― {philosopherFullName}
+                        {`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}
                     </span>
                 </span>
                 <div style={{ position: 'absolute', top: '26rem' }} className="row">
