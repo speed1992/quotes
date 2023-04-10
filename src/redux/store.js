@@ -34,16 +34,17 @@ const newPersistConfig = getPersistConfig({
                 // console.log('found at ', index)
 
                 state.options.splice(index, 1)
+                delete state.markedQuotes[PHILOSOPHER_TO_PURGE]
                 if (state.currentPhilosopher === PHILOSOPHER_TO_PURGE) {
                     state.currentPhilosopher = 'NIETZSCHE'
                 }
 
                 // console.log('splicing done')
             } else {
-                console.log('not found')
+                // console.log('not found')
             }
 
-            console.log(state)
+            // console.log(state)
             return state
         }
     },
