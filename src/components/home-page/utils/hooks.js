@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getPhilosopherQuotes } from '../../../static/utils/utils'
 import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setQuotesLoadedRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux } from '../homePageRedux/homePageRedux'
 
-export function useHomePageUtils() {
+export function useHomePageHooks() {
     const listRef = useRef()
     const dispatch = useDispatch()
     const start = useSelector((state) => state.philosophersData.start)

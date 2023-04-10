@@ -28,3 +28,5 @@ export const search = ({ searchText, currentData, setCurrentData }) => {
 }
 
 export const isMobile = () => window.innerWidth <= 600
+
+export const isDesktop = () => window.innerWidth >= 600

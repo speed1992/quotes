@@ -2,17 +2,18 @@
 import React, { useEffect } from 'react'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import { combinedSearch } from '../../common/utils/searchUtils'
+import { isDesktop } from '../../common/utils/utils'
 import { Layout } from '../layout/layout'
 import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
 import { Loader } from '../loader/loader'
 import styles from './home-page.module.css'
-import { useHomePageUtils } from './utils/hooks'
+import { useHomePageHooks } from './utils/hooks'
 import { setDarkModeClassOnHTMLTag } from './utils/utils'
 
 const HomePage = () => {
-    const propsToSend = useHomePageUtils()
+    const propsToSend = useHomePageHooks()
 
-    const { start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, darkMode, originalData, isFetching, setCurrentData, setMarkedQuotes } = propsToSend
+    const { start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, darkMode, setDarkMode, originalData, isFetching, setCurrentData, setMarkedQuotes } = propsToSend
 
     useEffect(() => {
         if (originalData) {
@@ -22,6 +23,13 @@ const HomePage = () => {
 
     useEffect(() => {
         setDarkModeClassOnHTMLTag(darkMode)
+    }, [darkMode])
+
+    useEffect(() => {
+        if (isDesktop()) {
+            setDarkMode(false)
+            setDarkModeClassOnHTMLTag(false)
+        }
     }, [darkMode])
 
     const renderList = () => <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
