@@ -4,23 +4,26 @@ import { useDispatch, useSelector } from 'react-redux'
 import OPTIONS from '../../../static/philosophers-data.json'
 import { ALPHABETICAL, LATEST } from '../constants/constants'
 import { setOptionsRedux, setSortingRedux } from '../homePageRedux/homePageRedux'
+import { bringIntoAlphabeticalOrder, bringIntoOriginalOrder } from './utils'
 
 export function useSortingHooks() {
     const dispatch = useDispatch()
+    const options = useSelector((state) => state.philosophersData.options)
     const sorting = useSelector((state) => state.philosophersData.sorting)
     const setSorting = (value) => dispatch(setSortingRedux(value))
-    let resultOptions = JSON.parse(JSON.stringify(OPTIONS))
 
     useEffect(() => {
         const setOptions = (value) => dispatch(setOptionsRedux(value))
+        let resultOptions = []
 
         if (sorting === LATEST) {
-            setOptions(resultOptions.reverse())
+            resultOptions = bringIntoOriginalOrder(OPTIONS, options)
+            setOptions(resultOptions)
         } else if (sorting === ALPHABETICAL) {
-            resultOptions.sort((a, b) => a.fullName.localeCompare(b.fullName))
+            resultOptions = bringIntoAlphabeticalOrder(options)
             setOptions(resultOptions)
         }
     }, [sorting])
 
-    return { sorting, setSorting, resultOptions }
+    return { sorting, setSorting, options }
 }

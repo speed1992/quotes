@@ -1,4 +1,5 @@
 import PHILOSOPHERS_DATA from '../../../static/philosophers-data'
+import { getPhilosopherData } from '../../../static/utils/utils'
 
 export function checkIfNull(lastReadPhilosopher) {
     let isGarbage = true
@@ -18,3 +19,7 @@ export const setDarkModeClassOnHTMLTag = (darkMode) => {
         root.setAttribute('class', '')
     }
 }
+
+export const bringIntoOriginalOrder = (originalOptions, newOptions) => originalOptions.map((item) => getPhilosopherData({ philosopher: item.value, options: newOptions })).reverse()
+
+export const bringIntoAlphabeticalOrder = (originalOptions) => [...originalOptions].sort((a, b) => a.fullName.localeCompare(b.fullName))
