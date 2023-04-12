@@ -1,7 +1,7 @@
 import { changeQuotesData, searchByWordLength } from '../../components/quotes-list/utils/utils.js'
 import { search } from './utils.js'
 
-export function combinedSearch({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode = false, markedQuotes, setMarkedQuotes }) {
+export function applyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode = false, markedQuotes, setMarkedQuotes }) {
     let dataForSearch = []
     // eslint-disable-next-line
     if (searchText === '' && start == 1 && end == '') changeQuotesData({ currentPhilosopher, currentData: originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })

@@ -78,6 +78,6 @@ export const getPhilosopherData = ({ philosopher, options }) => options.filter((
 export const getPhilosopherQuotes = ({ philosopher, options }) => options.filter(({ value }) => value === philosopher)[0]?.quotes
 
 export const getCurrentPhilosopherFullname = (currentPhilosopher, options) => {
-    const currentPhilosopherData = PHILOSOPHERS_DATA[getPhilosopherObjectIndex(currentPhilosopher, options)]
+    const currentPhilosopherData = options[getPhilosopherObjectIndex(currentPhilosopher, options)]
     return currentPhilosopherData.fullName
 }

@@ -5,7 +5,7 @@ import MobileSelect from "../mobile-select/mobile-select";
 import "./select.css";
 
 const Select = ({ options, currentPhilosopher, onChangeHandler, isMobile }) => {
-
+    
     const renderSelect = () => {
         if (isMobile) {
             return (

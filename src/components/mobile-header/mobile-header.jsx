@@ -7,7 +7,7 @@ const MobileMenu = React.lazy(() => import('../mobile-menu/mobile-menu'))
 const Breadcrumb = React.lazy(() => import('../breadcrumb/breadcrumb'))
 const UnreadCounter = React.lazy(() => import('../unread-counter/unread-counter'))
 
-function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, markedMode, setMarkedMode, markedQuotes, currentData, setCurrentData, currentPhilosopher, originalData, setCurrentPhilosopher, options, setOptions, setQuotesLoaded, darkMode, setDarkMode }) {
+function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, markedMode, setMarkedMode, markedQuotes, currentData, setCurrentData, currentPhilosopher, originalData, setCurrentPhilosopher, options, setOptions, setQuotesLoaded, darkMode, setDarkMode, setSorting, sorting }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText, setCurrentData }
     const [visible, toggleVisible] = useState(false)
 
@@ -16,7 +16,7 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
             <div className="mobile-column">
                 {visible && (
                     <Suspense fallback={''}>
-                        <MobileMenu markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} options={options} setOptions={setOptions} toggleVisible={toggleVisible} darkMode={darkMode} setDarkMode={setDarkMode} />
+                        <MobileMenu markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} options={options} setOptions={setOptions} toggleVisible={toggleVisible} darkMode={darkMode} setDarkMode={setDarkMode} setSorting={setSorting} sorting={sorting} />
                     </Suspense>
                 )}
                 <div style={{ paddingLeft: '0.5rem', paddingRight: '0.5rem' }} onClick={() => toggleVisible(!visible)}>
@@ -24,7 +24,7 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
                 </div>
             </div>
             <div className="mobile-column">
-                <WordLengthSearch isMobile={true} vlistRef={listRef} {...propsToSend} />
+                <WordLengthSearch isMobile={true} listRef={listRef} {...propsToSend} />
             </div>
             <div className="mobile-column">
                 <input className="wordSearch" type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />

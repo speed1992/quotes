@@ -9,7 +9,7 @@ export const INITIAL_STATE = {
     markedQuotes: {},
     currentData: [],
     sorting: 'alphabetical',
-    options: OPTIONS.reverse(),
+    options: OPTIONS,
     quotesLoaded: false,
     darkMode: false,
     voiceSpeed: 0.5,
