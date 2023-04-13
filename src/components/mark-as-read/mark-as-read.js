@@ -1,8 +1,9 @@
 import { removeReadData } from '../../common/utils/staticDataUtils'
 
-const MarkAsRead = ({ index, setCurrentData, currentData, currentPhilosopher, markedQuotes, setMarkedQuotes }) => {
+const MarkAsRead = ({ index, setCurrentData, currentData, currentPhilosopher, markedQuotes, setMarkedQuotes, setLocalTranslateKey }) => {
     const clickHandler = () => {
         removeReadData({ index, setCurrentData, currentData, currentPhilosopher, markedQuotes, setMarkedQuotes })
+        setLocalTranslateKey(true)
     }
 
     return <button onClick={clickHandler}>Mark as Read</button>
