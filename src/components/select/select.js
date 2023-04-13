@@ -1,39 +1,27 @@
-import { Autocomplete, TextField } from "@mui/material";
-import React from "react";
-import { getCurrentPhilosopherFullname, getPhilosopherObjectIndex } from "../../static/utils/utils";
-import MobileSelect from "../mobile-select/mobile-select";
-import "./select.css";
+import React, { Suspense } from 'react'
+import { getCurrentPhilosopherFullname } from '../../static/utils/utils'
+import './select.css'
+const DesktopSelect = React.lazy(() => import('../desktop-select/desktop-select'))
+const MobileSelect = React.lazy(() => import('../mobile-select/mobile-select'))
 
 const Select = ({ options, currentPhilosopher, onChangeHandler, isMobile }) => {
-    
     const renderSelect = () => {
         if (isMobile) {
             return (
-                <MobileSelect
-                    onChangeHandler={onChangeHandler}
-                    value={getCurrentPhilosopherFullname(currentPhilosopher, options)}
-                    placeholder={"Search philosopher"}
-                    options={options} />
+                <Suspense fallback={''}>
+                    <MobileSelect onChangeHandler={onChangeHandler} value={getCurrentPhilosopherFullname(currentPhilosopher, options)} placeholder={'Search philosopher'} options={options} />
+                </Suspense>
             )
-        }
-        else {
+        } else {
             return (
-                <Autocomplete
-                    disableClearable
-                    onChange={onChangeHandler}
-                    getOptionLabel={(option) => option.fullName}
-                    value={options[getPhilosopherObjectIndex(currentPhilosopher, options )]}
-                    options={options}
-                    size="small"
-                    sx={{ width: 210 }}
-                    renderInput={(params) => <TextField {...params} label="Philosopher" />}
-                    ListboxProps={{ style: { maxHeight: '80vh' }, position: "bottom-start" }}
-                />
+                <Suspense fallback={''}>
+                    <DesktopSelect onChangeHandler={onChangeHandler} options={options} currentPhilosopher={currentPhilosopher} />
+                </Suspense>
             )
         }
     }
 
-    return (renderSelect())
+    return renderSelect()
 }
 
 export default Select
