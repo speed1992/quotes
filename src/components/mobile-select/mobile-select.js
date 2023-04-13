@@ -18,7 +18,7 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
                     break
                 }
             }
-            currentElement.scrollIntoView()
+            currentElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [suggestions.length])
