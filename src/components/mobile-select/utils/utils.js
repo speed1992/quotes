@@ -8,6 +8,8 @@ export function scrollCurrentPhilosopherIntoView(searchText, scollToRef) {
                 break
             }
         }
-        currentElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        setTimeout(() => {
+            currentElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }, 500)
     }
 }

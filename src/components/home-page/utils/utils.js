@@ -20,6 +20,15 @@ export const setDarkModeClassOnHTMLTag = (darkMode) => {
     }
 }
 
+export const setOverFlowHiddenClassOnBodyTag = (value) => {
+    var root = document.getElementsByTagName('body')[0]
+    if (value) {
+        root.setAttribute('class', 'overflow-hidden')
+    } else {
+        root.setAttribute('class', '')
+    }
+}
+
 export const bringIntoOriginalOrder = (originalOptions, newOptions) => originalOptions.map((item) => getPhilosopherData({ philosopher: item.value, options: newOptions })).reverse()
 
 export const bringIntoAlphabeticalOrder = (originalOptions) => [...originalOptions].sort((a, b) => a.fullName.localeCompare(b.fullName))

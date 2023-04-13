@@ -60,9 +60,13 @@
     right: 0.1rem;
 }
 
-.typeAheadDropDown .dropDownList #active {
+.darkTheme .typeAheadDropDown .dropDownList #active {
     background-color: #fff;
     color: #000;
+}
+
+.typeAheadDropDown .dropDownList #active {
+    background-color: lightgrey;
 }
 
 .darkTheme .typeAheadDropDown::after {

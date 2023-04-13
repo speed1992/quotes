@@ -63,3 +63,7 @@ button {
 .darkTheme div[class*='Snackbar_snackbar-wrapper'] {
     border: 1px solid #fff !important;
 }
+
+.overflow-hidden {
+    overflow: hidden;
+}

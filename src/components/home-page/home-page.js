@@ -2,14 +2,14 @@
 import React, { useEffect } from 'react'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import { applyFilters } from '../../common/utils/searchUtils'
-import { isDesktop } from '../../common/utils/utils'
+import { isDesktop, isMobile } from '../../common/utils/utils'
 import { Header } from '../header-layout/header-layout'
 import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
 import { Loader } from '../loader/loader'
 import styles from './home-page.module.css'
 import { useHomePageHooks } from './utils/hooks'
 import { useSortingHooks } from './utils/sortingHook'
-import { setDarkModeClassOnHTMLTag } from './utils/utils'
+import { setDarkModeClassOnHTMLTag, setOverFlowHiddenClassOnBodyTag } from './utils/utils'
 
 const HomePage = () => {
     let propsToSend = useHomePageHooks()
@@ -35,6 +35,15 @@ const HomePage = () => {
             setDarkModeClassOnHTMLTag(false)
         }
     }, [darkMode])
+
+    useEffect(() => {
+        if (isMobile()) {
+            setOverFlowHiddenClassOnBodyTag(true)
+            return () => {
+                setOverFlowHiddenClassOnBodyTag(false)
+            }
+        }
+    }, [])
 
     const renderList = () => <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
 
