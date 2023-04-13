@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
 import './mobile-select.css'
+import { scrollCurrentPhilosopherIntoView } from './utils/utils'
 
 export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, placeholder, value }) {
     const [suggestions, setSuggestions] = useState([])
@@ -9,17 +10,7 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
     const scollToRef = useRef()
 
     useEffect(() => {
-        if (searchText === '' && scollToRef?.current?.childNodes) {
-            let parentElement = scollToRef.current
-            let currentElement
-            for (var i = 0; i < parentElement.childNodes.length; i++) {
-                if (parentElement.childNodes[i].id === 'active') {
-                    currentElement = parentElement.childNodes[i]
-                    break
-                }
-            }
-            currentElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        }
+        scrollCurrentPhilosopherIntoView(searchText, scollToRef)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [suggestions.length])
 
