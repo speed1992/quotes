@@ -17,7 +17,6 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
     const { quote: quotationText, id: quotationId } = currentQuote
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode }
     const [localTranslateKey, setLocalTranslateKey] = useState(false)
-
     const debouncedHandler = debounce(() => setScrollPosition(index), 500)
 
     if (!isUndefined(currentQuote))
@@ -41,7 +40,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                     <Audio index={index} currentData={currentData} scrollPosition={scrollPosition} setScrollPosition={setScrollPosition} listRef={listRef} />
                     {markedMode && (
                         <Suspense fallback={''}>
-                            <MarkAsRead index={quotationId} currentPhilosopher={currentPhilosopher} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} setLocalTranslateKey={setLocalTranslateKey}/>
+                            <MarkAsRead index={quotationId} currentPhilosopher={currentPhilosopher} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} setLocalTranslateKey={setLocalTranslateKey} />
                         </Suspense>
                     )}
                     <button onClick={() => setLocalTranslateKey(true)}>Translate</button>
