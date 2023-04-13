@@ -11,21 +11,12 @@ export function checkIfNull(lastReadPhilosopher) {
     return lastReadPhilosopher === undefined || lastReadPhilosopher === 'undefined' || lastReadPhilosopher === 'null' || isGarbage
 }
 
-export const setDarkModeClassOnHTMLTag = (darkMode) => {
+export const setDarkModeClassOnHTMLTag = (value, className = 'darkTheme') => {
     var root = document.getElementsByTagName('html')[0]
-    if (darkMode) {
-        root.setAttribute('class', 'darkTheme')
-    } else {
-        root.setAttribute('class', '')
-    }
-}
-
-export const setOverFlowHiddenClassOnBodyTag = (value) => {
-    var root = document.getElementsByTagName('body')[0]
     if (value) {
-        root.setAttribute('class', 'overflow-hidden')
+        root.classList.add(className)
     } else {
-        root.setAttribute('class', '')
+        root.classList.remove(className)
     }
 }
 

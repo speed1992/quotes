@@ -9,7 +9,7 @@ import { Loader } from '../loader/loader'
 import styles from './home-page.module.css'
 import { useHomePageHooks } from './utils/hooks'
 import { useSortingHooks } from './utils/sortingHook'
-import { setDarkModeClassOnHTMLTag, setOverFlowHiddenClassOnBodyTag } from './utils/utils'
+import { setDarkModeClassOnHTMLTag } from './utils/utils'
 
 const HomePage = () => {
     let propsToSend = useHomePageHooks()
@@ -38,9 +38,9 @@ const HomePage = () => {
 
     useEffect(() => {
         if (isMobile()) {
-            setOverFlowHiddenClassOnBodyTag(true)
+            setDarkModeClassOnHTMLTag(true, 'overflow-hidden')
             return () => {
-                setOverFlowHiddenClassOnBodyTag(false)
+                setDarkModeClassOnHTMLTag(false)
             }
         }
     }, [])

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
 import './mobile-select.css'
+import { scrollCurrentPhilosopherIntoView } from './utils/utils'
 
 export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, placeholder, value }) {
     const [suggestions, setSuggestions] = useState([])
@@ -9,7 +10,7 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
     const scollToRef = useRef()
 
     useEffect(() => {
-        // scrollCurrentPhilosopherIntoView(searchText, scollToRef)
+        scrollCurrentPhilosopherIntoView(searchText, scollToRef)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [suggestions.length])
 
