@@ -1,11 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
 import './mobile-select.css'
 
-export default function MobileSelect({ options, onChangeHandler, placeholder, value }) {
+export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, placeholder, value }) {
     const [suggestions, setSuggestions] = useState([])
     const [searchText, setSearchText] = useState([])
     useEffect(() => setSearchText(value), [value])
+    const scollToRef = useRef()
+
+    useEffect(() => {
+        if (searchText === '' && scollToRef?.current?.childNodes) {
+            let parentElement = scollToRef.current
+            let currentElement
+            for (var i = 0; i < parentElement.childNodes.length; i++) {
+                if (parentElement.childNodes[i].id === 'active') {
+                    currentElement = parentElement.childNodes[i]
+                    break
+                }
+            }
+            currentElement.scrollIntoView()
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [suggestions.length])
 
     const onFocusHandler = (e) => {
         setSearchText('')
@@ -44,10 +60,10 @@ export default function MobileSelect({ options, onChangeHandler, placeholder, va
             return null
         }
         return (
-            <ul className="dropDownList">
+            <ul ref={scollToRef} className="dropDownList">
                 {suggestions &&
                     suggestions.map(({ fullName, value }) => (
-                        <li key={value} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
+                        <li id={currentPhilosopher === value && 'active'} key={value} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
                             {fullName}
                         </li>
                     ))}

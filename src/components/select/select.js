@@ -9,7 +9,7 @@ const Select = ({ options, currentPhilosopher, onChangeHandler, isMobile }) => {
         if (isMobile) {
             return (
                 <Suspense fallback={''}>
-                    <MobileSelect onChangeHandler={onChangeHandler} value={getCurrentPhilosopherFullname(currentPhilosopher, options)} placeholder={'Search philosopher'} options={options} />
+                    <MobileSelect onChangeHandler={onChangeHandler} currentPhilosopher={currentPhilosopher} value={getCurrentPhilosopherFullname(currentPhilosopher, options)} placeholder={'Search philosopher'} options={options} />
                 </Suspense>
             )
         } else {
