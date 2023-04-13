@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import { applyFilters } from '../../common/utils/searchUtils'
 import { isDesktop } from '../../common/utils/utils'
-import { Layout } from '../layout/layout'
+import { Header } from '../header-layout/header-layout'
 import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
 import { Loader } from '../loader/loader'
 import styles from './home-page.module.css'
@@ -45,7 +45,7 @@ const HomePage = () => {
             ) : (
                 <>
                     {' '}
-                    <Layout {...propsToSend} /> <div className={styles.content}>{renderList()}</div>
+                    <Header {...propsToSend} /> <div className={styles.content}>{renderList()}</div>
                 </>
             )}
         </div>
