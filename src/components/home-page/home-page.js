@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import { applyFilters } from '../../common/utils/searchUtils'
-import { isDesktop, isMobile } from '../../common/utils/utils'
+import { isDesktop } from '../../common/utils/utils'
 import { Header } from '../header-layout/header-layout'
 import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
 import { Loader } from '../loader/loader'
@@ -35,15 +35,6 @@ const HomePage = () => {
             setDarkModeClassOnHTMLTag(false)
         }
     }, [darkMode])
-
-    useEffect(() => {
-        if (isMobile()) {
-            setDarkModeClassOnHTMLTag(true, 'overflow-hidden')
-            return () => {
-                setDarkModeClassOnHTMLTag(false)
-            }
-        }
-    }, [])
 
     const renderList = () => <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
 
