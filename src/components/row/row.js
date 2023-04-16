@@ -10,6 +10,7 @@ import styles from './row.module.css'
 import { evaluateClassNames } from './style-utils'
 import { rowClickHandler } from './utils'
 const MarkAsRead = lazy(() => import('../mark-as-read/mark-as-read'))
+// const PushToSocialMedia = lazy(() => import('../push-to-social-media/push-to-social-media'))
 
 export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode }, style }) => {
     const quoteRef = useRef()
@@ -49,6 +50,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                             Share
                         </Link>
                     </button>
+                    {/* <PushToSocialMedia quotationId={quotationId} currentPhilosopher={currentPhilosopher} /> */}
                 </div>
             </div>
         )
