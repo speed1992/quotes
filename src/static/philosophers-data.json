@@ -1041,5 +1041,19 @@
         "fullNameInOtherLanguages": {
             "hi": "थियोसिडाइड"
         }
+    },
+    {
+        "value": "FOUCAULT",
+        "fullName": "Michel Foucault",
+        "fullNameInOtherLanguages": {
+            "hi": "मिशेल फूको"
+        }
+    },
+    {
+        "value": "SAPOLSKY",
+        "fullName": "Robert Sapolsky",
+        "fullNameInOtherLanguages": {
+            "hi": "रॉबर्ट सापोलस्की"
+        }
     }
 ]
