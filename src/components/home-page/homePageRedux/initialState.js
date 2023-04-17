@@ -14,4 +14,5 @@ export const INITIAL_STATE = {
     darkMode: false,
     voiceSpeed: 0.5,
     scrollPosition: null,
+    scheduledPosts: {},
 }

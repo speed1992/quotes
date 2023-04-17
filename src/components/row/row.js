@@ -10,9 +10,9 @@ import styles from './row.module.css'
 import { evaluateClassNames } from './style-utils'
 import { rowClickHandler } from './utils'
 const MarkAsRead = lazy(() => import('../mark-as-read/mark-as-read'))
-// const PushToSocialMedia = lazy(() => import('../push-to-social-media/push-to-social-media'))
+const PushToSocialMedia = lazy(() => import('../push-to-social-media/push-to-social-media'))
 
-export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode }, style }) => {
+export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode, scheduledPosts, setScheduledQuotes }, style }) => {
     const quoteRef = useRef()
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
@@ -50,7 +50,7 @@ export const Row = ({ data: { searchText, start, end, philosopherFullName, philo
                             Share
                         </Link>
                     </button>
-                    {/* <PushToSocialMedia quotationId={quotationId} currentPhilosopher={currentPhilosopher} /> */}
+                    <PushToSocialMedia index={quotationId} currentPhilosopher={currentPhilosopher} scheduledPosts={scheduledPosts} setScheduledQuotes={setScheduledQuotes} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} setLocalTranslateKey={setLocalTranslateKey} />
                 </div>
             </div>
         )

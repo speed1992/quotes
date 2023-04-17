@@ -1,6 +1,6 @@
 import { getStorageValue } from './localStorageUtils'
 
-export const removeReadData = ({ index, currentPhilosopher, markedMode, markedQuotes, setMarkedQuotes, currentData, setCurrentData }) => {
+export const removeReadData = ({ index, currentPhilosopher, markedMode, markedQuotes = {}, setMarkedQuotes, currentData, setCurrentData }) => {
     let newMarkedQuotes = JSON.parse(JSON.stringify(markedQuotes))
     let readQuotesArray = []
 
