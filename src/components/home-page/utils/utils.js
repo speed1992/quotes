@@ -1,15 +1,4 @@
-import PHILOSOPHERS_DATA from '../../../static/philosophers-data'
 import { getPhilosopherData } from '../../../static/utils/utils'
-
-export function checkIfNull(lastReadPhilosopher) {
-    let isGarbage = true
-
-    PHILOSOPHERS_DATA.forEach(({ value }) => {
-        if (value === lastReadPhilosopher) isGarbage = false
-    })
-
-    return lastReadPhilosopher === undefined || lastReadPhilosopher === 'undefined' || lastReadPhilosopher === 'null' || isGarbage
-}
 
 export const setDarkModeClassOnHTMLTag = (value, className = 'darkTheme') => {
     var root = document.getElementsByTagName('html')[0]

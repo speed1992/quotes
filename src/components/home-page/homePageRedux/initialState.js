@@ -1,6 +1,4 @@
-import OPTIONS from '../../../static/philosophers-data.json'
-
-export const INITIAL_STATE = {
+let INITIAL_STATE = {
     currentPhilosopher: 'NIETZSCHE',
     start: 1,
     end: '',
@@ -9,10 +7,29 @@ export const INITIAL_STATE = {
     markedQuotes: {},
     currentData: [],
     sorting: 'alphabetical',
-    options: OPTIONS,
+    originalOptions: [
+        {
+            value: 'NIETZSCHE',
+            fullName: 'Friedrich Nietzsche',
+            fullNameInOtherLanguages: {
+                hi: 'फ्रेडरिक नीत्शे',
+            },
+        },
+    ],
+    options: [
+        {
+            value: 'NIETZSCHE',
+            fullName: 'Friedrich Nietzsche',
+            fullNameInOtherLanguages: {
+                hi: 'फ्रेडरिक नीत्शे',
+            },
+        },
+    ],
     quotesLoaded: false,
     darkMode: false,
     voiceSpeed: 0.5,
     scrollPosition: null,
     scheduledPosts: {},
 }
+
+export default INITIAL_STATE

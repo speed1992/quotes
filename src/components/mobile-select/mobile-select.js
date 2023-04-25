@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
 import './mobile-select.css'
 
-export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, placeholder, value }) {
+export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, placeholder, value, isFetchingOptions }) {
     const [suggestions, setSuggestions] = useState([])
     const [searchText, setSearchText] = useState([])
     useEffect(() => setSearchText(value), [value])
@@ -14,6 +14,7 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
     }, [suggestions.length])
 
     const onFocusHandler = (e) => {
+        onFocusHandlerCallback()
         setSearchText('')
         setSuggestions(options)
     }
@@ -65,7 +66,13 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
         <OutsideAlerter callback={() => setSuggestions([])}>
             <div className="typeAheadDropDown">
                 <input type="text" onFocus={onFocusHandler} onChange={onTextChange} placeholder={placeholder} value={searchText} onBlur={onBlurHandler} />
-                {renderSuggestions()}
+                {isFetchingOptions ? (
+                    <ul className="dropDownList">
+                        <li>Loading...</li>
+                    </ul>
+                ) : (
+                    renderSuggestions()
+                )}
             </div>
         </OutsideAlerter>
     )

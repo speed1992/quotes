@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import { applyFilters } from '../../common/utils/searchUtils'
 import { isDesktop } from '../../common/utils/utils'
@@ -12,12 +12,15 @@ import { useSortingHooks } from './utils/sortingHook'
 import { setDarkModeClassOnHTMLTag } from './utils/utils'
 
 const HomePage = () => {
+    const [isFetchingOptions, setIsFetchingOptions] = useState(false)
+    console.log('HomePage isFetchingOptions', isFetchingOptions)
+
     let propsToSend = useHomePageHooks()
     const { options, sorting, setSorting } = useSortingHooks()
 
     const { start, end, searchText, currentPhilosopher, currentData, markedMode, quotesLoaded, markedQuotes, darkMode, setDarkMode, originalData, isFetching, setCurrentData, setMarkedQuotes } = propsToSend
 
-    propsToSend = { ...propsToSend, setSorting, sorting }
+    propsToSend = { ...propsToSend, setSorting, sorting, isFetchingOptions, setIsFetchingOptions }
 
     useEffect(() => {
         if (originalData) {
