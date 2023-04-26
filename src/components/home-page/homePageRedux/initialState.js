@@ -1,3 +1,12 @@
+export const STATIC_OPTIONS = [
+    {
+        value: 'NIETZSCHE',
+        fullName: 'Friedrich Nietzsche',
+        fullNameInOtherLanguages: {
+            hi: 'फ्रेडरिक नीत्शे',
+        },
+    },
+]
 let INITIAL_STATE = {
     currentPhilosopher: 'NIETZSCHE',
     start: 1,
@@ -7,24 +16,8 @@ let INITIAL_STATE = {
     markedQuotes: {},
     currentData: [],
     sorting: 'alphabetical',
-    originalOptions: [
-        {
-            value: 'NIETZSCHE',
-            fullName: 'Friedrich Nietzsche',
-            fullNameInOtherLanguages: {
-                hi: 'फ्रेडरिक नीत्शे',
-            },
-        },
-    ],
-    options: [
-        {
-            value: 'NIETZSCHE',
-            fullName: 'Friedrich Nietzsche',
-            fullNameInOtherLanguages: {
-                hi: 'फ्रेडरिक नीत्शे',
-            },
-        },
-    ],
+    originalOptions: STATIC_OPTIONS,
+    options: STATIC_OPTIONS,
     quotesLoaded: false,
     darkMode: false,
     voiceSpeed: 0.5,

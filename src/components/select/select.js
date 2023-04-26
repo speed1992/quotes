@@ -15,7 +15,7 @@ const Select = ({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCa
         } else {
             return (
                 <Suspense fallback={''}>
-                    <DesktopSelect onChangeHandler={onChangeHandler} options={options} currentPhilosopher={currentPhilosopher} isFetchingOptions={isFetchingOptions} />
+                    <DesktopSelect onFocusHandler={onFocusHandlerCallback} onChangeHandler={onChangeHandler} options={options} currentPhilosopher={currentPhilosopher} isFetchingOptions={isFetchingOptions} />
                 </Suspense>
             )
         }

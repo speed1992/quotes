@@ -1,3 +1,5 @@
+import { retryTenTimes } from '../../../common/utils/apiUtils'
+import { addOptionsDataIntoRedux } from '../../../common/utils/lazyLoadUtils'
 import { scrollToMemorizedRow } from '../../../common/utils/utils'
 import { getPhilosopherQuotes, lazyLoadAsset } from '../../../static/utils/utils'
 import { changeQuotesData } from '../../quotes-list/utils/utils'
@@ -24,13 +26,14 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
     // }
 }
 
-export const onFocusHandler = async ({ options, isFetchingOptions, setIsFetchingOptions }) => {
+export const onFocusHandler = async ({ options, setOptions, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions }) => {
     console.log(options.length)
     console.log('isFetchingOptions', isFetchingOptions)
     if (options.length === 1) {
         setIsFetchingOptions(true)
         console.log('Calling dynamic import')
-        const response = await import('../../../static/philosophers-data.json')
+        const response = await retryTenTimes(() => import('../../../static/philosophers-data.json'))
+        addOptionsDataIntoRedux({ newOptions: response?.default, oldOptions: options, oldOriginalOptions: originalOptions, setOptions, setOriginalOptions })
         setIsFetchingOptions(false)
     }
 

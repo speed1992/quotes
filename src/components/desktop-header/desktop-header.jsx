@@ -5,7 +5,7 @@ import Select from '../select/select'
 import { WordLengthSearch } from '../wordLengthSearch/wordLengthSearch'
 import { onFocusHandler, onPhilosopherSelectChange } from './utils/utils'
 
-function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, options, setOptions, setCurrentData, setQuotesLoaded, isFetchingOptions, setIsFetchingOptions }) {
+function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, options, setOptions, setCurrentData, setQuotesLoaded, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
     return (
         <div className="header">
@@ -17,7 +17,7 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
                     <TextField className="wordSearch" id="outlined-search" label="Search" type="search" size="small" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />
                 </div>
                 <div className="column">
-                    <Select isFetchingOptions={isFetchingOptions} options={options} currentPhilosopher={currentPhilosopher} onFocusHandlerCallback={() => onFocusHandler({ options, isFetchingOptions, setIsFetchingOptions })} onChangeHandler={(_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData, options, setOptions, setQuotesLoaded })} />
+                    <Select isFetchingOptions={isFetchingOptions} options={options} currentPhilosopher={currentPhilosopher} onFocusHandlerCallback={() => onFocusHandler({ options, setOptions, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions })} onChangeHandler={(_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData, options, setOptions, setQuotesLoaded })} />
                 </div>
                 <div className="column">
                     <span>
