@@ -1,8 +1,9 @@
 import React, { Suspense } from 'react'
+import { retryTenTimes } from '../../common/utils/apiUtils'
 import { getCurrentPhilosopherFullname } from '../../static/utils/utils'
 import './select.css'
-const DesktopSelect = React.lazy(() => import('../desktop-select/desktop-select'))
-const MobileSelect = React.lazy(() => import('../mobile-select/mobile-select'))
+const DesktopSelect = React.lazy(() => retryTenTimes(() => import('../desktop-select/desktop-select')))
+const MobileSelect = React.lazy(() => retryTenTimes(() => import('../mobile-select/mobile-select')))
 
 const Select = ({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, isMobile, isFetchingOptions }) => {
     const renderSelect = () => {

@@ -1,13 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { retryTenTimes } from '../../common/utils/apiUtils'
 import ROUTES from '../../routes/routes'
 import { ALPHABETICAL, LATEST } from '../home-page/constants/constants'
 import { setVoiceSpeedRedux } from '../home-page/homePageRedux/homePageRedux'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
 import './mobile-menu.css'
 
-const BuildInfo = React.lazy(() => import('../build-info/build-info'))
+const BuildInfo = React.lazy(() => retryTenTimes(() => import('../build-info/build-info')))
 
 function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting }) {
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)

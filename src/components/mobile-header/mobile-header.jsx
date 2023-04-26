@@ -1,11 +1,12 @@
 import React, { Suspense, useState } from 'react'
+import { retryTenTimes } from '../../common/utils/apiUtils'
 import { onFocusHandler, onPhilosopherSelectChange } from '../desktop-header/utils/utils'
 import { QuotesFound } from '../quotes-found/quotes-found'
 import Select from '../select/select'
 import { WordLengthSearch } from '../wordLengthSearch/wordLengthSearch'
-const MobileMenu = React.lazy(() => import('../mobile-menu/mobile-menu'))
-const Breadcrumb = React.lazy(() => import('../breadcrumb/breadcrumb'))
-const UnreadCounter = React.lazy(() => import('../unread-counter/unread-counter'))
+const MobileMenu = React.lazy(() => retryTenTimes(() => import('../mobile-menu/mobile-menu')))
+const Breadcrumb = React.lazy(() => retryTenTimes(() => import('../breadcrumb/breadcrumb')))
+const UnreadCounter = React.lazy(() => retryTenTimes(() => import('../unread-counter/unread-counter')))
 
 function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, markedMode, setMarkedMode, markedQuotes, currentData, setCurrentData, currentPhilosopher, originalData, setCurrentPhilosopher, options, setOptions, setQuotesLoaded, darkMode, setDarkMode, setSorting, sorting, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText, setCurrentData }

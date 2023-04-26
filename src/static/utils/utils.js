@@ -1,3 +1,5 @@
+import { retryTenTimes } from '../../common/utils/apiUtils'
+
 export const addPhilosopherNameToQuote = (quote, philosopherFullName) => `${quote} ― ${philosopherFullName}`
 
 export const convertQuoteArray = (quoteArr, philosopherFullName) => quoteArr.map((quote) => addPhilosopherNameToQuote(quote, philosopherFullName))
@@ -36,7 +38,7 @@ export const addPhilosopherInGlobalData = (philosopherName, { options, setOption
 export const lazyLoadAsset = (philosopherName, { options, setOptions }, setQuotesLoaded, callbacks) => {
     return new Promise((resolve, reject) => {
         const fileName = philosopherName.toLowerCase()
-        import('../assets/quotes/' + fileName + '.json')
+        retryTenTimes(import('../assets/quotes/' + fileName + '.json'))
             .then((data) => {
                 callbacks && callbacks.map((callback) => callback(data?.default))
                 addPhilosopherInGlobalData(philosopherName, { options, setOptions }, data?.default)
