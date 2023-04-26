@@ -35,13 +35,29 @@ export const addPhilosopherInGlobalData = (philosopherName, { options, setOption
     setOptions(newOptions)
 }
 
+// export const lazyLoadAsset = (philosopherName, { options, setOptions }, setQuotesLoaded, callbacks) => {
+//     return new Promise((resolve, reject) => {
+//         const fileName = philosopherName.toLowerCase()
+//         retryTenTimes(() => import('../assets/quotes/' + fileName + '.json'))
+//             .then((data) => {
+//                 callbacks && callbacks.map((callback) => callback(data?.default))
+//                 addPhilosopherInGlobalData(philosopherName, { options, setOptions }, data?.default)
+//                 setQuotesLoaded(true)
+//                 resolve()
+//             })
+//             .catch((e) => reject(e))
+//     })
+// }
+
 export const lazyLoadAsset = (philosopherName, { options, setOptions }, setQuotesLoaded, callbacks) => {
     return new Promise((resolve, reject) => {
         const fileName = philosopherName.toLowerCase()
-        retryTenTimes(import('../assets/quotes/' + fileName + '.json'))
+        retryTenTimes(() => fetch('https://cdn.jsdelivr.net/gh/speed1992/quotes/src/static/assets/quotes/' + fileName + '.json'))
+            .then((response) => response.json())
             .then((data) => {
-                callbacks && callbacks.map((callback) => callback(data?.default))
-                addPhilosopherInGlobalData(philosopherName, { options, setOptions }, data?.default)
+                debugger
+                callbacks && callbacks.map((callback) => callback(data))
+                addPhilosopherInGlobalData(philosopherName, { options, setOptions }, data)
                 setQuotesLoaded(true)
                 resolve()
             })
