@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import OPTIONS from '../../../static/philosophers-data.json'
 import { ALPHABETICAL, LATEST } from '../constants/constants'
 import { setOptionsRedux, setSortingRedux } from '../homePageRedux/homePageRedux'
 import { bringIntoAlphabeticalOrder, bringIntoOriginalOrder } from './utils'
 
 export function useSortingHooks() {
     const dispatch = useDispatch()
+    const originalOptions = useSelector((state) => state.philosophersData.originalOptions)
     const options = useSelector((state) => state.philosophersData.options)
     const sorting = useSelector((state) => state.philosophersData.sorting)
     const setSorting = (value) => dispatch(setSortingRedux(value))
@@ -17,13 +17,13 @@ export function useSortingHooks() {
         let resultOptions = []
 
         if (sorting === LATEST) {
-            resultOptions = bringIntoOriginalOrder(OPTIONS, options)
+            resultOptions = bringIntoOriginalOrder(originalOptions, options)
             setOptions(resultOptions)
         } else if (sorting === ALPHABETICAL) {
-            resultOptions = bringIntoAlphabeticalOrder(options)
+            resultOptions = bringIntoAlphabeticalOrder(originalOptions)
             setOptions(resultOptions)
         }
     }, [sorting])
 
-    return { sorting, setSorting, options }
+    return { sorting, setSorting, options, originalOptions }
 }

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { INITIAL_STATE } from './initialState'
+import INITIAL_STATE from './initialState'
 
 export const philosophersDataSlice = createSlice({
     name: 'philosophersData',
@@ -29,6 +29,9 @@ export const philosophersDataSlice = createSlice({
         setOptionsRedux: (state, { payload }) => {
             state.options = payload
         },
+        setOriginalOptionsRedux: (state, { payload }) => {
+            state.originalOptions = payload
+        },
         setMarkedQuotesRedux: (state, { payload }) => {
             state.markedQuotes = payload
         },
@@ -52,4 +55,4 @@ export const philosophersDataSlice = createSlice({
 
 export default philosophersDataSlice.reducer
 
-export const { setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setOptionsRedux, setDarkModeRedux, setQuotesLoadedRedux, setMarkedQuotesRedux, setVoiceSpeedRedux, setScrollPositionRedux, setSortingRedux, setScheduledPostsRedux } = philosophersDataSlice.actions
+export const { setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setOptionsRedux, setDarkModeRedux, setQuotesLoadedRedux, setMarkedQuotesRedux, setVoiceSpeedRedux, setScrollPositionRedux, setSortingRedux, setScheduledPostsRedux, setOriginalOptionsRedux } = philosophersDataSlice.actions

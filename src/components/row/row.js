@@ -1,4 +1,4 @@
-import { lazy, Suspense, useRef, useState } from 'react'
+import React, { Suspense, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSnackbar } from 'react-simple-snackbar'
 import { isUndefined } from '../../common/utils/commonUtils'
@@ -9,8 +9,8 @@ import { Translate } from '../translate/translate'
 import styles from './row.module.css'
 import { evaluateClassNames } from './style-utils'
 import { rowClickHandler } from './utils'
-const MarkAsRead = lazy(() => import('../mark-as-read/mark-as-read'))
-const PushToSocialMedia = lazy(() => import('../push-to-social-media/push-to-social-media'))
+const MarkAsRead = React.lazy(() => import('../mark-as-read/mark-as-read'))
+const PushToSocialMedia = React.lazy(() => import('../push-to-social-media/push-to-social-media'))
 
 export const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode, scheduledPosts, setScheduledQuotes }, style }) => {
     const quoteRef = useRef()

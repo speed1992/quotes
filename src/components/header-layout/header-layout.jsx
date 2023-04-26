@@ -1,9 +1,10 @@
 import React, { Suspense } from 'react'
+import { retryTenTimes } from '../../common/utils/apiUtils'
 import { isMobile } from '../../common/utils/utils'
 import './header-layout.css'
 
-const MobileHeader = React.lazy(() => import('../mobile-header/mobile-header'))
-const DesktopHeader = React.lazy(() => import('../desktop-header/desktop-header'))
+const MobileHeader = React.lazy(() => retryTenTimes(() => import('../mobile-header/mobile-header')))
+const DesktopHeader = React.lazy(() => retryTenTimes(() => import('../desktop-header/desktop-header')))
 
 export const Header = (props) => {
     return (

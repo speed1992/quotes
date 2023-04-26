@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getPhilosopherQuotes, lazyLoadAllAssets, lazyLoadAsset } from '../../static/utils/utils'
+import { getPhilosopherQuotes, lazyLoadAsset } from '../../static/utils/utils'
 import { Loader } from '../loader/loader'
 import QuotesList from '../quotes-list/quotes-list'
 
@@ -10,12 +10,12 @@ export function LazyLoadQuoteList(props) {
     async function lazyInit() {
         try {
             if (currentPhilosopher !== undefined) {
-                if (currentPhilosopher.trim().toLowerCase() === 'all') await lazyLoadAllAssets()
-                else {
-                    if (!getPhilosopherQuotes({ philosopher: currentPhilosopher, options })) {
-                        await lazyLoadAsset(currentPhilosopher, { options, setOptions }, setQuotesLoaded, [setCurrentData])
-                    }
+                // if (currentPhilosopher.trim().toLowerCase() === 'all') await lazyLoadAllAssets()
+                // else {
+                if (!getPhilosopherQuotes({ philosopher: currentPhilosopher, options })) {
+                    await lazyLoadAsset(currentPhilosopher, { options, setOptions }, setQuotesLoaded, [setCurrentData])
                 }
+                // }
 
                 setIsFetching(false)
             } else {

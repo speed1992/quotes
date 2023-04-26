@@ -1,6 +1,7 @@
 import React from 'react'
+import { retryTenTimes } from '../../common/utils/apiUtils'
 import './wordLengthSearch.css'
-const DesktopWordLengthSearch = React.lazy(() => import('../desktop-word-length-search/desktop-word-length-search'))
+const DesktopWordLengthSearch = React.lazy(() => retryTenTimes(() => import('../desktop-word-length-search/desktop-word-length-search')))
 
 export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText, isMobile }) {
     const renderComponent = () => {

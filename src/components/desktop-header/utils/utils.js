@@ -1,5 +1,7 @@
+import { retryTenTimes } from '../../../common/utils/apiUtils'
+import { addOptionsDataIntoRedux } from '../../../common/utils/lazyLoadUtils'
 import { scrollToMemorizedRow } from '../../../common/utils/utils'
-import { getPhilosopherQuotes, lazyLoadAllAssets, lazyLoadAsset } from '../../../static/utils/utils'
+import { getPhilosopherQuotes, lazyLoadAsset } from '../../../static/utils/utils'
 import { changeQuotesData } from '../../quotes-list/utils/utils'
 
 export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, setQuotesLoaded, markedMode, markedQuotes, setMarkedQuotes }) {
@@ -14,12 +16,21 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
     setSearchText('')
     setIsFetching(true)
 
-    if (philosopher.trim().toLowerCase() === 'all') lazyLoadAllAssets().then(callback)
-    else {
-        if (!getPhilosopherQuotes({ philosopher, options })) {
-            lazyLoadAsset(philosopher, { options, setOptions }, setQuotesLoaded, []).then(callback)
-        } else {
-            callback()
-        }
+    // if (philosopher.trim().toLowerCase() === 'all') lazyLoadAllAssets().then(callback)
+    // else {
+    if (!getPhilosopherQuotes({ philosopher, options })) {
+        lazyLoadAsset(philosopher, { options, setOptions }, setQuotesLoaded, []).then(callback)
+    } else {
+        callback()
+    }
+    // }
+}
+
+export const onFocusHandler = async ({ options, setOptions, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions }) => {
+    if (options.length === 1) {
+        setIsFetchingOptions(true)
+        const response = await retryTenTimes(() => import('../../../static/philosophers-data.json'))
+        addOptionsDataIntoRedux({ newOptions: response?.default, oldOptions: options, oldOriginalOptions: originalOptions, setOptions, setOriginalOptions })
+        setIsFetchingOptions(false)
     }
 }

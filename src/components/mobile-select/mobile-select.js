@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
 import './mobile-select.css'
 
-export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, placeholder, value }) {
+export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, placeholder, value, isFetchingOptions }) {
     const [suggestions, setSuggestions] = useState([])
     const [searchText, setSearchText] = useState([])
+    const [isFocused, setIsFocused] = useState(false)
     useEffect(() => setSearchText(value), [value])
     const scollToRef = useRef()
 
@@ -13,9 +14,18 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [suggestions.length])
 
+    useEffect(() => {
+        if (isFocused && options.length > 1) {
+            setSearchText('')
+            setSuggestions(options)
+            setIsFocused(false)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [options.length, isFocused])
+
     const onFocusHandler = (e) => {
-        setSearchText('')
-        setSuggestions(options)
+        onFocusHandlerCallback()
+        setIsFocused(true)
     }
 
     const onTextChange = (e) => {
@@ -65,7 +75,13 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
         <OutsideAlerter callback={() => setSuggestions([])}>
             <div className="typeAheadDropDown">
                 <input type="text" onFocus={onFocusHandler} onChange={onTextChange} placeholder={placeholder} value={searchText} onBlur={onBlurHandler} />
-                {renderSuggestions()}
+                {isFetchingOptions ? (
+                    <ul className="dropDownList">
+                        <li>Loading...</li>
+                    </ul>
+                ) : (
+                    renderSuggestions()
+                )}
             </div>
         </OutsideAlerter>
     )
