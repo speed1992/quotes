@@ -55,7 +55,6 @@ export const lazyLoadAsset = (philosopherName, { options, setOptions }, setQuote
         retryTenTimes(() => fetch('https://cdn.jsdelivr.net/gh/speed1992/quotes/src/static/assets/quotes/' + fileName + '.json'))
             .then((response) => response.json())
             .then((data) => {
-                debugger
                 callbacks && callbacks.map((callback) => callback(data))
                 addPhilosopherInGlobalData(philosopherName, { options, setOptions }, data)
                 setQuotesLoaded(true)
@@ -90,7 +89,9 @@ export const getPhilosopherObjectIndex = (philosopher, options) => options.findI
 
 export const getPhilosopherData = ({ philosopher, options }) => options.filter(({ value }) => value === philosopher)[0]
 
-export const getPhilosopherQuotes = ({ philosopher, options }) => options.filter(({ value }) => value === philosopher)[0]?.quotes
+export const getPhilosopherQuotes = ({ philosopher, options }) => {
+    return options.filter(({ value }) => value === philosopher)[0]?.quotes
+}
 
 export const getCurrentPhilosopherFullname = (currentPhilosopher, options) => {
     const currentPhilosopherData = options[getPhilosopherObjectIndex(currentPhilosopher, options)]

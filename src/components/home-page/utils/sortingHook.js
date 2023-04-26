@@ -20,7 +20,7 @@ export function useSortingHooks() {
             resultOptions = bringIntoOriginalOrder(originalOptions, options)
             setOptions(resultOptions)
         } else if (sorting === ALPHABETICAL) {
-            resultOptions = bringIntoAlphabeticalOrder(originalOptions)
+            resultOptions = bringIntoAlphabeticalOrder(options)
             setOptions(resultOptions)
         }
     }, [sorting])

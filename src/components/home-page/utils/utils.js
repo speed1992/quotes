@@ -11,4 +11,4 @@ export const setDarkModeClassOnHTMLTag = (value, className = 'darkTheme') => {
 
 export const bringIntoOriginalOrder = (originalOptions, newOptions) => originalOptions.map((item) => getPhilosopherData({ philosopher: item.value, options: newOptions })).reverse()
 
-export const bringIntoAlphabeticalOrder = (originalOptions) => [...originalOptions].sort((a, b) => a.fullName.localeCompare(b.fullName))
+export const bringIntoAlphabeticalOrder = (options) => [...options].sort((a, b) => a.fullName.localeCompare(b.fullName))
