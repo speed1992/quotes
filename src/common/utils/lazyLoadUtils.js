@@ -4,5 +4,5 @@ export const addOptionsDataIntoRedux = ({ newOptions, oldOptions, oldOriginalOpt
     let resultantOptions
     resultantOptions = [...oldOptions, ...newOptions]
     setOptions(resultantOptions)
-    setOriginalOptions([...STATIC_OPTIONS], resultantOptions)
+    setOriginalOptions([...STATIC_OPTIONS, ...newOptions])
 }
