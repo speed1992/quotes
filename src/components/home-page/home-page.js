@@ -13,7 +13,6 @@ import { setDarkModeClassOnHTMLTag } from './utils/utils'
 
 const HomePage = () => {
     const [isFetchingOptions, setIsFetchingOptions] = useState(false)
-    console.log('HomePage isFetchingOptions', isFetchingOptions)
 
     let propsToSend = useHomePageHooks()
     const { options, sorting, setSorting } = useSortingHooks()

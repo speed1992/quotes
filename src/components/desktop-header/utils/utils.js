@@ -27,15 +27,10 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
 }
 
 export const onFocusHandler = async ({ options, setOptions, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions }) => {
-    console.log(options.length)
-    console.log('isFetchingOptions', isFetchingOptions)
     if (options.length === 1) {
         setIsFetchingOptions(true)
-        console.log('Calling dynamic import')
         const response = await retryTenTimes(() => import('../../../static/philosophers-data.json'))
         addOptionsDataIntoRedux({ newOptions: response?.default, oldOptions: options, oldOriginalOptions: originalOptions, setOptions, setOriginalOptions })
         setIsFetchingOptions(false)
     }
-
-    console.log('Inside onFocusHandler')
 }
