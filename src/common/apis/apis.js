@@ -1,8 +1,6 @@
 export const pushToSocialMedia = async (imageURL) => {
-    /** Cut & Paste Node.js Code **/
-    const SocialPost = require('social-post-api') // Install "npm i social-post-api"
+    const SocialPost = require('social-post-api')
 
-    // Live API Key
     const social = new SocialPost('95NM2TG-D604GZ3-Q1B04TR-CSGWGV3')
 
     const post = await social

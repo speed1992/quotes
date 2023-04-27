@@ -16,21 +16,16 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
     setSearchText('')
     setIsFetching(true)
 
-    // if (philosopher.trim().toLowerCase() === 'all') lazyLoadAllAssets().then(callback)
-    // else {
     if (!getPhilosopherQuotes({ philosopher, options })) {
         lazyLoadAsset(philosopher, { options, setOptions }, setQuotesLoaded, []).then(callback)
     } else {
         callback()
     }
-    // }
 }
 
 export const onFocusHandler = async ({ options, setOptions, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions }) => {
     if (options.length === 1) {
         setIsFetchingOptions(true)
-        // const response = await retryTenTimes(() => import('../../../static/philosophers-data.json'))
-        // addOptionsDataIntoRedux({ newOptions: response?.default, oldOptions: options, oldOriginalOptions: originalOptions, setOptions, setOriginalOptions })
         let response = await retryTenTimes(() => fetch('https://cdn.jsdelivr.net/gh/speed1992/quotes/src/static/philosophers-data.json'))
         response = await response.json()
         addOptionsDataIntoRedux({ newOptions: response, oldOptions: options, oldOriginalOptions: originalOptions, setOptions, setOriginalOptions })

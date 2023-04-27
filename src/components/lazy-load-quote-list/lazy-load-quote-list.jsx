@@ -10,12 +10,9 @@ export function LazyLoadQuoteList(props) {
     async function lazyInit() {
         try {
             if (currentPhilosopher !== undefined) {
-                // if (currentPhilosopher.trim().toLowerCase() === 'all') await lazyLoadAllAssets()
-                // else {
                 if (!getPhilosopherQuotes({ philosopher: currentPhilosopher, options })) {
                     await lazyLoadAsset(currentPhilosopher, { options, setOptions }, setQuotesLoaded, [setCurrentData])
                 }
-                // }
 
                 setIsFetching(false)
             } else {
@@ -27,7 +24,6 @@ export function LazyLoadQuoteList(props) {
     }
     useEffect(() => {
         lazyInit()
-        // eslint-disable-next-line
     }, [currentPhilosopher])
 
     return isFetching ? <Loader /> : <QuotesList {...props} />

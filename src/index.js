@@ -5,7 +5,6 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { App } from './App'
 import './index.css'
 import { persistor, store } from './redux/store'
-import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
@@ -16,5 +15,3 @@ root.render(
         </PersistGate>
     </Provider>
 )
-
-serviceWorkerRegistration.unregister()

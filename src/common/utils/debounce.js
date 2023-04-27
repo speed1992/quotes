@@ -34,11 +34,10 @@ export function debounce(func, wait, options) {
     }
 
     function leadingEdge(time) {
-        // Reset any `maxWait` timer.
         lastInvokeTime = time
-        // Start the timer for the trailing edge.
+
         timerId = setTimeout(timerExpired, wait)
-        // Invoke the leading edge.
+
         return leading ? invokeFunc(time) : result
     }
 
@@ -52,9 +51,7 @@ export function debounce(func, wait, options) {
     function shouldInvoke(time) {
         let timeSinceLastCall = time - lastCallTime,
             timeSinceLastInvoke = time - lastInvokeTime
-        // Either this is the first call, activity has stopped and we're at the trailing
-        // edge, the system time has gone backwards and we're treating it as the
-        // trailing edge, or we've hit the `maxWait` limit.
+
         return lastCallTime === undefined || timeSinceLastCall >= wait || timeSinceLastCall < 0 || (maxing && timeSinceLastInvoke >= maxWait)
     }
 
@@ -63,15 +60,13 @@ export function debounce(func, wait, options) {
         if (shouldInvoke(time)) {
             return trailingEdge(time)
         }
-        // Restart the timer.
+
         timerId = setTimeout(timerExpired, remainingWait(time))
     }
 
     function trailingEdge(time) {
         timerId = undefined
 
-        // Only invoke if we have `lastArgs` which means `func` has been debounced at
-        // least once.
         if (trailing && lastArgs) {
             return invokeFunc(time)
         }
@@ -103,7 +98,6 @@ export function debounce(func, wait, options) {
                 return leadingEdge(lastCallTime)
             }
             if (maxing) {
-                // Handle invocations in a tight loop.
                 timerId = setTimeout(timerExpired, wait)
                 return invokeFunc(lastCallTime)
             }

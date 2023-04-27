@@ -14,7 +14,6 @@ function QuotesList({ listRef, width, height, searchText, start, end, markedMode
 
     useEffect(() => {
         scrollToMemorizedRow(listRef, scrollPosition, currentData)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [listRef])
 
     function rowRenderer({ index, ...others }) {

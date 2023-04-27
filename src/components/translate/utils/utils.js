@@ -1,11 +1,3 @@
-// libretranslate.com
-// libretranslate.de	
-// translate.mentality.rip	
-// translate.astian.org	
-// translate.argosopentech.com	
-// translate.api.skitzen.com	
-// trans.zillyhuhn.com
-
 export function hitTranslationAPI({ from, to, inputText, signal }) {
     return fetch("https://translate.argosopentech.com/translate", {
         method: "POST",

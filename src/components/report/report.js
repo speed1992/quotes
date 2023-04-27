@@ -1,5 +1,3 @@
-// https://github.com/Ibaslogic/react-sortable-table
-
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { setDarkModeClassOnHTMLTag } from '../home-page/utils/utils'
@@ -14,7 +12,6 @@ const Report = () => {
 
     useEffect(() => {
         createData({ markedQuotes, options, setData })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {

@@ -10,17 +10,11 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
     const scollToRef = useRef()
 
     useEffect(() => {
-        // scrollCurrentPhilosopherIntoView(searchText, scollToRef)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [suggestions.length])
-
-    useEffect(() => {
         if (isFocused && options.length > 1) {
             setSearchText('')
             setSuggestions(options)
             setIsFocused(false)
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [options.length, isFocused])
 
     const onFocusHandler = (e) => {

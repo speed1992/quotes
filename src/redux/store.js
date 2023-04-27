@@ -8,7 +8,6 @@ import philosophersDataReducer from '../components/home-page/homePageRedux/homeP
 import { getPhilosopherData, getPhilosopherObjectIndex } from '../static/utils/utils'
 import { PHILOSOPHER_TO_PURGE } from './purgeCache'
 
-// old storage method
 const persistConfig = getPersistConfig({
     key: 'root',
     storage,
@@ -16,7 +15,6 @@ const persistConfig = getPersistConfig({
     rootReducer: philosophersDataReducer,
 })
 
-// new storage method
 const newPersistConfig = getPersistConfig({
     key: 'root',
     storage: DBstorage('myDB'),
@@ -30,21 +28,12 @@ const newPersistConfig = getPersistConfig({
             if (getPhilosopherData({ philosopher: PHILOSOPHER_TO_PURGE, options: state.options })) {
                 const index = getPhilosopherObjectIndex(PHILOSOPHER_TO_PURGE, state.options)
 
-                // console.log(getPhilosopherObjectIndex(PHILOSOPHER_TO_PURGE, state.options))
-                // console.log('found at ', index)
-
                 state.options.splice(index, 1)
                 delete state.markedQuotes[PHILOSOPHER_TO_PURGE]
                 if (state.currentPhilosopher === PHILOSOPHER_TO_PURGE) {
                     state.currentPhilosopher = 'NIETZSCHE'
                 }
-
-                // console.log('splicing done')
-            } else {
-                // console.log('not found')
             }
-
-            // console.log(state)
             return state
         }
     },
