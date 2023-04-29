@@ -46,15 +46,6 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                     Dark Mode
                     <input type="checkbox" checked={darkMode} onChange={({ target: { checked } }) => setDarkMode(checked)} />
                 </li>
-                {/* <li>
-                    <button
-                        onClick={() => {
-                            download(JSON.stringify(window.localStorage), `local-storage-${uuidv4()}.txt`)
-                        }}
-                    >
-                        Backup Read Data
-                    </button>
-                </li> */}
                 <li>
                     Voice Speed[1-20]
                     <input onChange={(event) => dispatch(setVoiceSpeedRedux(event.target.value / 10))} className="voiceSpeed" type="number" value={voiceSpeed ? voiceSpeed * 10 : ''} />
