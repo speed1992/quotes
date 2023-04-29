@@ -65,7 +65,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                     </Link>
                 </li>
                 <li>
-                    Username bata bc
+                    Username
                     <input className="userName" type="text" onChange={(e) => setUserName(e.target.value)} value={userName} />
                     <button onClick={() => sendUserDetails({ userName, markedQuotes })}>Sync with Database</button>
                 </li>

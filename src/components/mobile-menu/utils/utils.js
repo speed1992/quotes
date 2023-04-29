@@ -1,7 +1,6 @@
 import { retryTenTimes } from '../../../common/utils/apiUtils'
 
 export const sendUserDetails = async ({ userName, markedQuotes }) => {
-    console.log('userName', userName)
     if (userName === 'philosophizetruth') {
         let response = await retryTenTimes(
             async () =>
