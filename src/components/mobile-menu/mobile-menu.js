@@ -7,11 +7,13 @@ import { ALPHABETICAL, LATEST } from '../home-page/constants/constants'
 import { setVoiceSpeedRedux } from '../home-page/homePageRedux/homePageRedux'
 import OutsideAlerter from '../outside-alerter/outside-alerter'
 import './mobile-menu.css'
+import { sendUserDetails } from './utils/utils'
 
 const BuildInfo = React.lazy(() => retryTenTimes(() => import('../build-info/build-info')))
 
-function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting }) {
+function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting, userName, setUserName }) {
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)
+    const markedQuotes = useSelector(({ philosophersData: { markedQuotes } }) => markedQuotes)
 
     const dispatch = useDispatch()
 
@@ -61,6 +63,11 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                     <Link to={ROUTES.report.route} style={{ textDecoration: 'none', color: '#000' }}>
                         <button>Open Report</button>
                     </Link>
+                </li>
+                <li>
+                    Username bata bc
+                    <input className="userName" type="text" onChange={(e) => setUserName(e.target.value)} value={userName} />
+                    <button onClick={() => sendUserDetails({ userName, markedQuotes })}>Sync with Database</button>
                 </li>
                 <li>
                     <BuildInfo />

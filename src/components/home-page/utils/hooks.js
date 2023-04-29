@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPhilosopherQuotes } from '../../../static/utils/utils'
-import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setOriginalOptionsRedux, setQuotesLoadedRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux } from '../homePageRedux/homePageRedux'
+import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setOriginalOptionsRedux, setQuotesLoadedRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
 
 export function useHomePageHooks() {
     const listRef = useRef()
@@ -20,6 +20,7 @@ export function useHomePageHooks() {
     const scrollPosition = useSelector((state) => state?.philosophersData?.scrollPosition)
     const originalData = getPhilosopherQuotes({ philosopher: currentPhilosopher, options })
     const originalOptions = useSelector((state) => state?.philosophersData?.originalOptions)
+    const userName = useSelector((state) => state?.philosophersData?.userName)
     const [isFetching, setIsFetching] = useState(false)
 
     const setStart = (value) => dispatch(setStartRedux(value))
@@ -35,6 +36,7 @@ export function useHomePageHooks() {
     const setDarkMode = (value) => dispatch(setDarkModeRedux(value))
     const setScrollPosition = (value) => dispatch(setScrollPositionRedux(value))
     const setOriginalOptions = (value) => dispatch(setOriginalOptionsRedux(value))
+    const setUserName = (value) => dispatch(setUserNameRedux(value))
 
-    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setQuotesLoaded, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions }
+    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setQuotesLoaded, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName }
 }
