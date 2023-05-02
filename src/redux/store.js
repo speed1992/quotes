@@ -39,7 +39,7 @@ const newPersistConfig = getPersistConfig({
     },
 })
 
-const philosophersDataSlice = persistReducer(newPersistConfig, philosophersDataReducer)
+export const philosophersDataSlice = persistReducer(newPersistConfig, philosophersDataReducer)
 
 export const store = configureStore({
     reducer: {
