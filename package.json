@@ -32,7 +32,10 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-unused-imports": "^2.0.0",
     "fs": "^0.0.1-security",
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.4",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0"
   },
   "scripts": {
     "build-date": "node ./src/scripts/build.js",
@@ -41,6 +44,7 @@
     "build": "npm run build-date && react-scripts build",
     "start": "npm run build-date && react-scripts start",
     "test": "react-scripts test",
+    "test-coverage": "npm run test -- --coverage --watch",
     "eject": "react-scripts eject",
     "show-prod-updates": "npx ncu --dep prod",
     "perform-prod-update": "npx ncu -u --dep prod",
