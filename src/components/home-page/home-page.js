@@ -22,7 +22,6 @@ const HomePage = () => {
     propsToSend = { ...propsToSend, setSorting, sorting, isFetchingOptions, setIsFetchingOptions }
 
     useEffect(() => {
-        console.log('originalData', originalData)
         if (originalData) {
             applyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
         }
