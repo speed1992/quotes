@@ -1,4 +1,4 @@
-import { STATIC_OPTIONS } from '../../components/home-page/homePageRedux/initialState'
+import { STATIC_OPTIONS } from '../../components/organisms/home/home-page/homePageRedux/initialState'
 
 export const addOptionsDataIntoRedux = ({ newOptions, oldOptions, oldOriginalOptions, setOptions, setOriginalOptions }) => {
     let resultantOptions

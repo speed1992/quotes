@@ -11,7 +11,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import storage from 'redux-persist/lib/storage'
 import philosophersDataReducer from '../../../components/home-page/homePageRedux/homePageRedux'
 import { PHILOSOPHER_TO_PURGE } from '../../../redux/purgeCache'
-import { getPhilosopherData, getPhilosopherObjectIndex } from '../../../static/utils/utils'
+import { getPhilosopherData, getPhilosopherObjectIndex } from '../../static/utils/utils'
 import { dbInit } from './indexedDbUtils'
 
 export async function renderWithProviders(ui, { indexedDBStorage } = {}) {

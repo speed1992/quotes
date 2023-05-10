@@ -1,4 +1,4 @@
-import { changeQuotesData, searchByWordLength } from '../../components/quotes-list/utils/utils.js'
+import { changeQuotesData, searchByWordLength } from '../../components/organisms/home/quotes-list/utils/utils.js'
 import { search } from './utils.js'
 
 export function applyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode = false, markedQuotes, setMarkedQuotes }) {

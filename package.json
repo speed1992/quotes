@@ -47,7 +47,7 @@
     "build": "npm run build-date && react-scripts build",
     "start": "npm run build-date && react-scripts start",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!@codemirror)/'",
-    "test-coverage": "npm run test -- --coverage --watch",
+    "test-coverage": "npm run test -- --coverage --watchAll",
     "eject": "react-scripts eject",
     "show-prod-updates": "npx ncu --dep prod",
     "perform-prod-update": "npx ncu -u --dep prod",

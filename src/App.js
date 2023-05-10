@@ -2,8 +2,8 @@
 import React, { Suspense } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import SnackbarProvider from 'react-simple-snackbar'
-import ErrorBoundary from './components/error-boundary/error-boundary'
-import ROUTES from './routes/routes'
+import ErrorBoundary from './common/components/error-boundary/error-boundary'
+import ROUTES from './common/routes/routes'
 
 export const App = () => (
     <ErrorBoundary>
