@@ -4,7 +4,7 @@ import buildInfo from '../../../../scripts/buildDate.json'
 const BuildInfo = () => {
     return (
         <div style={{ fontSize: '1rem' }}>
-            <div>Last Updated:</div>
+            <div>App Version:</div>
             <div>{buildInfo?.buildDateTime}</div>
         </div>
     )
