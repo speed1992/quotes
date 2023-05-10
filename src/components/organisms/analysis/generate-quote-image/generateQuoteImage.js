@@ -1,9 +1,10 @@
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import QuoteWithImage from '../quote-with-image/quote-with-image'
-import QuoteWithoutImage from '../quote-without-image/quote-without-image'
+import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { useCreateQuoteImage } from './utils/hooks'
+const QuoteWithImage = React.lazy(() => retryTenTimes(() => import('../quote-with-image/quote-with-image')))
+const QuoteWithoutImage = React.lazy(() => retryTenTimes(() => import('../quote-without-image/quote-without-image')))
 
 const GenerateQuoteImage = () => {
     let {

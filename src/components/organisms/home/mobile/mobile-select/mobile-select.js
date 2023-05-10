@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import OutsideAlerter from '../../../../../common/components/outside-alerter/outside-alerter'
+import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import './mobile-select.css'
+const OutsideAlerter = React.lazy(() => retryTenTimes(() => import('../../../../../common/components/outside-alerter/outside-alerter')))
 
 export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, placeholder, value, isFetchingOptions }) {
     const [suggestions, setSuggestions] = useState([])

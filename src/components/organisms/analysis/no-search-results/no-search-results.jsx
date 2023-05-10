@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const NoSearchResults = () => (
+const NoSearchResults = () => (
     <>
         <h4>No search results found!</h4>
 
@@ -11,3 +11,4 @@ export const NoSearchResults = () => (
         <div> 2. Try searching a smaller and a more generic word.</div>
     </>
 )
+export default NoSearchResults

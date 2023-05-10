@@ -1,5 +1,6 @@
 import React from 'react'
-import { NoSearchResults } from '../../../analysis/no-search-results/no-search-results'
+import { retryTenTimes } from '../../../../../common/utils/apiUtils'
+const NoSearchResults = React.lazy(() => retryTenTimes(() => import('../../../analysis/no-search-results/no-search-results')))
 
 export function NoRowsRenderer() {
     return <NoSearchResults />
