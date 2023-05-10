@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
-import { NoSearchResults } from '../no-search-results'
+import NoSearchResults from '../../../../../components/organisms/analysis/no-search-results/no-search-results'
 
 test('NoSearchResults rendering', async () => {
     render(<NoSearchResults />)
