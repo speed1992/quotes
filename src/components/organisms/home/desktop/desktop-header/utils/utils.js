@@ -26,7 +26,7 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
 export const onFocusHandler = async ({ options, setOptions, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions }) => {
     if (options.length === 1) {
         setIsFetchingOptions(true)
-        let response = await retryTenTimes(() => fetch('https://cdn.jsdelivr.net/gh/speed1992/quotes/src/static/philosophers-data.json'))
+        let response = await retryTenTimes(() => fetch('https://cdn.jsdelivr.net/gh/speed1992/quotes/src/common/static/philosophers-data.json'))
         response = await response.json()
         addOptionsDataIntoRedux({ newOptions: response, oldOptions: options, oldOriginalOptions: originalOptions, setOptions, setOriginalOptions })
         setIsFetchingOptions(false)

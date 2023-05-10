@@ -35,12 +35,10 @@ export const addPhilosopherInGlobalData = (philosopherName, { options, setOption
     setOptions(newOptions)
 }
 
-
-
 export const lazyLoadAsset = (philosopherName, { options, setOptions }, setQuotesLoaded, callbacks) => {
     return new Promise((resolve, reject) => {
         const fileName = philosopherName.toLowerCase()
-        retryTenTimes(() => fetch('https://cdn.jsdelivr.net/gh/speed1992/quotes/src/static/assets/quotes/' + fileName + '.json'))
+        retryTenTimes(() => fetch('https://cdn.jsdelivr.net/gh/speed1992/quotes/src/common/static/assets/quotes/' + fileName + '.json'))
             .then((response) => response.json())
             .then((data) => {
                 callbacks && callbacks.map((callback) => callback(data))
@@ -51,8 +49,6 @@ export const lazyLoadAsset = (philosopherName, { options, setOptions }, setQuote
             .catch((e) => reject(e))
     })
 }
-
-
 
 export const getPhilosopherObjectIndex = (philosopher, options) => options.findIndex(({ value }) => value === philosopher)
 
