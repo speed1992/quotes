@@ -6,4 +6,5 @@ export const cleanMarkedQuotes = (markedQuotes, quotes) => {
         if (doesMarkedQuoteExist) newMarkedQuotes.push(markedId)
     })
     debugger
+    return newMarkedQuotes
 }
