@@ -29,6 +29,8 @@ const newPersistConfig = getPersistConfig({
                 const index = getPhilosopherObjectIndex(PHILOSOPHER_TO_PURGE, state.options)
                 debugger
                 if (state.options[index]?.quotes?.length !== 2511) {
+                    state.currentData = []
+                    delete state.originalData
                     delete state.options[index]?.quotes
                 }
                 debugger
