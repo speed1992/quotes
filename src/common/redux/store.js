@@ -32,6 +32,7 @@ const newPersistConfig = getPersistConfig({
                 if (state.options[index]?.quotes) {
                     debugger
                     const cleanedMarkedQuotes = cleanMarkedQuotes(state.markedQuotes[PHILOSOPHER_TO_PURGE], state.options[index]?.quotes)
+                    localStorage.removeItem('DOSTOEVSKY-MARKED_AS_READ')
                     state.markedQuotes[PHILOSOPHER_TO_PURGE] = cleanedMarkedQuotes
                     state.currentData = []
                     delete state.originalData
