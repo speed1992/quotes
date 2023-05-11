@@ -27,13 +27,11 @@ const newPersistConfig = getPersistConfig({
         } else {
             if (getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options })) {
                 const index = getPhilosopherObjectIndex(PHILOSOPHER_TO_PURGE, state.options)
-                debugger
                 if (state.options[index]?.quotes?.length !== 2511) {
                     state.currentData = []
                     delete state.originalData
                     delete state.options[index]?.quotes
                 }
-                debugger
                 // delete state.markedQuotes[PHILOSOPHER_TO_PURGE]
                 if (state.currentPhilosopher === PHILOSOPHER_TO_PURGE) {
                     state.currentPhilosopher = 'NIETZSCHE'
