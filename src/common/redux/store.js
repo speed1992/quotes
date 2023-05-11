@@ -25,17 +25,18 @@ const newPersistConfig = getPersistConfig({
             const asyncState = await getStoredState(persistConfig)
             return asyncState
         } else {
-            PHILOSOPHER_TO_PURGE.forEach((element) => {
-                if (getPhilosopherQuotes({ philosopher: element, options: state?.options })) {
-                    const index = getPhilosopherObjectIndex(element, state.options)
+            if (getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options })) {
+                const index = getPhilosopherObjectIndex(PHILOSOPHER_TO_PURGE, state.options)
+                debugger
+                if (state.options[index]?.quotes?.length !== 2511) {
                     delete state.options[index]?.quotes
-                    // delete state.markedQuotes[element]
-                    if (state.currentPhilosopher === element) {
-                        state.currentPhilosopher = 'NIETZSCHE'
-                    }
                 }
-            })
-
+                debugger
+                // delete state.markedQuotes[PHILOSOPHER_TO_PURGE]
+                if (state.currentPhilosopher === PHILOSOPHER_TO_PURGE) {
+                    state.currentPhilosopher = 'NIETZSCHE'
+                }
+            }
             return state
         }
     },
