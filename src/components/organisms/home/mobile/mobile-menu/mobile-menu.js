@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useSnackbar } from 'react-simple-snackbar'
 import ROUTES from '../../../../../common/routes/routes'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import { ALPHABETICAL, LATEST } from '../../home-page/constants/constants'
@@ -13,6 +14,7 @@ const OutsideAlerter = React.lazy(() => retryTenTimes(() => import('../../../../
 function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting, userName, setUserName }) {
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)
     const markedQuotes = useSelector(({ philosophersData: { markedQuotes } }) => markedQuotes)
+    const [openSnackbar] = useSnackbar()
 
     const dispatch = useDispatch()
 
@@ -57,7 +59,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 <li>
                     Username
                     <input className="userName" type="text" onChange={(e) => setUserName(e.target.value)} value={userName} />
-                    <button onClick={() => sendUserDetails({ userName, markedQuotes })}>Sync with Database</button>
+                    <button onClick={() => sendUserDetails({ userName, markedQuotes, openSnackbar })}>Sync with Database</button>
                 </li>
                 <li>
                     <BuildInfo />

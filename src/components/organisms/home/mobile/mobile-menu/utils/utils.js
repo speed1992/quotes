@@ -1,8 +1,8 @@
-import { retryTenTimes } from "../../../../../../common/utils/apiUtils"
+import { retryTenTimes } from '../../../../../../common/utils/apiUtils'
 
-export const sendUserDetails = async ({ userName, markedQuotes }) => {
+export const sendUserDetails = async ({ userName, markedQuotes, openSnackbar }) => {
     if (userName === 'philosophizetruth') {
-    let response = await retryTenTimes(
+        let response = await retryTenTimes(
             async () =>
                 await fetch('https://quotes-backend.vercel.app/api/markedQuotes/', {
                     method: 'post',
@@ -16,6 +16,6 @@ export const sendUserDetails = async ({ userName, markedQuotes }) => {
         )
 
         response = await response.json()
-        alert(JSON.stringify(response))
+        openSnackbar(JSON.stringify(response))
     }
 }
