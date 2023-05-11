@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[278],{3278:function(e,s,r){r.r(s);r(2791);var n=r(184);s.default=function(){return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)("h4",{children:"No search results found!"}),(0,n.jsx)("div",{children:"Guidlines:"}),(0,n.jsx)("div",{children:"1. Please check spelling of your search text."}),(0,n.jsx)("div",{children:" 2. Try searching a smaller and a more generic word."})]})}}}]);
-//# sourceMappingURL=278.efc1c583.chunk.js.map
