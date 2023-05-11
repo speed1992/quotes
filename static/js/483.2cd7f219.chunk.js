@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[483],{6483:function(e,n,u){u.r(n);u(2791);var s=u(184);n.default=function(e){var n=e.found;return e.markedMode?(0,s.jsxs)(s.Fragment,{children:["Found: ",n," "]}):(0,s.jsxs)(s.Fragment,{children:["Quotes Found: ",n," "]})}}}]);
+//# sourceMappingURL=483.2cd7f219.chunk.js.map
