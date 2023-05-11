@@ -5,7 +5,7 @@ import DBstorage from 'redux-persist-indexeddb-storage'
 import getStoredState from 'redux-persist/es/getStoredState'
 import storage from 'redux-persist/lib/storage'
 import philosophersDataReducer from '../../components/organisms/home/home-page/homePageRedux/homePageRedux'
-import { getPhilosopherData, getPhilosopherObjectIndex } from '../static/utils/utils'
+import { getPhilosopherObjectIndex, getPhilosopherQuotes } from '../static/utils/utils'
 import { PHILOSOPHER_TO_PURGE } from './purgeCache'
 
 const persistConfig = getPersistConfig({
@@ -25,15 +25,17 @@ const newPersistConfig = getPersistConfig({
             const asyncState = await getStoredState(persistConfig)
             return asyncState
         } else {
-            if (getPhilosopherData({ philosopher: PHILOSOPHER_TO_PURGE, options: state.options })) {
-                const index = getPhilosopherObjectIndex(PHILOSOPHER_TO_PURGE, state.options)
-
-                state.options.splice(index, 1)
-                delete state.markedQuotes[PHILOSOPHER_TO_PURGE]
-                if (state.currentPhilosopher === PHILOSOPHER_TO_PURGE) {
-                    state.currentPhilosopher = 'NIETZSCHE'
+            PHILOSOPHER_TO_PURGE.forEach((element) => {
+                if (getPhilosopherQuotes({ philosopher: element, options: state?.options })) {
+                    const index = getPhilosopherObjectIndex(element, state.options)
+                    delete state.options[index]?.quotes
+                    // delete state.markedQuotes[element]
+                    if (state.currentPhilosopher === element) {
+                        state.currentPhilosopher = 'NIETZSCHE'
+                    }
                 }
-            }
+            })
+
             return state
         }
     },

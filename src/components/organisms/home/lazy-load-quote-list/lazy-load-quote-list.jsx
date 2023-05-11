@@ -11,7 +11,8 @@ export function LazyLoadQuoteList(props) {
     async function lazyInit() {
         try {
             if (currentPhilosopher !== undefined) {
-                if (!getPhilosopherQuotes({ philosopher: currentPhilosopher, options })) {
+                const currentPhilosopherQuotes = getPhilosopherQuotes({ philosopher: currentPhilosopher, options })
+                if (!currentPhilosopherQuotes) {
                     await lazyLoadAsset(currentPhilosopher, { options, setOptions }, setQuotesLoaded, [setCurrentData])
                 }
 

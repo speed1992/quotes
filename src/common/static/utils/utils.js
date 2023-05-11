@@ -54,9 +54,7 @@ export const getPhilosopherObjectIndex = (philosopher, options) => options.findI
 
 export const getPhilosopherData = ({ philosopher, options }) => options.filter(({ value }) => value === philosopher)[0]
 
-export const getPhilosopherQuotes = ({ philosopher, options }) => {
-    return options.filter(({ value }) => value === philosopher)[0]?.quotes
-}
+export const getPhilosopherQuotes = ({ philosopher, options }) => options.filter(({ value }) => value === philosopher)[0]?.quotes
 
 export const getCurrentPhilosopherFullname = (currentPhilosopher, options) => {
     const currentPhilosopherData = options[getPhilosopherObjectIndex(currentPhilosopher, options)]
