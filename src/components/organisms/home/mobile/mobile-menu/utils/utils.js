@@ -16,6 +16,6 @@ export const sendUserDetails = async ({ userName, markedQuotes, openSnackbar }) 
         )
 
         response = await response.json()
-        openSnackbar(JSON.stringify(response), 1000)
+        openSnackbar(JSON.stringify(response), 2000)
     }
 }
