@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import List from 'react-virtualized/dist/commonjs/List'
-import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { ruleEngine } from '../../../../common/utils/ruleEngine'
 import { scrollToMemorizedRow } from '../../../../common/utils/utils'
+import Row from '../row/row'
 import './quotes-list.css'
 import { NoRowsRenderer } from './utils/listUtils'
 import { rules } from './utils/ruleEngine/rules'
 import { getPhilosopherFullName, getPhilosopherFullName_i10n } from './utils/utils'
-const Row = React.lazy(() => retryTenTimes(() => import('../row/row')))
 
 function QuotesList({ listRef, width, height, searchText, start, end, markedMode, currentData, setCurrentData, options, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, scheduledPosts, setScheduledQuotes }) {
     const philosopherFullName = getPhilosopherFullName({ currentPhilosopher, options })
