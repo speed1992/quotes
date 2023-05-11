@@ -7,6 +7,7 @@ import storage from 'redux-persist/lib/storage'
 import philosophersDataReducer from '../../components/organisms/home/home-page/homePageRedux/homePageRedux'
 import { getPhilosopherObjectIndex, getPhilosopherQuotes } from '../static/utils/utils'
 import { PHILOSOPHER_TO_PURGE } from './purgeCache'
+import { cleanMarkedQuotes } from './utils/migrationUtils'
 
 const persistConfig = getPersistConfig({
     key: 'root',
@@ -27,7 +28,11 @@ const newPersistConfig = getPersistConfig({
         } else {
             if (getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options })) {
                 const index = getPhilosopherObjectIndex(PHILOSOPHER_TO_PURGE, state.options)
-                if (state.options[index]?.quotes?.length !== 2511) {
+                // if (state.options[index]?.quotes?.length !== 2511) {
+                if (state.options[index]?.quotes) {
+                    debugger
+                    const cleanedMarkedQuotes = cleanMarkedQuotes(state.markedQuotes[PHILOSOPHER_TO_PURGE], state.options[index]?.quotes)
+                    state.markedQuotes[PHILOSOPHER_TO_PURGE] = cleanedMarkedQuotes
                     state.currentData = []
                     delete state.originalData
                     delete state.options[index]?.quotes
