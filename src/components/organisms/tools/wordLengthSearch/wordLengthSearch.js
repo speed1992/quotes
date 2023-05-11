@@ -8,8 +8,8 @@ export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText, 
         if (isMobile) {
             return (
                 <>
-                    <input className="smallInput" name="start" type="number" min="1" value={start} onChange={({ target: { value } }) => setStart(value)} />
-                    <input className="smallInput" name="end" type="number" min="0" value={end} onChange={({ target: { value } }) => setEnd(value)} />
+                    <input className="smallInput" key="start" name="start" type="number" min="1" value={start} onChange={({ target: { value } }) => setStart(value)} />
+                    <input className="smallInput" key="end" name="end" type="number" min="0" value={end} onChange={({ target: { value } }) => setEnd(value)} />
                 </>
             )
         } else {
