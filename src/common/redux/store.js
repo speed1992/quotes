@@ -35,10 +35,10 @@ const newPersistConfig = getPersistConfig({
                     state.currentData = []
                     delete state.originalData
                     delete state.options[index]?.quotes
-                }
-                // delete state.markedQuotes[PHILOSOPHER_TO_PURGE]
-                if (state.currentPhilosopher === PHILOSOPHER_TO_PURGE) {
-                    state.currentPhilosopher = 'NIETZSCHE'
+                    // delete state.markedQuotes[PHILOSOPHER_TO_PURGE]
+                    if (state.currentPhilosopher === PHILOSOPHER_TO_PURGE) {
+                        state.currentPhilosopher = 'NIETZSCHE'
+                    }
                 }
             }
             return state
