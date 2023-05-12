@@ -28,8 +28,7 @@ const newPersistConfig = getPersistConfig({
         } else {
             if (getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options })) {
                 const index = getPhilosopherObjectIndex(PHILOSOPHER_TO_PURGE, state.options)
-                // if (state.options[index]?.quotes?.length !== 2511) {
-                if (state.options[index]?.quotes) {
+                if (state.options[index]?.quotes?.length !== 2511) {
                     const cleanedMarkedQuotes = cleanMarkedQuotes(state.markedQuotes[PHILOSOPHER_TO_PURGE], state.options[index]?.quotes)
                     localStorage.removeItem('DOSTOEVSKY-MARKED_AS_READ')
                     state.markedQuotes[PHILOSOPHER_TO_PURGE] = cleanedMarkedQuotes
