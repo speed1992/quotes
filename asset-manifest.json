@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/quotes/static/css/main.8b6f992d.css",
-    "main.js": "/quotes/static/js/main.b8fbb772.js",
+    "main.js": "/quotes/static/js/main.ccad841c.js",
     "static/css/171.2d562ea5.chunk.css": "/quotes/static/css/171.2d562ea5.chunk.css",
     "static/js/171.e35aa074.chunk.js": "/quotes/static/js/171.e35aa074.chunk.js",
-    "static/js/551.a017a3e0.chunk.js": "/quotes/static/js/551.a017a3e0.chunk.js",
+    "static/js/551.064d98cd.chunk.js": "/quotes/static/js/551.064d98cd.chunk.js",
     "static/css/728.56467bfd.chunk.css": "/quotes/static/css/728.56467bfd.chunk.css",
     "static/js/728.86518f8e.chunk.js": "/quotes/static/js/728.86518f8e.chunk.js",
     "static/css/356.0998134c.chunk.css": "/quotes/static/css/356.0998134c.chunk.css",
@@ -33,7 +33,7 @@
     "static/js/167.3fb7f408.chunk.js": "/quotes/static/js/167.3fb7f408.chunk.js",
     "static/js/841.0d790e3f.chunk.js": "/quotes/static/js/841.0d790e3f.chunk.js",
     "static/js/388.33c52b86.chunk.js": "/quotes/static/js/388.33c52b86.chunk.js",
-    "static/js/777.dc64ea38.chunk.js": "/quotes/static/js/777.dc64ea38.chunk.js",
+    "static/js/777.fbfe562d.chunk.js": "/quotes/static/js/777.fbfe562d.chunk.js",
     "static/js/209.c481b635.chunk.js": "/quotes/static/js/209.c481b635.chunk.js",
     "static/js/938.0da4a4ce.chunk.js": "/quotes/static/js/938.0da4a4ce.chunk.js",
     "static/js/637.6d0367ec.chunk.js": "/quotes/static/js/637.6d0367ec.chunk.js",
@@ -44,7 +44,6 @@
     "static/media/RICKY_GERVAIS.png": "/quotes/static/media/RICKY_GERVAIS.975580860d1cf99727fc.png",
     "static/media/BUKOWSKI.jpg": "/quotes/static/media/BUKOWSKI.3ed907dda532b04aa57a.jpg",
     "static/media/CARL_JUNG.jpg": "/quotes/static/media/CARL_JUNG.12be5cab35dd5548822a.jpg",
-    "static/media/DOSTOEVSKY.jpg": "/quotes/static/media/DOSTOEVSKY.f3f4bc3d82ea04e84014.jpg",
     "static/media/OSHO.jpg": "/quotes/static/media/OSHO.45432ce7c4c8818ad65c.jpg",
     "static/media/BEAUVOIR.jpg": "/quotes/static/media/BEAUVOIR.a37acf7026379a5c745f.jpg",
     "static/media/MARK_TWAIN.jpg": "/quotes/static/media/MARK_TWAIN.d04dc676af5be490f48a.jpg",
@@ -52,10 +51,10 @@
     "static/media/PETERSON.jpg": "/quotes/static/media/PETERSON.f3968a4c45466650e225.jpg",
     "index.html": "/quotes/index.html",
     "main.8b6f992d.css.map": "/quotes/static/css/main.8b6f992d.css.map",
-    "main.b8fbb772.js.map": "/quotes/static/js/main.b8fbb772.js.map",
+    "main.ccad841c.js.map": "/quotes/static/js/main.ccad841c.js.map",
     "171.2d562ea5.chunk.css.map": "/quotes/static/css/171.2d562ea5.chunk.css.map",
     "171.e35aa074.chunk.js.map": "/quotes/static/js/171.e35aa074.chunk.js.map",
-    "551.a017a3e0.chunk.js.map": "/quotes/static/js/551.a017a3e0.chunk.js.map",
+    "551.064d98cd.chunk.js.map": "/quotes/static/js/551.064d98cd.chunk.js.map",
     "728.56467bfd.chunk.css.map": "/quotes/static/css/728.56467bfd.chunk.css.map",
     "728.86518f8e.chunk.js.map": "/quotes/static/js/728.86518f8e.chunk.js.map",
     "356.0998134c.chunk.css.map": "/quotes/static/css/356.0998134c.chunk.css.map",
@@ -84,7 +83,7 @@
     "167.3fb7f408.chunk.js.map": "/quotes/static/js/167.3fb7f408.chunk.js.map",
     "841.0d790e3f.chunk.js.map": "/quotes/static/js/841.0d790e3f.chunk.js.map",
     "388.33c52b86.chunk.js.map": "/quotes/static/js/388.33c52b86.chunk.js.map",
-    "777.dc64ea38.chunk.js.map": "/quotes/static/js/777.dc64ea38.chunk.js.map",
+    "777.fbfe562d.chunk.js.map": "/quotes/static/js/777.fbfe562d.chunk.js.map",
     "209.c481b635.chunk.js.map": "/quotes/static/js/209.c481b635.chunk.js.map",
     "938.0da4a4ce.chunk.js.map": "/quotes/static/js/938.0da4a4ce.chunk.js.map",
     "637.6d0367ec.chunk.js.map": "/quotes/static/js/637.6d0367ec.chunk.js.map",
@@ -94,6 +93,6 @@
   },
   "entrypoints": [
     "static/css/main.8b6f992d.css",
-    "static/js/main.b8fbb772.js"
+    "static/js/main.ccad841c.js"
   ]
 }
