@@ -8,7 +8,7 @@ export const sendUserDetails = async ({ userName, markedQuotes, openSnackbar }) 
                     method: 'post',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        userId: 1,
+                        userName: 'philosophizetruth',
                         markedQuotes,
                         dateSynced: Date.now(),
                     }),
