@@ -35,6 +35,7 @@ export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, set
 }
 
 export const loginRegister = async ({ apiCallType, userName, password, setIsLoggedIn, openSnackbar }) => {
+    const capitalizedUserName = userName.charAt(0).toUpperCase() + userName.slice(1)
     let response
     if (apiCallType === 'login') {
         response = await retryTenTimes(
@@ -62,7 +63,7 @@ export const loginRegister = async ({ apiCallType, userName, password, setIsLogg
 
     if (response?.ok) {
         setIsLoggedIn(true)
-        openSnackbar(userName + ' ' + JSON.stringify(response.serverResponse))
+        openSnackbar(capitalizedUserName + ' ' + JSON.stringify(response.serverResponse))
     } else {
         openSnackbar(JSON.stringify(response.error))
     }
