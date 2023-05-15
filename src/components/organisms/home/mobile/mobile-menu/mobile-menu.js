@@ -7,11 +7,12 @@ import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import { ALPHABETICAL, LATEST } from '../../home-page/constants/constants'
 import { setVoiceSpeedRedux } from '../../home-page/homePageRedux/homePageRedux'
 import './mobile-menu.css'
-import { getUserDetails, sendUserDetails } from './utils/utils'
 const BuildInfo = React.lazy(() => retryTenTimes(() => import('../../../tools/build-info/build-info')))
+const BackupRestore = React.lazy(() => retryTenTimes(() => import('../backup-restore/backup-restore')))
+const LoginRegister = React.lazy(() => retryTenTimes(() => import('../login-register/login-register')))
 const OutsideAlerter = React.lazy(() => retryTenTimes(() => import('../../../../../common/components/outside-alerter/outside-alerter')))
 
-function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting, userName, setUserName, setMarkedQuotes }) {
+function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting, userName, setUserName, setMarkedQuotes, isLoggedIn, setIsLoggedIn }) {
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)
     const markedQuotes = useSelector(({ philosophersData: { markedQuotes } }) => markedQuotes)
     const [openSnackbar] = useSnackbar()
@@ -56,12 +57,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                         <button>Open Report</button>
                     </Link>
                 </li>
-                <li>
-                    Username
-                    <input className="userName" type="text" onChange={(e) => setUserName(e.target.value)} value={userName} />
-                    <button onClick={() => sendUserDetails({ userName, markedQuotes, openSnackbar })}>Backup</button>
-                    <button onClick={() => getUserDetails({ userName, markedQuotes, openSnackbar, setMarkedQuotes })}>Restore</button>
-                </li>
+                <li>{isLoggedIn ? <BackupRestore {...{ setUserName, userName, markedQuotes, openSnackbar, setMarkedQuotes }} /> : <LoginRegister {...{ setUserName, userName, openSnackbar, setIsLoggedIn }} />}</li>
                 <li>
                     <BuildInfo />
                 </li>
