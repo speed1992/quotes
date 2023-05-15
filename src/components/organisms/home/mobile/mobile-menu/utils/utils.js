@@ -34,18 +34,29 @@ export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, set
     }
 }
 
-export const loginRegister = async ({ userName, password, setIsLoggedIn, openSnackbar }) => {
-    let response = await retryTenTimes(
-        async () =>
-            await fetch('https://quotes-backend.vercel.app/api/user/', {
-                method: 'post',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    userName,
-                    password,
-                }),
-            })
-    )
+export const loginRegister = async ({ apiCallType, userName, password, setIsLoggedIn, openSnackbar }) => {
+    let response
+    if (apiCallType === 'login') {
+        response = await retryTenTimes(
+            async () =>
+                await fetch(`https://quotes-backend.vercel.app/api/user/?userName=${userName}`, {
+                    method: 'get',
+                    headers: { 'Content-Type': 'application/json' },
+                })
+        )
+    } else {
+        response = await retryTenTimes(
+            async () =>
+                await fetch('https://quotes-backend.vercel.app/api/user/', {
+                    method: 'post',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        userName,
+                        password,
+                    }),
+                })
+        )
+    }
 
     response = await response.json()
 
