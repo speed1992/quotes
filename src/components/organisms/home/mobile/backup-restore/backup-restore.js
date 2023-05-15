@@ -1,6 +1,6 @@
 import { getUserDetails, sendUserDetails } from '../mobile-menu/utils/utils'
 
-const BackupRestore = ({ setUserName, userName, markedQuotes, openSnackbar, setMarkedQuotes, setIsLoggedIn }) => {
+const BackupRestore = ({ userName, markedQuotes, openSnackbar, setMarkedQuotes, setIsLoggedIn }) => {
     const capitalizedUserName = userName.charAt(0).toUpperCase() + userName.slice(1)
     return (
         <>
