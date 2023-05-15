@@ -5,9 +5,15 @@ const BackupRestore = ({ userName, markedQuotes, openSnackbar, setMarkedQuotes, 
     return (
         <>
             <div className="userName">Hi {capitalizedUserName}!</div>
-            <button onClick={() => sendUserDetails({ userName, markedQuotes, openSnackbar })}>Backup</button>
-            <button onClick={() => getUserDetails({ userName, markedQuotes, openSnackbar, setMarkedQuotes })}>Restore</button>
-            <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+            <button className="menuBtn" onClick={() => sendUserDetails({ userName, markedQuotes, openSnackbar })}>
+                Backup
+            </button>
+            <button className="menuBtn" onClick={() => getUserDetails({ userName, markedQuotes, openSnackbar, setMarkedQuotes })}>
+                Restore
+            </button>
+            <button className="menuBtn" onClick={() => setIsLoggedIn(false)}>
+                Logout
+            </button>
         </>
     )
 }
