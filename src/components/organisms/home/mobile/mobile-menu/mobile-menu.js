@@ -57,7 +57,12 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                         <button>Open Report</button>
                     </Link>
                 </li>
-                <li>{isLoggedIn ? <BackupRestore {...{ setUserName, userName, markedQuotes, openSnackbar, setMarkedQuotes }} /> : <LoginRegister {...{ setUserName, userName, openSnackbar, setIsLoggedIn }} />}</li>
+                <li>
+                    {isLoggedIn ? <BackupRestore {...{ setUserName, userName, markedQuotes, openSnackbar, setMarkedQuotes }} /> : <LoginRegister {...{ setUserName, userName, openSnackbar, setIsLoggedIn }} />}
+                    <div className="backupNote" style={{ fontSize: '1.1rem' }}>
+                        You can backup your marked quotes in database in case browser data gets deleted.
+                    </div>
+                </li>
                 <li>
                     <BuildInfo />
                 </li>
