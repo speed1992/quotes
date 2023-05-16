@@ -40,15 +40,19 @@ export const loginRegister = async ({ apiCallType, userName, password, setIsLogg
     if (apiCallType === 'login') {
         response = await retryTenTimes(
             async () =>
-                await fetch(`https://quotes-backend.vercel.app/api/user/?userName=${userName}`, {
-                    method: 'get',
+                await fetch('https://quotes-backend.vercel.app/api/user/login', {
+                    method: 'post',
                     headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        userName,
+                        password,
+                    }),
                 })
         )
     } else {
         response = await retryTenTimes(
             async () =>
-                await fetch('https://quotes-backend.vercel.app/api/user/', {
+                await fetch('https://quotes-backend.vercel.app/api/user/create', {
                     method: 'post',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

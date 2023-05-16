@@ -26,8 +26,9 @@
 }
 
 #slide_menu .userName {
-    width: 80%;
+    width: 100%;
     margin-bottom: 0.5rem;
+    font-size: 3.7vw;
 }
 
 .darkTheme #slide_menu {
