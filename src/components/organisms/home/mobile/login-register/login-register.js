@@ -6,9 +6,9 @@ const LoginRegister = ({ setUserName, userName, setIsLoggedIn, openSnackbar }) =
     return (
         <>
             Username
-            <input type="text" className="userName" onChange={(e) => setUserName(e.target.value)} value={userName} />
+            <input type="text" className="userInput" onChange={(e) => setUserName(e.target.value)} value={userName} />
             Password
-            <input type="password" className="userName" onChange={(e) => setPassword(e.target.value)} value={password} />
+            <input type="password" className="userInput" onChange={(e) => setPassword(e.target.value)} value={password} />
             <button className="menuBtn" onClick={() => loginRegister({ apiCallType: 'login', userName, password, setIsLoggedIn, openSnackbar })}>
                 Login
             </button>

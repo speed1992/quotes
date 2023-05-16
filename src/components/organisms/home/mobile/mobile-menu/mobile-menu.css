@@ -31,6 +31,12 @@
     font-size: 3.7vw;
 }
 
+#slide_menu .userInput {
+    width: 80%;
+    margin-bottom: 0.5rem;
+    font-size: 3.7vw;
+}
+
 .darkTheme #slide_menu {
     background-color: black;
 }
