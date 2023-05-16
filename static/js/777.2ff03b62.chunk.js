@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[777],{7777:function(e,i,n){n.r(i),n.d(i,{default:function(){return t}});n(2791);var u=JSON.parse('{"buildDateTime":"16 May 2023 @ 02:34 AM"}'),s=n(184),t=function(){return(0,s.jsxs)("div",{style:{fontSize:"1rem"},children:[(0,s.jsx)("div",{children:"App Version:"}),(0,s.jsx)("div",{children:null===u||void 0===u?void 0:u.buildDateTime})]})}}}]);
-//# sourceMappingURL=777.2ff03b62.chunk.js.map
