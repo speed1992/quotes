@@ -1,3 +1,5 @@
+import { myWorker } from '../web-workers/worker'
+
 export const scrollToFirstRow = (listRef) => {
     if (listRef.current) {
         listRef.current.scrollToRow(0)
@@ -15,16 +17,16 @@ export const scrollToMemorizedRow = (listRef, scrollPosition, currentData) => {
 }
 
 export const search = ({ searchText, currentData, setCurrentData }) => {
-    if (currentData !== undefined) {
-        const filteredQuotes = currentData.filter(({ quote }) => {
-            if (quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0) {
-                return false
-            } else {
-                return true
+    return new Promise((resolve) => {
+        if (currentData !== undefined) {
+            myWorker.postMessage({ currentData, searchText, filterName: 'searchTermFilter' })
+            myWorker.onmessage = (event) => {
+                const filteredQuotesFromWorker = JSON.parse(eval(`(${JSON.stringify(event.data)})`))
+                console.log(filteredQuotesFromWorker)
+                resolve(filteredQuotesFromWorker)
             }
-        })
-        return filteredQuotes
-    }
+        }
+    })
 }
 
 export const isMobile = () => window.innerWidth <= 600
