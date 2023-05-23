@@ -3,7 +3,7 @@ import { retryTenTimes } from '../../../../../../common/utils/apiUtils'
 export const sendUserDetails = async ({ userName, markedQuotes, openSnackbar }) => {
     let response = await retryTenTimes(
         async () =>
-            await fetch('https://quotes-backend.vercel.app/api/markedQuotes/', {
+            await fetch('https://quotes-backend.vercel.app/api/markedQuotes/backup', {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -21,9 +21,12 @@ export const sendUserDetails = async ({ userName, markedQuotes, openSnackbar }) 
 export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, setMarkedQuotes }) => {
     let response = await retryTenTimes(
         async () =>
-            await fetch('https://quotes-backend.vercel.app/api/markedQuotes/', {
-                method: 'get',
+            await fetch('https://quotes-backend.vercel.app/api/markedQuotes/restore', {
+                method: 'post',
                 headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    userName,
+                }),
             })
     )
 
