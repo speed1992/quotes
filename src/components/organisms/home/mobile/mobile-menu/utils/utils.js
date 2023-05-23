@@ -31,8 +31,12 @@ export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, set
     )
 
     response = await response.json()
-    setMarkedQuotes(response[0].markedQuotes)
-    openSnackbar('Restored data', 2000)
+    if (response?.ok) {
+        setMarkedQuotes(response.results[0].markedQuotes)
+        openSnackbar('Restored all marked quotes!', 2000)
+    } else {
+        openSnackbar(JSON.stringify(response.error))
+    }
 }
 
 export const loginRegister = async ({ apiCallType, userName, password, setIsLoggedIn, openSnackbar }) => {
