@@ -29,6 +29,8 @@
     width: 100%;
     margin-bottom: 0.5rem;
     font-size: 3.7vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #slide_menu .userInput {
