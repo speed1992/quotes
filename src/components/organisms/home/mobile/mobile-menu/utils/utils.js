@@ -19,19 +19,17 @@ export const sendUserDetails = async ({ userName, markedQuotes, openSnackbar }) 
 }
 
 export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, setMarkedQuotes }) => {
-    if (userName === 'philosophizetruth') {
-        let response = await retryTenTimes(
-            async () =>
-                await fetch('https://quotes-backend.vercel.app/api/markedQuotes/', {
-                    method: 'get',
-                    headers: { 'Content-Type': 'application/json' },
-                })
-        )
+    let response = await retryTenTimes(
+        async () =>
+            await fetch('https://quotes-backend.vercel.app/api/markedQuotes/', {
+                method: 'get',
+                headers: { 'Content-Type': 'application/json' },
+            })
+    )
 
-        response = await response.json()
-        setMarkedQuotes(response[0].markedQuotes)
-        openSnackbar('Restored data', 2000)
-    }
+    response = await response.json()
+    setMarkedQuotes(response[0].markedQuotes)
+    openSnackbar('Restored data', 2000)
 }
 
 export const loginRegister = async ({ apiCallType, userName, password, setIsLoggedIn, openSnackbar }) => {
