@@ -12,24 +12,26 @@ onmessage = function ({ data }) {
         })
         this.postMessage(JSON.stringify(filteredQuotes))
     }
-    // if (filterName === 'wordCountFilter') {
-    //     const { quotes, end, start } = data
-    //     const result = quotes.filter(({ quote }) => {
-    //         const wordCount = getWordCount(quote)
+    if (filterName === 'wordCountFilter') {
+        const { quotes, end, start } = data
+        const result = quotes.filter(({ quote }) => {
+            const wordCount = quote.split(' ').filter(function (n) {
+                return n !== ''
+            }).length
 
-    //         if (end && end !== '') {
-    //             if (wordCount >= start && wordCount <= end) {
-    //                 return true
-    //             }
-    //         }
-    //         if (end === '') {
-    //             if (wordCount >= start) {
-    //                 return true
-    //             }
-    //         }
+            if (end && end !== '') {
+                if (wordCount >= start && wordCount <= end) {
+                    return true
+                }
+            }
+            if (end === '') {
+                if (wordCount >= start) {
+                    return true
+                }
+            }
 
-    //         return false
-    //     })
-    //     this.postMessage(JSON.stringify(result))
-    // }
+            return false
+        })
+        this.postMessage(JSON.stringify(result))
+    }
 }

@@ -1,5 +1,6 @@
 import { isObjEmpty } from '../../../../../common/utils/commonUtils'
 import { removeReadData } from '../../../../../common/utils/staticDataUtils'
+import { worker } from '../../../../../common/web-workers/worker'
 
 export const changeQuotesData = ({ currentPhilosopher, currentData, setCurrentData, options }, { markedMode = null, markedQuotes, setMarkedQuotes }) => {
     if (currentData) setCurrentData(currentData)
@@ -16,28 +17,19 @@ export const getPhilosopherFullName_i10n = ({ currentPhilosopher, options }) => 
     if (!isObjEmpty(currentIndex)) return currentIndex && currentIndex[0].fullNameInOtherLanguages
 }
 
-export const searchByWordLength = (start, end, quotes, { markedMode, markedQuotes, setMarkedQuotes }, { setCurrentData, currentPhilosopher }) => {
-    if (quotes !== undefined) {
-        if (typeof start === 'string' && start.trim() === '') start = 0
-
-        const newData = quotes.filter(({ quote }) => {
-            const wordCount = getWordCount(quote)
-
-            if (end && end !== '') {
-                if (wordCount >= start && wordCount <= end) {
-                    return true
-                }
+export const searchByWordLength = async (start, end, quotes, { markedMode, markedQuotes, setMarkedQuotes }, { setCurrentData, currentPhilosopher }) => {
+    return new Promise((resolve) => {
+        if (quotes !== undefined) {
+            if (typeof start === 'string' && start.trim() === '') start = 0
+            worker.postMessage({ quotes, end, start, filterName: 'wordCountFilter' })
+            worker.onmessage = (event) => {
+                const newData = JSON.parse(eval(`(${JSON.stringify(event.data)})`))
+                console.log(newData)
+                changeQuotesData({ currentData: newData, setCurrentData, currentPhilosopher }, { markedMode, markedQuotes, setMarkedQuotes })
+                resolve()
             }
-            if (end === '') {
-                if (wordCount >= start) {
-                    return true
-                }
-            }
-
-            return false
-        })
-        changeQuotesData({ currentData: newData, setCurrentData, currentPhilosopher }, { markedMode, markedQuotes, setMarkedQuotes })
-    }
+        }
+    })
 }
 
 export function getWordCount(str) {

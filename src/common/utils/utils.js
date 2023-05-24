@@ -1,4 +1,4 @@
-import { myWorker } from '../web-workers/worker'
+import { worker } from '../web-workers/worker'
 
 export const scrollToFirstRow = (listRef) => {
     if (listRef.current) {
@@ -19,8 +19,8 @@ export const scrollToMemorizedRow = (listRef, scrollPosition, currentData) => {
 export const search = ({ searchText, currentData, setCurrentData }) => {
     return new Promise((resolve) => {
         if (currentData !== undefined) {
-            myWorker.postMessage({ currentData, searchText, filterName: 'searchTermFilter' })
-            myWorker.onmessage = (event) => {
+            worker.postMessage({ currentData, searchText, filterName: 'searchTermFilter' })
+            worker.onmessage = (event) => {
                 const filteredQuotesFromWorker = JSON.parse(eval(`(${JSON.stringify(event.data)})`))
                 console.log(filteredQuotesFromWorker)
                 resolve(filteredQuotesFromWorker)

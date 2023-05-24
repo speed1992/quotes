@@ -6,6 +6,6 @@ export async function applyFilters({ searchText, start, end, currentPhilosopher,
     if (searchText === '' && start == 1 && end == '') changeQuotesData({ currentPhilosopher, currentData: originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
     else {
         dataForSearch = await search({ searchText, currentData: originalData, setCurrentData, currentPhilosopher, options })
-        if (dataForSearch) searchByWordLength(start, end, dataForSearch, { markedMode, markedQuotes, setMarkedQuotes }, { currentData, setCurrentData, originalData, currentPhilosopher })
+        if (dataForSearch) await searchByWordLength(start, end, dataForSearch, { markedMode, markedQuotes, setMarkedQuotes }, { currentData, setCurrentData, originalData, currentPhilosopher })
     }
 }

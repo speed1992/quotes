@@ -9,7 +9,6 @@ import styles from './styles/row.module.css'
 import { evaluateClassNames } from './utils/style-utils'
 import { rowClickHandler } from './utils/utils'
 const MarkAsRead = React.lazy(() => retryTenTimes(() => import('../../tools/mark-as-read/mark-as-read')))
-const PushToSocialMedia = React.lazy(() => retryTenTimes(() => import('../../tools/push-to-social-media/push-to-social-media')))
 const Translate = React.lazy(() => retryTenTimes(() => import('../../tools/translate/translate')))
 const Audio = React.lazy(() => retryTenTimes(() => import('../../tools/audio/audio')))
 
