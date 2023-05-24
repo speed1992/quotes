@@ -32,8 +32,16 @@ export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, set
 
     response = await response.json()
     if (response?.ok) {
-        setMarkedQuotes(response.results[0].markedQuotes)
-        openSnackbar('Restored all marked quotes!', 2000)
+        try {
+            const reponseMarkedQuoteCount = Object.values(response?.results?.[0]?.markedQuotes).flat().length
+            if (response?.results?.[0]?.markedQuotes && reponseMarkedQuoteCount > 0) {
+                setMarkedQuotes(response?.results?.[0]?.markedQuotes)
+            }
+        } catch (error) {
+            openSnackbar(JSON.stringify(error))
+        } finally {
+            openSnackbar('Restored all marked quotes!', 2000)
+        }
     } else {
         openSnackbar(JSON.stringify(response.error))
     }
