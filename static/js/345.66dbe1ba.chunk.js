@@ -1,2 +1,0 @@
-onmessage=function(e){var t=e.data;if("searchTermFilter"===t.filterName){var r=t.currentData,a=t.searchText,s=r.filter((function(e){return!(e.quote.toLowerCase().indexOf(a.toLowerCase())<0)}));this.postMessage(JSON.stringify(s))}};
-//# sourceMappingURL=345.66dbe1ba.chunk.js.map
