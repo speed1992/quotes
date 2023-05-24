@@ -51,7 +51,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                             Share
                         </Link>
                     </button>
-                    <PushToSocialMedia index={quotationId} currentPhilosopher={currentPhilosopher} scheduledPosts={scheduledPosts} setScheduledQuotes={setScheduledQuotes} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} setLocalTranslateKey={setLocalTranslateKey} />
+                    {/* <PushToSocialMedia index={quotationId} currentPhilosopher={currentPhilosopher} scheduledPosts={scheduledPosts} setScheduledQuotes={setScheduledQuotes} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} setLocalTranslateKey={setLocalTranslateKey} /> */}
                 </div>
             </div>
         )
