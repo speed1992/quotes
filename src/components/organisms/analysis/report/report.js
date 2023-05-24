@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { onFocusHandler as getPhilosopherJSON } from '../../home/desktop/desktop-header/utils/utils'
+import { setOptionsRedux, setOriginalOptionsRedux } from '../../home/home-page/homePageRedux/homePageRedux'
 import { setDarkModeClassOnHTMLTag } from '../../home/home-page/utils/utils'
 import Table from '../table/table'
 import columns from './columns.json'
@@ -7,11 +9,20 @@ import { createData } from './utils/utils'
 
 const Report = () => {
     const [data, setData] = useState([])
+    const dispatch = useDispatch()
     const markedQuotes = useSelector((state) => state.philosophersData.markedQuotes)
     const options = useSelector((state) => state.philosophersData.options)
     const darkMode = useSelector((state) => state.philosophersData.darkMode)
+    const originalOptions = useSelector((state) => state?.philosophersData?.originalOptions)
+    const setOriginalOptions = (value) => dispatch(setOriginalOptionsRedux(value))
+    const setOptions = (value) => dispatch(setOptionsRedux(value))
+    const sorting = useSelector((state) => state.philosophersData.sorting)
 
     useEffect(() => {
+        ;(async () => {
+            await getPhilosopherJSON({ options, setOptions, originalOptions, setOriginalOptions, sorting })
+        })()
+
         createData({ markedQuotes, options, setData })
     }, [])
 
