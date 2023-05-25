@@ -19,12 +19,12 @@ const Report = () => {
     const sorting = useSelector((state) => state.philosophersData.sorting)
 
     useEffect(() => {
-        ;(async () => {
-            await getPhilosopherJSON({ options, setOptions, originalOptions, setOriginalOptions, sorting })
-        })()
-
-        createData({ markedQuotes, options, setData })
+        getPhilosopherJSON({ options, setOptions, originalOptions, setOriginalOptions, sorting })
     }, [])
+
+    useEffect(() => {
+        createData({ markedQuotes, options, setData })
+    }, [options.length])
 
     useEffect(() => {
         setDarkModeClassOnHTMLTag(darkMode)

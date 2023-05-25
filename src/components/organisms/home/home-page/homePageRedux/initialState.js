@@ -15,6 +15,8 @@ let INITIAL_STATE = {
     markedMode: false,
     markedQuotes: {},
     currentData: [],
+    userName: '',
+    password: '',
     sorting: 'alphabetical',
     originalOptions: STATIC_OPTIONS,
     options: STATIC_OPTIONS,
