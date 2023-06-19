@@ -15,7 +15,7 @@ export const sendUserDetails = async ({ userName, markedQuotes, openSnackbar }) 
     )
 
     response = await response.json()
-    openSnackbar(JSON.stringify(response))
+    openSnackbar('Auto-Sync :' + JSON.stringify(response))
 }
 
 export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, setMarkedQuotes }) => {
@@ -33,14 +33,14 @@ export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, set
     response = await response.json()
     if (response?.ok) {
         try {
-            const reponseMarkedQuoteCount = Object.values(response?.results?.[0]?.markedQuotes).flat().length
-            if (response?.results?.[0]?.markedQuotes && reponseMarkedQuoteCount > 0) {
-                setMarkedQuotes(response?.results?.[0]?.markedQuotes)
+            const markedQuotesFromServer = response?.results?.[0]?.markedQuotes
+            const markedQuotesFromServerCount = Object.values(markedQuotesFromServer).flat().length
+            if (markedQuotesFromServer && markedQuotesFromServerCount > 0) {
+                return { markedQuotesFromServer, dateFromServer: response?.results?.[0]?.dateSynced }
+                // setMarkedQuotes(response?.results?.[0]?.markedQuotes)
             }
         } catch (error) {
             openSnackbar(JSON.stringify(error))
-        } finally {
-            openSnackbar('Restored all marked quotes!', 2000)
         }
     } else {
         openSnackbar(JSON.stringify(response.error))

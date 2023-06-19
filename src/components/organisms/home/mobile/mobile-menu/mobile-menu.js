@@ -8,11 +8,10 @@ import { ALPHABETICAL, LATEST } from '../../home-page/constants/constants'
 import { setVoiceSpeedRedux } from '../../home-page/homePageRedux/homePageRedux'
 import './mobile-menu.css'
 const BuildInfo = React.lazy(() => retryTenTimes(() => import('../../../tools/build-info/build-info')))
-const BackupRestore = React.lazy(() => retryTenTimes(() => import('../backup-restore/backup-restore')))
 const LoginRegister = React.lazy(() => retryTenTimes(() => import('../login-register/login-register')))
 const OutsideAlerter = React.lazy(() => retryTenTimes(() => import('../../../../../common/components/outside-alerter/outside-alerter')))
 
-function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting, userName, setUserName, setMarkedQuotes, isLoggedIn, setIsLoggedIn }) {
+function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting, userName, setUserName, setMarkedQuotes, isLoggedIn, setIsLoggedIn, password, setPassword }) {
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)
     const markedQuotes = useSelector(({ philosophersData: { markedQuotes } }) => markedQuotes)
     const [openSnackbar] = useSnackbar()
@@ -58,8 +57,8 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                     </Link>
                 </li>
                 <li>
-                    {isLoggedIn ? <BackupRestore {...{ setUserName, userName, markedQuotes, openSnackbar, setMarkedQuotes, setIsLoggedIn }} /> : <LoginRegister {...{ setUserName, userName, openSnackbar, setIsLoggedIn }} />}
-                    <div className="backupNote">You can backup your marked quotes in database in case browser data gets deleted.</div>
+                    <LoginRegister {...{ setUserName, userName, openSnackbar, isLoggedIn, setIsLoggedIn, setMarkedQuotes, markedQuotes, password, setPassword }} />
+                    <div className="backupNote">You can login to backup your marked quotes in database in case browser data gets deleted.</div>
                 </li>
                 <li>
                     <BuildInfo />

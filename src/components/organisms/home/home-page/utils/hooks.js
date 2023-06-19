@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
-import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setOriginalOptionsRedux, setQuotesLoadedRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
+import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setQuotesLoadedRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
 
 export function useHomePageHooks() {
     const listRef = useRef()
@@ -22,6 +22,7 @@ export function useHomePageHooks() {
     const originalOptions = useSelector((state) => state?.philosophersData?.originalOptions)
     const userName = useSelector((state) => state?.philosophersData?.userName)
     const isLoggedIn = useSelector((state) => state?.philosophersData?.isLoggedIn)
+    const password = useSelector((state) => state?.philosophersData?.password)
     const [isFetching, setIsFetching] = useState(false)
 
     const setStart = (value) => dispatch(setStartRedux(value))
@@ -39,6 +40,7 @@ export function useHomePageHooks() {
     const setOriginalOptions = (value) => dispatch(setOriginalOptionsRedux(value))
     const setUserName = (value) => dispatch(setUserNameRedux(value))
     const setIsLoggedIn = (value) => dispatch(setIsLoggedInRedux(value))
+    const setPassword = (value) => dispatch(setPasswordRedux(value))
 
-    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setQuotesLoaded, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn }
+    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setQuotesLoaded, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword }
 }
