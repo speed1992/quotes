@@ -1,32 +1,7 @@
-import { useEffect } from 'react'
-import { getUserDetails, loginRegister, sendUserDetails } from '../mobile-menu/utils/utils'
+import { loginRegister } from '../mobile-menu/utils/utils'
 
 const LoginRegister = ({ setUserName, userName, isLoggedIn, setIsLoggedIn, openSnackbar, markedQuotes, setMarkedQuotes, password, setPassword }) => {
     const capitalizedUserName = userName.charAt(0).toUpperCase() + userName.slice(1)
-
-    useEffect(() => {
-        if (isLoggedIn) {
-            ;(async () => {
-                const markedQuoteClientCount = Object.values(markedQuotes).flat().length
-                let { markedQuotesFromServer, dateFromServer } = await getUserDetails({ userName, markedQuotes, openSnackbar, setMarkedQuotes })
-                if (markedQuotesFromServer) {
-                    const markedQuotesFromServerCount = Object.values(markedQuotesFromServer).flat().length
-                    if (markedQuotesFromServerCount > markedQuoteClientCount) {
-                        setMarkedQuotes(markedQuotesFromServer)
-                        openSnackbar('Auto-Sync :' + 'Restored all marked quotes!', 2000)
-                    } else if (markedQuoteClientCount > markedQuotesFromServerCount) {
-                        var currentClientDate = new Date()
-                        currentClientDate.setHours(0, 0, 0, 0)
-                        dateFromServer = new Date(dateFromServer)
-                        dateFromServer.setHours(0, 0, 0, 0)
-                        if (currentClientDate > dateFromServer) {
-                            await sendUserDetails({ userName, markedQuotes, openSnackbar })
-                        }
-                    }
-                }
-            })()
-        }
-    }, [])
 
     return (
         <>
