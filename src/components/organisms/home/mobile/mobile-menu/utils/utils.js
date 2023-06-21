@@ -1,21 +1,20 @@
 import { retryTenTimes } from '../../../../../../common/utils/apiUtils'
 
-export const sendUserDetails = async ({ userName, markedQuotes, openSnackbar }) => {
-    let response = await retryTenTimes(
-        async () =>
-            await fetch('https://quotes-backend.vercel.app/api/markedQuotes/backup', {
-                method: 'post',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    userName,
-                    markedQuotes,
-                    dateSynced: Date.now(),
-                }),
-            })
-    )
+export const sendUserDetails = async ({ userName, markedQuotes, openSnackbar, setSyncDate }) => {
+    let response = await retryTenTimes(async () => {
+        return await fetch('https://quotes-backend.vercel.app/api/markedQuotes/backup', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                userName,
+                markedQuotes,
+                dateSynced: Date.now(),
+            }),
+        })
+    })
 
     response = await response.json()
-    openSnackbar('Auto-Sync :' + JSON.stringify(response))
+    openSnackbar('Auto-Sync :' + JSON.stringify(response), 5000)
 }
 
 export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, setMarkedQuotes }) => {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useSnackbar } from 'react-simple-snackbar'
 import { getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
 import { getUserDetails, sendUserDetails } from '../../mobile/mobile-menu/utils/utils'
-import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setQuotesLoadedRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
+import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setQuotesLoadedRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setSyncDateRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
 
 export function useHomePageHooks() {
     const [openSnackbar] = useSnackbar()
@@ -26,6 +26,7 @@ export function useHomePageHooks() {
     const userName = useSelector((state) => state?.philosophersData?.userName)
     const isLoggedIn = useSelector((state) => state?.philosophersData?.isLoggedIn)
     const password = useSelector((state) => state?.philosophersData?.password)
+    const syncDate = useSelector((state) => state?.philosophersData?.syncDate)
     const [isFetching, setIsFetching] = useState(false)
 
     const setStart = (value) => dispatch(setStartRedux(value))
@@ -44,30 +45,40 @@ export function useHomePageHooks() {
     const setUserName = (value) => dispatch(setUserNameRedux(value))
     const setIsLoggedIn = (value) => dispatch(setIsLoggedInRedux(value))
     const setPassword = (value) => dispatch(setPasswordRedux(value))
+    const setSyncDate = (value) => dispatch(setSyncDateRedux(value))
 
     useEffect(() => {
         if (isLoggedIn) {
             ;(async () => {
                 const markedQuoteClientCount = Object.values(markedQuotes).flat().length
-                let { markedQuotesFromServer, dateFromServer } = await getUserDetails({ userName, markedQuotes, openSnackbar, setMarkedQuotes })
-                if (markedQuotesFromServer) {
-                    const markedQuotesFromServerCount = Object.values(markedQuotesFromServer).flat().length
-                    if (markedQuotesFromServerCount > markedQuoteClientCount) {
-                        setMarkedQuotes(markedQuotesFromServer)
-                        openSnackbar('Auto-Sync : Restored all marked quotes!', 2000)
-                    } else if (markedQuoteClientCount > markedQuotesFromServerCount) {
-                        var currentClientDate = new Date()
-                        currentClientDate.setHours(0, 0, 0, 0)
-                        dateFromServer = new Date(dateFromServer)
-                        dateFromServer.setHours(0, 0, 0, 0)
-                        if (currentClientDate > dateFromServer) {
-                            await sendUserDetails({ userName, markedQuotes, openSnackbar })
+                let currentClientDate = new Date()
+                let syncDateCopy = new Date(syncDate)
+
+                currentClientDate.setHours(0, 0, 0, 0)
+                currentClientDate = currentClientDate.getTime()
+
+                syncDateCopy = syncDateCopy.setHours(0, 0, 0, 0)
+
+                if (currentClientDate > syncDateCopy) {
+                    let { markedQuotesFromServer, dateFromServer } = await getUserDetails({ userName, markedQuotes, openSnackbar, setMarkedQuotes })
+                    setSyncDate(Date.now())
+                    if (markedQuotesFromServer) {
+                        const markedQuotesFromServerCount = Object.values(markedQuotesFromServer).flat().length
+                        if (markedQuotesFromServerCount > markedQuoteClientCount) {
+                            setMarkedQuotes(markedQuotesFromServer)
+                            openSnackbar('Auto-Sync : Restored all marked quotes!', 5000)
+                        } else if (markedQuoteClientCount > markedQuotesFromServerCount) {
+                            dateFromServer = new Date(dateFromServer)
+                            dateFromServer.setHours(0, 0, 0, 0)
+                            if (currentClientDate > dateFromServer) {
+                                await sendUserDetails({ userName, markedQuotes, openSnackbar })
+                            }
                         }
                     }
                 }
             })()
         }
-    }, [])
+    }, [isLoggedIn])
 
     return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setQuotesLoaded, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword }
 }

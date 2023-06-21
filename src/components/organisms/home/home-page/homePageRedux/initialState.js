@@ -25,6 +25,7 @@ let INITIAL_STATE = {
     voiceSpeed: 0.5,
     scrollPosition: null,
     scheduledPosts: {},
+    syncDate: 46190630,
 }
 
 export default INITIAL_STATE
