@@ -74,5 +74,10 @@
   },
   "resolutions": {
     "mini-css-extract-plugin": "2.4.5"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "(.*)web-workers/worker": "$1web-workers/mocks/mockWorker"
+    }
   }
 }

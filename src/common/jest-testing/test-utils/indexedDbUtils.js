@@ -18,7 +18,6 @@ export const dbInit = () => {
 
         openRequest.onupgradeneeded = function (e) {
             db = e.target.result
-            console.log('running onupgradeneeded')
             db.createObjectStore('myDB')
         }
 

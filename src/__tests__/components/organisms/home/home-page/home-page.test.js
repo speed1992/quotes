@@ -6,6 +6,6 @@ import HomePage from '../../../../../components/organisms/home/home-page/home-pa
 
 describe('Homepage component', () => {
     test('should render without crash', async () => {
-        await act(async () => renderWithProviders(<HomePage />), { timeout: Infinity })
-    })
+        await act(async () => renderWithProviders(<HomePage />))
+    }, 50000)
 })
