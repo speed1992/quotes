@@ -66,7 +66,7 @@ export function useHomePageHooks() {
                         const markedQuotesFromServerCount = Object.values(markedQuotesFromServer).flat().length
                         if (markedQuotesFromServerCount > markedQuoteClientCount) {
                             setMarkedQuotes(markedQuotesFromServer)
-                            openSnackbar('Auto-Sync : Restored all marked quotes!', 5000)
+                            openSnackbar('Auto-Sync : Restored all marked quotes!', 4000)
                         } else if (markedQuoteClientCount > markedQuotesFromServerCount) {
                             dateFromServer = new Date(dateFromServer)
                             dateFromServer.setHours(0, 0, 0, 0)

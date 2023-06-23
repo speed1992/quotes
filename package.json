@@ -27,6 +27,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "cypress": "^12.15.0",
     "dexie": "^3.2.3",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.7.0",
@@ -52,7 +53,8 @@
     "show-prod-updates": "npx ncu --dep prod",
     "perform-prod-update": "npx ncu -u --dep prod",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
-    "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix"
+    "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
+    "cypress:open": "cypress open --e2e --browser chrome"
   },
   "eslintConfig": {
     "extends": [
@@ -77,7 +79,8 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "(.*)web-workers/worker": "$1web-workers/mocks/mockWorker"
+      "(.*)web-workers/worker": "$1web-workers/mocks/mockWorker",
+      "react-simple-snackbar": "<rootDir>/src/__tests__/mocks/react-simple-snackbar"
     }
   }
 }
