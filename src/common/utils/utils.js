@@ -22,7 +22,6 @@ export const search = ({ searchText, currentData, setCurrentData }) => {
             worker.postMessage({ currentData, searchText, filterName: 'searchTermFilter' })
             worker.onmessage = (event) => {
                 const filteredQuotesFromWorker = JSON.parse(eval(`(${JSON.stringify(event.data)})`))
-                console.log(filteredQuotesFromWorker)
                 resolve(filteredQuotesFromWorker)
             }
         }
