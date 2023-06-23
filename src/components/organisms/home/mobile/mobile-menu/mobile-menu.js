@@ -58,7 +58,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 </li>
                 <li>
                     <LoginRegister {...{ setUserName, userName, openSnackbar, isLoggedIn, setIsLoggedIn, setMarkedQuotes, markedQuotes, password, setPassword }} />
-                    <div className="backupNote">You can login to backup your marked quotes in database in case browser data gets deleted.</div>
+                    {!isLoggedIn && <div className="backupNote">You can login to backup your marked quotes in database in case browser data gets deleted.</div>}
                 </li>
                 <li>
                     <BuildInfo />
