@@ -29,7 +29,6 @@ export const dbInit = () => {
         openRequest.onsuccess = (event) => {
             addItem(db)
             resolve()
-            // add implementation here
         }
     })
 }
