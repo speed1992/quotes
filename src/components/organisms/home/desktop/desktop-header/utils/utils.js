@@ -1,3 +1,4 @@
+import { API } from '../../../../../../common/apis/apiEndpoints'
 import { getPhilosopherQuotes, lazyLoadAsset } from '../../../../../../common/static/utils/utils'
 import { retryTenTimes } from '../../../../../../common/utils/apiUtils'
 import { addResponseOptionsDataIntoRedux } from '../../../../../../common/utils/lazyLoadUtils'
@@ -24,12 +25,9 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
 }
 
 export const onFocusHandler = async ({ options, setOptions, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting }) => {
-    // if (options.length === 1) {
     setIsFetchingOptions && setIsFetchingOptions(true)
-    let response = await retryTenTimes(() => fetch('https://cdn.jsdelivr.net/gh/speed1992/quotes/src/common/static/philosophers-data.json'))
-    // let response = await retryTenTimes(() => fetch('https://raw.githubusercontent.com/speed1992/quotes/main/src/common/static/philosophers-data.json'))
+    let response = await retryTenTimes(() => fetch(API.STATIC_DATA))
     response = await response.json()
     addResponseOptionsDataIntoRedux({ newOptions: response, oldOptions: options, oldOriginalOptions: originalOptions, setOptions, setOriginalOptions, sorting })
     setIsFetchingOptions && setIsFetchingOptions(false)
-    // }
 }
