@@ -1,4 +1,4 @@
-import { API } from '../../../../../../common/apis/apiEndpoints'
+import { API_ENDPOINTS } from '../../../../../../common/apis/apiEndpoints'
 import { getPhilosopherQuotes, lazyLoadAsset } from '../../../../../../common/static/utils/utils'
 import { retryTenTimes } from '../../../../../../common/utils/apiUtils'
 import { addResponseOptionsDataIntoRedux } from '../../../../../../common/utils/lazyLoadUtils'
@@ -26,7 +26,7 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
 
 export const onFocusHandler = async ({ options, setOptions, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting }) => {
     setIsFetchingOptions && setIsFetchingOptions(true)
-    let response = await retryTenTimes(() => fetch(API.STATIC_DATA))
+    let response = await retryTenTimes(() => fetch(API_ENDPOINTS.STATIC_DATA.STATIC_ASSET_GRAPH))
     response = await response.json()
     addResponseOptionsDataIntoRedux({ newOptions: response, oldOptions: options, oldOriginalOptions: originalOptions, setOptions, setOriginalOptions, sorting })
     setIsFetchingOptions && setIsFetchingOptions(false)

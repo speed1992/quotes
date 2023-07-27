@@ -1,4 +1,4 @@
-import { API } from '../../apis/apiEndpoints'
+import { API_ENDPOINTS } from '../../apis/apiEndpoints'
 import { retryTenTimes } from '../../utils/apiUtils'
 
 export const addPhilosopherNameToQuote = (quote, philosopherFullName) => `${quote} ― ${philosopherFullName}`
@@ -39,7 +39,7 @@ export const addPhilosopherInGlobalData = (philosopherName, { options, setOption
 export const lazyLoadAsset = (philosopherName, { options, setOptions }, setQuotesLoaded, callbacks) => {
     return new Promise((resolve, reject) => {
         const fileName = philosopherName.toLowerCase()
-        retryTenTimes(() => fetch(API.STATIC_ASSETS + fileName + '.json'))
+        retryTenTimes(() => fetch(API_ENDPOINTS.STATIC_DATA.STATIC_QUOTES + fileName + '.json'))
             .then((response) => response.json())
             .then((data) => {
                 callbacks && callbacks.map((callback) => callback(data))

@@ -1,9 +1,9 @@
-import { API } from '../../../../../../common/apis/apiEndpoints'
+import { API_ENDPOINTS } from '../../../../../../common/apis/apiEndpoints'
 import { retryTenTimes } from '../../../../../../common/utils/apiUtils'
 
 export const sendUserDetails = async ({ userName, markedQuotes, openSnackbar, setSyncDate }) => {
     await retryTenTimes(async () => {
-        return await fetch(API.BACKUP, {
+        return await fetch(API_ENDPOINTS.MARKED_QUOTES.BACKUP, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -18,7 +18,7 @@ export const sendUserDetails = async ({ userName, markedQuotes, openSnackbar, se
 export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, setMarkedQuotes }) => {
     let response = await retryTenTimes(
         async () =>
-            await fetch(API.RESTORE, {
+            await fetch(API_ENDPOINTS.MARKED_QUOTES.RESTORE, {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -50,7 +50,7 @@ export const loginRegister = async ({ apiCallType, userName, password, setIsLogg
     if (apiCallType === 'login') {
         response = await retryTenTimes(
             async () =>
-                await fetch(API.LOGIN, {
+                await fetch(API_ENDPOINTS.USER.LOGIN, {
                     method: 'post',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -62,7 +62,7 @@ export const loginRegister = async ({ apiCallType, userName, password, setIsLogg
     } else {
         response = await retryTenTimes(
             async () =>
-                await fetch(API.CREATE_USER, {
+                await fetch(API_ENDPOINTS.USER.CREATE, {
                     method: 'post',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
