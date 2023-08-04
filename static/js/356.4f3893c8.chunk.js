@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[356],{3356:function(s,e,a){a.r(e),a.d(e,{default:function(){return n}});a(2791);var i=a(184);var n=function(){return(0,i.jsxs)("div",{className:"loading",children:[(0,i.jsx)("div",{className:"uil-ring-css",children:(0,i.jsx)("div",{})}),(0,i.jsx)("div",{className:"loadingText-primary",children:"Please wait..."}),(0,i.jsx)("div",{className:"loadingText-secondary",children:"Quotes are loading..."})]})}}}]);
-//# sourceMappingURL=356.4f3893c8.chunk.js.map
