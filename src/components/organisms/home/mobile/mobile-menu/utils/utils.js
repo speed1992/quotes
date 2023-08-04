@@ -44,9 +44,10 @@ export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, set
     }
 }
 
-export const loginRegister = async ({ apiCallType, userName, password, setIsLoggedIn, openSnackbar }) => {
+export const loginRegister = async ({ apiCallType, userName, password, setIsLoggedIn, openSnackbar, setIsFetching }) => {
     const capitalizedUserName = userName.charAt(0).toUpperCase() + userName.slice(1)
     let response
+    setIsFetching(true)
     if (apiCallType === 'login') {
         response = await retryTenTimes(
             async () =>
@@ -74,6 +75,7 @@ export const loginRegister = async ({ apiCallType, userName, password, setIsLogg
     }
 
     response = await response.json()
+    setIsFetching(false)
 
     if (response?.ok) {
         setIsLoggedIn(true)

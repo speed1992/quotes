@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { applyFilters } from '../../../../common/utils/searchUtils'
@@ -12,12 +12,10 @@ import { setDarkModeClassOnHTMLTag } from './utils/utils'
 const Loader = React.lazy(() => retryTenTimes(() => import('../../../../common/components/loader/loader')))
 
 const HomePage = () => {
-    const [isFetchingOptions, setIsFetchingOptions] = useState(false)
-
     let propsToSend = useHomePageHooks()
     const { options, sorting, setSorting } = useSortingHooks()
 
-    const { start, end, searchText, currentPhilosopher, currentData, markedMode, quotesLoaded, markedQuotes, darkMode, setDarkMode, originalData, isFetching, setCurrentData, setMarkedQuotes } = propsToSend
+    const { start, end, searchText, currentPhilosopher, currentData, markedMode, quotesLoaded, markedQuotes, darkMode, setDarkMode, originalData, isFetching, setCurrentData, setMarkedQuotes, isFetchingOptions, setIsFetchingOptions } = propsToSend
 
     propsToSend = { ...propsToSend, setSorting, sorting, isFetchingOptions, setIsFetchingOptions }
 

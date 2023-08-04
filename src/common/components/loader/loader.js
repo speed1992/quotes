@@ -8,7 +8,7 @@ function Loader() {
                 <div></div>
             </div>
             <div className="loadingText-primary">Please wait...</div>
-            <div className="loadingText-secondary">Quotes are loading...</div>
+            <div className="loadingText-secondary">Loading...</div>
         </div>
     )
 }

@@ -28,6 +28,7 @@ export function useHomePageHooks() {
     const password = useSelector((state) => state?.philosophersData?.password)
     const syncDate = useSelector((state) => state?.philosophersData?.syncDate)
     const [isFetching, setIsFetching] = useState(false)
+    const [isFetchingOptions, setIsFetchingOptions] = useState(false)
 
     const setStart = (value) => dispatch(setStartRedux(value))
     const setEnd = (value) => dispatch(setEndRedux(value))
@@ -80,5 +81,5 @@ export function useHomePageHooks() {
         }
     }, [isLoggedIn])
 
-    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setQuotesLoaded, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword }
+    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setQuotesLoaded, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions }
 }
