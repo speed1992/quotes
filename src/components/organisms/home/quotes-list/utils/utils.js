@@ -24,7 +24,6 @@ export const searchByWordLength = async (start, end, quotes, { markedMode, marke
             worker.postMessage({ quotes, end, start, filterName: 'wordCountFilter' })
             worker.onmessage = (event) => {
                 const newData = JSON.parse(eval(`(${JSON.stringify(event.data)})`))
-                console.log(newData)
                 changeQuotesData({ currentData: newData, setCurrentData, currentPhilosopher }, { markedMode, markedQuotes, setMarkedQuotes })
                 resolve()
             }
