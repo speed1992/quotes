@@ -4,7 +4,9 @@ import { persistReducer, persistStore } from 'redux-persist'
 import DBstorage from 'redux-persist-indexeddb-storage'
 import getStoredState from 'redux-persist/es/getStoredState'
 import storage from 'redux-persist/lib/storage'
+import reduxQuerySync from 'redux-query-sync'
 import philosophersDataReducer from '../../components/organisms/home/home-page/homePageRedux/homePageRedux'
+import INITIAL_STATE from '../../components/organisms/home/home-page/homePageRedux/initialState'
 import { getPhilosopherObjectIndex, getPhilosopherQuotes } from '../static/utils/utils'
 import { PHILOSOPHER_TO_PURGE } from './purgeCache'
 import { cleanMarkedQuotes } from './utils/migrationUtils'
@@ -57,6 +59,27 @@ export const store = configureStore({
             serializableCheck: false,
         }),
     devTools: process.env.NODE_ENV !== 'production',
+})
+
+reduxQuerySync({
+    store, // your Redux store
+    params: {
+        currentPhilosopher: {
+            // The selector you use to get the destination string from the state object.
+            selector: (state) => state?.philosophersData?.currentPhilosopher,
+            // The action creator you use for setting a new destination.
+            action: (value) => ({ type: 'philosophersData/setCurrentPhilosopherRedux', payload: value }),
+        },
+        scrollPosition: {
+            // The selector you use to get the destination string from the state object.
+            selector: (state) => state.philosophersData.scrollPosition,
+            // The action creator you use for setting a new destination.
+            action: (value) => ({ type: 'philosophersData/setScrollPositionRedux', payload: value }),
+        },
+    },
+    // Initially set the store's state to the current location.
+    initialTruth: 'store',
+    defaultState: INITIAL_STATE,
 })
 
 export const persistor = persistStore(store)
