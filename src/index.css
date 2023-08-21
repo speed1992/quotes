@@ -77,7 +77,9 @@ button {
 
 button {
     border-radius: 2rem;
-    padding: 0.5rem 1rem;
+    border-color: gray;
+    border-width: 1px;
+    padding: 0.4rem 0.6rem;
 }
 
 .mobile .header input {
@@ -87,4 +89,9 @@ button {
 .lightTheme input,
 .lightTheme button {
     border-width: 1.5px;
+}
+
+.darkTheme button {
+    border-color: #b4b4b4;
+    border-width: 1px;
 }
