@@ -74,3 +74,11 @@ button {
 .overflow-hidden {
     overflow: hidden;
 }
+
+button {
+    border-radius: 2rem;
+}
+
+.mobile .header input {
+    border-radius: 0.25rem;
+}
