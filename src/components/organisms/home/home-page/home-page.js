@@ -8,7 +8,7 @@ import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
 import styles from './home-page.module.css'
 import { useHomePageHooks } from './utils/hooks'
 import { useSortingHooks } from './utils/sortingHook'
-import { setDarkModeClassOnHTMLTag } from './utils/utils'
+import { setThemeClassNameOnHTMLTag } from './utils/utils'
 const Loader = React.lazy(() => retryTenTimes(() => import('../../../../common/components/loader/loader')))
 
 const HomePage = () => {
@@ -26,13 +26,13 @@ const HomePage = () => {
     }, [start, end, searchText, markedMode, quotesLoaded, currentPhilosopher, currentData.length, markedQuotes[currentPhilosopher]?.quotes?.length])
 
     useEffect(() => {
-        setDarkModeClassOnHTMLTag(darkMode)
+        setThemeClassNameOnHTMLTag(darkMode)
     }, [darkMode])
 
     useEffect(() => {
         if (isDesktop()) {
             setDarkMode(false)
-            setDarkModeClassOnHTMLTag(false)
+            setThemeClassNameOnHTMLTag(false)
         }
     }, [darkMode])
 

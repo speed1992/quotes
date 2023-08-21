@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { onFocusHandler as getPhilosopherJSON } from '../../home/desktop/desktop-header/utils/utils'
 import { setOptionsRedux, setOriginalOptionsRedux } from '../../home/home-page/homePageRedux/homePageRedux'
-import { setDarkModeClassOnHTMLTag } from '../../home/home-page/utils/utils'
+import { setThemeClassNameOnHTMLTag } from '../../home/home-page/utils/utils'
 import Table from '../table/table'
 import columns from './columns.json'
 import { createData } from './utils/utils'
@@ -27,7 +27,7 @@ const Report = () => {
     }, [options.length])
 
     useEffect(() => {
-        setDarkModeClassOnHTMLTag(darkMode)
+        setThemeClassNameOnHTMLTag(darkMode)
     }, [darkMode])
 
     return data.length > 0 ? (

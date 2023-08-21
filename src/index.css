@@ -82,3 +82,8 @@ button {
 .mobile .header input {
     border-radius: 0.25rem;
 }
+
+.lightTheme input,
+.lightTheme button {
+    border-width: 1.5px;
+}

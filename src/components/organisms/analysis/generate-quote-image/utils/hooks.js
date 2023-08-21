@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import ROUTES from '../../../../../common/routes/routes'
 import { uuidv4 } from '../../../../../common/utils/commonUtils'
-import { setDarkModeClassOnHTMLTag } from '../../../home/home-page/utils/utils'
+import { setThemeClassNameOnHTMLTag } from '../../../home/home-page/utils/utils'
 import { exportAsImage, shareQuote } from './utils'
 
 export function useCreateQuoteImage(philosopherFullName, share, exportRef) {
@@ -12,7 +12,7 @@ export function useCreateQuoteImage(philosopherFullName, share, exportRef) {
     const darkMode = useSelector((state) => state.philosophersData.darkMode)
 
     useEffect(() => {
-        setDarkModeClassOnHTMLTag(darkMode)
+        setThemeClassNameOnHTMLTag(darkMode)
     }, [darkMode])
 
     useEffect(() => {

@@ -1,11 +1,12 @@
 import { getPhilosopherData } from '../../../../../common/static/utils/utils'
 
-export const setDarkModeClassOnHTMLTag = (value, className = 'darkTheme') => {
+export const setThemeClassNameOnHTMLTag = (value) => {
     var root = document.getElementsByTagName('html')[0]
+    root.className = ''
     if (value) {
-        root.classList.add(className)
+        root.classList.add('darkTheme')
     } else {
-        root.classList.remove(className)
+        root.classList.add('lightTheme')
     }
 }
 
