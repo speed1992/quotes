@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useState } from 'react'
+import React, { Suspense, useCallback, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSnackbar } from 'react-simple-snackbar'
 import ROUTES from '../../../../common/routes/routes'
@@ -18,7 +18,10 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
     const { quote: quotationText, id: quotationId } = currentQuote
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode }
     const [localTranslateKey, setLocalTranslateKey] = useState(false)
-    const debouncedHandler = debounce(() => setScrollPosition(index), 500)
+    const debouncedHandler = useCallback(
+        debounce(() => setScrollPosition(index), 1000),
+        []
+    )
 
     if (!isUndefined(currentQuote))
         return (
