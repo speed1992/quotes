@@ -4,9 +4,8 @@ import { persistReducer, persistStore } from 'redux-persist'
 import DBstorage from 'redux-persist-indexeddb-storage'
 import getStoredState from 'redux-persist/es/getStoredState'
 import storage from 'redux-persist/lib/storage'
-import reduxQuerySync from 'redux-query-sync'
 import philosophersDataReducer from '../../components/organisms/home/home-page/homePageRedux/homePageRedux'
-import INITIAL_STATE from '../../components/organisms/home/home-page/homePageRedux/initialState'
+import { querySync } from '../settings/redux-query-sync'
 import { getPhilosopherObjectIndex, getPhilosopherQuotes } from '../static/utils/utils'
 import { PHILOSOPHER_TO_PURGE } from './purgeCache'
 import { cleanMarkedQuotes } from './utils/migrationUtils'
@@ -60,5 +59,7 @@ export const store = configureStore({
         }),
     devTools: process.env.NODE_ENV !== 'production',
 })
+
+querySync()
 
 export const persistor = persistStore(store)

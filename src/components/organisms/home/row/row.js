@@ -19,8 +19,8 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode }
     const [localTranslateKey, setLocalTranslateKey] = useState(false)
     const debouncedHandler = useCallback(
-        debounce(() => setScrollPosition(index), 1000),
-        []
+        debounce(() => setScrollPosition(parseInt(quotationId)), 1000),
+        [quotationId]
     )
 
     if (!isUndefined(currentQuote))

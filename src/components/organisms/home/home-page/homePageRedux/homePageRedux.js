@@ -42,7 +42,9 @@ export const philosophersDataSlice = createSlice({
             state.voiceSpeed = payload
         },
         setScrollPositionRedux: (state, { payload }) => {
-            state.scrollPosition = payload
+            const obj = {}
+            obj[state.currentPhilosopher] = payload
+            state.scrollPosition = { ...state.scrollPosition, ...obj }
         },
         setSortingRedux: (state, { payload }) => {
             state.sorting = payload

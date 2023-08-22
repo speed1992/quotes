@@ -23,7 +23,7 @@ let INITIAL_STATE = {
     quotesLoaded: false,
     darkMode: false,
     voiceSpeed: 0.5,
-    scrollPosition: 0,
+    scrollPosition: {},
     scheduledPosts: {},
     syncDate: 46190630,
 }

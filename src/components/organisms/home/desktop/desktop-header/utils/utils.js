@@ -2,14 +2,14 @@ import { API_ENDPOINTS } from '../../../../../../common/apis/apiEndpoints'
 import { getPhilosopherQuotes, lazyLoadAsset } from '../../../../../../common/static/utils/utils'
 import { retryTenTimes } from '../../../../../../common/utils/apiUtils'
 import { addResponseOptionsDataIntoRedux } from '../../../../../../common/utils/lazyLoadUtils'
-import { scrollToMemorizedRow } from '../../../../../../common/utils/utils'
+import { scrollToQuoteId } from '../../../../../../common/utils/utils'
 import { changeQuotesData } from '../../../quotes-list/utils/utils'
 
-export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, setQuotesLoaded, markedMode, markedQuotes, setMarkedQuotes }) {
+export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, setQuotesLoaded, markedMode, markedQuotes, setMarkedQuotes, scrollPosition }) {
     function callback() {
         setCurrentPhilosopher(philosopher)
         changeQuotesData({ philosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
-        scrollToMemorizedRow(listRef, currentData, philosopher)
+        scrollToQuoteId(listRef, scrollPosition, currentData, philosopher)
         setIsFetching(false)
     }
     setStart(1)

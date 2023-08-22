@@ -14,8 +14,14 @@ export function querySync() {
                 defaultValue: INITIAL_STATE.currentPhilosopher,
             },
             scrollPosition: {
-                selector: (state) => state.philosophersData.scrollPosition,
-                action: (value) => ({ type: 'philosophersData/setScrollPositionRedux', payload: value }),
+                selector: (state) => {
+                    const scrollPos = state.philosophersData.scrollPosition[state.philosophersData.currentPhilosopher]
+                    return scrollPos !== undefined ? scrollPos : 1
+                },
+                action: (value) => {
+                    console.log('inside action ')
+                    return { type: 'philosophersData/setScrollPositionRedux', payload: value }
+                },
                 defaultValue: INITIAL_STATE.scrollPosition,
             },
         },

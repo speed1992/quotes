@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSnackbar } from 'react-simple-snackbar'
-import { querySync } from '../../../../../common/settings/redux-query-sync.js'
 import { doesPhilosopherDataExist, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
 import { onFocusHandler } from '../../desktop/desktop-header/utils/utils'
 import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setQuotesLoadedRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setSyncDateRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
@@ -50,8 +49,6 @@ export function useHomePageHooks() {
     const setIsLoggedIn = (value) => dispatch(setIsLoggedInRedux(value))
     const setPassword = (value) => dispatch(setPasswordRedux(value))
     const setSyncDate = (value) => dispatch(setSyncDateRedux(value))
-
-    querySync()
 
     useEffect(() => {
         if (isLoggedIn) {

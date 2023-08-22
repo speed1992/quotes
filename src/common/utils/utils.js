@@ -16,6 +16,20 @@ export const scrollToMemorizedRow = (listRef, scrollPosition, currentData) => {
     }
 }
 
+export const scrollToQuoteId = (listRef, scrollObject, currentData, currentPhilosopher) => {
+    const quoteId = scrollObject[currentPhilosopher]
+    if (currentData?.length > 0 && listRef.current) {
+        if (quoteId !== undefined && quoteId !== 'undefined' && quoteId && quoteId > 0) {
+            const index = currentData.findIndex(({ id }) => {
+                return id === quoteId
+            })
+            if (index > -1) listRef.current.scrollToRow(index)
+        } else {
+            scrollToFirstRow(listRef)
+        }
+    }
+}
+
 export const search = ({ searchText, currentData, setCurrentData }) => {
     return new Promise((resolve) => {
         if (currentData !== undefined) {

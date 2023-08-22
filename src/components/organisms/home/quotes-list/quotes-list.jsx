@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import List from 'react-virtualized/dist/commonjs/List'
 import { ruleEngine } from '../../../../common/utils/ruleEngine'
-import { scrollToMemorizedRow } from '../../../../common/utils/utils'
+import { scrollToQuoteId } from '../../../../common/utils/utils'
 import Row from '../row/row'
 import './quotes-list.css'
 import { NoRowsRenderer } from './utils/listUtils'
@@ -13,7 +13,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, markedMode
     const philosopherFullName_i10n = getPhilosopherFullName_i10n({ currentPhilosopher, options })
 
     useEffect(() => {
-        scrollToMemorizedRow(listRef, scrollPosition, currentData)
+        scrollToQuoteId(listRef, scrollPosition, currentData, currentPhilosopher)
     }, [listRef.current])
 
     function rowRenderer({ index, ...others }) {
