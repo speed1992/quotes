@@ -9,7 +9,7 @@
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "editor.formatOnSave": true,
-    "javascript.updateImportsOnFileMove.enabled": "prompt",
+    "javascript.updateImportsOnFileMove.enabled": "always",
     "explorer.copyRelativePathSeparator": "/",
     "output.smartScroll.enabled": false,
     "workbench.editorAssociations": {

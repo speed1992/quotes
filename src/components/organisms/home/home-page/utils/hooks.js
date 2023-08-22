@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSnackbar } from 'react-simple-snackbar'
-import { getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
-import { getUserDetails, sendUserDetails } from '../../mobile/mobile-menu/utils/utils'
+import { querySync } from '../../../../../common/settings/redux-query-sync.js'
+import { doesPhilosopherDataExist, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
+import { onFocusHandler } from '../../desktop/desktop-header/utils/utils'
 import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setQuotesLoadedRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setSyncDateRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
+import { compareWithServerSyncDatesAndMakeAnAPICall, getClientSyncDates } from './utils'
 
 export function useHomePageHooks() {
     const [openSnackbar] = useSnackbar()
@@ -27,6 +29,7 @@ export function useHomePageHooks() {
     const isLoggedIn = useSelector((state) => state?.philosophersData?.isLoggedIn)
     const password = useSelector((state) => state?.philosophersData?.password)
     const syncDate = useSelector((state) => state?.philosophersData?.syncDate)
+    const sorting = useSelector((state) => state.philosophersData.sorting)
     const [isFetching, setIsFetching] = useState(false)
     const [isFetchingOptions, setIsFetchingOptions] = useState(false)
 
@@ -48,38 +51,28 @@ export function useHomePageHooks() {
     const setPassword = (value) => dispatch(setPasswordRedux(value))
     const setSyncDate = (value) => dispatch(setSyncDateRedux(value))
 
+    querySync()
+
     useEffect(() => {
         if (isLoggedIn) {
             ;(async () => {
                 const markedQuoteClientCount = Object.values(markedQuotes).flat().length
-                let currentClientDate = new Date()
-                let syncDateCopy = new Date(syncDate)
+                let { currentClientDate, lastSyncClientDate } = getClientSyncDates(syncDate)
 
-                currentClientDate.setHours(0, 0, 0, 0)
-                currentClientDate = currentClientDate.getTime()
-
-                syncDateCopy = syncDateCopy.setHours(0, 0, 0, 0)
-
-                if (currentClientDate > syncDateCopy) {
-                    let { markedQuotesFromServer, dateFromServer } = await getUserDetails({ userName, markedQuotes, openSnackbar, setMarkedQuotes })
-                    setSyncDate(Date.now())
-                    if (markedQuotesFromServer) {
-                        const markedQuotesFromServerCount = Object.values(markedQuotesFromServer).flat().length
-                        if (markedQuotesFromServerCount > markedQuoteClientCount) {
-                            setMarkedQuotes(markedQuotesFromServer)
-                            openSnackbar('Auto-Sync : Restored all marked quotes!', 4000)
-                        } else if (markedQuoteClientCount > markedQuotesFromServerCount) {
-                            dateFromServer = new Date(dateFromServer)
-                            dateFromServer.setHours(0, 0, 0, 0)
-                            if (currentClientDate > dateFromServer) {
-                                await sendUserDetails({ userName, markedQuotes, openSnackbar })
-                            }
-                        }
-                    }
+                if (currentClientDate > lastSyncClientDate) {
+                    await compareWithServerSyncDatesAndMakeAnAPICall(userName, markedQuotes, openSnackbar, setMarkedQuotes, setSyncDate, markedQuoteClientCount, currentClientDate)
                 }
             })()
         }
     }, [isLoggedIn])
+
+    console.log('doesPhilosopherDataExist(currentPhilosopher, options)', doesPhilosopherDataExist(currentPhilosopher, options))
+
+    useEffect(() => {
+        if (!doesPhilosopherDataExist(currentPhilosopher, options)) {
+            onFocusHandler({ options, setOptions, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting })
+        }
+    }, [currentPhilosopher])
 
     return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setQuotesLoaded, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions }
 }
