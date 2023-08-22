@@ -8,9 +8,7 @@ export function querySync() {
         params: {
             currentPhilosopher: {
                 // The selector you use to get the destination string from the state object.
-                selector: (state) => {
-                    return state?.philosophersData?.currentPhilosopher
-                },
+                selector: (state) => state?.philosophersData?.currentPhilosopher,
                 // The action creator you use for setting a new destination.
                 action: (value) => ({ type: 'philosophersData/setCurrentPhilosopherRedux', payload: value }),
             },
