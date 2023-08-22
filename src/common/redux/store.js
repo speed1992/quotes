@@ -61,25 +61,4 @@ export const store = configureStore({
     devTools: process.env.NODE_ENV !== 'production',
 })
 
-reduxQuerySync({
-    store, // your Redux store
-    params: {
-        currentPhilosopher: {
-            // The selector you use to get the destination string from the state object.
-            selector: (state) => state?.philosophersData?.currentPhilosopher,
-            // The action creator you use for setting a new destination.
-            action: (value) => ({ type: 'philosophersData/setCurrentPhilosopherRedux', payload: value }),
-        },
-        scrollPosition: {
-            // The selector you use to get the destination string from the state object.
-            selector: (state) => state.philosophersData.scrollPosition,
-            // The action creator you use for setting a new destination.
-            action: (value) => ({ type: 'philosophersData/setScrollPositionRedux', payload: value }),
-        },
-    },
-    // Initially set the store's state to the current location.
-    initialTruth: 'store',
-    defaultState: INITIAL_STATE,
-})
-
 export const persistor = persistStore(store)

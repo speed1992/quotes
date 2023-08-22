@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
+import { doesPhilosopherDataExist } from '../../../../common/static/utils/utils'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { applyFilters } from '../../../../common/utils/searchUtils'
 import { isDesktop } from '../../../../common/utils/utils'
@@ -36,6 +37,8 @@ const HomePage = () => {
         }
     }, [darkMode])
 
+    if (!doesPhilosopherDataExist(currentPhilosopher, options)) return <></>
+
     const renderList = () => <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
 
     return (
@@ -44,7 +47,6 @@ const HomePage = () => {
                 <Loader />
             ) : (
                 <>
-                    {' '}
                     <Header {...propsToSend} /> <div className={styles.content}>{renderList()}</div>
                 </>
             )}

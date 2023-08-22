@@ -61,3 +61,8 @@ export const getCurrentPhilosopherFullname = (currentPhilosopher, options) => {
     const currentPhilosopherData = options[getPhilosopherObjectIndex(currentPhilosopher, options)]
     return currentPhilosopherData.fullName
 }
+
+export const doesPhilosopherDataExist = (philosopher, options) => {
+    if (options[getPhilosopherObjectIndex(philosopher, options)]) return true
+    else return false
+}
