@@ -11,10 +11,12 @@ export function querySync() {
                 selector: (state) => state?.philosophersData?.currentPhilosopher,
                 // The action creator you use for setting a new destination.
                 action: (value) => ({ type: 'philosophersData/setCurrentPhilosopherRedux', payload: value }),
+                defaultValue: INITIAL_STATE.currentPhilosopher,
             },
             scrollPosition: {
                 selector: (state) => state.philosophersData.scrollPosition,
                 action: (value) => ({ type: 'philosophersData/setScrollPositionRedux', payload: value }),
+                defaultValue: INITIAL_STATE.scrollPosition,
             },
         },
         // Initially set the store's state to the current location.
