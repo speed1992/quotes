@@ -22,7 +22,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
 
     if (!isUndefined(currentQuote))
         return (
-            <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
+            <div key={index} className={evaluateClassNames(index)} style={style} onClick={debouncedHandler}>
                 <span style={{ position: 'absolute', top: '10rem' }} className="row">
                     <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
                         {`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}
