@@ -14,7 +14,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, markedMode
 
     useEffect(() => {
         scrollToQuoteId(listRef, scrollPosition, currentData, currentPhilosopher)
-    }, [listRef.current, currentPhilosopher])
+    }, [listRef.current])
 
     function rowRenderer({ index, ...others }) {
         return <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentData, setCurrentData, currentQuote: currentData[index], index, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, listRef, scheduledPosts, setScheduledQuotes }} {...others} />

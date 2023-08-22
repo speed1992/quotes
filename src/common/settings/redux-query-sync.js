@@ -16,7 +16,7 @@ export function querySync() {
             scrollPosition: {
                 selector: (state) => {
                     const scrollPos = state.philosophersData.scrollPosition[state.philosophersData.currentPhilosopher]
-                    return scrollPos !== undefined ? scrollPos : 1
+                    return scrollPos !== undefined && scrollPos !== 'undefined' ? scrollPos : 1
                 },
                 action: (value) => {
                     console.log('inside action ')
