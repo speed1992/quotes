@@ -17,7 +17,10 @@ export function querySync() {
                     const scrollPos = state.philosophersData.scrollPosition[state.philosophersData.currentPhilosopher]
                     return scrollPos !== undefined && scrollPos !== 'undefined' ? scrollPos : 1
                 },
-                action: (value) => ({ type: 'philosophersData/setScrollPositionRedux', payload: value }),
+                action: (value) => {
+                    if (value) return { type: 'philosophersData/setScrollPositionRedux', payload: value }
+                },
+
                 defaultValue: INITIAL_STATE.scrollPosition,
             },
         },
