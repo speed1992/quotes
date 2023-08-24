@@ -20,7 +20,7 @@ const persistConfig = getPersistConfig({
 const newPersistConfig = getPersistConfig({
     key: 'root',
     storage: DBstorage('myDB'),
-    blacklist: ['currentData', 'originalData', 'quotesLoaded'],
+    blacklist: ['currentData', 'originalData', 'quotesLoaded', 'currentPhilosopher'],
     rootReducer: philosophersDataReducer,
     migrate: async (state) => {
         if (state === undefined) {
