@@ -18,10 +18,10 @@ export function querySync() {
             scrollPosition: {
                 selector: (state) => {
                     const scrollPos = state.philosophersData.scrollPosition[state.philosophersData.currentPhilosopher]
-                    return scrollPos !== undefined || scrollPos !== 'undefined' ? scrollPos : 1
+                    return scrollPos !== undefined && scrollPos !== 'undefined' && !isNaN(scrollPos) ? scrollPos : 1
                 },
                 action: (value) => {
-                    if (value) return { type: 'philosophersData/setScrollPositionRedux', payload: value }
+                    if (value && !isNaN(value)) return { type: 'philosophersData/setScrollPositionRedux', payload: value }
                     return { type: 'philosophersData/setScrollPositionRedux', payload: 1 }
                 },
 

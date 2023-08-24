@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useState } from 'react'
+import React, { Suspense, useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSnackbar } from 'react-simple-snackbar'
 import ROUTES from '../../../../common/routes/routes'
@@ -13,13 +13,15 @@ const Translate = React.lazy(() => retryTenTimes(() => import('../../tools/trans
 const Audio = React.lazy(() => retryTenTimes(() => import('../../tools/audio/audio')))
 
 const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered }, style }) => {
-    const quoteRef = useRef()
     const prevCurrentPhilosopher = usePrevious(currentPhilosopher)
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode }
     const [localTranslateKey, setLocalTranslateKey] = useState(false)
-    const debouncedHandler = debounce(() => setScrollPosition(parseInt(quotationId)), 500)
+    const debouncedHandler = useCallback(
+        debounce(() => setScrollPosition(parseInt(quotationId)), 500),
+        []
+    )
 
     if (prevCurrentPhilosopher && prevCurrentPhilosopher !== currentPhilosopher && rowsRendered === false) {
         setRowsRendered(true)
@@ -29,9 +31,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
         return (
             <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
                 <span style={{ position: 'absolute', top: '10rem' }} className="row">
-                    <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
-                        {`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}
-                    </span>
+                    <span onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</span>
                 </span>
                 <div style={{ position: 'absolute', top: '26rem' }} className="row">
                     {localTranslateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}

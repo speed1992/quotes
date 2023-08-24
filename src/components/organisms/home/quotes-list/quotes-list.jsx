@@ -13,18 +13,26 @@ function QuotesList({ listRef, width, height, searchText, start, end, markedMode
     const philosopherFullName_i10n = getPhilosopherFullName_i10n({ currentPhilosopher, options })
 
     useEffect(() => {
-        if (rowsRendered) scrollToQuoteId(listRef, scrollPosition, currentData, currentPhilosopher)
-    }, [rowsRendered])
+        if (rowsRendered) {
+            scrollToQuoteId(listRef, scrollPosition, currentData, currentPhilosopher)
+        }
+    }, [rowsRendered, currentPhilosopher])
 
     useEffect(() => {
-        if (listRef.current) scrollToQuoteId(listRef, scrollPosition, currentData, currentPhilosopher)
-    }, [listRef.current])
+        if (listRef.current) {
+            scrollToQuoteId(listRef, scrollPosition, currentData, currentPhilosopher)
+        }
+    }, [listRef?.current])
+
+    const onRowsRendered = () => {
+        if (rowsRendered === false) setRowsRendered(true)
+    }
 
     function rowRenderer({ index, ...others }) {
         return <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentData, setCurrentData, currentQuote: currentData[index], index, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, listRef, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered }} {...others} />
     }
 
-    return <List className="List" height={height} rowCount={currentData.length} rowHeight={ruleEngine.makeDecision(rules, { params: { start } })} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={NoRowsRenderer} style={{ padding: '1rem' }} />
+    return <List className="List" height={height} rowCount={currentData.length} rowHeight={ruleEngine.makeDecision(rules, { params: { start } })} width={width} ref={listRef} rowRenderer={rowRenderer} onRowsRendered={onRowsRendered} noRowsRenderer={NoRowsRenderer} style={{ padding: '1rem' }} />
 }
 
 export default QuotesList
