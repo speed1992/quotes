@@ -10,7 +10,10 @@ export function querySync() {
                 // The selector you use to get the destination string from the state object.
                 selector: (state) => state?.philosophersData?.currentPhilosopher,
                 // The action creator you use for setting a new destination.
-                action: (value) => ({ type: 'philosophersData/setCurrentPhilosopherRedux', payload: value }),
+                action: (value) => {
+                    if (value && !isNaN(value)) return { type: 'philosophersData/setCurrentPhilosopherRedux', payload: value }
+                    return { type: 'philosophersData/setCurrentPhilosopherRedux', payload: INITIAL_STATE.currentPhilosopher }
+                },
             },
             scrollPosition: {
                 selector: (state) => {
@@ -18,7 +21,8 @@ export function querySync() {
                     return scrollPos !== undefined && scrollPos !== 'undefined' ? scrollPos : 1
                 },
                 action: (value) => {
-                    if (value) return { type: 'philosophersData/setScrollPositionRedux', payload: value }
+                    if (value && !isNaN(value)) return { type: 'philosophersData/setScrollPositionRedux', payload: value }
+                    return { type: 'philosophersData/setScrollPositionRedux', payload: 1 }
                 },
 
                 defaultValue: INITIAL_STATE.scrollPosition,
