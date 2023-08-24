@@ -4,12 +4,12 @@ import { retryTenTimes } from '../../../../../../common/utils/apiUtils'
 import { addResponseOptionsDataIntoRedux } from '../../../../../../common/utils/lazyLoadUtils'
 import { changeQuotesData } from '../../../quotes-list/utils/utils'
 
-export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, setQuotesLoaded, markedMode, markedQuotes, setMarkedQuotes, scrollPosition }) {
+export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, setQuotesLoaded, markedMode, markedQuotes, setMarkedQuotes, scrollPosition, setRowsRendered }) {
     function callback() {
         setCurrentPhilosopher(philosopher)
         changeQuotesData({ philosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
-        // scrollToQuoteId(listRef, scrollPosition, currentData, philosopher)
         setIsFetching(false)
+        setRowsRendered(false)
     }
     setStart(1)
     setEnd('')

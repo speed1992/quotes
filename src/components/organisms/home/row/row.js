@@ -7,22 +7,27 @@ import { isUndefined } from '../../../../common/utils/commonUtils'
 import { debounce } from '../../../../common/utils/debounce'
 import styles from './styles/row.module.css'
 import { evaluateClassNames } from './utils/style-utils'
-import { rowClickHandler } from './utils/utils'
+import { rowClickHandler, usePrevious } from './utils/utils'
 const MarkAsRead = React.lazy(() => retryTenTimes(() => import('../../tools/mark-as-read/mark-as-read')))
 const Translate = React.lazy(() => retryTenTimes(() => import('../../tools/translate/translate')))
 const Audio = React.lazy(() => retryTenTimes(() => import('../../tools/audio/audio')))
 
-const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode, scheduledPosts, setScheduledQuotes }, style }) => {
+const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered }, style }) => {
     const quoteRef = useRef()
+    const prevCurrentPhilosopher = usePrevious(currentPhilosopher)
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode }
     const [localTranslateKey, setLocalTranslateKey] = useState(false)
-    const debouncedHandler = debounce(() => setScrollPosition(parseInt(quotationId)), 1000)
+    const debouncedHandler = debounce(() => setScrollPosition(parseInt(quotationId)), 500)
+
+    if (prevCurrentPhilosopher && prevCurrentPhilosopher !== currentPhilosopher && rowsRendered === false) {
+        setRowsRendered(true)
+    }
 
     if (!isUndefined(currentQuote))
         return (
-            <div key={index} className={evaluateClassNames(index)} style={style} onClick={debouncedHandler}>
+            <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
                 <span style={{ position: 'absolute', top: '10rem' }} className="row">
                     <span ref={quoteRef} onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>
                         {`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}
@@ -50,7 +55,6 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                             Share
                         </Link>
                     </button>
-                    {/* <PushToSocialMedia index={quotationId} currentPhilosopher={currentPhilosopher} scheduledPosts={scheduledPosts} setScheduledQuotes={setScheduledQuotes} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} setLocalTranslateKey={setLocalTranslateKey} /> */}
                 </div>
             </div>
         )

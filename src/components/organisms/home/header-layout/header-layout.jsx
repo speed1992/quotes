@@ -14,7 +14,7 @@ export const Header = (props) => {
                 </div>
             ) : (
                 <div className="desktop">
-                    <DesktopHeader {...props} />{' '}
+                    <DesktopHeader {...props} />
                 </div>
             )}
         </Suspense>
