@@ -40,3 +40,9 @@ export function usePrevious(value) {
     }, [value])
     return ref.current
 }
+
+export function copyURL(openSnackbar, callback) {
+    callback()
+    copy(window.location.href.toString())
+    openSnackbar('URL Copied. You can now share!', 1000)
+}

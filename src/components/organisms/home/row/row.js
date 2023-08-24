@@ -7,7 +7,7 @@ import { isUndefined } from '../../../../common/utils/commonUtils'
 import { debounce } from '../../../../common/utils/debounce'
 import styles from './styles/row.module.css'
 import { evaluateClassNames } from './utils/style-utils'
-import { rowClickHandler, usePrevious } from './utils/utils'
+import { copyURL, rowClickHandler, usePrevious } from './utils/utils'
 const MarkAsRead = React.lazy(() => retryTenTimes(() => import('../../tools/mark-as-read/mark-as-read')))
 const Translate = React.lazy(() => retryTenTimes(() => import('../../tools/translate/translate')))
 const Audio = React.lazy(() => retryTenTimes(() => import('../../tools/audio/audio')))
@@ -52,9 +52,10 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                     <button onClick={() => setLocalTranslateKey(true)}>Translate</button>
                     <button>
                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth', share: true }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
-                            Share
+                            Share Image
                         </Link>
                     </button>
+                    <button onClick={() => copyURL(openSnackbar, () => setScrollPosition(parseInt(quotationId)))}>Copy URL</button>
                 </div>
             </div>
         )
