@@ -4,7 +4,6 @@ import { bringIntoAlphabeticalOrder, bringIntoOriginalOrder } from '../../compon
 import { merge } from './objectUtils'
 
 export const addOptionsDataIntoRedux = ({ newOptions, oldOptions, oldOriginalOptions, setOptions, setOriginalOptions }) => {
-    console.log('newOptions', newOptions, 'oldOptions', oldOptions)
     let resultantOptions
     resultantOptions = [...oldOptions, ...newOptions]
     setOptions(resultantOptions)
