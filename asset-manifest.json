@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/quotes/static/css/main.455413ad.css",
-    "main.js": "/quotes/static/js/main.1003f9d9.js",
+    "main.js": "/quotes/static/js/main.ca7d5d71.js",
     "static/css/171.2d562ea5.chunk.css": "/quotes/static/css/171.2d562ea5.chunk.css",
-    "static/js/171.3a4b7803.chunk.js": "/quotes/static/js/171.3a4b7803.chunk.js",
+    "static/js/171.caa3f7dc.chunk.js": "/quotes/static/js/171.caa3f7dc.chunk.js",
     "static/js/551.189aa536.chunk.js": "/quotes/static/js/551.189aa536.chunk.js",
     "static/css/728.56467bfd.chunk.css": "/quotes/static/css/728.56467bfd.chunk.css",
     "static/js/728.2fd54cd4.chunk.js": "/quotes/static/js/728.2fd54cd4.chunk.js",
@@ -33,13 +33,14 @@
     "static/js/519.e58922f2.chunk.js": "/quotes/static/js/519.e58922f2.chunk.js",
     "static/js/841.6b7d1979.chunk.js": "/quotes/static/js/841.6b7d1979.chunk.js",
     "static/js/388.fa01b2ae.chunk.js": "/quotes/static/js/388.fa01b2ae.chunk.js",
-    "static/js/777.f8bdd723.chunk.js": "/quotes/static/js/777.f8bdd723.chunk.js",
+    "static/js/777.c49e20cf.chunk.js": "/quotes/static/js/777.c49e20cf.chunk.js",
     "static/js/761.a7206ed1.chunk.js": "/quotes/static/js/761.a7206ed1.chunk.js",
     "static/js/209.c481b635.chunk.js": "/quotes/static/js/209.c481b635.chunk.js",
     "static/js/533.b2d2d85c.chunk.js": "/quotes/static/js/533.b2d2d85c.chunk.js",
     "static/js/637.866e897e.chunk.js": "/quotes/static/js/637.866e897e.chunk.js",
     "static/js/272.8c46c544.chunk.js": "/quotes/static/js/272.8c46c544.chunk.js",
     "static/js/452.0f33a133.chunk.js": "/quotes/static/js/452.0f33a133.chunk.js",
+    "static/js/910.54f1a79a.chunk.js": "/quotes/static/js/910.54f1a79a.chunk.js",
     "static/js/498.1b9d6557.chunk.js": "/quotes/static/js/498.1b9d6557.chunk.js",
     "static/js/793.28189d39.chunk.js": "/quotes/static/js/793.28189d39.chunk.js",
     "static/media/FREUD.jpg": "/quotes/static/media/FREUD.fa5e080abec887337460.jpg",
@@ -53,9 +54,9 @@
     "static/media/PETERSON.jpg": "/quotes/static/media/PETERSON.f3968a4c45466650e225.jpg",
     "index.html": "/quotes/index.html",
     "main.455413ad.css.map": "/quotes/static/css/main.455413ad.css.map",
-    "main.1003f9d9.js.map": "/quotes/static/js/main.1003f9d9.js.map",
+    "main.ca7d5d71.js.map": "/quotes/static/js/main.ca7d5d71.js.map",
     "171.2d562ea5.chunk.css.map": "/quotes/static/css/171.2d562ea5.chunk.css.map",
-    "171.3a4b7803.chunk.js.map": "/quotes/static/js/171.3a4b7803.chunk.js.map",
+    "171.caa3f7dc.chunk.js.map": "/quotes/static/js/171.caa3f7dc.chunk.js.map",
     "551.189aa536.chunk.js.map": "/quotes/static/js/551.189aa536.chunk.js.map",
     "728.56467bfd.chunk.css.map": "/quotes/static/css/728.56467bfd.chunk.css.map",
     "728.2fd54cd4.chunk.js.map": "/quotes/static/js/728.2fd54cd4.chunk.js.map",
@@ -85,18 +86,19 @@
     "519.e58922f2.chunk.js.map": "/quotes/static/js/519.e58922f2.chunk.js.map",
     "841.6b7d1979.chunk.js.map": "/quotes/static/js/841.6b7d1979.chunk.js.map",
     "388.fa01b2ae.chunk.js.map": "/quotes/static/js/388.fa01b2ae.chunk.js.map",
-    "777.f8bdd723.chunk.js.map": "/quotes/static/js/777.f8bdd723.chunk.js.map",
+    "777.c49e20cf.chunk.js.map": "/quotes/static/js/777.c49e20cf.chunk.js.map",
     "761.a7206ed1.chunk.js.map": "/quotes/static/js/761.a7206ed1.chunk.js.map",
     "209.c481b635.chunk.js.map": "/quotes/static/js/209.c481b635.chunk.js.map",
     "533.b2d2d85c.chunk.js.map": "/quotes/static/js/533.b2d2d85c.chunk.js.map",
     "637.866e897e.chunk.js.map": "/quotes/static/js/637.866e897e.chunk.js.map",
     "272.8c46c544.chunk.js.map": "/quotes/static/js/272.8c46c544.chunk.js.map",
     "452.0f33a133.chunk.js.map": "/quotes/static/js/452.0f33a133.chunk.js.map",
+    "910.54f1a79a.chunk.js.map": "/quotes/static/js/910.54f1a79a.chunk.js.map",
     "498.1b9d6557.chunk.js.map": "/quotes/static/js/498.1b9d6557.chunk.js.map",
     "793.28189d39.chunk.js.map": "/quotes/static/js/793.28189d39.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.455413ad.css",
-    "static/js/main.1003f9d9.js"
+    "static/js/main.ca7d5d71.js"
   ]
 }
