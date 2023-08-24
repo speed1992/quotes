@@ -4,5 +4,5 @@ const path = './src/scripts/buildDate.json'
 
 fs.readFile(path, 'utf8', function (err, data) {
     const buildInfo = JSON.parse(data)
-    console.log('Build Info :', buildInfo.buildDateTime)
+    console.log('\nBuild Info :', buildInfo.buildDateTime)
 })
