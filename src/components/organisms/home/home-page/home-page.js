@@ -39,15 +39,16 @@ const HomePage = () => {
 
     if (!doesPhilosopherDataExist(currentPhilosopher, options)) return <></>
 
-    const renderList = () => <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
-
     return (
         <div className={styles.homepage}>
             {isFetching ? (
                 <Loader />
             ) : (
                 <>
-                    <Header {...propsToSend} /> <div className={styles.content}>{renderList()}</div>
+                    <Header {...propsToSend} />
+                    <div className={styles.content}>
+                        <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
+                    </div>
                 </>
             )}
         </div>
