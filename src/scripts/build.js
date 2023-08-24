@@ -10,6 +10,6 @@ createFile(path).then(() => {
         if (err) {
             return console.log(err)
         }
-        console.log('Build Info Updated:', buildInfo.buildDateTime)
+        console.log('Updating App Version to', buildInfo.buildDateTime, '\n')
     })
 })
