@@ -46,9 +46,8 @@
   "scripts": {
     "build-date": "node ./src/scripts/build.js",
     "predeploy": "git push && npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build && node ./src/scripts/showBuildInfo.js",
     "build": "npm run build-date && react-scripts build",
-    "postbuild": "node ./src/scripts/showBuildInfo.js",
     "start": "npm run build-date && react-scripts start",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!@codemirror)/'",
     "test-coverage": "npm run test -- --coverage --watchAll",
