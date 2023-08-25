@@ -38,7 +38,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                 </div>
 
                 <div className={styles.actionItems} style={{ position: 'absolute', bottom: '5rem' }}>
-                    <button>
+                    <button role="button">
                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                             Download Image
                         </Link>
@@ -49,13 +49,13 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                             <MarkAsRead index={quotationId} currentPhilosopher={currentPhilosopher} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} setLocalTranslateKey={setLocalTranslateKey} />
                         </Suspense>
                     )}
-                    <button onClick={() => setLocalTranslateKey(true)}>Translate</button>
-                    <button>
+                    <button role="button" onClick={() => setLocalTranslateKey(true)}>Translate</button>
+                    <button role="button">
                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth', share: true }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                             Share Image
                         </Link>
                     </button>
-                    <button onClick={() => copyURL(openSnackbar, () => setScrollPosition(parseInt(quotationId)))}>Copy URL</button>
+                    <button role="button" onClick={() => copyURL(openSnackbar, () => setScrollPosition(parseInt(quotationId)))}>Copy URL</button>
                 </div>
             </div>
         )
