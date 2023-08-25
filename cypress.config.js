@@ -6,6 +6,7 @@ module.exports = defineConfig({
             // implement node event listeners here
         },
         supportFile: false,
+        video: false,
         specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
     },
 
