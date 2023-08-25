@@ -29,16 +29,16 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
 
     if (!isUndefined(currentQuote))
         return (
-            <div key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
-                <span style={{ position: 'absolute', top: '10rem' }} className="row">
+            <div role="row" key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
+                <span role="columnheader" style={{ position: 'absolute', top: '10rem' }} className="row">
                     <span onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</span>
                 </span>
-                <div style={{ position: 'absolute', top: '26rem' }} className="row">
+                <div role="columnheader" style={{ position: 'absolute', top: '26rem' }} className="row">
                     {localTranslateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
                 </div>
 
-                <div className={styles.actionItems} style={{ position: 'absolute', bottom: '5rem' }}>
-                    <button role="button">
+                <div role="columnheader" className={styles.actionItems} style={{ position: 'absolute', bottom: '5rem' }}>
+                    <button>
                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                             Download Image
                         </Link>
@@ -49,17 +49,13 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                             <MarkAsRead index={quotationId} currentPhilosopher={currentPhilosopher} markedQuotes={markedQuotes} setMarkedQuotes={setMarkedQuotes} currentData={currentData} setCurrentData={setCurrentData} setLocalTranslateKey={setLocalTranslateKey} />
                         </Suspense>
                     )}
-                    <button role="button" onClick={() => setLocalTranslateKey(true)}>
-                        Translate
-                    </button>
-                    <button role="button">
+                    <button onClick={() => setLocalTranslateKey(true)}>Translate</button>
+                    <button>
                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth', share: true }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                             Share Image
                         </Link>
                     </button>
-                    <button role="button" onClick={() => copyURL(openSnackbar, () => setScrollPosition(parseInt(quotationId)))}>
-                        Share Link
-                    </button>
+                    <button onClick={() => copyURL(openSnackbar, () => setScrollPosition(parseInt(quotationId)))}>Share Link</button>
                 </div>
             </div>
         )

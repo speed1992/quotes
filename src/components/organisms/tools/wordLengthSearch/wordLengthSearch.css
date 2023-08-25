@@ -2,9 +2,9 @@
     .mobile-column .smallInput {
         width: 2.5rem;
     }
-    /* .smallInput:first-child {
-        margin-right: 0.5rem;
-    } */
+    .mobile-column #labelEnd {
+        font-size: 1.4rem;
+    }
 }
 
 @media only screen and (min-width: 700px) {
