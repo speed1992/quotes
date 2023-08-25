@@ -1,16 +1,23 @@
 import Switch from '@mui/material/Switch'
 import TextField from '@mui/material/TextField'
 import React, { Suspense } from 'react'
+import { Link } from 'react-router-dom'
+import { useSnackbar } from 'react-simple-snackbar'
+import ROUTES from '../../../../../common/routes/routes'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import Select from '../../../tools/select/select'
 import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSearch'
+import LoginRegister from '../../mobile/login-register/login-register'
+import styles from './desktop-header.module.css'
 import { onFocusHandler, onPhilosopherSelectChange } from './utils/utils'
 const Breadcrumb = React.lazy(() => retryTenTimes(() => import('../../../analysis/breadcrumb/breadcrumb')))
 const UnreadCounter = React.lazy(() => retryTenTimes(() => import('../../../analysis/unread-counter/unread-counter')))
 const QuotesFound = React.lazy(() => retryTenTimes(() => import('../../../analysis/quotes-found/quotes-found')))
 
-function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, options, setOptions, setCurrentData, setQuotesLoaded, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, currentData, isFetching, originalData, markedQuotes, sorting, setRowsRendered }) {
+function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, options, setOptions, setCurrentData, setQuotesLoaded, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, currentData, isFetching, originalData, markedQuotes, sorting, setRowsRendered, setUserName, userName, isLoggedIn, setIsLoggedIn, setMarkedQuotes, password, setPassword }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
+    const [openSnackbar] = useSnackbar()
+
     return (
         <div className="header">
             <div className="row">
@@ -37,6 +44,15 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
                             }}
                         />
                     </span>
+                </div>
+                <div className="column">
+                    <Link to={ROUTES.report.route} style={{ textDecoration: 'none', color: '#000' }}>
+                        <button className={styles.report}>Open Report</button>
+                    </Link>
+                </div>
+                <div className={'column ' + styles.col5}>
+                    <LoginRegister {...{ setUserName, userName, openSnackbar, isLoggedIn, setIsLoggedIn, setMarkedQuotes, markedQuotes, password, setPassword, setIsFetching }} />
+                    {/* {!isLoggedIn && <div className="backupNote">You can login to backup your marked quotes in database in case browser data gets deleted.</div>} */}
                 </div>
             </div>
             <Suspense fallback={''}>
