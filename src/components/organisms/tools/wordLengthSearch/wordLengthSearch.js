@@ -8,7 +8,7 @@ export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText, 
         if (isMobile) {
             return (
                 <>
-                    <label id="labelEnd" for="end">
+                    <label id="labelEnd" htmlFor="end">
                         Words{' '}
                     </label>
                     <input id="end" className="smallInput" key="end" name="end" type="number" min="0" value={end} onChange={({ target: { value } }) => setEnd(value)} />
