@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import ROUTES from '../../../../../common/routes/routes'
 import { uuidv4 } from '../../../../../common/utils/commonUtils'
@@ -9,11 +8,9 @@ import { exportAsImage, shareQuote } from './utils'
 export function useCreateQuoteImage(philosopherFullName, share, exportRef) {
     const navigate = useNavigate()
 
-    const darkMode = useSelector((state) => state.philosophersData.darkMode)
-
     useEffect(() => {
-        setThemeClassNameOnHTMLTag(darkMode)
-    }, [darkMode])
+        setThemeClassNameOnHTMLTag(true)
+    }, [])
 
     useEffect(() => {
         ;(async function () {
