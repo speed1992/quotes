@@ -1,14 +1,14 @@
 import React from 'react'
-import './loader.css'
+import styles from './loader.module.css'
 
 function Loader() {
     return (
-        <div className="loading">
-            <div className="uil-ring-css">
+        <div className={styles.loading}>
+            <div className={styles.uilRingCss}>
                 <div></div>
             </div>
-            <div className="loadingText-primary">Please wait...</div>
-            <div className="loadingText-secondary">Loading...</div>
+            <div className={styles.loadingTextPrimary}>Please wait...</div>
+            <div className={styles.loadingTextSecondary}>Loading...</div>
         </div>
     )
 }

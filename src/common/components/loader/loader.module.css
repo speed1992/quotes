@@ -11,7 +11,7 @@ div.loading {
     z-index: 9999;
 }
 
-.uil-ring-css {
+.uilRingCss {
     margin: auto;
     position: absolute;
     top: 0;
@@ -21,7 +21,7 @@ div.loading {
     width: 20rem;
     height: 20rem;
 }
-.uil-ring-css > div {
+.uilRingCss > div {
     position: absolute;
     display: block;
     width: 8rem;
@@ -37,7 +37,7 @@ div.loading {
     animation: uil-ring-anim 1s linear infinite;
 }
 
-.loadingText-primary {
+.loadingTextPrimary {
     position: fixed;
     top: 18rem;
     text-align: center;
@@ -45,7 +45,7 @@ div.loading {
     width: 100vw;
 }
 
-.loadingText-secondary {
+.loadingTextSecondary {
     position: fixed;
     bottom: 21rem;
     text-align: center;
