@@ -9,7 +9,6 @@ const newPersistConfig = getPersistConfig({
     storage: DBstorage('myDB'),
     blacklist: ['currentData', 'originalData', 'quotesLoaded'],
     rootReducer: philosophersDataReducer,
-    migrate: async (state) => {},
 })
 
 export const philosophersDataSlice = persistReducer(newPersistConfig, philosophersDataReducer)
