@@ -7,7 +7,7 @@ import { isUndefined } from '../../../../common/utils/commonUtils'
 import { debounce } from '../../../../common/utils/debounce'
 import styles from './styles/row.module.css'
 import { evaluateClassNames } from './utils/style-utils'
-import { copyURL, rowClickHandler, usePrevious } from './utils/utils'
+import { rowClickHandler, usePrevious } from './utils/utils'
 const MarkAsRead = React.lazy(() => retryTenTimes(() => import('../../tools/mark-as-read/mark-as-read')))
 const Translate = React.lazy(() => retryTenTimes(() => import('../../tools/translate/translate')))
 const Audio = React.lazy(() => retryTenTimes(() => import('../../tools/audio/audio')))
@@ -55,7 +55,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                             Share Image
                         </Link>
                     </button>
-                    <button onClick={() => copyURL(openSnackbar, () => setScrollPosition(parseInt(quotationId)))}>Share Link</button>
+                    {/* <button onClick={() => copyURL(openSnackbar, () => setScrollPosition(parseInt(quotationId)))}>Share Link</button> */}
                 </div>
             </div>
         )
