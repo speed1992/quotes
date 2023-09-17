@@ -24,8 +24,12 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
     }
 }
 
-export const onFocusHandler = async ({ options, setOptions, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting, syncDate }) => {
+export const onFocusHandler = async ({ options, setOptions, isLoggedIn, setSyncDate, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting, syncDate }) => {
     if (isCacheExpired(syncDate) || options.length === 1) {
+        console.log('syncDate', syncDate, 'isLoggedIn', isLoggedIn, 'setSyncDate', setSyncDate)
+        if (isLoggedIn !== true) {
+            setSyncDate?.(Date.now())
+        }
         setIsFetchingOptions?.(true)
         let response = await retryTenTimes(() => fetch(API_ENDPOINTS.STATIC_DATA.STATIC_ASSET_GRAPH))
         response = await response.json()

@@ -11,7 +11,7 @@ import { getPhilosopherFullName, getPhilosopherFullName_i10n } from './utils/uti
 function QuotesList({ listRef, width, height, searchText, start, end, markedMode, currentData, setCurrentData, options, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered }) {
     const philosopherFullName = getPhilosopherFullName({ currentPhilosopher, options })
     const philosopherFullName_i10n = getPhilosopherFullName_i10n({ currentPhilosopher, options })
-
+    
     useEffect(() => {
         if (rowsRendered) {
             scrollToQuoteId(listRef, scrollPosition, currentData, currentPhilosopher)

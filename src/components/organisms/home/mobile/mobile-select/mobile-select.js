@@ -56,12 +56,11 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
         }
         return (
             <ul ref={scollToRef} className="dropDownList">
-                {suggestions &&
-                    suggestions.map(({ fullName, value }) => (
-                        <li id={currentPhilosopher === value ? 'active' : ''} key={value} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
-                            {fullName}
-                        </li>
-                    ))}
+                {suggestions?.map(({ fullName, value }) => (
+                    <li id={currentPhilosopher === value ? 'active' : ''} key={value} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
+                        {fullName}
+                    </li>
+                ))}
             </ul>
         )
     }
@@ -69,7 +68,7 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
     return (
         <OutsideAlerter callback={() => setSuggestions([])}>
             <div className="typeAheadDropDown">
-                <input type="text" onFocus={onFocusHandler} onChange={onTextChange} placeholder={placeholder} value={searchText} onBlur={onBlurHandler} />
+                <input name="search-philosopher" type="text" onFocus={onFocusHandler} onChange={onTextChange} placeholder={placeholder} value={searchText} onBlur={onBlurHandler} />
                 {isFetchingOptions ? (
                     <ul className="dropDownList">
                         <li>Loading...</li>

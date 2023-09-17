@@ -26,6 +26,7 @@ let INITIAL_STATE = {
     scrollPosition: {},
     scheduledPosts: {},
     syncDate: 46190630,
+    isLoggedIn: false,
 }
 
 export default INITIAL_STATE
