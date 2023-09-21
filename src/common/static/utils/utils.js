@@ -36,15 +36,14 @@ export const addPhilosopherInGlobalData = (philosopherName, { options, setOption
     setOptions(newOptions)
 }
 
-export const lazyLoadAsset = (philosopherName, { options, setOptions }, setQuotesLoaded, callbacks) => {
+export const lazyLoadAsset = (philosopherName, { options, setOptions }, callbacks) => {
     return new Promise((resolve, reject) => {
         const fileName = philosopherName.toLowerCase()
         retryTenTimes(() => fetch(API_ENDPOINTS.STATIC_DATA.STATIC_QUOTES + fileName + '.json'))
             .then((response) => response.json())
             .then((data) => {
-                callbacks && callbacks.map((callback) => callback(data))
+                callbacks?.map((callback) => callback(data))
                 addPhilosopherInGlobalData(philosopherName, { options, setOptions }, data)
-                setQuotesLoaded(true)
                 resolve()
             })
             .catch((e) => reject(e))

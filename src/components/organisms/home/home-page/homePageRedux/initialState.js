@@ -20,7 +20,6 @@ let INITIAL_STATE = {
     sorting: 'alphabetical',
     originalOptions: STATIC_OPTIONS,
     options: STATIC_OPTIONS,
-    quotesLoaded: false,
     darkMode: false,
     voiceSpeed: 0.5,
     scrollPosition: {},

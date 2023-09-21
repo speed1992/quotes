@@ -5,7 +5,7 @@ import { isCacheExpired } from '../../../../../../common/utils/dateUtils'
 import { addResponseOptionsDataIntoRedux } from '../../../../../../common/utils/lazyLoadUtils'
 import { changeQuotesData } from '../../../quotes-list/utils/utils'
 
-export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, setQuotesLoaded, markedMode, markedQuotes, setMarkedQuotes, scrollPosition, setRowsRendered }) {
+export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, markedMode, markedQuotes, setMarkedQuotes, scrollPosition, setRowsRendered }) {
     function callback() {
         setCurrentPhilosopher(philosopher)
         changeQuotesData({ philosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
@@ -18,7 +18,7 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
     setIsFetching(true)
 
     if (!getPhilosopherQuotes({ philosopher, options })) {
-        lazyLoadAsset(philosopher, { options, setOptions }, setQuotesLoaded, []).then(callback)
+        lazyLoadAsset(philosopher, { options, setOptions }, []).then(callback)
     } else {
         callback()
     }

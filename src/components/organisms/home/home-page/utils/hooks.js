@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useSnackbar } from 'react-simple-snackbar'
 import { doesPhilosopherDataExist, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
 import { onFocusHandler } from '../../desktop/desktop-header/utils/utils'
-import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setQuotesLoadedRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setSyncDateRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
+import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setMarkedModeRedux, setMarkedQuotesRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setSyncDateRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
 import { compareWithServerSyncDatesAndMakeAnAPICall, getClientSyncDates } from './utils'
 
 export function useHomePageHooks() {
@@ -17,7 +17,6 @@ export function useHomePageHooks() {
     const currentData = useSelector((state) => state?.philosophersData?.currentData)
     const markedMode = useSelector((state) => state?.philosophersData?.markedMode)
     const options = useSelector((state) => state?.philosophersData?.options)
-    const quotesLoaded = useSelector((state) => state?.philosophersData?.quotesLoaded)
     const markedQuotes = useSelector((state) => state?.philosophersData?.markedQuotes)
     const scheduledPosts = useSelector((state) => state?.philosophersData?.scheduledPosts)
     const darkMode = useSelector((state) => state?.philosophersData?.darkMode)
@@ -41,7 +40,6 @@ export function useHomePageHooks() {
     const setCurrentPhilosopher = (name) => dispatch(setCurrentPhilosopherRedux(name))
     const setCurrentData = (data) => dispatch(setCurrentDataRedux(data))
     const setOptions = (value) => dispatch(setOptionsRedux(value))
-    const setQuotesLoaded = (value) => dispatch(setQuotesLoadedRedux(value))
     const setMarkedQuotes = (value) => dispatch(setMarkedQuotesRedux(value))
     const setScheduledQuotes = (value) => dispatch(setScheduledPostsRedux(value))
     const setDarkMode = (value) => dispatch(setDarkModeRedux(value))
@@ -71,5 +69,5 @@ export function useHomePageHooks() {
         }
     }, [currentPhilosopher])
 
-    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setQuotesLoaded, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions, rowsRendered, setRowsRendered, syncDate, setSyncDate, voiceSpeed }
+    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions, rowsRendered, setRowsRendered, syncDate, setSyncDate, voiceSpeed }
 }

@@ -1,11 +1,10 @@
-// export const lazyLoadAsset = (philosopherName, { options, setOptions }, setQuotesLoaded, callbacks) => {
+// export const lazyLoadAsset = (philosopherName, { options, setOptions },  callbacks) => {
 //     return new Promise((resolve, reject) => {
 //         const fileName = philosopherName.toLowerCase()
 //         retryTenTimes(() => import('../assets/quotes/' + fileName + '.json'))
 //             .then((data) => {
 //                 callbacks && callbacks.map((callback) => callback(data?.default))
 //                 addPhilosopherInGlobalData(philosopherName, { options, setOptions }, data?.default)
-//                 setQuotesLoaded(true)
 //                 resolve()
 //             })
 //             .catch((e) => reject(e))

@@ -7,7 +7,7 @@ import philosophersDataReducer from '../../components/organisms/home/home-page/h
 const newPersistConfig = getPersistConfig({
     key: 'root',
     storage: DBstorage('myDB'),
-    blacklist: ['currentData', 'originalData', 'quotesLoaded'],
+    blacklist: ['currentData', 'originalData'],
     rootReducer: philosophersDataReducer,
 })
 

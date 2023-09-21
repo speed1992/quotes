@@ -5,7 +5,7 @@ const Loader = React.lazy(() => retryTenTimes(() => import('../../../../common/c
 const QuotesList = React.lazy(() => retryTenTimes(() => import('../quotes-list/quotes-list')))
 
 export function LazyLoadQuoteList(props) {
-    const { currentPhilosopher, setCurrentData, options, setOptions, setQuotesLoaded, isFetching, setIsFetching } = props
+    const { currentPhilosopher, setCurrentData, options, setOptions, isFetching, setIsFetching } = props
 
     async function lazyInit() {
         try {
@@ -13,7 +13,7 @@ export function LazyLoadQuoteList(props) {
                 const currentPhilosopherQuotes = getPhilosopherQuotes({ philosopher: currentPhilosopher, options })
                 if (!currentPhilosopherQuotes) {
                     setIsFetching(true)
-                    await lazyLoadAsset(currentPhilosopher, { options, setOptions }, setQuotesLoaded, [setCurrentData])
+                    await lazyLoadAsset(currentPhilosopher, { options, setOptions }, [setCurrentData])
                 }
             }
 

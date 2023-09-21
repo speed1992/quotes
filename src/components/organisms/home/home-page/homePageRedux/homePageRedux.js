@@ -5,9 +5,6 @@ export const philosophersDataSlice = createSlice({
     name: 'philosophersData',
     initialState: JSON.parse(JSON.stringify(INITIAL_STATE)),
     reducers: {
-        setQuotesLoadedRedux: (state, { payload }) => {
-            state.quotesLoaded = payload
-        },
         setCurrentPhilosopherRedux: (state, { payload }) => {
             state.currentPhilosopher = payload
         },
@@ -71,4 +68,4 @@ export const philosophersDataSlice = createSlice({
 
 export default philosophersDataSlice.reducer
 
-export const { setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setOptionsRedux, setDarkModeRedux, setQuotesLoadedRedux, setMarkedQuotesRedux, setVoiceSpeedRedux, setScrollPositionRedux, setSortingRedux, setScheduledPostsRedux, setOriginalOptionsRedux, setUserNameRedux, setIsLoggedInRedux, setPasswordRedux, setSyncDateRedux } = philosophersDataSlice.actions
+export const { setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setOptionsRedux, setDarkModeRedux, setMarkedQuotesRedux, setVoiceSpeedRedux, setScrollPositionRedux, setSortingRedux, setScheduledPostsRedux, setOriginalOptionsRedux, setUserNameRedux, setIsLoggedInRedux, setPasswordRedux, setSyncDateRedux } = philosophersDataSlice.actions

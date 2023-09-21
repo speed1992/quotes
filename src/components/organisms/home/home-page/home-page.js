@@ -18,7 +18,7 @@ const HomePage = () => {
     let propsToSend = useHomePageHooks()
     const { options, sorting, setSorting } = useSortingHooks()
 
-    const { start, end, searchText, currentPhilosopher, currentData, markedMode, quotesLoaded, markedQuotes, darkMode, setDarkMode, originalData, isFetching, setCurrentData, setMarkedQuotes, isFetchingOptions, setIsFetchingOptions } = propsToSend
+    const { start, end, searchText, currentPhilosopher, currentData, markedMode, markedQuotes, darkMode, setDarkMode, originalData, isFetching, setCurrentData, setMarkedQuotes, isFetchingOptions, setIsFetchingOptions } = propsToSend
 
     propsToSend = { ...propsToSend, setSorting, sorting, isFetchingOptions, setIsFetchingOptions }
 
@@ -26,7 +26,7 @@ const HomePage = () => {
         if (originalData) {
             applyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
         }
-    }, [start, end, searchText, markedMode, quotesLoaded, currentPhilosopher, currentData.length, markedQuotes[currentPhilosopher]?.quotes?.length])
+    }, [start, end, searchText, markedMode, currentPhilosopher, currentData.length, markedQuotes[currentPhilosopher]?.quotes?.length])
 
     useEffect(() => {
         setThemeClassNameOnHTMLTag(darkMode)
