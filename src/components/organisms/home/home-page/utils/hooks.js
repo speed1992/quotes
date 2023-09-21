@@ -29,6 +29,7 @@ export function useHomePageHooks() {
     const password = useSelector((state) => state?.philosophersData?.password)
     const syncDate = useSelector((state) => state?.philosophersData?.syncDate)
     const sorting = useSelector((state) => state.philosophersData.sorting)
+    const voiceSpeed = useSelector((state) => state.philosophersData.voiceSpeed)
     const [isFetching, setIsFetching] = useState(false)
     const [isFetchingOptions, setIsFetchingOptions] = useState(false)
     const [rowsRendered, setRowsRendered] = useState(false)
@@ -70,5 +71,5 @@ export function useHomePageHooks() {
         }
     }, [currentPhilosopher])
 
-    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setQuotesLoaded, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions, rowsRendered, setRowsRendered, syncDate, setSyncDate }
+    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, quotesLoaded, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setQuotesLoaded, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions, rowsRendered, setRowsRendered, syncDate, setSyncDate, voiceSpeed }
 }

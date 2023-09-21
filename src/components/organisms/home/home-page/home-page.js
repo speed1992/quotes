@@ -40,7 +40,6 @@ const HomePage = () => {
     }, [darkMode])
 
     if (!doesPhilosopherDataExist(currentPhilosopher, options)) return <></>
-    console.log('setSyncDate', propsToSend?.setSyncDate)
     return (
         <div className={styles.homepage}>
             <Helmet>

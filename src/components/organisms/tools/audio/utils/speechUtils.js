@@ -1,9 +1,8 @@
 import { scrollToMemorizedRow } from '../../../../../common/utils/utils'
 
 export async function play(index, currentData, voiceSpeed, listRef, scrollPosition, setScrollPosition) {
-    var synth = window.speechSynthesis,
+    const synth = window.speechSynthesis,
         isSpeaking = synth.speaking
-
     let cancel = () => {}
     cancel()
 
@@ -21,5 +20,7 @@ function getNextAudio(message, voiceSpeed) {
     let audio = new SpeechSynthesisUtterance(message)
     audio.rate = voiceSpeed
     window.speechSynthesis.speak(audio)
+    console.log(speechSynthesis.speaking + '')
+
     return new Promise((resolve, reject) => (audio.onend = resolve))
 }
