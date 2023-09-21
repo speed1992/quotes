@@ -23,6 +23,7 @@ function getNextAudio(message, voiceSpeed, voiceType, voices) {
     let audio = new SpeechSynthesisUtterance(message)
     audio.rate = voiceSpeed
     audio.voice = voices[voiceType]
+    audio.lang = voices[voiceType].lang
     window.speechSynthesis.speak(audio)
 
     return new Promise((resolve, reject) => (audio.onend = resolve))
