@@ -5,7 +5,7 @@ import { useSnackbar } from 'react-simple-snackbar'
 import ROUTES from '../../../../../common/routes/routes'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import { ALPHABETICAL, LATEST } from '../../home-page/constants/constants'
-import { setVoiceSpeedRedux } from '../../home-page/homePageRedux/homePageRedux'
+import { setVoiceSpeedRedux, setVoiceTypeRedux } from '../../home-page/homePageRedux/homePageRedux'
 import './mobile-menu.css'
 const BuildInfo = React.lazy(() => retryTenTimes(() => import('../../../tools/build-info/build-info')))
 const LoginRegister = React.lazy(() => retryTenTimes(() => import('../login-register/login-register')))
@@ -13,6 +13,7 @@ const OutsideAlerter = React.lazy(() => retryTenTimes(() => import('../../../../
 
 function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting, userName, setUserName, setMarkedQuotes, isLoggedIn, setIsLoggedIn, password, setPassword, setIsFetching }) {
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)
+    const voiceType = useSelector(({ philosophersData: { voiceType } }) => voiceType)
     const markedQuotes = useSelector(({ philosophersData: { markedQuotes } }) => markedQuotes)
     const [openSnackbar] = useSnackbar()
 
@@ -25,42 +26,61 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
         else setSorting(ALPHABETICAL)
     }
 
+    const voices = speechSynthesis.getVoices()
+
     return (
         <OutsideAlerter callback={() => toggleVisible(false)}>
             <ul id="slide_menu" style={{ display: visible ? 'block' : 'none' }}>
-                <li>
+                <li key="1">
                     Sort philosophers
                     <div>
-                        <input type="radio" id={LATEST} name="sortType" onClick={onClickSortButtonHandler} defaultChecked={sorting === LATEST ? true : false} />
+                        <input type="radio" id={LATEST} name="sortType" onClick={onClickSortButtonHandler} defaultChecked={sorting === LATEST} />
                         <label htmlFor={LATEST}>Latest</label>
                     </div>
                     <div>
-                        <input type="radio" id={ALPHABETICAL} name="sortType" onClick={onClickSortButtonHandler} defaultChecked={sorting === ALPHABETICAL ? true : false} />
+                        <input type="radio" id={ALPHABETICAL} name="sortType" onClick={onClickSortButtonHandler} defaultChecked={sorting === ALPHABETICAL} />
                         <label htmlFor={ALPHABETICAL}>Alphabetical</label>
                     </div>
                 </li>
-                <li>
+                <li key="2">
                     Marked Mode
                     <input type="checkbox" checked={markedMode} onChange={({ target: { checked } }) => setMarkedMode(checked)} />
                 </li>
-                <li>
+                <li key="3">
                     Dark Mode
                     <input type="checkbox" checked={darkMode} onChange={({ target: { checked } }) => setDarkMode(checked)} />
                 </li>
-                <li>
+                <li key="4">
                     Voice Speed[1-20]
                     <input onChange={(event) => dispatch(setVoiceSpeedRedux(event.target.value / 10))} className="voiceSpeed" type="number" value={voiceSpeed ? voiceSpeed * 10 : ''} />
                 </li>
-                <li>
+                <li key="5">
+                    <div>Available Voices</div>
+                    <select
+                        onChange={(event) => {
+                            dispatch(setVoiceTypeRedux(event?.target?.value))
+                            speechSynthesis.cancel()
+                        }}
+                        className="userInput"
+                        value={voiceType}
+                    >
+                        {voices?.map((voice, index) => (
+                            <option value={index} key={voice?.name}>
+                                {voice?.name}
+                            </option>
+                        ))}
+                    </select>
+                </li>
+                <li key="6">
                     <Link to={ROUTES.report.route} style={{ textDecoration: 'none', color: '#000' }}>
                         <button>Open Report</button>
                     </Link>
                 </li>
-                <li>
+                <li key="7">
                     <LoginRegister {...{ setUserName, userName, openSnackbar, isLoggedIn, setIsLoggedIn, setMarkedQuotes, markedQuotes, password, setPassword, setIsFetching }} />
                     {!isLoggedIn && <div className="backupNote">You can login to backup your marked quotes in database in case browser data gets deleted.</div>}
                 </li>
-                <li>
+                <li key="8">
                     <BuildInfo />
                 </li>
             </ul>

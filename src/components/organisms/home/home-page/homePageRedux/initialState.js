@@ -26,6 +26,7 @@ let INITIAL_STATE = {
     scheduledPosts: {},
     syncDate: 46190630,
     isLoggedIn: false,
+    voiceType: 0,
 }
 
 export default INITIAL_STATE
