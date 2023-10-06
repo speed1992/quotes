@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useSnackbar } from 'react-simple-snackbar'
@@ -15,6 +15,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)
     const voiceType = useSelector(({ philosophersData: { voiceType } }) => voiceType)
     const markedQuotes = useSelector(({ philosophersData: { markedQuotes } }) => markedQuotes)
+    const [voices, setVoices] = useState()
     const [openSnackbar] = useSnackbar()
 
     const dispatch = useDispatch()
@@ -26,7 +27,9 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
         else setSorting(ALPHABETICAL)
     }
 
-    const voices = speechSynthesis.getVoices()
+    useEffect(() => {
+        setVoices(window.speechSynthesis.getVoices())
+    }, [])
 
     return (
         <OutsideAlerter callback={() => toggleVisible(false)}>
@@ -56,20 +59,22 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 </li>
                 <li key="5">
                     <div>Available Voices</div>
-                    <select
-                        onChange={(event) => {
-                            dispatch(setVoiceTypeRedux(event?.target?.value))
-                            speechSynthesis.cancel()
-                        }}
-                        className="userInput"
-                        value={voiceType}
-                    >
-                        {voices?.map((voice, index) => (
-                            <option value={index} key={voice?.name}>
-                                {voice?.name}
-                            </option>
-                        ))}
-                    </select>
+                    {voices && (
+                        <select
+                            onChange={(event) => {
+                                dispatch(setVoiceTypeRedux(event?.target?.value))
+                                speechSynthesis.cancel()
+                            }}
+                            className="userInput"
+                            value={voiceType}
+                        >
+                            {voices?.map((voice, index) => (
+                                <option value={index} key={voice?.name}>
+                                    {voice?.name}
+                                </option>
+                            ))}
+                        </select>
+                    )}
                 </li>
                 <li key="6">
                     <Link to={ROUTES.report.route} style={{ textDecoration: 'none', color: '#000' }}>
