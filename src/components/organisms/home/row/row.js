@@ -6,7 +6,6 @@ import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { isUndefined } from '../../../../common/utils/commonUtils'
 import { debounce } from '../../../../common/utils/debounce'
 import styles from './styles/row.module.css'
-import { evaluateClassNames } from './utils/style-utils'
 import { rowClickHandler, usePrevious } from './utils/utils'
 const MarkAsRead = React.lazy(() => retryTenTimes(() => import('../../tools/mark-as-read/mark-as-read')))
 const Translate = React.lazy(() => retryTenTimes(() => import('../../tools/translate/translate')))
@@ -29,15 +28,15 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
 
     if (!isUndefined(currentQuote))
         return (
-            <div role="row" key={index} className={evaluateClassNames(index)} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
-                <span role="columnheader" style={{ position: 'absolute', top: '10rem' }} className="row">
+            <div role="row" key={index} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
+                <span role="columnheader" className="row">
                     <span onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</span>
                 </span>
-                <div role="columnheader" style={{ position: 'absolute', top: '26rem' }} className="row">
+                <div role="columnheader" className="row">
                     {localTranslateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
                 </div>
 
-                <div role="columnheader" className={styles.actionItems} style={{ position: 'absolute', bottom: '5rem' }}>
+                <div role="columnheader" className={styles.actionItems}>
                     <button>
                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                             Download Image

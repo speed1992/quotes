@@ -34,13 +34,6 @@ body {
     border: 0.1rem solid #d9dddd;
 }
 
-.ListItemEven,
-.ListItemOdd {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .darkTheme * {
     background-color: #000;
     color: #fff;
