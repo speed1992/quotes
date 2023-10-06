@@ -6,12 +6,12 @@ import { applyFilters } from '../../../../common/utils/searchUtils'
 import { isDesktop } from '../../../../common/utils/utils'
 import { Header } from '../header-layout/header-layout'
 import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
+import { getPhilosopherFullName } from '../quotes-list/utils/utils'
 import styles from './home-page.module.css'
 import { useHomePageHooks } from './utils/hooks'
 import { useSortingHooks } from './utils/sortingHook'
 import { setThemeClassNameOnHTMLTag } from './utils/utils'
 const Loader = React.lazy(() => retryTenTimes(() => import('../../../../common/components/loader/loader')))
-const PageMetaData = React.lazy(() => retryTenTimes(() => import('../page-meta-data/page-meta-deta')))
 
 const HomePage = () => {
     let propsToSend = useHomePageHooks()
@@ -38,11 +38,14 @@ const HomePage = () => {
         }
     }, [darkMode])
 
+    useEffect(() => {
+        document.title = `${getPhilosopherFullName({ currentPhilosopher, options })} Quotes`
+    }, [currentPhilosopher])
+
     if (!doesPhilosopherDataExist(currentPhilosopher, options)) return <></>
 
     return (
         <div className={styles.homepage}>
-            <PageMetaData {...{ currentPhilosopher, options }} />
             {isFetching ? (
                 <Loader />
             ) : (
