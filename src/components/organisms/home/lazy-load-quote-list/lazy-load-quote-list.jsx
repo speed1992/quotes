@@ -5,7 +5,7 @@ const Loader = React.lazy(() => retryTenTimes(() => import('../../../../common/c
 const QuotesList = React.lazy(() => retryTenTimes(() => import('../quotes-list/quotes-list')))
 
 export function LazyLoadQuoteList(props) {
-    const { currentPhilosopher, setCurrentData, options, setOptions, isFetching, setIsFetching } = props
+    const { currentPhilosopher, setCurrentData, options, setOptions, setIsFetching } = props
 
     async function lazyInit() {
         try {
@@ -26,5 +26,5 @@ export function LazyLoadQuoteList(props) {
         lazyInit()
     }, [currentPhilosopher])
 
-    return isFetching ? <Loader /> : <QuotesList {...props} />
+    return <QuotesList {...props} />
 }
