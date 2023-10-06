@@ -2,7 +2,6 @@ import { Helmet } from 'react-helmet'
 import { getPhilosopherFullName } from '../quotes-list/utils/utils'
 
 const PageMetaData = ({ currentPhilosopher, options }) => {
-    console.log('rendered', currentPhilosopher)
     return (
         <Helmet>
             <meta charSet="utf-8" />
