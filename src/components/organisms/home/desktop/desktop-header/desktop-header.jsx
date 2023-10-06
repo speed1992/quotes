@@ -1,6 +1,6 @@
 import Switch from '@mui/material/Switch'
 import TextField from '@mui/material/TextField'
-import React, { Suspense } from 'react'
+import React, { Suspense, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { useSnackbar } from 'react-simple-snackbar'
 import ROUTES from '../../../../../common/routes/routes'
@@ -28,7 +28,7 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
                     <TextField className="wordSearch" id="outlined-search" label="Search" type="search" size="small" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />
                 </div>
                 <div className="column">
-                    <Select isFetchingOptions={isFetchingOptions} options={options} currentPhilosopher={currentPhilosopher} onFocusHandlerCallback={() => onFocusHandler({ options, setOptions, isLoggedIn, setSyncDate, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting, syncDate })} onChangeHandler={(_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData, options, setOptions, setRowsRendered })} />
+                    <Select isFetchingOptions={isFetchingOptions} options={options} currentPhilosopher={currentPhilosopher} onFocusHandlerCallback={useCallback(() => onFocusHandler({ options, setOptions, isLoggedIn, setSyncDate, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting, syncDate }), [isFetchingOptions, isLoggedIn, options, originalOptions, setIsFetchingOptions, setOptions, setOriginalOptions, setSyncDate, sorting, syncDate])} onChangeHandler={useCallback((_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData, options, setOptions, setRowsRendered }), [listRef, options, setCurrentData, setCurrentPhilosopher, setEnd, setIsFetching, setOptions, setRowsRendered, setSearchText, setStart])} />
                 </div>
                 <div className="column">
                     <span>

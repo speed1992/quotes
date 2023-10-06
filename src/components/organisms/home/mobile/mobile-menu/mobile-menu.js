@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useSnackbar } from 'react-simple-snackbar'
@@ -32,7 +32,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
     }, [])
 
     return (
-        <OutsideAlerter callback={() => toggleVisible(false)}>
+        <OutsideAlerter callback={useCallback(() => toggleVisible(false), [toggleVisible])}>
             <ul id="slide_menu" style={{ display: visible ? 'block' : 'none' }}>
                 <li key="1">
                     Sort philosophers
