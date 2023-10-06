@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSnackbar } from 'react-simple-snackbar'
 import { doesPhilosopherDataExist, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
@@ -33,22 +34,22 @@ export function useHomePageHooks() {
     const [isFetchingOptions, setIsFetchingOptions] = useState(false)
     const [rowsRendered, setRowsRendered] = useState(false)
 
-    const setStart = (value) => dispatch(setStartRedux(value))
-    const setEnd = (value) => dispatch(setEndRedux(value))
-    const setSearchText = (value) => dispatch(setSearchTextRedux(value))
-    const setMarkedMode = (value) => dispatch(setMarkedModeRedux(value))
-    const setCurrentPhilosopher = (name) => dispatch(setCurrentPhilosopherRedux(name))
-    const setCurrentData = (data) => dispatch(setCurrentDataRedux(data))
-    const setOptions = (value) => dispatch(setOptionsRedux(value))
-    const setMarkedQuotes = (value) => dispatch(setMarkedQuotesRedux(value))
-    const setScheduledQuotes = (value) => dispatch(setScheduledPostsRedux(value))
-    const setDarkMode = (value) => dispatch(setDarkModeRedux(value))
-    const setScrollPosition = (value) => dispatch(setScrollPositionRedux(value))
-    const setOriginalOptions = (value) => dispatch(setOriginalOptionsRedux(value))
-    const setUserName = (value) => dispatch(setUserNameRedux(value))
-    const setIsLoggedIn = (value) => dispatch(setIsLoggedInRedux(value))
-    const setPassword = (value) => dispatch(setPasswordRedux(value))
-    const setSyncDate = (value) => dispatch(setSyncDateRedux(value))
+    const setStart = useCallback((value) => dispatch(setStartRedux(value)), [])
+    const setEnd = useCallback((value) => dispatch(setEndRedux(value)), [])
+    const setSearchText = useCallback((value) => dispatch(setSearchTextRedux(value)), [])
+    const setMarkedMode = useCallback((value) => dispatch(setMarkedModeRedux(value)), [])
+    const setCurrentPhilosopher = useCallback((name) => dispatch(setCurrentPhilosopherRedux(name)), [])
+    const setCurrentData = useCallback((data) => dispatch(setCurrentDataRedux(data)), [])
+    const setOptions = useCallback((value) => dispatch(setOptionsRedux(value)), [])
+    const setMarkedQuotes = useCallback((value) => dispatch(setMarkedQuotesRedux(value)), [])
+    const setScheduledQuotes = useCallback((value) => dispatch(setScheduledPostsRedux(value)), [])
+    const setDarkMode = useCallback((value) => dispatch(setDarkModeRedux(value)), [])
+    const setScrollPosition = useCallback((value) => dispatch(setScrollPositionRedux(value)), [])
+    const setOriginalOptions = useCallback((value) => dispatch(setOriginalOptionsRedux(value)), [])
+    const setUserName = useCallback((value) => dispatch(setUserNameRedux(value)), [])
+    const setIsLoggedIn = useCallback((value) => dispatch(setIsLoggedInRedux(value)), [])
+    const setPassword = useCallback((value) => dispatch(setPasswordRedux(value)), [])
+    const setSyncDate = useCallback((value) => dispatch(setSyncDateRedux(value)), [])
 
     useEffect(() => {
         if (isLoggedIn) {
