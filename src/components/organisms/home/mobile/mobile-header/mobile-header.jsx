@@ -1,4 +1,5 @@
 import React, { Suspense, useState } from 'react'
+import ErrorBoundary from '../../../../../common/components/error-boundary/error-boundary'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import Select from '../../../tools/select/select'
 import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSearch'
@@ -16,8 +17,10 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
         <div className="header">
             <div className="mobile-column">
                 {visible && (
-                    <Suspense fallback={''}>
-                        <MobileMenu markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} options={options} setOptions={setOptions} toggleVisible={toggleVisible} darkMode={darkMode} setDarkMode={setDarkMode} setSorting={setSorting} sorting={sorting} userName={userName} setUserName={setUserName} setMarkedQuotes={setMarkedQuotes} {...{ isLoggedIn, setIsLoggedIn, password, setPassword, setIsFetching }} />
+                    <Suspense>
+                        <ErrorBoundary>
+                            <MobileMenu markedMode={markedMode} setMarkedMode={setMarkedMode} visible={visible} options={options} setOptions={setOptions} toggleVisible={toggleVisible} darkMode={darkMode} setDarkMode={setDarkMode} setSorting={setSorting} sorting={sorting} userName={userName} setUserName={setUserName} setMarkedQuotes={setMarkedQuotes} {...{ isLoggedIn, setIsLoggedIn, password, setPassword, setIsFetching }} />
+                        </ErrorBoundary>
                     </Suspense>
                 )}
                 <div style={{ paddingLeft: '0.5rem', paddingRight: '0.5rem' }} onClick={() => toggleVisible(!visible)}>
