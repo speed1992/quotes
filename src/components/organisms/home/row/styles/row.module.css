@@ -1,6 +1,12 @@
 .actionItems button {
     margin: 0.3rem;
 }
+
+.row {
+    padding-top: 13rem;
+    padding-bottom: 20rem;
+}
+
 .actionItems {
     padding-top: 20rem;
 }

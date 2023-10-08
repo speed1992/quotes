@@ -28,10 +28,10 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
 
     if (!isUndefined(currentQuote))
         return (
-            <div role="row" key={index} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
-                <span role="columnheader" className="row">
+            <div role="row" className={styles.row} key={index} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
+                <div role="columnheader" className="row">
                     <span onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</span>
-                </span>
+                </div>
                 <div role="columnheader" className="row">
                     {localTranslateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}
                 </div>
