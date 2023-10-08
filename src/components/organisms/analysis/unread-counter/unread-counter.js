@@ -4,7 +4,7 @@ import { getPhilosopherQuotes } from '../../../../common/static/utils/utils'
 import { isUndefined } from '../../../../common/utils/commonUtils'
 
 function UnreadCounter({ isFetching, isFetchingOptions, markedQuotes, currentPhilosopher }) {
-    const [quoteCounts, setQuoteCounts] = useState({ totalQuoteCount: 'NA', readCount: 'NA', unreadCount: 'NA' })
+    const [quoteCounts, setQuoteCounts] = useState({ totalQuoteCount: null, readCount: null, unreadCount: null })
     const options = useSelector((state) => state.philosophersData.options)
     const originalData = getPhilosopherQuotes({ philosopher: currentPhilosopher, options })
 
@@ -24,7 +24,9 @@ function UnreadCounter({ isFetching, isFetchingOptions, markedQuotes, currentPhi
         <>
             {!isFetching && originalData && (
                 <span>
-                    Total: {totalQuoteCount} Read: {readCount} Unread: {unreadCount}
+                    {totalQuoteCount && `Total: ${totalQuoteCount}`}
+                    {readCount && ` Read: ${readCount}`}
+                    {unreadCount && ` Unread: ${unreadCount}`}
                 </span>
             )}
         </>
