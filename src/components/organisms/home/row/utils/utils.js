@@ -12,7 +12,7 @@ export function copyQuoteText(quoteText, philosopherFullName) {
     } else copy(`"${quoteText}"\n\n${philosopherFullName}`)
 }
 
-export function rowClickHandler({ openSnackbar, philosopherFullName, quote, index }) {
+export function rowClickHandler({ openSnackbar, philosopherFullName, quote }) {
     copyQuoteText(quote, philosopherFullName)
     openSnackbar('Copied!', 1000)
 }

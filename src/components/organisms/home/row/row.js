@@ -19,8 +19,9 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
     const [localTranslateKey, setLocalTranslateKey] = useState(false)
     const debouncedHandler = useCallback(
         debounce(() => setScrollPosition(parseInt(quotationId)), 500),
-        []
+        [quotationId, setScrollPosition]
     )
+    const rowHandler = useCallback(() => rowClickHandler({ quote: quotationText, openSnackbar, philosopherFullName }), [openSnackbar, philosopherFullName, quotationText])
 
     if (prevCurrentPhilosopher && prevCurrentPhilosopher !== currentPhilosopher && rowsRendered === false) {
         setRowsRendered(true)
@@ -30,7 +31,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
         return (
             <div role="row" className={styles.row} key={index} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
                 <div role="columnheader" className="row">
-                    <span onClick={rowClickHandler.bind(this, { quote: quotationText, ...propsToSend })}>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</span>
+                    <span onClick={rowHandler}>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</span>
                 </div>
                 <div role="columnheader" className="row">
                     {localTranslateKey ? <Translate inputText={quotationText} {...propsToSend} /> : null}

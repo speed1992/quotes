@@ -20,13 +20,15 @@ function UnreadCounter({ isFetching, isFetchingOptions, markedQuotes, currentPhi
 
     const { totalQuoteCount, readCount, unreadCount } = quoteCounts
 
+    console.log(readCount)
+
     return (
         <>
             {!isFetching && originalData && (
                 <span>
-                    {totalQuoteCount && `Total: ${totalQuoteCount}`}
-                    {readCount && ` Read: ${readCount}`}
-                    {unreadCount && ` Unread: ${unreadCount}`}
+                    {totalQuoteCount !== null && `Total: ${totalQuoteCount}`}
+                    {readCount !== null && ` Read: ${readCount}`}
+                    {unreadCount !== null && ` Unread: ${unreadCount}`}
                 </span>
             )}
         </>
