@@ -15,7 +15,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)
     const voiceType = useSelector(({ philosophersData: { voiceType } }) => voiceType)
     const markedQuotes = useSelector(({ philosophersData: { markedQuotes } }) => markedQuotes)
-    const [voices, setVoices] = useState()
+    const [voices, setVoices] = useState([])
     const [openSnackbar] = useSnackbar()
 
     const dispatch = useDispatch()
@@ -28,7 +28,22 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
     }
 
     useEffect(() => {
-        setVoices(window.speechSynthesis.getVoices())
+        function setSpeech() {
+            return new Promise(function (resolve) {
+                let synth = window.speechSynthesis
+                let id
+
+                id = setInterval(() => {
+                    if (synth.getVoices().length !== 0) {
+                        resolve(synth.getVoices())
+                        clearInterval(id)
+                    }
+                }, 10)
+            })
+        }
+
+        let s = setSpeech()
+        s.then((voices) => setVoices(voices))
     }, [])
 
     return (
@@ -59,7 +74,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 </li>
                 <li key="5">
                     <div>Available Voices</div>
-                    {voices && (
+                    {voices?.length !== 0 && (
                         <select
                             onChange={(event) => {
                                 dispatch(setVoiceTypeRedux(event?.target?.value))

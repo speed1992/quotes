@@ -1,6 +1,6 @@
 import { scrollToMemorizedRow } from '../../../../../common/utils/utils'
 
-export async function play(index, currentData, voiceSpeed, voiceType, listRef, scrollPosition, setScrollPosition) {
+export async function play(index, currentData, voiceSpeed, voiceType, listRef, setScrollPosition) {
     const synth = window.speechSynthesis,
         isSpeaking = synth.speaking
 
