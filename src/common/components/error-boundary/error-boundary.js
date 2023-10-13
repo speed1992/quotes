@@ -1,6 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { sendErrorDetails } from '../../apis/commonServices'
 
-export default class ErrorBoundary extends React.Component {
+class ErrorBoundary extends React.Component {
     constructor(props) {
         super(props)
         this.state = { hasError: false }
@@ -12,7 +14,8 @@ export default class ErrorBoundary extends React.Component {
     }
 
     componentDidCatch(error, errorInfo) {
-        console.log(error)
+        console.log(error, errorInfo)
+        if (window.location.hostname !== 'localhost') sendErrorDetails({ userName: this.props?.userName ? this.props?.userName : 'nonLoggedIn', errorDetails: { error, errorInfo } })
     }
 
     render() {
@@ -23,3 +26,15 @@ export default class ErrorBoundary extends React.Component {
         return this.props.children
     }
 }
+
+const mapStateToProps = (state) => ({
+    userName: state?.philosophersData?.userName, // Map the Redux store state to the props of the component here.
+})
+
+const mapDispatchToProps = {
+    // Map the Redux dispatch function to the props of the component here.
+}
+
+const ConnectedErrorBoundary = connect(mapStateToProps, mapDispatchToProps)(ErrorBoundary)
+
+export default ConnectedErrorBoundary
