@@ -27,6 +27,7 @@ let INITIAL_STATE = {
     syncDate: 46190630,
     isLoggedIn: false,
     voiceType: 0,
+    recentPhilosophers: [],
 }
 
 export default INITIAL_STATE

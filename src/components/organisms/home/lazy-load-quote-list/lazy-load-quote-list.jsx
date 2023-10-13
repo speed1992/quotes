@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { getPhilosopherQuotes, lazyLoadAsset } from '../../../../common/static/utils/utils'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
-const Loader = React.lazy(() => retryTenTimes(() => import('../../../../common/components/loader/loader')))
 const QuotesList = React.lazy(() => retryTenTimes(() => import('../quotes-list/quotes-list')))
 
 export function LazyLoadQuoteList(props) {

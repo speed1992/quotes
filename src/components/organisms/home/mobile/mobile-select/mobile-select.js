@@ -3,7 +3,7 @@ import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import './mobile-select.css'
 const OutsideAlerter = React.lazy(() => retryTenTimes(() => import('../../../../../common/components/outside-alerter/outside-alerter')))
 
-export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, placeholder, value, isFetchingOptions }) {
+export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, placeholder, value, isFetchingOptions, recentPhilosophers }) {
     const [suggestions, setSuggestions] = useState([])
     const [searchText, setSearchText] = useState([])
     const [isFocused, setIsFocused] = useState(false)
@@ -56,8 +56,8 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
         }
         return (
             <ul ref={scollToRef} className="dropDownList">
-                {suggestions?.map(({ fullName, value }) => (
-                    <li id={currentPhilosopher === value ? 'active' : ''} key={value} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
+                {suggestions?.map(({ fullName, value }, index) => (
+                    <li style={index < recentPhilosophers?.length ? { color: 'purple' } : {}} id={currentPhilosopher === value ? 'active' : ''} key={value} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
                         {fullName}
                     </li>
                 ))}

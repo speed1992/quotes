@@ -1,12 +1,14 @@
 import { API_ENDPOINTS } from '../../../../../../common/apis/apiEndpoints'
+import { MAX_RECENT_PHILOSOPHERS } from '../../../../../../common/settings/constants'
 import { getPhilosopherQuotes, lazyLoadAsset } from '../../../../../../common/static/utils/utils'
 import { retryTenTimes } from '../../../../../../common/utils/apiUtils'
 import { isCacheExpired } from '../../../../../../common/utils/dateUtils'
 import { addResponseOptionsDataIntoRedux } from '../../../../../../common/utils/lazyLoadUtils'
 import { changeQuotesData } from '../../../quotes-list/utils/utils'
 
-export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, markedMode, markedQuotes, setMarkedQuotes, scrollPosition, setRowsRendered }) {
+export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, markedMode, markedQuotes, setMarkedQuotes, scrollPosition, setRowsRendered, recentPhilosophers, setRecentPhilosophers }) {
     function callback() {
+        setRecentPhilosophers([...new Set([philosopher, ...recentPhilosophers.slice(0, MAX_RECENT_PHILOSOPHERS - 1)])])
         setCurrentPhilosopher(philosopher)
         changeQuotesData({ philosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
         setIsFetching(false)
