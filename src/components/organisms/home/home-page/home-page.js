@@ -4,7 +4,6 @@ import { doesPhilosopherDataExist } from '../../../../common/static/utils/utils'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { applyFilters } from '../../../../common/utils/searchUtils'
 import { isDesktop } from '../../../../common/utils/utils'
-import { Header } from '../header-layout/header-layout'
 import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
 import { getPhilosopherFullName } from '../quotes-list/utils/utils'
 import styles from './home-page.module.css'
@@ -12,12 +11,13 @@ import { useHomePageHooks } from './utils/hooks'
 import { useSortingHooks } from './utils/sortingHook'
 import { setThemeClassNameOnHTMLTag } from './utils/utils'
 const Loader = React.lazy(() => retryTenTimes(() => import('../../../../common/components/loader/loader')))
+const Header = React.lazy(() => retryTenTimes(() => import('../header-layout/header-layout')))
 
 const HomePage = () => {
     let propsToSend = useHomePageHooks()
     const { options, sorting, setSorting } = useSortingHooks()
 
-    const { start, end, searchText, currentPhilosopher, currentData, markedMode, markedQuotes, darkMode, setDarkMode, originalData, isFetching, setCurrentData, setMarkedQuotes, isFetchingOptions, setIsFetchingOptions } = propsToSend
+    const { start, end, searchText, currentPhilosopher, currentData, markedMode, markedQuotes, darkMode, setDarkMode, originalData, isFetching, setCurrentData, setMarkedQuotes, isFetchingOptions, setIsFetchingOptions, minMode, setMinMode } = propsToSend
 
     propsToSend = { ...propsToSend, setSorting, sorting, isFetchingOptions, setIsFetchingOptions }
 
@@ -50,8 +50,11 @@ const HomePage = () => {
                 <Loader />
             ) : (
                 <>
-                    <Header {...propsToSend} />
-                    <div className={styles.content}>
+                    {!minMode && <Header {...propsToSend} />}
+                    <button className={styles.minMode} onClick={() => setMinMode(!minMode)}>
+                        Toggle Min Mode
+                    </button>
+                    <div className={!minMode ? styles.content : styles.contentMinMode}>
                         <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
                     </div>
                 </>

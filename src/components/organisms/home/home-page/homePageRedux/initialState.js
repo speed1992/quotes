@@ -28,6 +28,7 @@ let INITIAL_STATE = {
     isLoggedIn: false,
     voiceType: 0,
     recentPhilosophers: [],
+    minMode: false,
 }
 
 export default INITIAL_STATE

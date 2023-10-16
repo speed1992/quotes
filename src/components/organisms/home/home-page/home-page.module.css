@@ -6,10 +6,20 @@
     .content {
         min-height: calc(100vh - 10rem);
     }
+    .contentMinMode {
+        min-height: calc(100vh - 1rem);
+    }
 }
 
 .homepage {
     margin-left: 1rem;
     margin-right: 1rem;
     overflow: hidden;
+}
+
+.minMode {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 2;
 }

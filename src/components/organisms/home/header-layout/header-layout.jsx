@@ -5,7 +5,7 @@ import './header-layout.css'
 const MobileHeader = React.lazy(() => retryTenTimes(() => import('../mobile/mobile-header/mobile-header')))
 const DesktopHeader = React.lazy(() => retryTenTimes(() => import('../desktop/desktop-header/desktop-header')))
 
-export const Header = (props) => {
+const Header = (props) => {
     return (
         <Suspense fallback={''}>
             {isMobile() ? (
@@ -20,3 +20,5 @@ export const Header = (props) => {
         </Suspense>
     )
 }
+
+export default Header
