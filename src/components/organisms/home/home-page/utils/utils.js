@@ -2,7 +2,7 @@ import { getPhilosopherData } from '../../../../../common/static/utils/utils'
 import { getUserDetails, sendUserDetails } from '../../mobile/mobile-menu/utils/utils'
 
 export const setThemeClassNameOnHTMLTag = (value) => {
-    var root = document.getElementsByTagName('html')[0]
+    let root = document.getElementsByTagName('html')[0]
     root.className = ''
     if (value) {
         root.classList.add('darkTheme')

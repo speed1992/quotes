@@ -1,21 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { getPersistConfig } from 'redux-deep-persist'
-import { persistReducer, persistStore } from 'redux-persist'
-import DBstorage from 'redux-persist-indexeddb-storage'
-import philosophersDataReducer from '../../components/organisms/home/home-page/homePageRedux/homePageRedux'
-
-const newPersistConfig = getPersistConfig({
-    key: 'root',
-    storage: DBstorage('myDB'),
-    blacklist: ['currentData', 'originalData'],
-    rootReducer: philosophersDataReducer,
-})
-
-export const philosophersDataSlice = persistReducer(newPersistConfig, philosophersDataReducer)
+import { persistStore } from 'redux-persist'
+import snackbarReducer from '../components/snackbar/snackbarRedux'
+import philosophersDataPersistedReducer from './philosopherDataStoreConfig'
 
 export const store = configureStore({
     reducer: {
-        philosophersData: philosophersDataSlice,
+        philosophersData: philosophersDataPersistedReducer,
+        snackbar: snackbarReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

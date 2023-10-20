@@ -14,7 +14,7 @@ export function copyQuoteText(quoteText, philosopherFullName) {
 
 export function rowClickHandler({ openSnackbar, philosopherFullName, quote }) {
     copyQuoteText(quote, philosopherFullName)
-    openSnackbar('Copied!', 1000)
+    openSnackbar('Quote Text Copied!')
 }
 
 export function devModeSignature() {
@@ -28,7 +28,7 @@ export function isAppInDevMode() {
 export function rowClickHandlerFoBothQuotes({ openSnackbar, quote: { hindi, english }, philosopherNames: { englishFullname, hindiFullname }, index }, event) {
     event.stopPropagation()
     copyBothQuotesText({ hindiQuote: hindi, englishQuote: english }, { englishFullname, hindiFullname })
-    openSnackbar('Copied!', 1000)
+    openSnackbar('Quote Text Copied!')
 }
 
 export const copyBothQuotesText = ({ englishQuote, hindiQuote }, { englishFullname, hindiFullname }) => copy(`"${hindiQuote}"\n\n― ${hindiFullname}\n\n\n"${englishQuote}"\n\n― ${englishFullname}`)
@@ -44,5 +44,5 @@ export function usePrevious(value) {
 export function copyURL(openSnackbar, callback) {
     callback()
     copy(window.location.href.toString())
-    openSnackbar('Quote URL Copied. You can now share!', 1000)
+    openSnackbar('Quote Link Copied. You can now share!')
 }

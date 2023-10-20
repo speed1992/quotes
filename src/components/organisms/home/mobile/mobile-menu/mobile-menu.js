@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { useSnackbar } from 'react-simple-snackbar'
+import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
 import ROUTES from '../../../../../common/routes/routes'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import { ALPHABETICAL, LATEST } from '../../home-page/constants/constants'

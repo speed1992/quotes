@@ -1,6 +1,6 @@
 import React, { Suspense, useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useSnackbar } from 'react-simple-snackbar'
+import useSnackbar from '../../../../common/components/snackbar/useSnackbar'
 import ROUTES from '../../../../common/routes/routes'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { isUndefined } from '../../../../common/utils/commonUtils'
