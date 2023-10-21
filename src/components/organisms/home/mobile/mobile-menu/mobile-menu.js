@@ -48,7 +48,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
 
     return (
         <OutsideAlerter callback={useCallback(() => toggleVisible(false), [toggleVisible])}>
-            <ul className={styles.slide_menu} id="slide_menu" style={{ display: visible ? 'block' : 'none' }}>
+            <ul className={`${styles.slide_menu} ${darkMode ? styles.darkTheme : styles.lightTheme}`} id="slide_menu" style={{ display: visible ? 'block' : 'none' }}>
                 <li key="1">
                     Sort philosophers
                     <div>

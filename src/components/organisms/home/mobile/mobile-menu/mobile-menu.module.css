@@ -1,5 +1,12 @@
-.slide_menu {
+.darkTheme {
+    background: #000;
+}
+
+.lightTheme {
     background-color: white;
+}
+
+.slide_menu {
     display: none;
     padding: 0px;
     margin: 0px;
