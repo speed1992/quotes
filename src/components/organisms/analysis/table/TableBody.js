@@ -1,3 +1,5 @@
+import styles from './table.module.css'
+
 const TableBody = ({ tableData, columns }) => {
     return (
         <tbody>
@@ -6,7 +8,11 @@ const TableBody = ({ tableData, columns }) => {
                     <tr key={data.id}>
                         {columns.map(({ accessor }) => {
                             const tData = data[accessor] ? data[accessor] : '——'
-                            return <td key={accessor}>{tData}</td>
+                            return (
+                                <td className={styles.tableColumn} key={accessor}>
+                                    {tData}
+                                </td>
+                            )
                         })}
                     </tr>
                 )

@@ -1,4 +1,4 @@
-#slide_menu {
+.slide_menu {
     background-color: white;
     display: none;
     padding: 0px;
@@ -15,17 +15,17 @@
     list-style: none;
 }
 
-#slide_menu li {
+.slide_menu li {
     padding: 1.2rem 1rem;
     font-size: 1.5rem;
     border-bottom: 1px solid #b4b4b4;
 }
 
-#slide_menu .voiceSpeed {
+.slide_menu .voiceSpeed {
     width: 3rem;
 }
 
-#slide_menu .userName {
+.userName {
     width: 100%;
     margin-bottom: 0.5rem;
     font-size: 3.7vw;
@@ -33,13 +33,7 @@
     text-overflow: ellipsis;
 }
 
-#slide_menu .userInput {
-    width: 80%;
-    margin-bottom: 0.5rem;
-    font-size: 3.7vw;
-}
-
-.darkTheme #slide_menu {
+.darkTheme .slide_menu {
     background-color: black;
 }
 
@@ -51,4 +45,9 @@
 .menuBtn {
     margin-top: 0.2rem;
     margin-right: 0.2rem;
+}
+.voice {
+    width: 80%;
+    margin-bottom: 0.5rem;
+    font-size: 3.7vw;
 }

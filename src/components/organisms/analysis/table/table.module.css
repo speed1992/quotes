@@ -1,0 +1,16 @@
+.table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.table th.tableHeading {
+    padding: 8px 10px;
+    border-bottom: 1px solid #aaa;
+    font-weight: bold;
+    text-align: left;
+}
+
+.table td.tableColumn {
+    border-top: 1px solid #ddd;
+    padding: 8px 20px;
+}

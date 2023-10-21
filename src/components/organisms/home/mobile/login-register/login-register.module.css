@@ -1,0 +1,15 @@
+@media (min-width: 768px) {
+    .userInput {
+        margin-left: 1rem;
+        width: 13rem;
+        height: 2.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .userInput {
+        width: 80%;
+        margin-bottom: 0.5rem;
+        font-size: 3.7vw;
+    }
+}

@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react'
 import { getCurrentPhilosopherFullname } from '../../../../common/static/utils/utils'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
-import './select.css'
 const DesktopSelect = React.lazy(() => retryTenTimes(() => import('../../home/desktop/desktop-select/desktop-select')))
 const MobileSelect = React.lazy(() => retryTenTimes(() => import('../../home/mobile/mobile-select/mobile-select')))
 

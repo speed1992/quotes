@@ -6,7 +6,7 @@ import ROUTES from '../../../../../common/routes/routes'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import { ALPHABETICAL, LATEST } from '../../home-page/constants/constants'
 import { setVoiceSpeedRedux, setVoiceTypeRedux } from '../../home-page/homePageRedux/homePageRedux'
-import './mobile-menu.css'
+import styles from './mobile-menu.module.css'
 const BuildInfo = React.lazy(() => retryTenTimes(() => import('../../../tools/build-info/build-info')))
 const LoginRegister = React.lazy(() => retryTenTimes(() => import('../login-register/login-register')))
 const OutsideAlerter = React.lazy(() => retryTenTimes(() => import('../../../../../common/components/outside-alerter/outside-alerter')))
@@ -48,7 +48,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
 
     return (
         <OutsideAlerter callback={useCallback(() => toggleVisible(false), [toggleVisible])}>
-            <ul id="slide_menu" style={{ display: visible ? 'block' : 'none' }}>
+            <ul className={styles.slide_menu} id="slide_menu" style={{ display: visible ? 'block' : 'none' }}>
                 <li key="1">
                     Sort philosophers
                     <div>
@@ -70,17 +70,17 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 </li>
                 <li key="4">
                     Voice Speed[1-20]
-                    <input onChange={(event) => dispatch(setVoiceSpeedRedux(event.target.value / 10))} className="voiceSpeed" type="number" value={voiceSpeed ? voiceSpeed * 10 : ''} />
+                    <input onChange={(event) => dispatch(setVoiceSpeedRedux(event.target.value / 10))} className={styles.voiceSpeed} type="number" value={voiceSpeed ? voiceSpeed * 10 : ''} />
                 </li>
                 <li key="5">
                     <div>Available Voices</div>
                     {voices?.length !== 0 && (
                         <select
+                            className={styles.voice}
                             onChange={(event) => {
                                 dispatch(setVoiceTypeRedux(event?.target?.value))
                                 speechSynthesis.cancel()
                             }}
-                            className="userInput"
                             value={voiceType}
                         >
                             {voices?.map((voice, index) => (
@@ -98,7 +98,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 </li>
                 <li key="7">
                     <LoginRegister {...{ setUserName, userName, openSnackbar, isLoggedIn, setIsLoggedIn, setMarkedQuotes, markedQuotes, password, setPassword, setIsFetching }} />
-                    {!isLoggedIn && <div className="backupNote">You can login to backup your marked quotes in database in case browser data gets deleted.</div>}
+                    {!isLoggedIn && <div className={styles.backupNote}>You can login to backup your marked quotes in database in case browser data gets deleted.</div>}
                 </li>
                 <li key="8">
                     <BuildInfo />

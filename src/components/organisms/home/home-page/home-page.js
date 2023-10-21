@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import { doesPhilosopherDataExist } from '../../../../common/static/utils/utils'

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import styles from './table.module.css'
 
 const TableHead = ({ columns, handleSorting }) => {
     const [sortField, setSortField] = useState('')
@@ -17,7 +18,7 @@ const TableHead = ({ columns, handleSorting }) => {
                 {columns.map(({ label, accessor, sortable }) => {
                     const cl = sortable ? (sortField === accessor && order === 'asc' ? 'up' : sortField === accessor && order === 'desc' ? 'down' : 'default') : ''
                     return (
-                        <th key={accessor} onClick={sortable ? () => handleSortingChange(accessor) : null} className={cl}>
+                        <th className={`${styles.tableHeading} ${cl}`} key={accessor} onClick={sortable ? () => handleSortingChange(accessor) : null}>
                             {label}
                         </th>
                     )

@@ -1,19 +1,19 @@
 import React, { Suspense } from 'react'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { isMobile } from '../../../../common/utils/utils'
-import './header-layout.css'
+import styles from './header-layout.module.css'
 const MobileHeader = React.lazy(() => retryTenTimes(() => import('../mobile/mobile-header/mobile-header')))
 const DesktopHeader = React.lazy(() => retryTenTimes(() => import('../desktop/desktop-header/desktop-header')))
 
 const Header = (props) => {
     return (
-        <Suspense fallback={''}>
+        <Suspense>
             {isMobile() ? (
-                <div className="mobile">
+                <div className={styles.mobile}>
                     <MobileHeader {...props} />
                 </div>
             ) : (
-                <div className="desktop">
+                <div className={styles.desktop}>
                     <DesktopHeader {...props} />
                 </div>
             )}

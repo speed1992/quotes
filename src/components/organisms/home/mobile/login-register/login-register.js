@@ -1,4 +1,5 @@
 import { loginRegister } from '../mobile-menu/utils/utils'
+import styles from './login-register.module.css'
 
 const LoginRegister = ({ setUserName, userName, isLoggedIn, setIsLoggedIn, openSnackbar, markedQuotes, setMarkedQuotes, password, setPassword, setIsFetching }) => {
     const capitalizedUserName = userName.charAt(0).toUpperCase() + userName.slice(1)
@@ -8,20 +9,20 @@ const LoginRegister = ({ setUserName, userName, isLoggedIn, setIsLoggedIn, openS
             {!isLoggedIn ? (
                 <>
                     Username
-                    <input type="text" className="userInput" onChange={(e) => setUserName(e.target.value)} value={userName} />
+                    <input type="text" className={styles.userInput} onChange={(e) => setUserName(e.target.value)} value={userName} />
                     Password
-                    <input type="password" className="userInput" onChange={(e) => setPassword(e.target.value)} value={password} />
-                    <button className="menuBtn" onClick={() => loginRegister({ apiCallType: 'login', userName, password, setIsLoggedIn, openSnackbar, setIsFetching })}>
+                    <input type="password" className={styles.userInput} onChange={(e) => setPassword(e.target.value)} value={password} />
+                    <button className={styles.menuBtn} onClick={() => loginRegister({ apiCallType: 'login', userName, password, setIsLoggedIn, openSnackbar, setIsFetching })}>
                         Login
                     </button>
-                    <button className="menuBtn" onClick={() => loginRegister({ apiCallType: 'register', userName, password, setIsLoggedIn, openSnackbar, setIsFetching })}>
+                    <button className={styles.menuBtn} onClick={() => loginRegister({ apiCallType: 'register', userName, password, setIsLoggedIn, openSnackbar, setIsFetching })}>
                         Register
                     </button>
                 </>
             ) : (
                 <>
-                    <div className="userName">Hi {capitalizedUserName}!</div>
-                    <button className="menuBtn" onClick={() => setIsLoggedIn(false)}>
+                    <div className={styles.userName}>Hi {capitalizedUserName}!</div>
+                    <button className={styles.menuBtn} onClick={() => setIsLoggedIn(false)}>
                         Logout
                     </button>
                 </>

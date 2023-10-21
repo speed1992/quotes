@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
-import './mobile-select.css'
+import styles from './mobile-select.module.css'
 const OutsideAlerter = React.lazy(() => retryTenTimes(() => import('../../../../../common/components/outside-alerter/outside-alerter')))
 
 export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, placeholder, value, isFetchingOptions, recentPhilosophers }) {
@@ -55,7 +55,7 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
             return null
         }
         return (
-            <ul ref={scollToRef} className="dropDownList">
+            <ul ref={scollToRef} className={styles.dropDownList}>
                 {suggestions?.map(({ fullName, value }, index) => (
                     <li style={index < recentPhilosophers?.length ? { color: 'purple' } : {}} id={currentPhilosopher === value ? 'active' : ''} key={value} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
                         {fullName}
@@ -67,10 +67,10 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
 
     return (
         <OutsideAlerter callback={() => setSuggestions([])}>
-            <div className="typeAheadDropDown">
+            <div className={styles.typeAheadDropDown}>
                 <input name="search-philosopher" type="text" onFocus={onFocusHandler} onChange={onTextChange} placeholder={placeholder} value={searchText} onBlur={onBlurHandler} />
                 {isFetchingOptions ? (
-                    <ul className="dropDownList">
+                    <ul className={styles.dropDownList}>
                         <li>Loading...</li>
                     </ul>
                 ) : (

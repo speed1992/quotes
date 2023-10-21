@@ -1,6 +1,6 @@
 import React from 'react'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
-import './wordLengthSearch.css'
+import styles from './wordLengthSearch.module.css'
 const DesktopWordLengthSearch = React.lazy(() => retryTenTimes(() => import('../../home/desktop/desktop-word-length-search/desktop-word-length-search')))
 
 export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText, isMobile }) {
@@ -8,10 +8,10 @@ export function WordLengthSearch({ start, end, setStart, setEnd, setSearchText, 
         if (isMobile) {
             return (
                 <>
-                    <label id="labelEnd" htmlFor="end">
+                    <label id="labelEnd" className={styles.labelEnd} htmlFor="end">
                         Words{' '}
                     </label>
-                    <input id="end" className="smallInput" key="end" name="end" type="number" min="0" value={end} onChange={({ target: { value } }) => setEnd(value)} />
+                    <input id="end" className={styles.smallInput} key="end" name="end" type="number" min="0" value={end} onChange={({ target: { value } }) => setEnd(value)} />
                 </>
             )
         } else {

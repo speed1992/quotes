@@ -7,8 +7,8 @@ import ROUTES from '../../../../../common/routes/routes'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import Select from '../../../tools/select/select'
 import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSearch'
+import styles from '../../header-layout/header-layout.module.css'
 import LoginRegister from '../../mobile/login-register/login-register'
-import styles from './desktop-header.module.css'
 import { onFocusHandler, onPhilosopherSelectChange } from './utils/utils'
 const Breadcrumb = React.lazy(() => retryTenTimes(() => import('../../../analysis/breadcrumb/breadcrumb')))
 const UnreadCounter = React.lazy(() => retryTenTimes(() => import('../../../analysis/unread-counter/unread-counter')))
@@ -19,20 +19,20 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
     const [openSnackbar] = useSnackbar()
 
     return (
-        <div className="header">
-            <div className="row">
-                <div className="column">
+        <div className={styles.header}>
+            <div className={styles.row}>
+                <div className={styles.column}>
                     <WordLengthSearch listRef={listRef} {...propsToSend} />
                 </div>
-                <div className="column">
-                    <TextField className="wordSearch" id="outlined-search" label="Search" type="search" size="small" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />
+                <div className={styles.column}>
+                    <TextField className={styles.wordSearch} id="outlined-search" label="Search" type="search" size="small" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />
                 </div>
-                <div className="column">
+                <div className={styles.column}>
                     <Select isFetchingOptions={isFetchingOptions} options={options} currentPhilosopher={currentPhilosopher} onFocusHandlerCallback={useCallback(() => onFocusHandler({ options, setOptions, isLoggedIn, setSyncDate, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting, syncDate }), [isFetchingOptions, isLoggedIn, options, originalOptions, setIsFetchingOptions, setOptions, setOriginalOptions, setSyncDate, sorting, syncDate])} onChangeHandler={useCallback((_, { value: philosopher }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData, options, setOptions, setRowsRendered }), [listRef, options, setCurrentData, setCurrentPhilosopher, setEnd, setIsFetching, setOptions, setRowsRendered, setSearchText, setStart])} />
                 </div>
-                <div className="column">
+                <div className={styles.column}>
                     <span>
-                        <span className="vertically"></span> Marked Mode
+                        <span className={styles.vertically}></span> Marked Mode
                         <Switch
                             checked={markedMode}
                             onChange={({ target: { checked } }) => {
@@ -45,7 +45,7 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
                         />
                     </span>
                 </div>
-                <div className="column">
+                <div className={styles.column}>
                     <Link to={ROUTES.report.route} style={{ textDecoration: 'none', color: '#000' }}>
                         <button className={styles.report}>Open Report</button>
                     </Link>

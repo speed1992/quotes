@@ -4,6 +4,7 @@ import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import Select from '../../../tools/select/select'
 import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSearch'
 import { onFocusHandler, onPhilosopherSelectChange } from '../../desktop/desktop-header/utils/utils'
+import styles from '../../header-layout/header-layout.module.css'
 const MobileMenu = React.lazy(() => retryTenTimes(() => import('../mobile-menu/mobile-menu')))
 const Breadcrumb = React.lazy(() => retryTenTimes(() => import('../../../analysis/breadcrumb/breadcrumb')))
 const UnreadCounter = React.lazy(() => retryTenTimes(() => import('../../../analysis/unread-counter/unread-counter')))
@@ -14,8 +15,8 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
     const [visible, toggleVisible] = useState(false)
 
     return (
-        <div className="header">
-            <div className="mobile-column">
+        <div className={styles.header}>
+            <div className={styles.mobileColumn}>
                 {visible && (
                     <Suspense>
                         <ErrorBoundary>
@@ -27,13 +28,13 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
                     ☰
                 </div>
             </div>
-            <div className="mobile-column">
+            <div className={styles.mobileColumn}>
                 <WordLengthSearch isMobile={true} listRef={listRef} {...propsToSend} />
             </div>
-            <div className="mobile-column">
-                <input name="search-text" data-testid="search-text" className="wordSearch" type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />
+            <div className={styles.mobileColumn}>
+                <input name="search-text" data-testid="search-text" className={styles.wordSearch} type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />
             </div>
-            <div className="mobile-column">
+            <div className={styles.mobileColumn}>
                 <Select recentPhilosophers={recentPhilosophers} isMobile={true} isFetchingOptions={isFetchingOptions} options={options} currentPhilosopher={currentPhilosopher} onFocusHandlerCallback={() => onFocusHandler({ options, setOptions, isLoggedIn, setSyncDate, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting, syncDate })} onChangeHandler={({ target: { value: philosopher } }) => onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, setCurrentData, options, setOptions, scrollPosition, setRowsRendered, recentPhilosophers, setRecentPhilosophers })} />
             </div>
             <Suspense fallback={''}>

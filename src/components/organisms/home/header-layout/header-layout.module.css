@@ -35,7 +35,7 @@
         margin-top: 0.6rem;
         margin-bottom: 0.5rem;
     }
-    .mobile-column {
+    .mobileColumn {
         padding: 0 0.5rem 0 0;
         margin-right: 0.2rem;
         display: inline-block !important;
@@ -43,7 +43,7 @@
     .mobile {
         display: block !important;
     }
-    .mobile-column:last-child {
+    .mobileColumn:last-child {
         padding-right: 0;
     }
     .column,
@@ -52,11 +52,19 @@
     }
 }
 
-.mobile-column,
+.mobileColumn,
 .mobile {
     display: none;
 }
 
 .darkTheme .header input {
     border: 1px solid #fff;
+}
+
+.report {
+    margin-top: 0.5rem;
+}
+
+.col5 * {
+    width: 10rem;
 }
