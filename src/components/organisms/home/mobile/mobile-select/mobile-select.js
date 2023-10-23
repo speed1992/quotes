@@ -3,7 +3,7 @@ import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import styles from './mobile-select.module.css'
 const OutsideAlerter = React.lazy(() => retryTenTimes(() => import('../../../../../common/components/outside-alerter/outside-alerter')))
 
-export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, placeholder, value, isFetchingOptions, recentPhilosophers }) {
+export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, placeholder, value, isFetchingOptions, recentPhilosophers, darkMode }) {
     const [suggestions, setSuggestions] = useState([])
     const [searchText, setSearchText] = useState([])
     const [isFocused, setIsFocused] = useState(false)
@@ -67,7 +67,7 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
 
     return (
         <OutsideAlerter callback={() => setSuggestions([])}>
-            <div className={styles.typeAheadDropDown}>
+            <div className={`${styles.typeAheadDropDown} ${styles.darkTheme}`}>
                 <input name="search-philosopher" type="text" onFocus={onFocusHandler} onChange={onTextChange} placeholder={placeholder} value={searchText} onBlur={onBlurHandler} />
                 {isFetchingOptions ? (
                     <ul className={styles.dropDownList}>

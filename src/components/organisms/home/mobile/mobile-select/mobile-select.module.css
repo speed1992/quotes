@@ -26,6 +26,11 @@
     height: 7px;
 }
 
+.darkTheme::after {
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
 .typeAheadDropDown ul {
     position: absolute;
     border: 1px solid rgb(129, 129, 129);
