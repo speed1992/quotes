@@ -31,10 +31,6 @@ const mapStateToProps = (state) => ({
     userName: state?.philosophersData?.userName, // Map the Redux store state to the props of the component here.
 })
 
-const mapDispatchToProps = {
-    // Map the Redux dispatch function to the props of the component here.
-}
-
-const ConnectedErrorBoundary = connect(mapStateToProps, mapDispatchToProps)(ErrorBoundary)
+const ConnectedErrorBoundary = connect(mapStateToProps, null)(ErrorBoundary)
 
 export default ConnectedErrorBoundary
