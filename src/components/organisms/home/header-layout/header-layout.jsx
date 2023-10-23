@@ -9,7 +9,7 @@ const Header = (props) => {
     return (
         <Suspense>
             {isMobile() ? (
-                <div className={`${styles.mobile} ${styles.darkTheme}`}>
+                <div className={`${styles.mobile} ${props?.darkTheme && styles.darkTheme}`}>
                     <MobileHeader {...props} />
                 </div>
             ) : (
