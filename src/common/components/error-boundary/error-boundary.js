@@ -28,7 +28,7 @@ class ErrorBoundary extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    userName: state?.philosophersData?.userName, // Map the Redux store state to the props of the component here.
+    userName: state?.philosophersData?.userName,
 })
 
 const ConnectedErrorBoundary = connect(mapStateToProps, null)(ErrorBoundary)
