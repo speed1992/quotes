@@ -4,10 +4,11 @@
     color: rgba(255, 255, 255, 0.87);
     padding: 14px 16px;
     position: fixed;
-    bottom: 0;
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 100vw;
+    width: calc(100vw - 5rem);
+    z-index: 99;
 }
 
 @media only screen and (min-width: 400px) {

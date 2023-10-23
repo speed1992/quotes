@@ -57,7 +57,7 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
         return (
             <ul ref={scollToRef} className={styles.dropDownList}>
                 {suggestions?.map(({ fullName, value }, index) => (
-                    <li style={index < recentPhilosophers?.length ? { color: 'purple' } : {}} id={currentPhilosopher === value ? 'active' : ''} key={value} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
+                    <li style={searchText === '' && index < recentPhilosophers?.length ? { color: '#FF00FF' } : {}} id={currentPhilosopher === value ? 'active' : ''} key={value} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
                         {fullName}
                     </li>
                 ))}

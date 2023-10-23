@@ -35,7 +35,7 @@ body {
 }
 
 .darkTheme * {
-    background-color: #000;
+    background-color: #000 !important;
     color: #fff;
 }
 
@@ -75,16 +75,12 @@ button {
     padding: 0.4rem 0.6rem;
 }
 
-.mobile .header input {
-    border-radius: 0.25rem;
-}
-
 .lightTheme input,
 .lightTheme button {
     border-width: 1.5px;
 }
 
 .darkTheme button {
-    border-color: #b4b4b4;
+    border-color: #fff;
     border-width: 1px;
 }

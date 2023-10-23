@@ -32,7 +32,7 @@ const Select = ({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCa
         }
     }
 
-    return renderSelect()
+    return currentPhilosopher && options?.length > 0 && renderSelect()
 }
 
 export default Select

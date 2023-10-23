@@ -76,11 +76,11 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                     <div>Available Voices</div>
                     {voices?.length !== 0 && (
                         <select
-                            className={styles.voice}
                             onChange={(event) => {
                                 dispatch(setVoiceTypeRedux(event?.target?.value))
                                 speechSynthesis.cancel()
                             }}
+                            className={styles.voices}
                             value={voiceType}
                         >
                             {voices?.map((voice, index) => (

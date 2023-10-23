@@ -43,6 +43,15 @@
     .mobile {
         display: block !important;
     }
+
+    .mobile input {
+        border-radius: 0.25rem !important;
+    }
+
+    .darkTheme input {
+        border: 1px solid #fff;
+    }
+
     .mobileColumn:last-child {
         padding-right: 0;
     }
@@ -55,10 +64,6 @@
 .mobileColumn,
 .mobile {
     display: none;
-}
-
-.darkTheme .header input {
-    border: 1px solid #fff;
 }
 
 .report {

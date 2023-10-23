@@ -4,7 +4,7 @@
 
 @media only screen and (max-width: 40rem) {
     .content {
-        min-height: calc(100vh - 10rem);
+        min-height: calc(100vh - 12rem);
     }
     .contentMinMode {
         min-height: calc(100vh - 1rem);
@@ -19,7 +19,7 @@
 
 .minMode {
     position: fixed;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 2rem;
+    right: 2rem;
     z-index: 2;
 }

@@ -11,7 +11,8 @@
     padding: 0px;
     margin: 0px;
     width: 16rem;
-    height: 100%;
+    height: 100vh;
+    overflow: hidden;
     z-index: 1;
     position: absolute;
     top: 0;
@@ -23,12 +24,16 @@
 }
 
 .slide_menu li {
-    padding: 1.2rem 1rem;
+    padding: 1rem 1rem;
     font-size: 1.5rem;
     border-bottom: 1px solid #b4b4b4;
 }
 
-.slide_menu .voiceSpeed {
+#slide_menu li:last-child {
+    border-bottom: none;
+}
+
+.voiceSpeed {
     width: 3rem;
 }
 
@@ -40,7 +45,19 @@
     text-overflow: ellipsis;
 }
 
-.darkTheme .slide_menu {
+#slide_menu .userInput {
+    width: 80%;
+    margin-bottom: 0.5rem;
+    font-size: 3.7vw;
+}
+
+.voices {
+    width: 90%;
+    margin-bottom: 0.5rem;
+    font-size: 3.7vw;
+}
+
+.darkTheme #slide_menu {
     background-color: black;
 }
 
@@ -49,12 +66,3 @@
     margin-top: 0.6rem;
 }
 
-.menuBtn {
-    margin-top: 0.2rem;
-    margin-right: 0.2rem;
-}
-.voice {
-    width: 80%;
-    margin-bottom: 0.5rem;
-    font-size: 3.7vw;
-}

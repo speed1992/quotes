@@ -31,7 +31,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, markedMode
         return <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentData, setCurrentData, currentQuote: currentData[index], index, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, listRef, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }} {...others} />
     }
 
-    return <List className="List" height={height} rowCount={currentData.length} rowHeight={ruleEngine.makeDecision(rules, { params: { start } })} width={width} ref={listRef} rowRenderer={rowRenderer} onRowsRendered={onRowsRendered} noRowsRenderer={NoRowsRenderer} style={{ padding: '1rem' }} />
+    return currentPhilosopher && currentData ? <List className="List" height={height} rowCount={currentData.length} rowHeight={ruleEngine.makeDecision(rules, { params: { start } })} width={width} ref={listRef} rowRenderer={rowRenderer} onRowsRendered={onRowsRendered} noRowsRenderer={NoRowsRenderer} style={{ padding: '1rem' }} /> : <></>
 }
 
 export default QuotesList
