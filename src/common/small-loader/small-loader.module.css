@@ -1,13 +1,18 @@
 .loader {
     display: inline-block;
     vertical-align: text-top;
-    border: 3px solid #00000039;
+    border: 3px solid #000;
     border-radius: 50%;
     border-top: 3px solid #333;
     width: 13px;
     height: 13px;
     -js-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
+}
+
+.darkTheme {
+    border: 3px solid #fff;
+    border-top: 3px solid #333;
 }
 
 @-js-keyframes spin {

@@ -3,12 +3,12 @@ import React, { Suspense, useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useSnackbar from '../../../../common/components/snackbar/useSnackbar'
 import ROUTES from '../../../../common/routes/routes'
+import SmallLoader from '../../../../common/small-loader/small-loader'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { isUndefined } from '../../../../common/utils/commonUtils'
 import { debounce } from '../../../../common/utils/debounce'
 import styles from './styles/row.module.css'
 import { rowClickHandler, usePrevious } from './utils/utils'
-const SmallLoader = React.lazy(() => retryTenTimes(() => import('../../../../common/small-loader/small-loader')))
 const MarkAsRead = React.lazy(() => retryTenTimes(() => import('../../tools/mark-as-read/mark-as-read')))
 const Translate = React.lazy(() => retryTenTimes(() => import('../../tools/translate/translate')))
 const Audio = React.lazy(() => retryTenTimes(() => import('../../tools/audio/audio')))
@@ -64,7 +64,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                             )}
                             {!minMode && (
                                 <>
-                                    <button onClick={() => setLocalTranslateKey(true)}>Translate {isLocalFetching.button === 'translate' && isLocalFetching.status && <SmallLoader />}</button>
+                                    <button onClick={() => setLocalTranslateKey(true)}>Translate {isLocalFetching.button === 'translate' && isLocalFetching.status && <SmallLoader darkMode />}</button>
                                     <button>
                                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth', share: true }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                                             Share Image
@@ -107,7 +107,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                                     setAIResponse(JSON.stringify(str))
                                 }}
                             >
-                                Describe Quote {isLocalFetching?.button === 'describe_quote' && isLocalFetching?.status && <SmallLoader />}
+                                Describe Quote {isLocalFetching?.button === 'describe_quote' && isLocalFetching?.status && <SmallLoader darkMode />}
                             </button>
                             {/* <button onClick={() => copyURL(openSnackbar, () => setScrollPosition(parseInt(quotationId)))}>Share Link</button> */}
                         </div>
