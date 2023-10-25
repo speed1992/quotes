@@ -20,6 +20,7 @@ export const API_ENDPOINTS = {
     },
 
     TRANSLATE: `https://translate.argosopentech.com/translate`,
+    TRANSLATE2: `https://libretranslate.de/translate`,
 
     ERROR: {
         SEND: `${BASEURL.USER_DETAILS}/errors/`,
