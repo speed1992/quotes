@@ -8,16 +8,18 @@ import { isUndefined } from '../../../../common/utils/commonUtils'
 import { debounce } from '../../../../common/utils/debounce'
 import styles from './styles/row.module.css'
 import { rowClickHandler, usePrevious } from './utils/utils'
+const SmallLoader = React.lazy(() => retryTenTimes(() => import('../../../../common/small-loader/small-loader')))
 const MarkAsRead = React.lazy(() => retryTenTimes(() => import('../../tools/mark-as-read/mark-as-read')))
 const Translate = React.lazy(() => retryTenTimes(() => import('../../tools/translate/translate')))
 const Audio = React.lazy(() => retryTenTimes(() => import('../../tools/audio/audio')))
 
 const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }, style }) => {
+    const [isLocalFetching, setIsLocalFetching] = useState({ button: '', status: false })
     const [AIResponse, setAIResponse] = useState(null)
     const prevCurrentPhilosopher = usePrevious(currentPhilosopher)
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
-    const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode }
+    const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode, setIsLocalFetching }
     const [localTranslateKey, setLocalTranslateKey] = useState(false)
     const debouncedHandler = useCallback(
         debounce(() => setScrollPosition(parseInt(quotationId)), 500),
@@ -28,12 +30,17 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
     if (prevCurrentPhilosopher && prevCurrentPhilosopher !== currentPhilosopher && rowsRendered === false) {
         setRowsRendered(true)
     }
-    console.log('rendered')
+
     if (!isUndefined(currentQuote))
         return (
             <div role="row" className={styles.row} key={index} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
                 {AIResponse ? (
-                    <div>{AIResponse}</div>
+                    <>
+                        <div>{AIResponse}</div>
+                        <div className={styles.quoteDescription}>
+                            <button onClick={() => setAIResponse(null)}>Close Description</button>
+                        </div>
+                    </>
                 ) : (
                     <>
                         <div role="columnheader" className="row">
@@ -57,7 +64,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                             )}
                             {!minMode && (
                                 <>
-                                    <button onClick={() => setLocalTranslateKey(true)}>Translate</button>
+                                    <button onClick={() => setLocalTranslateKey(true)}>Translate {isLocalFetching.button === 'translate' && isLocalFetching.status && <SmallLoader />}</button>
                                     <button>
                                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth', share: true }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
                                             Share Image
@@ -67,7 +74,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                             )}
                             <button
                                 onClick={async () => {
-                                    console.log('clicked')
+                                    setIsLocalFetching({ button: 'describe_quote', status: true })
                                     const options = {
                                         method: 'POST',
                                         url: 'https://api.edenai.run/v2/text/topic_extraction',
@@ -86,23 +93,21 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
 
                                     let str = ''
                                     await axios
-                                        .request(options)
-                                        .then((response) => {
-                                            console.log(JSON.stringify(response.data))
+                                        ?.request(options)
+                                        ?.then((response) => {
                                             const reponsesInArray = Object.values(response.data)
-                                            console.log(reponsesInArray.length)
                                             reponsesInArray.forEach((val) => {
-                                                console.log(val)
                                                 if (val.items[0]?.category) str += `${val.items[0]?.category}`
                                             })
                                         })
                                         .catch((error) => {
                                             console.error(error)
                                         })
+                                    setIsLocalFetching({ button: '', status: false })
                                     setAIResponse(JSON.stringify(str))
                                 }}
                             >
-                                Describe Quote
+                                Describe Quote {isLocalFetching?.button === 'describe_quote' && isLocalFetching?.status && <SmallLoader />}
                             </button>
                             {/* <button onClick={() => copyURL(openSnackbar, () => setScrollPosition(parseInt(quotationId)))}>Share Link</button> */}
                         </div>

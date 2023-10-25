@@ -10,5 +10,4 @@ export const pushToSocialMedia = async (imageURL) => {
             mediaUrls: [imageURL],
         })
         .catch(console.error)
-    console.log(post)
 }

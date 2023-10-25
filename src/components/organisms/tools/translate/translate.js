@@ -3,8 +3,8 @@ import ROUTES from '../../../../common/routes/routes'
 import { rowClickHandler } from '../../home/row/utils/utils'
 import { useTranslation } from './custom-hooks/custom-hooks'
 
-const Translate = ({ inputText, from = 'en', to = 'hi', openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode }) => {
-    const translationOutput = useTranslation({ inputText, from, to })
+const Translate = ({ inputText, from = 'en', to = 'hi', openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode, setIsLocalFetching }) => {
+    const translationOutput = useTranslation({ inputText, from, to, setIsLocalFetching })
     const philosopherFullnameIn_SelectedLanguage = philosopherFullName_i10n[to]
 
     return translationOutput !== '' && translationOutput !== undefined && translationOutput ? (

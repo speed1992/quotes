@@ -1,0 +1,29 @@
+.loader {
+    display: inline-block;
+    vertical-align: text-top;
+    border: 3px solid #00000039;
+    border-radius: 50%;
+    border-top: 3px solid #333;
+    width: 13px;
+    height: 13px;
+    -js-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+@-js-keyframes spin {
+    0% {
+        -js-transform: rotate(0deg);
+    }
+    100% {
+        -js-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
