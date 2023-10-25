@@ -67,7 +67,7 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
 
     return (
         <OutsideAlerter callback={() => setSuggestions([])}>
-            <div className={`${styles.typeAheadDropDown} ${styles.darkTheme}`}>
+            <div className={`${styles.typeAheadDropDown} ${darkMode ? styles.darkTheme : ''}`}>
                 <input name="search-philosopher" type="text" onFocus={onFocusHandler} onChange={onTextChange} placeholder={placeholder} value={searchText} onBlur={onBlurHandler} />
                 {isFetchingOptions ? (
                     <ul className={styles.dropDownList}>
