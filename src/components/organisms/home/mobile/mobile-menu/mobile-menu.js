@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
 import ROUTES from '../../../../../common/routes/routes'
+import SmallLoader from '../../../../../common/small-loader/small-loader'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import { ALPHABETICAL, LATEST } from '../../home-page/constants/constants'
 import { setVoiceSpeedRedux, setVoiceTypeRedux } from '../../home-page/homePageRedux/homePageRedux'
@@ -74,7 +75,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 </li>
                 <li key="5">
                     <div>Available Voices</div>
-                    {voices?.length !== 0 && (
+                    {voices?.length !== 0 ? (
                         <select
                             onChange={(event) => {
                                 dispatch(setVoiceTypeRedux(event?.target?.value))
@@ -89,6 +90,8 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                                 </option>
                             ))}
                         </select>
+                    ) : (
+                        <SmallLoader />
                     )}
                 </li>
                 <li key="6">
