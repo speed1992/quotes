@@ -20,12 +20,12 @@ const LoginRegister = ({ setUserName, userName, isLoggedIn, setIsLoggedIn, openS
                     </button>
                 </>
             ) : (
-                <>
+                <div>
                     <div className={styles.userName}>Hi {capitalizedUserName}!</div>
                     <button className={styles.menuBtn} onClick={() => setIsLoggedIn(false)}>
                         Logout
                     </button>
-                </>
+                </div>
             )}
         </>
     )

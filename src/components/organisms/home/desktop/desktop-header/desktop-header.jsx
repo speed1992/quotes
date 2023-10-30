@@ -50,7 +50,7 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
                         <button className={styles.report}>Open Report</button>
                     </Link>
                 </div>
-                <div className={'column ' + styles.col5}>
+                <div className={styles.column}>
                     <LoginRegister {...{ setUserName, userName, openSnackbar, isLoggedIn, setIsLoggedIn, setMarkedQuotes, markedQuotes, password, setPassword, setIsFetching }} />
                 </div>
             </div>
