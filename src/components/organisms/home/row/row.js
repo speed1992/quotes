@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React, { Suspense, useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useSnackbar from '../../../../common/components/snackbar/useSnackbar'
@@ -80,6 +79,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                                         url: 'https://api.edenai.run/v2/text/topic_extraction',
                                         headers: {
                                             authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNGM1ZWJjMTktMGZlMi00NmU0LWJjM2QtOThkOTdiNTcyYWYxIiwidHlwZSI6ImFwaV90b2tlbiJ9.fQIkRStyHmpBofuqfieRHCnB5y0hhtSeLRh689nWHSs',
+                                            'Content-Type': 'application/json',
                                         },
                                         data: {
                                             show_original_response: false,
@@ -92,24 +92,29 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                                     }
 
                                     let str = ''
-                                    await axios
-                                        ?.request(options)
-                                        ?.then((response) => {
-                                            const reponsesInArray = Object.values(response.data)
-                                            reponsesInArray.forEach((val) => {
-                                                if (val.items[0]?.category) str += `${val.items[0]?.category}`
-                                            })
+                                    let response = await retryTenTimes(() =>
+                                        fetch(options.url, {
+                                            method: options.method,
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                authorization: options.headers.authorization,
+                                            },
+                                            body: JSON.stringify(options.data),
                                         })
-                                        .catch((error) => {
-                                            console.error(error)
-                                        })
+                                    )
+                                    response = await response.json()
+
+                                    const reponsesInArray = Object.values(response)
+                                    reponsesInArray.forEach((val) => {
+                                        if (val.items[0]?.category) str += `${val.items[0]?.category}`
+                                    })
+
                                     setIsLocalFetching({ button: '', status: false })
                                     setAIResponse(JSON.stringify(str))
                                 }}
                             >
                                 Describe {isLocalFetching?.button === 'describe_quote' && isLocalFetching?.status && <SmallLoader darkMode />}
                             </button>
-                            {/* <button onClick={() => copyURL(openSnackbar, () => setScrollPosition(parseInt(quotationId)))}>Share Link</button> */}
                         </div>
                     </>
                 )}

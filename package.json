@@ -8,7 +8,6 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.5",
     "@reduxjs/toolkit": "^1.9.5",
-    "axios": "^1.5.1",
     "copy-to-clipboard": "^3.3.3",
     "html2canvas": "^1.4.1",
     "react": "^18.2.0",
