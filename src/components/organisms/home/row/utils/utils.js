@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react'
 import { insert, setCharAt } from '../../../../../common/utils/stringUtils'
 
 export function copyQuoteText(quoteText, philosopherFullName) {
@@ -31,14 +30,6 @@ export function rowClickHandlerFoBothQuotes({ openSnackbar, quote: { hindi, engl
 }
 
 export const copyBothQuotesText = ({ englishQuote, hindiQuote }, { englishFullname, hindiFullname }) => navigator.clipboard.writeText(`"${hindiQuote}"\n\n― ${hindiFullname}\n\n\n"${englishQuote}"\n\n― ${englishFullname}`)
-
-export function usePrevious(value) {
-    const ref = useRef(null)
-    useEffect(() => {
-        ref.current = value
-    }, [value])
-    return ref.current
-}
 
 export function copyURL(openSnackbar, callback) {
     callback()

@@ -7,15 +7,14 @@ import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { isUndefined } from '../../../../common/utils/commonUtils'
 import { debounce } from '../../../../common/utils/debounce'
 import styles from './styles/row.module.css'
-import { rowClickHandler, usePrevious } from './utils/utils'
+import { rowClickHandler } from './utils/utils'
 const MarkAsRead = React.lazy(() => retryTenTimes(() => import('../../tools/mark-as-read/mark-as-read')))
 const Translate = React.lazy(() => retryTenTimes(() => import('../../tools/translate/translate')))
 const Audio = React.lazy(() => retryTenTimes(() => import('../../tools/audio/audio')))
 
-const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }, style }) => {
+const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode, voiceSpeed, minMode }, style }) => {
     const [isLocalFetching, setIsLocalFetching] = useState({ button: '', status: false })
     const [AIResponse, setAIResponse] = useState(null)
-    const prevCurrentPhilosopher = usePrevious(currentPhilosopher)
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
     const propsToSend = { openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode, setIsLocalFetching }
@@ -25,10 +24,6 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
         [quotationId, setScrollPosition]
     )
     const rowHandler = useCallback(() => rowClickHandler({ quote: quotationText, openSnackbar, philosopherFullName }), [openSnackbar, philosopherFullName, quotationText])
-
-    if (prevCurrentPhilosopher && prevCurrentPhilosopher !== currentPhilosopher && rowsRendered === false) {
-        setRowsRendered(true)
-    }
 
     if (!isUndefined(currentQuote))
         return (
