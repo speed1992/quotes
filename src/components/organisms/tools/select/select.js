@@ -18,11 +18,7 @@ const Select = ({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCa
 
     const renderSelect = () => {
         if (isMobile) {
-            return (
-                <Suspense fallback={''}>
-                    <MobileSelect recentPhilosophers={recentPhilosophers} onFocusHandlerCallback={onFocusHandlerCallback} onChangeHandler={onChangeHandler} currentPhilosopher={currentPhilosopher} value={getCurrentPhilosopherFullname(currentPhilosopher, optionsWithRecentPhilosophersOnTop)} placeholder={'Search philosopher'} options={optionsWithRecentPhilosophersOnTop} isFetchingOptions={isFetchingOptions} darkMode={darkMode} />
-                </Suspense>
-            )
+            return <Suspense fallback={''}>{currentPhilosopher && <MobileSelect recentPhilosophers={recentPhilosophers} onFocusHandlerCallback={onFocusHandlerCallback} onChangeHandler={onChangeHandler} currentPhilosopher={currentPhilosopher} value={getCurrentPhilosopherFullname(currentPhilosopher, optionsWithRecentPhilosophersOnTop)} placeholder={'Search philosopher'} options={optionsWithRecentPhilosophersOnTop} isFetchingOptions={isFetchingOptions} darkMode={darkMode} />}</Suspense>
         } else {
             return (
                 <Suspense fallback={''}>
