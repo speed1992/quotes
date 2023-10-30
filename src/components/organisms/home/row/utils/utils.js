@@ -1,4 +1,3 @@
-import copy from 'copy-to-clipboard'
 import { useEffect, useRef } from 'react'
 import { insert, setCharAt } from '../../../../../common/utils/stringUtils'
 
@@ -8,8 +7,8 @@ export function copyQuoteText(quoteText, philosopherFullName) {
         let updatedQuoteText = setCharAt(quoteText, splittingIndex - 1, '')
         updatedQuoteText = '"' + updatedQuoteText
         updatedQuoteText = insert(updatedQuoteText, splittingIndex, '"\n\n')
-        copy(updatedQuoteText)
-    } else copy(`"${quoteText}"\n\n${philosopherFullName}`)
+        navigator.clipboard.writeText(updatedQuoteText)
+    } else navigator.clipboard.writeText(`"${quoteText}"\n\n${philosopherFullName}`)
 }
 
 export function rowClickHandler({ openSnackbar, philosopherFullName, quote }) {
@@ -31,7 +30,7 @@ export function rowClickHandlerFoBothQuotes({ openSnackbar, quote: { hindi, engl
     openSnackbar('Quote Text Copied!')
 }
 
-export const copyBothQuotesText = ({ englishQuote, hindiQuote }, { englishFullname, hindiFullname }) => copy(`"${hindiQuote}"\n\n― ${hindiFullname}\n\n\n"${englishQuote}"\n\n― ${englishFullname}`)
+export const copyBothQuotesText = ({ englishQuote, hindiQuote }, { englishFullname, hindiFullname }) => navigator.clipboard.writeText(`"${hindiQuote}"\n\n― ${hindiFullname}\n\n\n"${englishQuote}"\n\n― ${englishFullname}`)
 
 export function usePrevious(value) {
     const ref = useRef(null)
@@ -43,6 +42,6 @@ export function usePrevious(value) {
 
 export function copyURL(openSnackbar, callback) {
     callback()
-    copy(window.location.href.toString())
+    navigator.clipboard.writeText(window.location.href.toString())
     openSnackbar('Quote Link Copied. You can now share!')
 }
