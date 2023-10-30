@@ -5,7 +5,7 @@ import Select from '../../../tools/select/select'
 import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSearch'
 import { onFocusHandler, onPhilosopherSelectChange } from '../../desktop/desktop-header/utils/utils'
 import styles from '../../header-layout/header-layout.module.css'
-const MobileMenu = React.lazy(() => retryTenTimes(() => import('../mobile-menu/mobile-menu')))
+const MobileMenu = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "menu" */ '../mobile-menu/mobile-menu')))
 const Breadcrumb = React.lazy(() => retryTenTimes(() => import('../../../analysis/breadcrumb/breadcrumb')))
 const UnreadCounter = React.lazy(() => retryTenTimes(() => import('../../../analysis/unread-counter/unread-counter')))
 const QuotesFound = React.lazy(() => retryTenTimes(() => import('../../../analysis/quotes-found/quotes-found')))
