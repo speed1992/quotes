@@ -105,7 +105,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                                     })
 
                                     setIsLocalFetching({ button: '', status: false })
-                                    setAIResponse(JSON.stringify(str))
+                                    setAIResponse(JSON.stringify(str.replace(/\n/g, '')))
                                 }}
                             >
                                 Describe {isLocalFetching?.button === 'describe_quote' && isLocalFetching?.status && <SmallLoader darkMode />}
