@@ -15,7 +15,7 @@ const Translate = ({ inputText, from = 'en', to = 'hi', openSnackbar, searchText
             <div>
                 <button style={{ marginTop: '10px' }}>
                     <Link to={ROUTES.image.route} state={{ quotationText: translationOutput, philosopherFullName: philosopherFullnameIn_SelectedLanguage, signature: 'इंस्टाग्राम: @jaaginsaan' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000', marginTop: '10px' }}>
-                        Download Hindi Image
+                        डाउन्लोड
                     </Link>
                 </button>
             </div>

@@ -53,7 +53,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                         <div role="columnheader" className={styles.actionItems}>
                             <button>
                                 <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
-                                    Download Image
+                                    Download
                                 </Link>
                             </button>
                             {!minMode && <Audio index={index} currentData={currentData} scrollPosition={scrollPosition} setScrollPosition={setScrollPosition} listRef={listRef} voiceSpeed={voiceSpeed} />}
@@ -67,7 +67,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                                     <button onClick={() => setLocalTranslateKey(true)}>Translate {isLocalFetching.button === 'translate' && isLocalFetching.status && <SmallLoader darkMode />}</button>
                                     <button>
                                         <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth', share: true }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
-                                            Share Image
+                                            Share
                                         </Link>
                                     </button>
                                 </>
@@ -107,7 +107,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                                     setAIResponse(JSON.stringify(str))
                                 }}
                             >
-                                Describe Quote {isLocalFetching?.button === 'describe_quote' && isLocalFetching?.status && <SmallLoader darkMode />}
+                                Describe {isLocalFetching?.button === 'describe_quote' && isLocalFetching?.status && <SmallLoader darkMode />}
                             </button>
                             {/* <button onClick={() => copyURL(openSnackbar, () => setScrollPosition(parseInt(quotationId)))}>Share Link</button> */}
                         </div>

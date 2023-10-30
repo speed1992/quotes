@@ -70,6 +70,11 @@
     color: #000;
 }
 
+.darkTheme li {
+    background-color: #000;
+    color: #fff;
+}
+
 .typeAheadDropDown .dropDownList #active {
     background-color: lightgrey;
 }

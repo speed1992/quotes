@@ -91,7 +91,9 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                             ))}
                         </select>
                     ) : (
-                        <SmallLoader />
+                        <div className={`${styles.textCenter} ${styles.paddingTop}`}>
+                            <SmallLoader darkMode />
+                        </div>
                     )}
                 </li>
                 <li key="6">

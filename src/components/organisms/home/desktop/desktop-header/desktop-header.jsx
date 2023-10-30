@@ -19,7 +19,7 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
     const [openSnackbar] = useSnackbar()
 
     return (
-        <div className={styles.header}>
+        <div className={`${styles.header} ${styles.customFont}`}>
             <div className={styles.row}>
                 <div className={styles.column}>
                     <WordLengthSearch listRef={listRef} {...propsToSend} />

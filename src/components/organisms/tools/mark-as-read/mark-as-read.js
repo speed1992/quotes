@@ -6,7 +6,7 @@ const MarkAsRead = ({ index, setCurrentData, currentData, currentPhilosopher, ma
         setLocalTranslateKey(false)
     }
 
-    return <button onClick={clickHandler}>Mark as Read</button>
+    return <button onClick={clickHandler}>Mark Read</button>
 }
 
 export default MarkAsRead

@@ -15,8 +15,7 @@ html {
     font-size: 62.5%;
 }
 
-.desktop .column *,
-.MuiAutocomplete-listbox li {
+.MuiAutocomplete-popper * {
     font-size: 1.6rem !important;
 }
 
@@ -30,18 +29,11 @@ body {
     padding: 0;
 }
 
-.List {
-    border: 0.1rem solid #d9dddd;
-}
-
 .darkTheme * {
-    background-color: #000 !important;
+    background-color: #000;
     color: #fff;
 }
 
-.darkTheme [class*='Snackbar'] * {
-    background-color: #000 !important;
-}
 button {
     cursor: pointer;
 }
