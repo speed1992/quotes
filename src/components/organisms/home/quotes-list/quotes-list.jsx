@@ -3,7 +3,6 @@ import List from 'react-virtualized/dist/commonjs/List'
 import { ruleEngine } from '../../../../common/utils/ruleEngine'
 import { isDesktop, scrollToQuoteId } from '../../../../common/utils/utils'
 import Row from '../row/row'
-import styles from './quote-list.module.css'
 import { NoRowsRenderer } from './utils/listUtils'
 import { rules } from './utils/ruleEngine/rules'
 import { getPhilosopherFullName, getPhilosopherFullName_i10n } from './utils/utils'
@@ -32,7 +31,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, markedMode
         return <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentData, setCurrentData, currentQuote: currentData[index], index, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, listRef, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }} {...others} />
     }
 
-    return <List className={isDesktop() && styles.textCenter} height={height} rowCount={currentData.length} rowHeight={ruleEngine.makeDecision(rules, { params: { start } })} width={width} ref={listRef} rowRenderer={rowRenderer} onRowsRendered={onRowsRendered} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined && NoRowsRenderer} style={{ padding: '1rem' }} />
+    return <List height={height} rowCount={currentData.length} rowHeight={ruleEngine.makeDecision(rules, { params: { start } })} width={width} ref={listRef} rowRenderer={rowRenderer} onRowsRendered={onRowsRendered} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined && NoRowsRenderer} style={{ padding: '1rem', textAlign: isDesktop() && 'center' }} />
 }
 
 export default QuotesList

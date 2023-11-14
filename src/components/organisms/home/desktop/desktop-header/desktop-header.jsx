@@ -1,9 +1,9 @@
 import Switch from '@mui/material/Switch'
 import TextField from '@mui/material/TextField'
 import React, { Suspense, useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setCurrentModalName } from '../../../../../common/components/modal/modalRedux'
 import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
-import ROUTES from '../../../../../common/routes/routes'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import Select from '../../../tools/select/select'
 import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSearch'
@@ -17,7 +17,7 @@ const QuotesFound = React.lazy(() => retryTenTimes(() => import('../../../analys
 function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, options, setOptions, setCurrentData, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, currentData, isFetching, originalData, markedQuotes, sorting, setRowsRendered, setUserName, userName, isLoggedIn, setIsLoggedIn, setMarkedQuotes, password, setPassword, syncDate, setSyncDate }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }
     const [openSnackbar] = useSnackbar()
-
+    const dispatch = useDispatch()
     return (
         <div className={`${styles.header} ${styles.customFont}`}>
             <div className={styles.row}>
@@ -46,9 +46,9 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
                     </span>
                 </div>
                 <div className={styles.column}>
-                    <Link to={ROUTES.report.route} style={{ textDecoration: 'none', color: '#000' }}>
-                        <button className={styles.report}>Open Report</button>
-                    </Link>
+                    <button onClick={useCallback(() => dispatch(setCurrentModalName('Report')), [])} className={styles.report}>
+                        Open Report
+                    </button>
                 </div>
                 <div className={styles.column}>
                     <LoginRegister {...{ setUserName, userName, openSnackbar, isLoggedIn, setIsLoggedIn, setMarkedQuotes, markedQuotes, password, setPassword, setIsFetching }} />

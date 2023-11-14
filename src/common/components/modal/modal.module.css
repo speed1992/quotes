@@ -1,0 +1,32 @@
+.modalContainer {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 10;
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    margin: 1rem;
+    z-index: 10;
+}
+
+.desktopCloseBtn {
+    margin: 1rem 3rem;
+}
+
+.lightMode {
+    background: #fff;
+}
+
+.titleBar {
+    display: flex;
+}
+
+.title {
+    font-size: 130%;
+    text-decoration: underline;
+    font-weight: 600;
+    margin: 1rem auto;
+}

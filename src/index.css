@@ -52,10 +52,6 @@ button {
     border: 1px solid #fff !important;
 }
 
-[class*='Snackbar_snackbar'] {
-    z-index: 2 !important;
-}
-
 .overflow-hidden {
     overflow: hidden;
 }

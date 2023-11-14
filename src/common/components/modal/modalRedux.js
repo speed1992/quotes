@@ -2,13 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const modalSlice = createSlice({
     name: 'modal',
-    initialState: {  
-        currentModalName: '', 
-    },
+    initialState: '',
     reducers: {
-        setCurrentModalName: (state, { payload }) => {
-            state.currentModalName = payload
-        },
+        setCurrentModalName: (state, { payload }) => payload,
     },
 })
 

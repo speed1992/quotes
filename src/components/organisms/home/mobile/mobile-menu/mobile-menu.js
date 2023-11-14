@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { setCurrentModalName } from '../../../../../common/components/modal/modalRedux'
 import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
-import ROUTES from '../../../../../common/routes/routes'
 import SmallLoader from '../../../../../common/small-loader/small-loader'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import { ALPHABETICAL, LATEST } from '../../home-page/constants/constants'
@@ -97,9 +96,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                     )}
                 </li>
                 <li key="6">
-                    <Link to={ROUTES.report.route} style={{ textDecoration: 'none', color: '#000' }}>
-                        <button>Open Report</button>
-                    </Link>
+                    <button onClick={useCallback(() => dispatch(setCurrentModalName('Report')), [])}>Open Report</button>
                 </li>
                 <li key="7">
                     <LoginRegister {...{ setUserName, userName, openSnackbar, isLoggedIn, setIsLoggedIn, setMarkedQuotes, markedQuotes, password, setPassword, setIsFetching }} />

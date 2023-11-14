@@ -1,13 +1,12 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import ROUTES from '../../../../../common/routes/routes'
+import { useDispatch } from 'react-redux'
+import { setCurrentModalName } from '../../../../../common/components/modal/modalRedux'
 import { uuidv4 } from '../../../../../common/utils/commonUtils'
 import { setThemeClassNameOnHTMLTag } from '../../../home/home-page/utils/utils'
 import { exportAsImage, shareQuote } from './utils'
 
 export function useCreateQuoteImage(philosopherFullName, share, exportRef) {
-    const navigate = useNavigate()
-
+    const dispatch = useDispatch()
     useEffect(() => {
         setThemeClassNameOnHTMLTag(true)
     }, [])
@@ -21,7 +20,8 @@ export function useCreateQuoteImage(philosopherFullName, share, exportRef) {
             } else {
                 await exportAsImage(exportRef.current, filename)
             }
-            navigate(ROUTES.homepage.route)
+            setThemeClassNameOnHTMLTag(false)
+            dispatch(setCurrentModalName(''))
         })()
-    }, [exportRef, navigate, philosopherFullName, share])
+    }, [exportRef, philosopherFullName, share])
 }

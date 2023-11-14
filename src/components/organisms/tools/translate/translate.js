@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom'
-import ROUTES from '../../../../common/routes/routes'
+import { useDispatch } from 'react-redux'
+import { setCurrentModalName } from '../../../../common/components/modal/modalRedux'
+import { setQuoteImageData } from '../../analysis/generate-quote-image/generateQuoteImageRedux'
 import { rowClickHandler } from '../../home/row/utils/utils'
 import { useTranslation } from './custom-hooks/custom-hooks'
 
 const Translate = ({ inputText, from = 'en', to = 'hi', openSnackbar, searchText, start, end, philosopherFullName, index, philosopherFullName_i10n, darkMode, setIsLocalFetching }) => {
     const translationOutput = useTranslation({ inputText, from, to, setIsLocalFetching })
     const philosopherFullnameIn_SelectedLanguage = philosopherFullName_i10n[to]
+    const dispatch = useDispatch()
 
     return translationOutput !== '' && translationOutput !== undefined && translationOutput ? (
         <>
@@ -13,10 +15,14 @@ const Translate = ({ inputText, from = 'en', to = 'hi', openSnackbar, searchText
                 {translationOutput} ― {philosopherFullnameIn_SelectedLanguage}
             </div>
             <div>
-                <button style={{ marginTop: '10px' }}>
-                    <Link to={ROUTES.image.route} state={{ quotationText: translationOutput, philosopherFullName: philosopherFullnameIn_SelectedLanguage, signature: 'इंस्टाग्राम: @jaaginsaan' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000', marginTop: '10px' }}>
-                        डाउन्लोड
-                    </Link>
+                <button
+                    onClick={() => {
+                        dispatch(setQuoteImageData({ quotationText: translationOutput, philosopherFullName: philosopherFullnameIn_SelectedLanguage, signature: 'इंस्टाग्राम: @jaaginsaan' }))
+                        dispatch(setCurrentModalName('Image'))
+                    }}
+                    style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000', marginTop: '10px' }}
+                >
+                    डाउन्लोड
                 </button>
             </div>
         </>

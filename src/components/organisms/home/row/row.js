@@ -1,11 +1,12 @@
 import React, { Suspense, useCallback, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setCurrentModalName } from '../../../../common/components/modal/modalRedux'
 import useSnackbar from '../../../../common/components/snackbar/useSnackbar'
-import ROUTES from '../../../../common/routes/routes'
 import SmallLoader from '../../../../common/small-loader/small-loader'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { isUndefined } from '../../../../common/utils/commonUtils'
 import { debounce } from '../../../../common/utils/debounce'
+import { setQuoteImageData } from '../../analysis/generate-quote-image/generateQuoteImageRedux'
 import styles from './styles/row.module.css'
 import { rowClickHandler } from './utils/utils'
 const MarkAsRead = React.lazy(() => retryTenTimes(() => import('../../tools/mark-as-read/mark-as-read')))
@@ -23,6 +24,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
         debounce(() => setScrollPosition(parseInt(quotationId)), 500),
         [quotationId, setScrollPosition]
     )
+    const dispatch = useDispatch()
     const rowHandler = useCallback(() => rowClickHandler({ quote: quotationText, openSnackbar, philosopherFullName }), [openSnackbar, philosopherFullName, quotationText])
 
     if (!isUndefined(currentQuote))
@@ -45,10 +47,14 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                         </div>
 
                         <div role="columnheader" className={styles.actionItems}>
-                            <button>
-                                <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth' }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
-                                    Download
-                                </Link>
+                            <button
+                                onClick={() => {
+                                    dispatch(setQuoteImageData({ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth' }))
+                                    dispatch(setCurrentModalName('Image'))
+                                }}
+                                style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}
+                            >
+                                Download
                             </button>
                             {!minMode && <Audio index={index} currentData={currentData} scrollPosition={scrollPosition} setScrollPosition={setScrollPosition} listRef={listRef} voiceSpeed={voiceSpeed} />}
                             {markedMode && (
@@ -59,10 +65,14 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                             {!minMode && (
                                 <>
                                     <button onClick={() => setLocalTranslateKey(true)}>Translate {isLocalFetching.button === 'translate' && isLocalFetching.status && <SmallLoader darkMode />}</button>
-                                    <button>
-                                        <Link to={ROUTES.image.route} state={{ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth', share: true }} style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}>
-                                            Share
-                                        </Link>
+                                    <button
+                                        onClick={() => {
+                                            dispatch(setQuoteImageData({ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth', share: true }))
+                                            dispatch(setCurrentModalName('Image'))
+                                        }}
+                                        style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}
+                                    >
+                                        Share
                                     </button>
                                 </>
                             )}
