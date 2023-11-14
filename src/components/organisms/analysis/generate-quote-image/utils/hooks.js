@@ -5,7 +5,7 @@ import { uuidv4 } from '../../../../../common/utils/commonUtils'
 import { setThemeClassNameOnHTMLTag } from '../../../home/home-page/utils/utils'
 import { exportAsImage, shareQuote } from './utils'
 
-export function useCreateQuoteImage(philosopherFullName, share, exportRef) {
+export function useCreateQuoteImage(philosopherFullName, share, exportRef, darkMode) {
     const dispatch = useDispatch()
     useEffect(() => {
         setThemeClassNameOnHTMLTag(true)
@@ -20,7 +20,7 @@ export function useCreateQuoteImage(philosopherFullName, share, exportRef) {
             } else {
                 await exportAsImage(exportRef.current, filename)
             }
-            setThemeClassNameOnHTMLTag(false)
+            if (!darkMode) setThemeClassNameOnHTMLTag(false)
             dispatch(setCurrentModalName(''))
         })()
     }, [exportRef, philosopherFullName, share])

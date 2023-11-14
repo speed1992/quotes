@@ -9,10 +9,11 @@ const GenerateQuoteImage = () => {
     let { quotationText, philosopherFullName, signature, share = false } = useSelector((state) => state.quoteImage)
     const exportRef = useRef()
     const currentPhilosopher = useSelector((state) => state.philosophersData.currentPhilosopher)
+    const darkMode = useSelector((state) => state.philosophersData.darkMode)
 
     const propsToSend = { exportRef, quotationText, philosopherFullName, signature }
 
-    useCreateQuoteImage(philosopherFullName, share, exportRef)
+    useCreateQuoteImage(philosopherFullName, share, exportRef, darkMode)
 
     try {
         const imageName = `${currentPhilosopher}.jpg`
