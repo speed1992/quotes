@@ -12,7 +12,7 @@ export async function play(index, currentData, voiceSpeed, voiceType, listRef, s
     let p = new Promise((resolve) => (cancel = resolve))
 
     if (!isSpeaking)
-        for (let i = index; i < currentData.length; i++) {
+        for (let i = index; i < currentData?.length; i++) {
             setScrollPosition(i)
             scrollToMemorizedRow(listRef, i, currentData)
             await Promise.race([p, getNextAudio(currentData[i]['quote'], voiceSpeed, voiceType, voices)])

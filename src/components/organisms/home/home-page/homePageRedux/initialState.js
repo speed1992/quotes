@@ -14,7 +14,7 @@ let INITIAL_STATE = {
     searchText: '',
     markedMode: false,
     markedQuotes: {},
-    currentData: [],
+    currentData: undefined,
     userName: '',
     password: '',
     sorting: 'alphabetical',

@@ -7,7 +7,7 @@ export const scrollToFirstRow = (listRef) => {
 }
 
 export const scrollToMemorizedRow = (listRef, scrollPosition, currentData) => {
-    if (currentData.length > 0 && listRef.current) {
+    if (currentData?.length > 0 && listRef.current) {
         if (scrollPosition !== undefined && scrollPosition !== 'undefined' && scrollPosition && scrollPosition > 0) {
             listRef.current.scrollToRow(scrollPosition)
         } else {

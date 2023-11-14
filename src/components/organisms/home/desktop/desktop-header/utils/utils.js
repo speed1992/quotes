@@ -12,7 +12,6 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
         setCurrentPhilosopher(philosopher)
         changeQuotesData({ philosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
         setIsFetching(false)
-        setRowsRendered(false)
     }
     setStart(1)
     setEnd('')
