@@ -15,7 +15,7 @@ export function useCreateQuoteImage(philosopherFullName, share, exportRef, darkM
         ;(async function () {
             const filename = `${philosopherFullName}-quote-${uuidv4()}.png`
             if (share !== undefined && share === true) {
-                await exportAsImage(exportRef.current, filename)
+                exportAsImage(exportRef.current, filename)
                 await shareQuote(exportRef.current, filename)
             } else {
                 await exportAsImage(exportRef.current, filename)
