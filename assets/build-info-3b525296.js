@@ -1,0 +1,1 @@
+import{u as e}from"./index-9f2e32b3.js";const t="15 November 2023 @ 03:05 AM",i={buildDateTime:t},d=()=>e("div",{style:{fontSize:"1rem"},children:[e("div",{children:"App Version:"}),e("div",{children:i==null?void 0:i.buildDateTime})]});export{d as default};

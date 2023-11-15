@@ -1,2 +1,0 @@
-onmessage=function(t){var e=t.data,r=e.filterName;if("searchTermFilter"===r){var i=e.currentData,n=e.searchText,s=i.filter((function(t){return!(t.quote.toLowerCase().indexOf(n.toLowerCase())<0)}));this.postMessage(JSON.stringify(s))}if("wordCountFilter"===r){var a=e.quotes,o=e.end,f=e.start,u=a.filter((function(t){var e=t.quote.split(" ").filter((function(t){return""!==t})).length;return!!(o&&""!==o&&e>=f&&e<=o)||""===o&&e>=f}));this.postMessage(JSON.stringify(u))}};
-//# sourceMappingURL=345.ef999e0c.chunk.js.map
