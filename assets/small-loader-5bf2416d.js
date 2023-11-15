@@ -1,0 +1,1 @@
+import{u as s}from"./index-cb971430.js";const n="_loader_1pkzn_1",o="_spin_1pkzn_1",r="_darkTheme_1pkzn_25",e={loader:n,spin:o,darkTheme:r},l=({darkMode:a})=>s("span",{className:`${e.loader} ${a?e.darkTheme:""}`,children:" "});export{l as S};
