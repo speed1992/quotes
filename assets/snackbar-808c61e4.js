@@ -1,0 +1,1 @@
+import{a as c,u as e}from"./index-1187b2d2.js";const n="_snackbar_1njsb_1",r={snackbar:n},o=()=>{const s=c(a=>a.snackbar.message);return s&&e("div",{className:r.snackbar,children:s})};export{o as default};
