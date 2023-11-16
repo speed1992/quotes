@@ -1,1 +1,0 @@
-import{j as u,u as o,p as i}from"./index-1187b2d2.js";function d(e,n){i(()=>{function t(r){e.current&&!e.current.contains(r.target)&&n()}return document.addEventListener("mousedown",t),()=>{document.removeEventListener("mousedown",t)}},[e,n])}function c({callback:e,children:n}){const t=u(null);return d(t,e),o("div",{ref:t,children:n})}export{c as default};
