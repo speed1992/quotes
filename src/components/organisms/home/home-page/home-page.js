@@ -52,9 +52,9 @@ const HomePage = () => {
             ) : (
                 <>
                     {!minMode && <Header {...propsToSend} />}
-                    <button className={styles.minMode} onClick={() => setMinMode(!minMode)}>
+                    {!isDesktop() && (<button className={styles.minMode} onClick={() => setMinMode(!minMode)}>
                         Toggle Min Mode
-                    </button>
+                    </button>)}
                     <div className={!minMode ? styles.content : styles.contentMinMode}>
                         <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
                     </div>
