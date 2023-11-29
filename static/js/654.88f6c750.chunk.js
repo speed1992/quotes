@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[654],{6654:function(n,s,e){e.r(s),e.d(s,{default:function(){return c}});var a=e(8687),r="snackbar_snackbar__SS4is",u=e(184),c=function(){var n=(0,a.v9)((function(n){return n.snackbar.message}));return n&&(0,u.jsx)("div",{className:r,children:n})}}}]);
-//# sourceMappingURL=654.88f6c750.chunk.js.map
