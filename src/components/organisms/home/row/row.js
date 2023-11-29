@@ -76,7 +76,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                                     </button>
                                 </>
                             )}
-/*                            <button
+                            {/* <button
                                 onClick={async () => {
                                     setIsLocalFetching({ button: 'describe_quote', status: true })
                                     const options = {
@@ -119,7 +119,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                                 }}
                             >
                                 Describe {isLocalFetching?.button === 'describe_quote' && isLocalFetching?.status && <SmallLoader darkMode />}
-                            </button>*/
+                            </button> */}
                         </div>
                     </>
                 )}
