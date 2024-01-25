@@ -3,9 +3,10 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
 import { doesPhilosopherDataExist, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
+import { isCacheExpired } from '../../../../../common/utils/dateUtils'
 import { onFocusHandler } from '../../desktop/desktop-header/utils/utils'
 import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setLogsRedux, setMarkedModeRedux, setMarkedQuotesRedux, setMinModeRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setRecentPhilosophersRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setSyncDateRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
-import { compareWithServerSyncDatesAndMakeAnAPICall, getClientSyncDates } from './utils'
+import { compareWithServerSyncDatesAndMakeAnAPICall } from './utils'
 
 export function useHomePageHooks() {
     const [openSnackbar] = useSnackbar()
@@ -61,10 +62,9 @@ export function useHomePageHooks() {
         if (isLoggedIn) {
             ;(async () => {
                 const markedQuoteClientCount = Object.values(markedQuotes).flat().length
-                let { currentClientDate, lastSyncClientDate } = getClientSyncDates(syncDate)
 
-                if (currentClientDate > lastSyncClientDate) {
-                    await compareWithServerSyncDatesAndMakeAnAPICall(userName, markedQuotes, openSnackbar, setMarkedQuotes, setSyncDate, markedQuoteClientCount, currentClientDate)
+                if (isCacheExpired(syncDate)) {
+                    await compareWithServerSyncDatesAndMakeAnAPICall(userName, markedQuotes, openSnackbar, setMarkedQuotes, setSyncDate, markedQuoteClientCount)
                 }
             })()
         }

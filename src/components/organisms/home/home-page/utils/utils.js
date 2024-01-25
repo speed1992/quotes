@@ -1,4 +1,5 @@
 import { getPhilosopherData } from '../../../../../common/static/utils/utils'
+import { getDifferenceFromCurrentDate } from '../../../../../common/utils/dateUtils'
 import { getUserDetails, sendUserDetails } from '../../mobile/mobile-menu/utils/utils'
 
 export const setThemeClassNameOnHTMLTag = (value) => {
@@ -15,31 +16,20 @@ export const bringIntoOriginalOrder = (originalOptions, newOptions) => originalO
 
 export const bringIntoAlphabeticalOrder = (options) => [...options].sort((a, b) => a.fullName.localeCompare(b.fullName))
 
-export function getClientSyncDates(syncDate) {
-    let currentClientDate = new Date()
-    let lastSyncClientDate = new Date(syncDate)
-
-    currentClientDate.setHours(0, 0, 0, 0)
-    currentClientDate = currentClientDate.getTime()
-
-    lastSyncClientDate = lastSyncClientDate.setHours(0, 0, 0, 0)
-    return { currentClientDate, lastSyncClientDate }
-}
-
-export async function compareWithServerSyncDatesAndMakeAnAPICall(userName, markedQuotes, openSnackbar, setMarkedQuotes, setSyncDate, markedQuoteClientCount, currentClientDate) {
+export async function compareWithServerSyncDatesAndMakeAnAPICall(userName, markedQuotes, openSnackbar, setMarkedQuotes, setSyncDate, markedQuoteClientCount) {
+    getUserMarkedQuotesCount({ userName })
     let { markedQuotesFromServer, dateFromServer } = await getUserDetails({ userName, markedQuotes, openSnackbar, setMarkedQuotes })
-    setSyncDate(Date.now())
     if (markedQuotesFromServer) {
         const markedQuotesFromServerCount = Object.values(markedQuotesFromServer).flat().length
         if (markedQuotesFromServerCount > markedQuoteClientCount) {
             setMarkedQuotes(markedQuotesFromServer)
             openSnackbar('Auto-Sync : Restored all marked quotes!', 4000)
         } else if (markedQuoteClientCount > markedQuotesFromServerCount) {
-            dateFromServer = new Date(dateFromServer)
-            dateFromServer.setHours(0, 0, 0, 0)
-            if (currentClientDate > dateFromServer) {
+            if (getDifferenceFromCurrentDate(new Date(dateFromServer)) < 0) {
                 await sendUserDetails({ userName, markedQuotes, openSnackbar })
+                openSnackbar('Synced marked quotes with server!', 4000)
             }
         }
+        setSyncDate(Date.now())
     }
 }

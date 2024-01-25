@@ -18,3 +18,8 @@ export const isCacheExpired = (startDate, setLogs = null) => {
     }
     return dateDifferenceInDays >= CACHE_TIME_IN_DAYS
 }
+
+export const getDifferenceFromCurrentDate = (date2) => {
+    const date1 = new Date()
+    return date2.getTime() - date1.getTime()
+}
