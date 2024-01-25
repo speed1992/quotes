@@ -1,5 +1,4 @@
 import { getPhilosopherData } from '../../../../../common/static/utils/utils'
-import { getDifferenceFromCurrentDate } from '../../../../../common/utils/dateUtils'
 import { getUserDetails, sendUserDetails } from '../../mobile/mobile-menu/utils/utils'
 
 export const setThemeClassNameOnHTMLTag = (value) => {
@@ -17,18 +16,15 @@ export const bringIntoOriginalOrder = (originalOptions, newOptions) => originalO
 export const bringIntoAlphabeticalOrder = (options) => [...options].sort((a, b) => a.fullName.localeCompare(b.fullName))
 
 export async function compareWithServerSyncDatesAndMakeAnAPICall(userName, markedQuotes, openSnackbar, setMarkedQuotes, setSyncDate, markedQuoteClientCount) {
-    getUserMarkedQuotesCount({ userName })
-    let { markedQuotesFromServer, dateFromServer } = await getUserDetails({ userName, markedQuotes, openSnackbar, setMarkedQuotes })
-    if (markedQuotesFromServer) {
-        const markedQuotesFromServerCount = Object.values(markedQuotesFromServer).flat().length
+    const markedQuotesFromServerCount = await getUserMarkedQuotesCount({ userName })
+    if (markedQuotesFromServerCount) {
         if (markedQuotesFromServerCount > markedQuoteClientCount) {
+            let { markedQuotesFromServer, dateFromServer } = await getUserDetails({ userName, markedQuotes, openSnackbar, setMarkedQuotes })
             setMarkedQuotes(markedQuotesFromServer)
             openSnackbar('Auto-Sync : Restored all marked quotes!', 4000)
         } else if (markedQuoteClientCount > markedQuotesFromServerCount) {
-            if (getDifferenceFromCurrentDate(new Date(dateFromServer)) < 0) {
-                await sendUserDetails({ userName, markedQuotes, openSnackbar })
-                openSnackbar('Synced marked quotes with server!', 4000)
-            }
+            await sendUserDetails({ userName, markedQuotes, openSnackbar })
+            openSnackbar('Synced marked quotes with server!', 4000)
         }
         setSyncDate(Date.now())
     }

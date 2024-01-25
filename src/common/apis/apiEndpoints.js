@@ -12,6 +12,7 @@ export const API_ENDPOINTS = {
     MARKED_QUOTES: {
         BACKUP: `${BASEURL.USER_DETAILS}/markedQuotes/backup`,
         RESTORE: `${BASEURL.USER_DETAILS}/markedQuotes/restore`,
+        GET_COUNT: `${BASEURL.USER_DETAILS}/markedQuotes/getCount`,
     },
 
     USER: {

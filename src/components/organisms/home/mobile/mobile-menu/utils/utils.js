@@ -44,6 +44,26 @@ export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, set
     }
 }
 
+export const getUserMarkedQuotesCount = async ({ userName }) => {
+    let response = await retryTenTimes(
+        async () =>
+            await fetch(API_ENDPOINTS.MARKED_QUOTES.GET_COUNT, {
+                method: 'post',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    userName,
+                }),
+            })
+    )
+
+    response = await response.json()
+    if (response?.ok) {
+        return response.count
+    } else {
+        return null
+    }
+}
+
 export const loginRegister = async ({ apiCallType, userName, password, setIsLoggedIn, openSnackbar, setIsFetching }) => {
     const capitalizedUserName = userName.charAt(0).toUpperCase() + userName.slice(1)
     let response
