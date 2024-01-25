@@ -4,6 +4,7 @@ import { getPhilosopherQuotes, lazyLoadAsset } from '../../../../../../common/st
 import { retryTenTimes } from '../../../../../../common/utils/apiUtils'
 import { isCacheExpired } from '../../../../../../common/utils/dateUtils'
 import { addResponseOptionsDataIntoRedux } from '../../../../../../common/utils/lazyLoadUtils'
+import { checkQueryParams } from '../../../../../../common/utils/urlUtils'
 import { changeQuotesData } from '../../../quotes-list/utils/utils'
 
 export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, markedMode, markedQuotes, setMarkedQuotes, scrollPosition, setRowsRendered, recentPhilosophers, setRecentPhilosophers }) {
