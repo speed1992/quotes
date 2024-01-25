@@ -28,7 +28,8 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
 
 export const onFocusHandler = async ({ options, setOptions, isLoggedIn, setSyncDate, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting, syncDate, setLogs }) => {
     if (checkQueryParams('dev')) {
-        setLogs('current time ', new Date())
+        const today = new Date()
+        setLogs('current time ', today)
         setLogs('inside onFocusHandler')
         setLogs('isCacheExpired(syncDate) ' + isCacheExpired(syncDate))
         setLogs('syncDate ' + syncDate)
