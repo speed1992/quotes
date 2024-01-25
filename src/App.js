@@ -3,6 +3,7 @@ import React, { Suspense } from 'react'
 import { useSelector } from 'react-redux'
 import ErrorBoundary from './common/components/error-boundary/error-boundary'
 import { retryTenTimes } from './common/utils/apiUtils'
+const Logs = React.lazy(() => retryTenTimes(() => import('./components/organisms/analysis/logs/logs')))
 const Report = React.lazy(() => retryTenTimes(() => import('./components/organisms/analysis/report/report')))
 const Modal = React.lazy(() => retryTenTimes(() => import('./common/components/modal/modal')))
 const SnackBar = React.lazy(() => retryTenTimes(() => import('./common/components/snackbar/snackbar')))
@@ -23,6 +24,11 @@ export const App = () => {
                 {currentModalName === 'Image' && (
                     <Modal darkMode={darkMode}>
                         <GenerateQuoteImage />
+                    </Modal>
+                )}
+                {currentModalName === 'Logs' && (
+                    <Modal darkMode={darkMode}>
+                        <Logs />
                     </Modal>
                 )}
                 <HomePage />

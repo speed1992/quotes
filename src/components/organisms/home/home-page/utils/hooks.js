@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
 import { doesPhilosopherDataExist, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
 import { onFocusHandler } from '../../desktop/desktop-header/utils/utils'
-import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setMarkedModeRedux, setMarkedQuotesRedux, setMinModeRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setRecentPhilosophersRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setSyncDateRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
+import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setLogsRedux, setMarkedModeRedux, setMarkedQuotesRedux, setMinModeRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setRecentPhilosophersRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setSyncDateRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
 import { compareWithServerSyncDatesAndMakeAnAPICall, getClientSyncDates } from './utils'
 
 export function useHomePageHooks() {
@@ -55,6 +55,7 @@ export function useHomePageHooks() {
     const setSyncDate = useCallback((value) => dispatch(setSyncDateRedux(value)), [])
     const setRecentPhilosophers = useCallback((value) => dispatch(setRecentPhilosophersRedux(value)), [])
     const setMinMode = useCallback((value) => dispatch(setMinModeRedux(value)), [])
+    const setLogs = useCallback((value) => dispatch(setLogsRedux(value)), [])
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -75,5 +76,5 @@ export function useHomePageHooks() {
         }
     }, [currentPhilosopher])
 
-    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions, rowsRendered, setRowsRendered, syncDate, setSyncDate, voiceSpeed, recentPhilosophers, setRecentPhilosophers, minMode, setMinMode }
+    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions, rowsRendered, setRowsRendered, syncDate, setSyncDate, voiceSpeed, recentPhilosophers, setRecentPhilosophers, minMode, setMinMode, setLogs }
 }

@@ -11,9 +11,9 @@ export function getQueryParams(qs) {
     return params
 }
 
-export function sortFeatureDisabled() {
-    var query = getQueryParams(document.location.search)
-    let sortValue = query.sort ? query.sort.toLowerCase() : null
-    if (sortValue === 'false' || sortValue) return true
+export function checkQueryParams(param) {
+    let query = getQueryParams(document.location.search)
+    let val = query[param] ? query[param].toLowerCase() : null
+    if (val === 'false' || val) return true
     else return false
 }
