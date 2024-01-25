@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[719],{5719:(s,e,a)=>{a.r(e),a.d(e,{default:()=>h});var t=a(8687),u=a(184);const h=()=>(0,t.v9)((s=>s.philosophersData.logs)).map((s=>(0,u.jsx)("div",{children:s})))}}]);
-//# sourceMappingURL=719.f1ced067.chunk.js.map
