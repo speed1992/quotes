@@ -15,7 +15,7 @@ export const sendUserDetails = async ({ userName, markedQuotes, openSnackbar, se
     })
 }
 
-export const getUserDetails = async ({ userName, markedQuotes, openSnackbar, setMarkedQuotes }) => {
+export const getUserDetails = async ({ userName, openSnackbar }) => {
     let response = await retryTenTimes(
         async () =>
             await fetch(API_ENDPOINTS.MARKED_QUOTES.RESTORE, {

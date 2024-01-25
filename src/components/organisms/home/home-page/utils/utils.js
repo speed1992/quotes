@@ -1,5 +1,5 @@
 import { getPhilosopherData } from '../../../../../common/static/utils/utils'
-import { getUserDetails, sendUserDetails } from '../../mobile/mobile-menu/utils/utils'
+import { getUserDetails, getUserMarkedQuotesCount, sendUserDetails } from '../../mobile/mobile-menu/utils/utils'
 
 export const setThemeClassNameOnHTMLTag = (value) => {
     let root = document.getElementsByTagName('html')[0]
@@ -19,7 +19,7 @@ export async function compareWithServerSyncDatesAndMakeAnAPICall(userName, marke
     const markedQuotesFromServerCount = await getUserMarkedQuotesCount({ userName })
     if (markedQuotesFromServerCount) {
         if (markedQuotesFromServerCount > markedQuoteClientCount) {
-            let { markedQuotesFromServer, dateFromServer } = await getUserDetails({ userName, markedQuotes, openSnackbar, setMarkedQuotes })
+            let { markedQuotesFromServer } = await getUserDetails({ userName, openSnackbar })
             setMarkedQuotes(markedQuotesFromServer)
             openSnackbar('Auto-Sync : Restored all marked quotes!', 4000)
         } else if (markedQuoteClientCount > markedQuotesFromServerCount) {
