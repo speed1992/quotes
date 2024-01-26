@@ -30,7 +30,6 @@ export const onFocusHandler = async ({ options, setOptions, isLoggedIn, setSyncD
     if (checkQueryParams('dev')) {
         const today = new Date()
         setLogs('isCacheExpired(syncDate, setLogs) || options.length === 1 ' + isCacheExpired(syncDate, setLogs) || options.length === 1)
-        setLogs('isCacheExpired(syncDate) ' + isCacheExpired(syncDate))
         setLogs('options.length ' + options.length)
         setLogs('current time ' + today)
         setLogs('inside onFocusHandler')
@@ -39,15 +38,12 @@ export const onFocusHandler = async ({ options, setOptions, isLoggedIn, setSyncD
         setLogs('isLoggedIn ' + isLoggedIn)
     }
     if (isCacheExpired(syncDate, setLogs) || options.length === 1) {
-        if (isLoggedIn !== true) {
-            setSyncDate?.(Date.now())
-        }
         setIsFetchingOptions?.(true)
         let response = await retryTenTimes(() => fetch(API_ENDPOINTS.STATIC_DATA.STATIC_ASSET_GRAPH))
         response = await response.json()
         if (checkQueryParams('dev')) setLogs('api response ' + response)
-
         addResponseOptionsDataIntoRedux({ newOptions: response, oldOptions: options, oldOriginalOptions: originalOptions, setOptions, setOriginalOptions, sorting })
         setIsFetchingOptions?.(false)
+        setSyncDate?.(Date.now())
     }
 }
