@@ -76,8 +76,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "(.*)web-workers/worker": "$1web-workers/mocks/mockWorker",
-      "react-simple-snackbar": "<rootDir>/src/__tests__/mocks/react-simple-snackbar"
+      "(.*)web-workers/worker": "$1web-workers/mocks/mockWorker"
     }
   }
 }
