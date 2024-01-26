@@ -25,6 +25,7 @@ let INITIAL_STATE = {
     scrollPosition: {},
     scheduledPosts: {},
     syncDate: 46190630,
+    restoreQuotesFromServerCachedDate: 46190630,
     isLoggedIn: false,
     voiceType: 0,
     recentPhilosophers: [],

@@ -35,10 +35,11 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                 ) : (
                     <>
                         <div role="columnheader" className="row">
-                            <span onClick={rowHandler}>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</span>
+                            <span>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</span>
                         </div>
 
                         <div role="columnheader" className={styles.actionItems}>
+                            <button onClick={rowHandler}>Copy</button>
                             <button
                                 onClick={() => {
                                     dispatch(setQuoteImageData({ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth' }))
@@ -55,17 +56,15 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
                                 </Suspense>
                             )}
                             {!minMode && (
-                                <>
-                                    <button
-                                        onClick={() => {
-                                            dispatch(setQuoteImageData({ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth', share: true }))
-                                            dispatch(setCurrentModalName('Image'))
-                                        }}
-                                        style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}
-                                    >
-                                        Share
-                                    </button>
-                                </>
+                                <button
+                                    onClick={() => {
+                                        dispatch(setQuoteImageData({ quotationText, philosopherFullName, signature: 'Instagram: @philosophizetruth', share: true }))
+                                        dispatch(setCurrentModalName('Image'))
+                                    }}
+                                    style={{ textDecoration: 'none', color: darkMode ? '#fff' : '#000' }}
+                                >
+                                    Share
+                                </button>
                             )}
                         </div>
                     </>

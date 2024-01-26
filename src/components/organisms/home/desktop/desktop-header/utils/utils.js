@@ -29,12 +29,13 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
 export const onFocusHandler = async ({ options, setOptions, isLoggedIn, setSyncDate, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting, syncDate, setLogs }) => {
     if (checkQueryParams('dev')) {
         const today = new Date()
+        setLogs('isCacheExpired(syncDate, setLogs) || options.length === 1 ' + isCacheExpired(syncDate, setLogs) || options.length === 1)
+        setLogs('isCacheExpired(syncDate) ' + isCacheExpired(syncDate))
+        setLogs('options.length ' + options.length)
         setLogs('current time ' + today)
         setLogs('inside onFocusHandler')
-        setLogs('isCacheExpired(syncDate) ' + isCacheExpired(syncDate))
         setLogs('syncDate ' + syncDate)
         setLogs('syncDate ' + new Date(syncDate))
-        setLogs('options.length ' + options.length)
         setLogs('isLoggedIn ' + isLoggedIn)
     }
     if (isCacheExpired(syncDate, setLogs) || options.length === 1) {

@@ -63,6 +63,9 @@ export const philosophersDataSlice = createSlice({
         setSyncDateRedux: (state, { payload }) => {
             state.syncDate = payload
         },
+        setRestoreQuotesFromServerCachedDateRedux: (state, { payload }) => {
+            state.restoreQuotesFromServerCachedDate = payload
+        },
         setVoiceTypeRedux: (state, { payload }) => {
             state.voiceType = payload
         },
@@ -80,4 +83,4 @@ export const philosophersDataSlice = createSlice({
 
 export default philosophersDataSlice.reducer
 
-export const { setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setOptionsRedux, setDarkModeRedux, setMarkedQuotesRedux, setVoiceSpeedRedux, setScrollPositionRedux, setSortingRedux, setScheduledPostsRedux, setOriginalOptionsRedux, setUserNameRedux, setIsLoggedInRedux, setPasswordRedux, setSyncDateRedux, setVoiceTypeRedux, setRecentPhilosophersRedux, setMinModeRedux, setLogsRedux } = philosophersDataSlice.actions
+export const { setCurrentPhilosopherRedux, setStartRedux, setEndRedux, setSearchTextRedux, setMarkedModeRedux, setCurrentDataRedux, setOptionsRedux, setDarkModeRedux, setMarkedQuotesRedux, setVoiceSpeedRedux, setScrollPositionRedux, setSortingRedux, setScheduledPostsRedux, setOriginalOptionsRedux, setUserNameRedux, setIsLoggedInRedux, setPasswordRedux, setSyncDateRedux, setRestoreQuotesFromServerCachedDateRedux, setVoiceTypeRedux, setRecentPhilosophersRedux, setMinModeRedux, setLogsRedux } = philosophersDataSlice.actions

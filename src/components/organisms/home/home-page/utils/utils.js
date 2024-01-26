@@ -15,7 +15,7 @@ export const bringIntoOriginalOrder = (originalOptions, newOptions) => originalO
 
 export const bringIntoAlphabeticalOrder = (options) => [...options].sort((a, b) => a.fullName.localeCompare(b.fullName))
 
-export async function compareWithServerSyncDatesAndMakeAnAPICall(userName, markedQuotes, openSnackbar, setMarkedQuotes, setSyncDate, markedQuoteClientCount) {
+export async function compareWithServerSyncDatesAndMakeAnAPICall(userName, markedQuotes, openSnackbar, setMarkedQuotes, setRestoreQuotesFromServerCachedDate, markedQuoteClientCount) {
     const markedQuotesFromServerCount = await getUserMarkedQuotesCount({ userName })
     if (markedQuotesFromServerCount) {
         if (markedQuotesFromServerCount > markedQuoteClientCount) {
@@ -24,8 +24,8 @@ export async function compareWithServerSyncDatesAndMakeAnAPICall(userName, marke
             openSnackbar('Auto-Sync : Restored all marked quotes!', 4000)
         } else if (markedQuoteClientCount > markedQuotesFromServerCount) {
             await sendUserDetails({ userName, markedQuotes, openSnackbar })
-            openSnackbar('Synced marked quotes with server!', 4000)
+            openSnackbar('Auto-Sync : Synced marked quotes with server database!', 4000)
         }
-        setSyncDate(Date.now())
+        setRestoreQuotesFromServerCachedDate(Date.now())
     }
 }
