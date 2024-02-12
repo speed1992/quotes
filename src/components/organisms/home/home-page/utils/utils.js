@@ -24,7 +24,7 @@ export async function compareWithServerSyncDatesAndMakeAnAPICall(userName, marke
             openSnackbar('Auto-Sync : Restored all marked quotes!', 4000)
         } else if (markedQuoteClientCount > markedQuotesFromServerCount) {
             await sendUserDetails({ userName, markedQuotes, openSnackbar })
-            openSnackbar('Auto-Sync : Synced marked quotes with server database!', 4000)
+            // openSnackbar('Auto-Sync : Synced marked quotes with server database!', 4000)
         }
         setRestoreQuotesFromServerCachedDate(Date.now())
     }
