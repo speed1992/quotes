@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
 import { doesPhilosopherDataExist, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
 import { isCacheExpired } from '../../../../../common/utils/dateUtils'
-import { debounce } from '../../../../../common/utils/debounce'
 import { applyFilters } from '../../../../../common/utils/searchUtils'
 import { isDesktop } from '../../../../../common/utils/utils'
 import { onFocusHandler } from '../../desktop/desktop-header/utils/utils'
@@ -13,7 +12,6 @@ import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setE
 import { compareWithServerSyncDatesAndMakeAnAPICall, setThemeClassNameOnHTMLTag } from './utils'
 
 export function useHomePageHooks() {
-    const [isFirstLoad, setIsFirstLoad] = useState(true)
     const [openSnackbar] = useSnackbar()
     const listRef = useRef()
     const dispatch = useDispatch()
@@ -44,7 +42,7 @@ export function useHomePageHooks() {
     const setMinMode = useCallback((value) => dispatch(setMinModeRedux(value)), [])
     const setLogs = useCallback((value) => dispatch(setLogsRedux(value)), [])
 
-    const debouncedApplyFilters = debounce(applyFilters, 1000)
+    // const debouncedApplyFilters = debounce(applyFilters, 1000)
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -66,12 +64,7 @@ export function useHomePageHooks() {
 
     useEffect(() => {
         if (originalData) {
-            if (!isFirstLoad) {
-                debouncedApplyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
-            } else {
-                applyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
-                setIsFirstLoad(false)
-            }
+            applyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
         }
     }, [start, end, searchText, markedMode, currentPhilosopher, currentData?.length, markedQuotes[currentPhilosopher]?.quotes?.length])
 
