@@ -4,36 +4,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
 import { doesPhilosopherDataExist, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
 import { isCacheExpired } from '../../../../../common/utils/dateUtils'
+import { debounce } from '../../../../../common/utils/debounce'
+import { applyFilters } from '../../../../../common/utils/searchUtils'
+import { isDesktop } from '../../../../../common/utils/utils'
 import { onFocusHandler } from '../../desktop/desktop-header/utils/utils'
+import { getPhilosopherFullName } from '../../quotes-list/utils/utils'
 import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setLogsRedux, setMarkedModeRedux, setMarkedQuotesRedux, setMinModeRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setRecentPhilosophersRedux, setRestoreQuotesFromServerCachedDateRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setSyncDateRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
-import { compareWithServerSyncDatesAndMakeAnAPICall } from './utils'
+import { compareWithServerSyncDatesAndMakeAnAPICall, setThemeClassNameOnHTMLTag } from './utils'
 
 export function useHomePageHooks() {
+    const [isFirstLoad, setIsFirstLoad] = useState(true)
     const [openSnackbar] = useSnackbar()
     const listRef = useRef()
     const dispatch = useDispatch()
-    const start = useSelector((state) => state?.philosophersData?.start)
-    const end = useSelector((state) => state?.philosophersData?.end)
-    const searchText = useSelector((state) => state?.philosophersData?.searchText)
-    const currentPhilosopher = useSelector((state) => state?.philosophersData?.currentPhilosopher)
-    const currentData = useSelector((state) => state?.philosophersData?.currentData)
-    const markedMode = useSelector((state) => state?.philosophersData?.markedMode)
-    const options = useSelector((state) => state?.philosophersData?.options)
-    const markedQuotes = useSelector((state) => state?.philosophersData?.markedQuotes)
-    const scheduledPosts = useSelector((state) => state?.philosophersData?.scheduledPosts)
-    const darkMode = useSelector((state) => state?.philosophersData?.darkMode)
-    const scrollPosition = useSelector((state) => state?.philosophersData?.scrollPosition)
-    const originalData = getPhilosopherQuotes({ philosopher: currentPhilosopher, options })
-    const originalOptions = useSelector((state) => state?.philosophersData?.originalOptions)
-    const userName = useSelector((state) => state?.philosophersData?.userName)
-    const isLoggedIn = useSelector((state) => state?.philosophersData?.isLoggedIn)
-    const password = useSelector((state) => state?.philosophersData?.password)
-    const syncDate = useSelector((state) => state?.philosophersData?.syncDate)
-    const restoreQuotesFromServerCachedDate = useSelector((state) => state?.philosophersData?.restoreQuotesFromServerCachedDate)
-    const sorting = useSelector((state) => state.philosophersData.sorting)
-    const voiceSpeed = useSelector((state) => state.philosophersData.voiceSpeed)
-    const recentPhilosophers = useSelector((state) => state.philosophersData.recentPhilosophers)
-    const minMode = useSelector((state) => state.philosophersData.minMode)
+    const { start, end, searchText, currentPhilosopher, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData = getPhilosopherQuotes({ philosopher: currentPhilosopher, options }), originalOptions, userName, isLoggedIn, password, syncDate, restoreQuotesFromServerCachedDate, sorting, voiceSpeed, recentPhilosophers, minMode } = useSelector((state) => state.philosophersData)
 
     const [isFetching, setIsFetching] = useState(false)
     const [isFetchingOptions, setIsFetchingOptions] = useState(false)
@@ -60,6 +44,8 @@ export function useHomePageHooks() {
     const setMinMode = useCallback((value) => dispatch(setMinModeRedux(value)), [])
     const setLogs = useCallback((value) => dispatch(setLogsRedux(value)), [])
 
+    const debouncedApplyFilters = debounce(applyFilters, 500)
+
     useEffect(() => {
         if (isLoggedIn) {
             ;(async () => {
@@ -76,6 +62,32 @@ export function useHomePageHooks() {
         if (!doesPhilosopherDataExist(currentPhilosopher, options)) {
             onFocusHandler({ options, setOptions, isLoggedIn, setSyncDate, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting })
         }
+    }, [currentPhilosopher])
+
+    useEffect(() => {
+        if (originalData) {
+            if (!isFirstLoad) {
+                debouncedApplyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
+            } else {
+                applyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
+                setIsFirstLoad(false)
+            }
+        }
+    }, [start, end, searchText, markedMode, currentPhilosopher, currentData?.length, markedQuotes[currentPhilosopher]?.quotes?.length])
+
+    useEffect(() => {
+        setThemeClassNameOnHTMLTag(darkMode)
+    }, [darkMode])
+
+    useEffect(() => {
+        if (isDesktop()) {
+            setDarkMode(false)
+            setThemeClassNameOnHTMLTag(false)
+        }
+    }, [darkMode])
+
+    useEffect(() => {
+        document.title = `${getPhilosopherFullName({ currentPhilosopher, options })} Quotes`
     }, [currentPhilosopher])
 
     return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions, rowsRendered, setRowsRendered, syncDate, setSyncDate, voiceSpeed, recentPhilosophers, setRecentPhilosophers, minMode, setMinMode, setLogs, restoreQuotesFromServerCachedDate, setRestoreQuotesFromServerCachedDate }

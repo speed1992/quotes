@@ -11,7 +11,6 @@ const newPersistConfig = getPersistConfig({
     blacklist: ['currentData', 'originalData', 'logs'],
     rootReducer: philosophersDataReducer,
     migrate: async (state) => {
-        debugger
         if (getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options })) {
             const index = getPhilosopherObjectIndex(PHILOSOPHER_TO_PURGE, state.options)
             if (state.options[index]?.quotes?.[0]?.id === undefined) {
