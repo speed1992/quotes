@@ -44,7 +44,7 @@ export function useHomePageHooks() {
     const setMinMode = useCallback((value) => dispatch(setMinModeRedux(value)), [])
     const setLogs = useCallback((value) => dispatch(setLogsRedux(value)), [])
 
-    const debouncedApplyFilters = debounce(applyFilters, 500)
+    const debouncedApplyFilters = debounce(applyFilters, 1000)
 
     useEffect(() => {
         if (isLoggedIn) {
