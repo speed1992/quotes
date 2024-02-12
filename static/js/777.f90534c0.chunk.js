@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[777],{7777:(e,s,i)=>{i.r(s),i.d(s,{default:()=>r});i(2791);const d=JSON.parse('{"buildDateTime":"13 February 2024 @ 01:33 AM"}');var l=i(184);const r=()=>(0,l.jsxs)("div",{style:{fontSize:"1rem"},children:[(0,l.jsx)("div",{children:"App Version:"}),(0,l.jsx)("div",{children:null===d||void 0===d?void 0:d.buildDateTime})]})}}]);
+//# sourceMappingURL=777.f90534c0.chunk.js.map
