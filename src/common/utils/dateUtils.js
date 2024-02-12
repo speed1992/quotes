@@ -1,6 +1,6 @@
 import { checkQueryParams } from './urlUtils'
 
-const CACHE_TIME_IN_DAYS = 1
+const CACHE_TIME_IN_DAYS = 15
 
 export const isCacheExpired = (startDate, setLogs = null) => {
     startDate = new Date(startDate)
