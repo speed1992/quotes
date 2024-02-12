@@ -7,13 +7,12 @@ import { addResponseOptionsDataIntoRedux } from '../../../../../../common/utils/
 import { checkQueryParams } from '../../../../../../common/utils/urlUtils'
 import { changeQuotesData } from '../../../quotes-list/utils/utils'
 
-export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, markedMode, markedQuotes, setMarkedQuotes, scrollPosition, setRowsRendered, recentPhilosophers, setRecentPhilosophers, setIsFirstLoad }) {
+export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, markedMode, markedQuotes, setMarkedQuotes, scrollPosition, setRowsRendered, recentPhilosophers, setRecentPhilosophers }) {
     function callback() {
         if (recentPhilosophers) setRecentPhilosophers([...new Set([philosopher, ...recentPhilosophers.slice(0, MAX_RECENT_PHILOSOPHERS - 1)])])
         setCurrentPhilosopher(philosopher)
         changeQuotesData({ philosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
         setIsFetching(false)
-        setIsFirstLoad(true)
     }
     setStart(1)
     setEnd('')
