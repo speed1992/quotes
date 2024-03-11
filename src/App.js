@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-pascal-case */
 import React, { Suspense } from 'react'
 import { useSelector } from 'react-redux'
+import AllPhilosophers from './common/components/all-philosophers/all-philosophers'
 import ErrorBoundary from './common/components/error-boundary/error-boundary'
 import { retryTenTimes } from './common/utils/apiUtils'
 const Logs = React.lazy(() => retryTenTimes(() => import('./components/organisms/analysis/logs/logs')))
@@ -13,6 +14,7 @@ const GenerateQuoteImage = React.lazy(() => retryTenTimes(() => import('./compon
 export const App = () => {
     const currentModalName = useSelector((state) => state.modal)
     const darkMode = useSelector((state) => state.philosophersData.darkMode)
+    const isAllFeatureOn = useSelector((state) => state.all.isAllFeatureOn)
     return (
         <ErrorBoundary>
             <Suspense>
@@ -31,7 +33,7 @@ export const App = () => {
                         <Logs />
                     </Modal>
                 )}
-                <HomePage />
+                {isAllFeatureOn ? <AllPhilosophers /> : <HomePage />}
                 <SnackBar />
             </Suspense>
         </ErrorBoundary>

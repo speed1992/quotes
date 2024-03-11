@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { toggleFeature } from '../../../../../common/components/all-philosophers/allPhilosophersRedux'
 import { setCurrentModalName } from '../../../../../common/components/modal/modalRedux'
 import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
 import SmallLoader from '../../../../../common/small-loader/small-loader'
@@ -100,10 +101,13 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                     <button onClick={useCallback(() => dispatch(setCurrentModalName('Report')), [])}>Open Report</button>
                 </li>
                 <li key="7">
+                    <button onClick={useCallback(() => dispatch(toggleFeature()), [])}>Open All</button>
+                </li>
+                <li key="8">
                     <LoginRegister {...{ setUserName, userName, openSnackbar, isLoggedIn, setIsLoggedIn, setMarkedQuotes, markedQuotes, password, setPassword, setIsFetching }} />
                     {!isLoggedIn && <div className={styles.backupNote}>You can login to backup your marked quotes in database in case browser data gets deleted.</div>}
                 </li>
-                <li key="8">
+                <li key="9">
                     <BuildInfo />
                 </li>
                 {checkQueryParams('dev') && (
