@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
+import CACHE_IN_DAYS from '../../../../../common/settings/cache.json'
 import { doesPhilosopherDataExist, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
 import { isCacheExpired } from '../../../../../common/utils/dateUtils'
 import { applyFilters } from '../../../../../common/utils/searchUtils'
@@ -49,7 +50,7 @@ export function useHomePageHooks() {
             ;(async () => {
                 const markedQuoteClientCount = Object.values(markedQuotes).flat().length
 
-                if (isCacheExpired(restoreQuotesFromServerCachedDate)) {
+                if (isCacheExpired(restoreQuotesFromServerCachedDate, CACHE_IN_DAYS.QUOTES_SYNC)) {
                     await compareWithServerSyncDatesAndMakeAnAPICall(userName, markedQuotes, openSnackbar, setMarkedQuotes, setRestoreQuotesFromServerCachedDate, markedQuoteClientCount)
                 }
             })()
