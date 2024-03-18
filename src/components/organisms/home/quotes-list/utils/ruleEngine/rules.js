@@ -1,4 +1,4 @@
-export const rules = [
+export const RULES = [
     function (value, { end }) {
         if (end <= 20) return 500
     },
@@ -9,6 +9,12 @@ export const rules = [
         if (end <= 100) return 900
     },
     function (value, { end }) {
-        if (end > 100) return 1100
+        if (end <= 100) return 1100
+    },
+    function (value, { end }) {
+        if (end <= 140) return 1500
+    },
+    function (value, { end }) {
+        if (end > 140) return 1800
     },
 ]
