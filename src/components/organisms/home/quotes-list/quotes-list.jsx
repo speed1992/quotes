@@ -4,7 +4,7 @@ import { ruleEngine } from '../../../../common/utils/ruleEngine'
 import { isDesktop, scrollToQuoteId } from '../../../../common/utils/utils'
 import Row from '../row/row'
 import { NoRowsRenderer } from './utils/listUtils'
-import { rules } from './utils/ruleEngine/rules'
+import { RULES } from './utils/ruleEngine/rules'
 import { getPhilosopherFullName, getPhilosopherFullName_i10n } from './utils/utils'
 
 function QuotesList({ listRef, width, height, searchText, start, end, markedMode, currentData, setCurrentData, options, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }) {
@@ -27,7 +27,9 @@ function QuotesList({ listRef, width, height, searchText, start, end, markedMode
         return <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentData, setCurrentData, currentQuote: currentData[index], index, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, listRef, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }} {...others} />
     }
 
-    return currentPhilosopher !== undefined && currentData !== undefined && <List height={height} rowCount={currentData?.length} rowHeight={ruleEngine.makeDecision(rules, { params: { end } })} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined ? NoRowsRenderer : null} style={{ padding: '1rem', textAlign: isDesktop() && 'center' }} />
+    const wordCount = Math.max(start, end)
+
+    return currentPhilosopher !== undefined && currentData !== undefined && <List height={height} rowCount={currentData?.length} rowHeight={ruleEngine.makeDecision(RULES, { params: { end: wordCount } })} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined ? NoRowsRenderer : null} style={{ padding: '1rem', textAlign: isDesktop() && 'center' }} />
 }
 
 export default QuotesList

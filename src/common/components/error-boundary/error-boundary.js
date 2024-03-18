@@ -5,12 +5,12 @@ import { sendErrorDetails } from '../../apis/commonServices'
 class ErrorBoundary extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { hasError: false }
+        this.state = { error: null, hasError: false }
     }
 
     static getDerivedStateFromError(error) {
         console.log(error)
-        return { hasError: true }
+        return { error, hasError: true }
     }
 
     componentDidCatch(error, errorInfo) {
@@ -20,7 +20,12 @@ class ErrorBoundary extends React.Component {
 
     render() {
         if (this.state.hasError) {
-            return <h1>Something went wrong.</h1>
+            return (
+                <>
+                    <h1>Something went wrong.</h1>
+                    <div>Error: {JSON.stringify(this.state.error)}</div>
+                </>
+            )
         }
 
         return this.props.children
