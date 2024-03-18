@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleFeature } from '../../../../../common/components/all-philosophers/allPhilosophersRedux'
+import { toggleFeatureRedux } from '../../../../../common/components/all-philosophers/allPhilosophersRedux'
 import { setCurrentModalName } from '../../../../../common/components/modal/modalRedux'
 import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
 import SmallLoader from '../../../../../common/small-loader/small-loader'
@@ -106,7 +106,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                     <WordLengthSearch isStartFeatureEnabled={true} />
                 </li>
                 <li key="7">
-                    <button onClick={useCallback(() => dispatch(toggleFeature()), [])}>Open All</button>
+                    <button onClick={() => dispatch(toggleFeatureRedux())}>Open All</button>(Uses too much data)
                 </li>
                 <li key="8">
                     <LoginRegister {...{ setUserName, userName, openSnackbar, isLoggedIn, setIsLoggedIn, setMarkedQuotes, markedQuotes, password, setPassword, setIsFetching }} />

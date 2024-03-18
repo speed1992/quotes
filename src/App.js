@@ -33,6 +33,7 @@ export const App = () => {
                         <Logs />
                     </Modal>
                 )}
+                {/* {true ? <AllPhilosophers /> : <HomePage />} */}
                 {isAllFeatureOn ? <AllPhilosophers /> : <HomePage />}
                 <SnackBar />
             </Suspense>

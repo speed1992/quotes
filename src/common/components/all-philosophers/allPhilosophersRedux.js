@@ -2,14 +2,20 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const allPhilosohersSlice = createSlice({
     name: 'all',
-    initialState: { isAllFeatureOn: false },
+    initialState: { isAllFeatureOn: false, isFetching: false },
     reducers: {
-        toggleFeature: (state) => {
+        toggleFeatureRedux: (state) => {
             state.isAllFeatureOn = !state.isAllFeatureOn
+        },
+        setAllDataRedux: (state, { payload }) => {
+            state.currentData = payload
+        },
+        setIsFetchingRedux: (state, { payload }) => {
+            state.isFetching = payload
         },
     },
 })
 
 export default allPhilosohersSlice.reducer
 
-export const { toggleFeature } = allPhilosohersSlice.actions
+export const { toggleFeatureRedux, setAllDataRedux, setIsFetchingRedux } = allPhilosohersSlice.actions
