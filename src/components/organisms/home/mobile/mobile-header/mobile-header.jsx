@@ -29,7 +29,7 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
                 </div>
             </div>
             <div className={styles.mobileColumn}>
-                <WordLengthSearch isMobile={true} listRef={listRef} {...propsToSend} />
+                <WordLengthSearch label={true} isStartFeatureEnabled={false} />
             </div>
             <div className={styles.mobileColumn}>
                 <input name="search-text" data-testid="search-text" className={styles.wordSearch} type="text" placeholder="Search word" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />

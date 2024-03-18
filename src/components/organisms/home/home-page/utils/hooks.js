@@ -67,7 +67,7 @@ export function useHomePageHooks() {
         if (originalData) {
             applyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
         }
-    }, [start, end, searchText, markedMode, currentPhilosopher, currentData?.length, markedQuotes[currentPhilosopher]?.quotes?.length])
+    }, [start, end, searchText, markedMode, currentPhilosopher, markedQuotes[currentPhilosopher]?.quotes?.length])
 
     useEffect(() => {
         setThemeClassNameOnHTMLTag(darkMode)

@@ -5,6 +5,7 @@ import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
 import SmallLoader from '../../../../../common/small-loader/small-loader'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import { checkQueryParams } from '../../../../../common/utils/urlUtils'
+import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSearch'
 import { ALPHABETICAL, LATEST } from '../../home-page/constants/constants'
 import { setVoiceSpeedRedux, setVoiceTypeRedux } from '../../home-page/homePageRedux/homePageRedux'
 import styles from './mobile-menu.module.css'
@@ -98,6 +99,10 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 </li>
                 <li key="6">
                     <button onClick={useCallback(() => dispatch(setCurrentModalName('Report')), [])}>Open Report</button>
+                </li>
+                <li>
+                    <div>Words Count</div> <div>Start & End</div>
+                    <WordLengthSearch isStartFeatureEnabled={true} />
                 </li>
                 <li key="7">
                     <LoginRegister {...{ setUserName, userName, openSnackbar, isLoggedIn, setIsLoggedIn, setMarkedQuotes, markedQuotes, password, setPassword, setIsFetching }} />
