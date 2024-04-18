@@ -23,7 +23,7 @@ class ErrorBoundary extends React.Component {
             return (
                 <>
                     <h1>Something went wrong.</h1>
-                    <div>Error: {JSON.stringify(this.state.error)}</div>
+                    <div>Error: {this.state.error.stack}</div>
                 </>
             )
         }
