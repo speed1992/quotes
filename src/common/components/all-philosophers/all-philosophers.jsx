@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setAllDataRedux, setIsFetchingRedux, toggleFeatureRedux } from './allPhilosophersRedux'
-import { lazyLoadAllPhilosophersQuotes } from './utils/utils'
+import { useDispatch } from 'react-redux'
+import { useHomePageHooks } from '../../../components/organisms/home/home-page/utils/hooks'
+import { getPhilosopherQuotes, lazyLoadAsset } from '../../static/utils/utils'
+import { toggleFeatureRedux } from './allPhilosophersRedux'
 
 export default function AllPhilosophers() {
     const dispatch = useDispatch()
-    const setIsFetching = (status) => dispatch(setIsFetchingRedux(status))
-    const setAllData = (status) => dispatch(setAllDataRedux(status))
     const toggleFeature = (status) => dispatch(toggleFeatureRedux(status))
-    const options = useSelector((state) => state.philosophersData?.options)
+    const { options, setOptions } = useHomePageHooks()
 
     useEffect(() => {
-        setIsFetching(true)
-        lazyLoadAllPhilosophersQuotes({ options, setIsFetching, setAllData })
+        options.map(({ value: currentPhilosopher }) => {
+            if (currentPhilosopher !== undefined) {
+                const currentPhilosopherQuotes = getPhilosopherQuotes({ philosopher: currentPhilosopher, options })
+                if (!currentPhilosopherQuotes) {
+                    lazyLoadAsset(currentPhilosopher, { options, setOptions })
+                }
+            }
+        })
     }, [])
     return (
         <>
