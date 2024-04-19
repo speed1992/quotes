@@ -21,14 +21,17 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
     const dispatch = useDispatch()
     const rowHandler = useCallback(() => rowClickHandler({ quote: quotationText, openSnackbar, philosopherFullName }), [openSnackbar, philosopherFullName, quotationText])
 
+    const height = document.querySelectorAll('#actionItems')[0]?.offsetHeight + 88 || 250
+
+    console.log('height', height)
+
     if (!isUndefined(currentQuote))
         return (
             <div role="row" className={styles.row} key={index} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
-                <div role="columnheader" className="row">
-                    <span>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</span>
+                <div role="columnheader" className={styles.rowChild} style={{ height: `calc(100% - ${height}px)` }}>
+                    <div className={styles.quoteText}>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</div>
                 </div>
-
-                <div role="columnheader" className={styles.actionItems}>
+                <div role="columnheader" id="actionItems" className={styles.actionItems}>
                     <button onClick={rowHandler}>Copy</button>
                     <button
                         onClick={() => {

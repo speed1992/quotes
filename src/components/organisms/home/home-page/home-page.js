@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
-import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import { doesPhilosopherDataExist } from '../../../../common/static/utils/utils'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { isDesktop } from '../../../../common/utils/utils'
@@ -32,7 +31,7 @@ const HomePage = () => {
                         </button>
                     )}
                     <div className={!minMode ? styles.content : styles.contentMinMode}>
-                        <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
+                        <LazyLoadQuoteList {...propsToSend} width={screen.width - 20} height={screen.height} />
                     </div>
                 </>
             )}
