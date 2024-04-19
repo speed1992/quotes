@@ -28,7 +28,7 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
     if (!isUndefined(currentQuote))
         return (
             <div role="row" className={styles.row} key={index} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
-                <div role="columnheader" className={styles.rowChild} style={{ height: `calc(100% - ${height}px)` }}>
+                <div role="columnheader" className={styles.rowChild}>
                     <div className={styles.quoteText}>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</div>
                 </div>
                 <div role="columnheader" id="actionItems" className={styles.actionItems}>
