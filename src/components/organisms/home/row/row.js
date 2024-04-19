@@ -21,6 +21,10 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
     const dispatch = useDispatch()
     const rowHandler = useCallback(() => rowClickHandler({ quote: quotationText, openSnackbar, philosopherFullName }), [openSnackbar, philosopherFullName, quotationText])
 
+    const height = document.querySelectorAll('#actionItems')[0]?.offsetHeight + 88 || 250
+
+    console.log('height', height)
+
     if (!isUndefined(currentQuote))
         return (
             <div role="row" className={styles.row} key={index} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
