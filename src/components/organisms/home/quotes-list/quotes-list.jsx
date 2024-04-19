@@ -27,7 +27,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, markedMode
 
     const wordCount = Math.max(start, end)
 
-    return currentPhilosopher !== undefined && currentData !== undefined && <List height={screen.height} rowCount={currentData?.length} rowHeight={screen.height} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined ? NoRowsRenderer : null} style={{ padding: '1rem', textAlign: isDesktop() && 'center' }} />
+    return currentPhilosopher !== undefined && currentData !== undefined && <List height={screen.height} rowCount={currentData?.length} rowHeight={screen.height - 200} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined ? NoRowsRenderer : null} style={{ padding: '1rem', textAlign: isDesktop() && 'center' }} />
 }
 
 export default QuotesList
