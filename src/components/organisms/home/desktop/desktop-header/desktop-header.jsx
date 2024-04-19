@@ -22,7 +22,7 @@ function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStar
         <div className={`${styles.header} ${styles.customFont}`}>
             <div className={styles.row}>
                 <div className={styles.column}>
-                    <WordLengthSearch listRef={listRef} {...propsToSend} />
+                    <WordLengthSearch isMobile={false} listRef={listRef} {...propsToSend} />
                 </div>
                 <div className={styles.column}>
                     <TextField className={styles.wordSearch} id="outlined-search" label="Search" type="search" size="small" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />
