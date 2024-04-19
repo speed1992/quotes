@@ -58,7 +58,7 @@ export const getUserMarkedQuotesCount = async ({ userName }) => {
 
     response = await response.json()
     if (response?.ok) {
-        return response.count
+        return response?.count
     } else {
         return null
     }
