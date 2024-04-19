@@ -5,13 +5,20 @@
 .row {
     padding-top: 10rem;
     padding-bottom: 10rem;
+    font-size: 1.7rem;
+    line-height: 1.2;
 }
 
 .actionItems {
-    padding-top: 15rem;
+    padding-top: 5rem;
 }
 
 .quoteDescription {
     padding-top: 7rem;
     text-align: right;
+}
+
+.quoteText {
+    height: 300px;
+    overflow: scroll;
 }

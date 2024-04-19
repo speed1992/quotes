@@ -24,11 +24,10 @@ const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherF
     if (!isUndefined(currentQuote))
         return (
             <div role="row" className={styles.row} key={index} style={style} onMouseMove={debouncedHandler} onTouchStart={debouncedHandler}>
-                <div role="columnheader" className="row">
-                    <span>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</span>
+                <div role="columnheader" className={styles.rowChild}>
+                    <div className={styles.quoteText}>{`${index + 1}. "${quotationText}" ― ${philosopherFullName}`}</div>
                 </div>
-
-                <div role="columnheader" className={styles.actionItems}>
+                <div role="columnheader" id="actionItems" className={styles.actionItems}>
                     <button onClick={rowHandler}>Copy</button>
                     <button
                         onClick={() => {
