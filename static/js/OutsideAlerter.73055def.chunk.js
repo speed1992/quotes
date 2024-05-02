@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[54],{7209:(e,n,t)=>{t.r(n),t.d(n,{default:()=>r});var u=t(2791),c=t(184);const r=function(e){let{callback:n,children:t}=e;const r=(0,u.useRef)(null);return function(e,n){(0,u.useEffect)((()=>{function t(t){e.current&&!e.current.contains(t.target)&&n()}return document.addEventListener("mousedown",t),()=>{document.removeEventListener("mousedown",t)}}),[e,n])}(r,n),(0,c.jsx)("div",{ref:r,children:t})}}}]);
+//# sourceMappingURL=OutsideAlerter.73055def.chunk.js.map

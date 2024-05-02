@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/Breadcrumb.c2c40119.chunk.css","mappings":"AAAA,6BACI,aAAc,CAEd,gBAAiB,CADjB,iBAEJ","sources":["components/organisms/analysis/breadcrumb/breadcrumb.module.css"],"sourcesContent":[".alignment{\r\n    display: table;\r\n    margin: 0.5rem auto;\r\n    font-size: 1.5rem;\r\n}"],"names":[],"sourceRoot":""}

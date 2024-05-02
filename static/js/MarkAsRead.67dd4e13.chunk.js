@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[528],{8519:(e,t,r)=>{r.r(t),r.d(t,{default:()=>u});var a=r(413),s=r(184);const u=e=>{let{index:t,setCurrentData:r,currentData:u,currentPhilosopher:n,markedQuotes:o,setMarkedQuotes:l,setLocalTranslateKey:c}=e;return(0,s.jsx)("button",{onClick:()=>{(0,a.H)({index:t,setCurrentData:r,currentData:u,currentPhilosopher:n,markedQuotes:o,setMarkedQuotes:l}),null===c||void 0===c||c(!1)},children:"Mark Read"})}}}]);
+//# sourceMappingURL=MarkAsRead.67dd4e13.chunk.js.map
