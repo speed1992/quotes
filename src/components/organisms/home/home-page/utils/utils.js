@@ -31,10 +31,11 @@ export async function compareWithServerSyncDatesAndMakeAnAPICall(userName, marke
     }
 }
 
-export const autoPopulateWordCount = ({ currentPhilosopher, options, markedQuotes, setEnd }) => {
+export const autoPopulateWordCount = ({ currentPhilosopher, options, markedQuotes, setStart, setEnd }) => {
     const quotes = getPhilosopherQuotes({ philosopher: currentPhilosopher, options })
     const markedQuotesOfTheCurrentPhilosopher = markedQuotes?.[currentPhilosopher] || []
     const newQuotes = quotes.filter((quote) => !markedQuotesOfTheCurrentPhilosopher.includes(quote.id))
     const minimumWordCount = newQuotes.reduce((minCount, { quote }) => Math.min(getWordCount(quote), minCount), Infinity)
+    setStart(1)
     setEnd(minimumWordCount)
 }
