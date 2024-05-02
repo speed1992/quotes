@@ -8,8 +8,8 @@ import { debounce } from '../../../../common/utils/debounce'
 import { setQuoteImageData } from '../../analysis/generate-quote-image/generateQuoteImageRedux'
 import styles from './styles/row.module.css'
 import { rowClickHandler } from './utils/utils'
-const MarkAsRead = React.lazy(() => retryTenTimes(() => import('../../tools/mark-as-read/mark-as-read')))
-const Audio = React.lazy(() => retryTenTimes(() => import('../../tools/audio/audio')))
+const MarkAsRead = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "MarkAsRead" */ '../../tools/mark-as-read/mark-as-read')))
+const Audio = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "Audio" */ '../../tools/audio/audio')))
 
 const Row = ({ data: { philosopherFullName, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode, voiceSpeed, minMode }, style }) => {
     const [openSnackbar] = useSnackbar()

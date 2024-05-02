@@ -2,8 +2,8 @@ import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { useCreateQuoteImage } from './utils/hooks'
-const QuoteWithImage = React.lazy(() => retryTenTimes(() => import('../quote-with-image/quote-with-image')))
-const QuoteWithoutImage = React.lazy(() => retryTenTimes(() => import('../quote-without-image/quote-without-image')))
+const QuoteWithImage = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "QuoteWithImage" */ '../quote-with-image/quote-with-image')))
+const QuoteWithoutImage = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "QuoteWithoutImage" */ '../quote-without-image/quote-without-image')))
 
 const GenerateQuoteImage = () => {
     let { quotationText, philosopherFullName, signature, share = false } = useSelector((state) => state.quoteImage)

@@ -9,9 +9,9 @@ import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSear
 import { ALPHABETICAL, LATEST } from '../../home-page/constants/constants'
 import { setAutoPopulateWordCountRedux, setVoiceSpeedRedux, setVoiceTypeRedux } from '../../home-page/homePageRedux/homePageRedux'
 import styles from './mobile-menu.module.css'
-const BuildInfo = React.lazy(() => retryTenTimes(() => import('../../../tools/build-info/build-info')))
-const LoginRegister = React.lazy(() => retryTenTimes(() => import('../login-register/login-register')))
-const OutsideAlerter = React.lazy(() => retryTenTimes(() => import('../../../../../common/components/outside-alerter/outside-alerter')))
+const BuildInfo = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "BuildInfo" */ '../../../tools/build-info/build-info')))
+const LoginRegister = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "LoginRegister" */ '../login-register/login-register')))
+const OutsideAlerter = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "OutsideAlerter" */ '../../../../../common/components/outside-alerter/outside-alerter')))
 
 function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting, userName, setUserName, setMarkedQuotes, isLoggedIn, setIsLoggedIn, password, setPassword, setIsFetching }) {
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)

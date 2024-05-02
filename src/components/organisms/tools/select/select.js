@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react'
 import { getCurrentPhilosopherFullname } from '../../../../common/static/utils/utils'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
-const DesktopSelect = React.lazy(() => retryTenTimes(() => import('../../home/desktop/desktop-select/desktop-select')))
-const MobileSelect = React.lazy(() => retryTenTimes(() => import('../../home/mobile/mobile-select/mobile-select')))
+const DesktopSelect = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "DesktopSelect" */ '../../home/desktop/desktop-select/desktop-select')))
+const MobileSelect = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "MobileSelect" */ '../../home/mobile/mobile-select/mobile-select')))
 
 const Select = ({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, isMobile, isFetchingOptions, recentPhilosophers, darkMode }) => {
     const optionsWithRecentPhilosophersOnTop = [...options]

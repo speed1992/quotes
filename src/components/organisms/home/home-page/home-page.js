@@ -8,8 +8,8 @@ import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
 import styles from './home-page.module.css'
 import { useHomePageHooks } from './utils/hooks'
 import { useSortingHooks } from './utils/sortingHook'
-const Loader = React.lazy(() => retryTenTimes(() => import('../../../../common/components/loader/loader')))
-const Header = React.lazy(() => retryTenTimes(() => import('../header-layout/header-layout')))
+const Loader = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "Loader" */ '../../../../common/components/loader/loader')))
+const Header = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "Header" */ '../header-layout/header-layout')))
 
 const HomePage = () => {
     const { options, sorting, setSorting } = useSortingHooks()

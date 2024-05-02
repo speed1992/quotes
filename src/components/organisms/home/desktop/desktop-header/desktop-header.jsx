@@ -10,9 +10,9 @@ import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSear
 import styles from '../../header-layout/header-layout.module.css'
 import LoginRegister from '../../mobile/login-register/login-register'
 import { onFocusHandler, onPhilosopherSelectChange } from './utils/utils'
-const Breadcrumb = React.lazy(() => retryTenTimes(() => import('../../../analysis/breadcrumb/breadcrumb')))
-const UnreadCounter = React.lazy(() => retryTenTimes(() => import('../../../analysis/unread-counter/unread-counter')))
-const QuotesFound = React.lazy(() => retryTenTimes(() => import('../../../analysis/quotes-found/quotes-found')))
+const Breadcrumb = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "Breadcrumb" */ '../../../analysis/breadcrumb/breadcrumb')))
+const UnreadCounter = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "UnreadCounter" */ '../../../analysis/unread-counter/unread-counter')))
+const QuotesFound = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "QuotesFound" */ '../../../analysis/quotes-found/quotes-found')))
 
 function DesktopHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, setIsFetching, markedMode, setMarkedMode, currentPhilosopher, setCurrentPhilosopher, options, setOptions, setCurrentData, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, currentData, isFetching, originalData, markedQuotes, sorting, setRowsRendered, setUserName, userName, isLoggedIn, setIsLoggedIn, setMarkedQuotes, password, setPassword, syncDate, setSyncDate }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText }

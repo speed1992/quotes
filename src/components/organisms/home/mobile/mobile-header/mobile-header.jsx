@@ -5,10 +5,10 @@ import Select from '../../../tools/select/select'
 import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSearch'
 import { onFocusHandler, onPhilosopherSelectChange } from '../../desktop/desktop-header/utils/utils'
 import styles from '../../header-layout/header-layout.module.css'
-const MobileMenu = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "menu" */ '../mobile-menu/mobile-menu')))
-const Breadcrumb = React.lazy(() => retryTenTimes(() => import('../../../analysis/breadcrumb/breadcrumb')))
-const UnreadCounter = React.lazy(() => retryTenTimes(() => import('../../../analysis/unread-counter/unread-counter')))
-const QuotesFound = React.lazy(() => retryTenTimes(() => import('../../../analysis/quotes-found/quotes-found')))
+const MobileMenu = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "MobileMenu" */ '../mobile-menu/mobile-menu')))
+const Breadcrumb = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "Breadcrumb" */ '../../../analysis/breadcrumb/breadcrumb')))
+const UnreadCounter = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "UnreadCounter" */ '../../../analysis/unread-counter/unread-counter')))
+const QuotesFound = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "QuotesFound" */ '../../../analysis/quotes-found/quotes-found')))
 
 function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, markedMode, setMarkedMode, markedQuotes, currentData, setCurrentData, currentPhilosopher, originalData, setCurrentPhilosopher, options, setOptions, darkMode, setDarkMode, setSorting, sorting, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, userName, setUserName, setMarkedQuotes, isLoggedIn, setIsLoggedIn, password, setPassword, scrollPosition, setRowsRendered, syncDate, setSyncDate, recentPhilosophers, setRecentPhilosophers, setLogs }) {
     const propsToSend = { start, end, setStart, setEnd, setSearchText, setCurrentData }
