@@ -1,0 +1,2 @@
+onmessage=function(t){let{data:e}=t;const{filterName:s}=e;if("searchTermFilter"===s){const{currentData:t,searchText:s}=e,r=s.toLowerCase(),i=t.filter((t=>{let{quote:e}=t;return e.toLowerCase().includes(r)}));this.postMessage(JSON.stringify(i))}else if("wordCountFilter"===s){const{quotes:t,end:s,start:r}=e,i=t.filter((t=>{let{quote:e}=t;const i=e.split(" ").filter((t=>""!==t)).length;return s?i>=r&&(""===s||i<=s):i>=r}));this.postMessage(JSON.stringify(i))}};
+//# sourceMappingURL=345.843334ef.chunk.js.map
