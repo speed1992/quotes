@@ -1,1 +1,1 @@
-export const MAX_RECENT_PHILOSOPHERS = 8
+export const MAX_RECENT_PHILOSOPHERS = 15
