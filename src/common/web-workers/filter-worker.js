@@ -2,36 +2,26 @@ onmessage = function ({ data }) {
     const { filterName } = data
     if (filterName === 'searchTermFilter') {
         const { currentData, searchText } = data
+        const lowerSearchText = searchText.toLowerCase()
 
-        let filteredQuotes = currentData.filter(({ quote }) => {
-            if (quote.toLowerCase().indexOf(searchText.toLowerCase()) < 0) {
-                return false
-            } else {
-                return true
-            }
+        const filteredQuotes = currentData.filter(({ quote }) => {
+            const lowerQuote = quote.toLowerCase()
+            return lowerQuote.includes(lowerSearchText)
         })
+
         this.postMessage(JSON.stringify(filteredQuotes))
-    }
-    if (filterName === 'wordCountFilter') {
+    } else if (filterName === 'wordCountFilter') {
         const { quotes, end, start } = data
+
         const result = quotes.filter(({ quote }) => {
-            const wordCount = quote.split(' ').filter(function (n) {
-                return n !== ''
-            }).length
+            const wordCount = quote.split(' ').filter((n) => n !== '').length
 
-            if (end && end !== '') {
-                if (wordCount >= start && wordCount <= end) {
-                    return true
-                }
+            if (end) {
+                return wordCount >= start && (end === '' || wordCount <= end)
             }
-            if (end === '') {
-                if (wordCount >= start) {
-                    return true
-                }
-            }
-
-            return false
+            return wordCount >= start
         })
+
         this.postMessage(JSON.stringify(result))
     }
 }

@@ -76,7 +76,7 @@ export function useHomePageHooks() {
 
     useEffect(() => {
         if (populateWordCount) autoPopulateWordCount({ currentPhilosopher, options, markedQuotes, setStart, setEnd })
-    }, [populateWordCount, currentPhilosopher])
+    }, [populateWordCount, currentPhilosopher, options, markedQuotes, setStart, setEnd])
 
     useEffect(() => {
         if (isDesktop()) {
