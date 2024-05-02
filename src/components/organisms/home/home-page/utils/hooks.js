@@ -10,13 +10,13 @@ import { isDesktop } from '../../../../../common/utils/utils'
 import { onFocusHandler } from '../../desktop/desktop-header/utils/utils'
 import { getPhilosopherFullName } from '../../quotes-list/utils/utils'
 import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setLogsRedux, setMarkedModeRedux, setMarkedQuotesRedux, setMinModeRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setRecentPhilosophersRedux, setRestoreQuotesFromServerCachedDateRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setSyncDateRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
-import { compareWithServerSyncDatesAndMakeAnAPICall, setThemeClassNameOnHTMLTag } from './utils'
+import { autoPopulateWordCount, compareWithServerSyncDatesAndMakeAnAPICall, setThemeClassNameOnHTMLTag } from './utils'
 
 export function useHomePageHooks() {
     const [openSnackbar] = useSnackbar()
     const listRef = useRef()
     const dispatch = useDispatch()
-    const { start, end, searchText, currentPhilosopher, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData = getPhilosopherQuotes({ philosopher: currentPhilosopher, options }), originalOptions, userName, isLoggedIn, password, syncDate, restoreQuotesFromServerCachedDate, sorting, voiceSpeed, recentPhilosophers, minMode } = useSelector((state) => state.philosophersData)
+    const { start, end, searchText, currentPhilosopher, populateWordCount, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData = getPhilosopherQuotes({ philosopher: currentPhilosopher, options }), originalOptions, userName, isLoggedIn, password, syncDate, restoreQuotesFromServerCachedDate, sorting, voiceSpeed, recentPhilosophers, minMode } = useSelector((state) => state.philosophersData)
 
     const [isFetching, setIsFetching] = useState(false)
     const [isFetchingOptions, setIsFetchingOptions] = useState(false)
@@ -42,6 +42,7 @@ export function useHomePageHooks() {
     const setRecentPhilosophers = useCallback((value) => dispatch(setRecentPhilosophersRedux(value)), [])
     const setMinMode = useCallback((value) => dispatch(setMinModeRedux(value)), [])
     const setLogs = useCallback((value) => dispatch(setLogsRedux(value)), [])
+    const setAutoPopulateWordCount = useCallback((value) => dispatch(setAutoPopulateWordCount(value)), [])
 
     // const debouncedApplyFilters = debounce(applyFilters, 1000)
 
@@ -74,6 +75,10 @@ export function useHomePageHooks() {
     }, [darkMode])
 
     useEffect(() => {
+        if (populateWordCount) autoPopulateWordCount({ currentPhilosopher, options, markedQuotes, setEnd })
+    }, [populateWordCount])
+
+    useEffect(() => {
         if (isDesktop()) {
             setDarkMode(false)
             setThemeClassNameOnHTMLTag(false)
@@ -84,5 +89,5 @@ export function useHomePageHooks() {
         document.title = `${getPhilosopherFullName({ currentPhilosopher, options })} Quotes`
     }, [currentPhilosopher])
 
-    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions, rowsRendered, setRowsRendered, syncDate, setSyncDate, voiceSpeed, recentPhilosophers, setRecentPhilosophers, minMode, setMinMode, setLogs, restoreQuotesFromServerCachedDate, setRestoreQuotesFromServerCachedDate }
+    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions, rowsRendered, setRowsRendered, syncDate, setSyncDate, voiceSpeed, recentPhilosophers, setRecentPhilosophers, minMode, setMinMode, setLogs, restoreQuotesFromServerCachedDate, setRestoreQuotesFromServerCachedDate, setAutoPopulateWordCount, autoPopulateWordCount }
 }

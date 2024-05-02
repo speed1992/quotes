@@ -25,8 +25,6 @@ function QuotesList({ listRef, width, height, searchText, start, end, markedMode
         return <Row data={{ searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentData, setCurrentData, currentQuote: currentData[index], index, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, listRef, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }} {...others} />
     }
 
-    const wordCount = Math.max(start, end)
-    console.log('screen.height', screen.height)
     return currentPhilosopher !== undefined && currentData !== undefined && <List height={screen.height} rowCount={currentData?.length} rowHeight={550} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined ? NoRowsRenderer : null} style={{ padding: '1rem', textAlign: isDesktop() && 'center' }} />
 }
 

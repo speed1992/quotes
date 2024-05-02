@@ -11,7 +11,7 @@ import { rowClickHandler } from './utils/utils'
 const MarkAsRead = React.lazy(() => retryTenTimes(() => import('../../tools/mark-as-read/mark-as-read')))
 const Audio = React.lazy(() => retryTenTimes(() => import('../../tools/audio/audio')))
 
-const Row = ({ data: { searchText, start, end, philosopherFullName, philosopherFullName_i10n, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode, voiceSpeed, minMode }, style }) => {
+const Row = ({ data: { philosopherFullName, markedMode, currentQuote, currentPhilosopher, markedQuotes, setMarkedQuotes, currentData, setCurrentData, index, scrollPosition, setScrollPosition, listRef, darkMode, voiceSpeed, minMode }, style }) => {
     const [openSnackbar] = useSnackbar()
     const { quote: quotationText, id: quotationId } = currentQuote
     const debouncedHandler = useCallback(

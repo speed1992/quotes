@@ -7,7 +7,7 @@ import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import { checkQueryParams } from '../../../../../common/utils/urlUtils'
 import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSearch'
 import { ALPHABETICAL, LATEST } from '../../home-page/constants/constants'
-import { setVoiceSpeedRedux, setVoiceTypeRedux } from '../../home-page/homePageRedux/homePageRedux'
+import { setAutoPopulateWordCountRedux, setVoiceSpeedRedux, setVoiceTypeRedux } from '../../home-page/homePageRedux/homePageRedux'
 import styles from './mobile-menu.module.css'
 const BuildInfo = React.lazy(() => retryTenTimes(() => import('../../../tools/build-info/build-info')))
 const LoginRegister = React.lazy(() => retryTenTimes(() => import('../login-register/login-register')))
@@ -16,6 +16,7 @@ const OutsideAlerter = React.lazy(() => retryTenTimes(() => import('../../../../
 function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting, userName, setUserName, setMarkedQuotes, isLoggedIn, setIsLoggedIn, password, setPassword, setIsFetching }) {
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)
     const voiceType = useSelector(({ philosophersData: { voiceType } }) => voiceType)
+    const populateWordCount = useSelector(({ philosophersData: { populateWordCount } }) => populateWordCount)
     const markedQuotes = useSelector(({ philosophersData: { markedQuotes } }) => markedQuotes)
     const [voices, setVoices] = useState([])
     const [openSnackbar] = useSnackbar()
@@ -99,6 +100,16 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 </li>
                 <li key="6">
                     <button onClick={useCallback(() => dispatch(setCurrentModalName('Report')), [])}>Open Report</button>
+                </li>
+                <li key="16">
+                    Auto Populate Min Word Count
+                    <input
+                        type="checkbox"
+                        checked={populateWordCount}
+                        onChange={({ target: { checked } }) => {
+                            dispatch(setAutoPopulateWordCountRedux(checked))
+                        }}
+                    />
                 </li>
                 <li>
                     <div>Words Count</div> <div>Start & End</div>

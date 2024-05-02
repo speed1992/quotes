@@ -12,16 +12,16 @@ export const rules = [
         if (words > 40 && words <= 50) return 1.8
     },
     function (words) {
-        if (words > 50 && words <= 60) return 1.7
+        if (words > 50 && words <= 60) return 1.8
     },
     function (words) {
-        if (words > 60 && words <= 70) return 1.6
+        if (words > 60 && words <= 70) return 1.8
     },
     function (words) {
-        if (words > 70 && words <= 80) return 1.5
+        if (words > 70 && words <= 80) return 1.7
     },
     function (words) {
-        if (words > 80 && words <= 90) return 1.4
+        if (words > 80 && words <= 90) return 1.6
     },
     function (words) {
         if (words > 90) return 1.3

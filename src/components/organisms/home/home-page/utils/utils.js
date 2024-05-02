@@ -1,5 +1,6 @@
-import { getPhilosopherData } from '../../../../../common/static/utils/utils'
+import { getPhilosopherData, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
 import { getUserDetails, getUserMarkedQuotesCount, sendUserDetails } from '../../mobile/mobile-menu/utils/utils'
+import { getWordCount } from '../../quotes-list/utils/utils'
 
 export const setThemeClassNameOnHTMLTag = (value) => {
     let root = document.getElementsByTagName('html')[0]
@@ -28,4 +29,12 @@ export async function compareWithServerSyncDatesAndMakeAnAPICall(userName, marke
         }
         setRestoreQuotesFromServerCachedDate(Date.now())
     }
+}
+
+export const autoPopulateWordCount = ({ currentPhilosopher, options, markedQuotes, setEnd }) => {
+    const quotes = getPhilosopherQuotes({ philosopher: currentPhilosopher, options })
+    const markedQuotesOfTheCurrentPhilosopher = markedQuotes?.[currentPhilosopher] || []
+    const newQuotes = quotes.filter((quote) => !markedQuotesOfTheCurrentPhilosopher.includes(quote.id))
+    const minimumWordCount = newQuotes.reduce((minCount, { quote }) => Math.min(getWordCount(quote), minCount), Infinity)
+    setEnd(minimumWordCount)
 }
