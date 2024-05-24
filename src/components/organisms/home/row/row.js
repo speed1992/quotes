@@ -7,7 +7,7 @@ import { isUndefined } from '../../../../common/utils/commonUtils'
 import { debounce } from '../../../../common/utils/debounce'
 import { setQuoteImageData } from '../../analysis/generate-quote-image/generateQuoteImageRedux'
 import styles from './styles/row.module.css'
-import { rowClickHandler } from './utils/utils'
+import { didntUnderstandHandler, rowClickHandler } from './utils/utils'
 
 const MarkAsRead = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "MarkAsRead" */ '../../tools/mark-as-read/mark-as-read')))
 const Audio = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "Audio" */ '../../tools/audio/audio')))
@@ -24,6 +24,7 @@ const Row = ({ data: { philosopherFullName, markedMode, currentQuote, currentPhi
     const dispatch = useDispatch()
 
     const rowHandler = useCallback(() => rowClickHandler({ quote: quotationText, openSnackbar, philosopherFullName }), [openSnackbar, philosopherFullName, quotationText])
+    const didntUnderstand = useCallback(() => didntUnderstandHandler({ quote: quotationText, openSnackbar, philosopherFullName }), [openSnackbar, philosopherFullName, quotationText])
 
     if (!isUndefined(currentQuote)) {
         return (
@@ -55,6 +56,7 @@ const Row = ({ data: { philosopherFullName, markedMode, currentQuote, currentPhi
                             Share
                         </button>
                     )}
+                    <button onClick={didntUnderstand}>Didn't Understand</button>
                 </div>
             </div>
         )

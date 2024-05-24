@@ -71,6 +71,16 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                     Dark Mode
                     <input type="checkbox" checked={darkMode} onChange={({ target: { checked } }) => setDarkMode(checked)} />
                 </li>
+                <li key="16">
+                    Auto Populate Min Word Count
+                    <input
+                        type="checkbox"
+                        checked={populateWordCount}
+                        onChange={({ target: { checked } }) => {
+                            dispatch(setAutoPopulateWordCountRedux(checked))
+                        }}
+                    />
+                </li>
                 <li key="4">
                     Voice Speed[1-20]
                     <input onChange={(event) => dispatch(setVoiceSpeedRedux(event.target.value / 10))} className={styles.voiceSpeed} type="number" value={voiceSpeed ? voiceSpeed * 10 : ''} />
@@ -100,16 +110,6 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 </li>
                 <li key="6">
                     <button onClick={useCallback(() => dispatch(setCurrentModalName('Report')), [])}>Open Report</button>
-                </li>
-                <li key="16">
-                    Auto Populate Min Word Count
-                    <input
-                        type="checkbox"
-                        checked={populateWordCount}
-                        onChange={({ target: { checked } }) => {
-                            dispatch(setAutoPopulateWordCountRedux(checked))
-                        }}
-                    />
                 </li>
                 <li>
                     <div>Words Count</div> <div>Start & End</div>

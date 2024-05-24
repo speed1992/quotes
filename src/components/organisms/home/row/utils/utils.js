@@ -15,6 +15,11 @@ export function rowClickHandler({ openSnackbar, philosopherFullName, quote }) {
     openSnackbar('Quote Text Copied!')
 }
 
+export function didntUnderstandHandler({ openSnackbar, philosopherFullName, quote }) {
+    navigator.clipboard.writeText(`"${quote}"\n\n${philosopherFullName}\n\nWhat is the meaning of this quote?`)
+    window.open('https://chatgpt.com/', '_blank').focus()
+}
+
 export function devModeSignature() {
     return isAppInDevMode() ? <>dev-mode</> : null
 }
