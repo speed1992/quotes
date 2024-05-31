@@ -47,4 +47,4 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
     )
 }
 
-export default MobileHeader
+export default React.memo(MobileHeader)

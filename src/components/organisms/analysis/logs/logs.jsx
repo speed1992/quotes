@@ -8,4 +8,4 @@ const Logs = () => {
     return logs.map((log, index) => <div key={index}>{log}</div>)
 }
 
-export default Logs
+export default React.memo(Logs)

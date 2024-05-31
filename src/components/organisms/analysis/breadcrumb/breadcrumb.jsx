@@ -5,4 +5,4 @@ function Breadcrumb({ children }) {
     return <span className={styles.alignment}>{children}</span>
 }
 
-export default Breadcrumb
+export default React.memo(Breadcrumb)

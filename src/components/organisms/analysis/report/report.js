@@ -40,4 +40,4 @@ const Report = () => {
     )
 }
 
-export default Report
+export default React.memo(Report)
