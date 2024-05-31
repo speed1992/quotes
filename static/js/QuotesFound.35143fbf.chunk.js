@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[352],{6141:(e,s,u)=>{u.r(s),u.d(s,{default:()=>d});var n=u(5043),t=u(579);const r=e=>{let{found:s,markedMode:u}=e;return u?(0,t.jsxs)(t.Fragment,{children:["Found: ",s," "]}):(0,t.jsxs)(t.Fragment,{children:["Quotes Found: ",s," "]})},d=n.memo(r)}}]);
+//# sourceMappingURL=QuotesFound.35143fbf.chunk.js.map

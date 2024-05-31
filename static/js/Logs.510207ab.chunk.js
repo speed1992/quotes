@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[218],{8615:(e,s,t)=>{t.r(s),t.d(s,{default:()=>a});var o=t(3003),n=t(579);const a=React.memo((()=>{const e=(0,o.d4)((e=>e.philosophersData.logs));return e.length<1?(0,n.jsx)(n.Fragment,{children:"No logs found"}):e.map(((e,s)=>(0,n.jsx)("div",{children:e},s)))}))}}]);
+//# sourceMappingURL=Logs.510207ab.chunk.js.map
