@@ -11,14 +11,14 @@ const newPersistConfig = getPersistConfig({
     blacklist: ['currentData', 'originalData', 'logs'],
     rootReducer: philosophersDataReducer,
     migrate: async (state) => {
-        if (getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options })) {
+        console.log('getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options })', getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options }))
+        debugger
+        if (state && getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options })) {
             const index = getPhilosopherObjectIndex(PHILOSOPHER_TO_PURGE, state.options)
-            if (state.options[index]?.quotes?.[0]?.id === undefined) {
-                state.markedQuotes[PHILOSOPHER_TO_PURGE] = []
+            if (state.options[index]?.quotes?.length === 1159) {
                 state.currentData = []
                 delete state.originalData
                 delete state.options[index]?.quotes
-                delete state.markedQuotes[PHILOSOPHER_TO_PURGE]
                 if (state.currentPhilosopher === PHILOSOPHER_TO_PURGE) {
                     state.currentPhilosopher = 'NIETZSCHE'
                 }

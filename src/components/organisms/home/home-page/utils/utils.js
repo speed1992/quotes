@@ -35,7 +35,10 @@ export const autoPopulateWordCount = ({ currentPhilosopher, options, markedQuote
     const quotes = getPhilosopherQuotes({ philosopher: currentPhilosopher, options })
     const markedQuotesOfTheCurrentPhilosopher = markedQuotes?.[currentPhilosopher] || []
     const newQuotes = quotes.filter((quote) => !markedQuotesOfTheCurrentPhilosopher.includes(quote.id))
-    const minimumWordCount = newQuotes.reduce((minCount, { quote }) => Math.min(getWordCount(quote), minCount), Infinity)
+    const minimumWordCount = newQuotes.reduce((minCount, { quote }) => {
+        if (quote !== '') return Math.min(getWordCount(quote), minCount)
+        else return minCount
+    }, Infinity)
     if (minimumWordCount !== Infinity) {
         setStart(1)
         setEnd(minimumWordCount)
