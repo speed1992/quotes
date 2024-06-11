@@ -25,5 +25,6 @@ export const API_ENDPOINTS = {
 
     ERROR: {
         SEND: `${BASEURL.USER_DETAILS}/errors/`,
+        GET: `${BASEURL.USER_DETAILS}/errors/`,
     },
 }
