@@ -20,4 +20,4 @@ const Modal = ({ children, title, darkMode }) => {
     )
 }
 
-export default React.memo(Modal)
+export default Modal

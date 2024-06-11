@@ -15,4 +15,4 @@ const QuoteWithImage = ({ exportRef, quotationText, philosopherFullName, signatu
     </div>
 )
 
-export default React.memo(QuoteWithImage)
+export default QuoteWithImage

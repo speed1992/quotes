@@ -14,4 +14,4 @@ const QuoteWithoutImage = ({ error, exportRef, quotationText, philosopherFullNam
     </div>
 )
 
-export default React.memo(QuoteWithoutImage)
+export default QuoteWithoutImage

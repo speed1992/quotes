@@ -11,4 +11,4 @@ const NoSearchResults = () => (
         <div> 2. Try searching a smaller and a more generic word.</div>
     </>
 )
-export default React.memo(NoSearchResults)
+export default NoSearchResults

@@ -24,4 +24,4 @@ const GenerateQuoteImage = () => {
     }
 }
 
-export default React.memo(GenerateQuoteImage)
+export default GenerateQuoteImage
