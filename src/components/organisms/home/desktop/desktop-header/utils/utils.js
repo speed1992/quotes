@@ -29,17 +29,17 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
 export const onFocusHandler = async ({ options, setOptions, isLoggedIn, setSyncDate, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting, syncDate, setLogs }) => {
     if (checkQueryParams('dev')) {
         const today = new Date()
-        setLogs('inside onFocusHandler')
-        setLogs('isCacheExpired(syncDate, CACHE_IN_DAYS.ASSET_GRAPH, setLogs) || options.length === 1 ' + isCacheExpired(syncDate, CACHE_IN_DAYS.ASSET_GRAPH, setLogs) || options.length === 1)
-        setLogs('options.length ' + options.length)
-        setLogs('current time ' + today)
-        setLogs('syncDate ' + new Date(syncDate))
+        setLogs?.('inside onFocusHandler')
+        setLogs?.('isCacheExpired(syncDate, CACHE_IN_DAYS.ASSET_GRAPH, setLogs) || options.length === 1 ' + isCacheExpired(syncDate, CACHE_IN_DAYS.ASSET_GRAPH, setLogs) || options.length === 1)
+        setLogs?.('options.length ' + options.length)
+        setLogs?.('current time ' + today)
+        setLogs?.('syncDate ' + new Date(syncDate))
     }
     if (isCacheExpired(syncDate, CACHE_IN_DAYS.ASSET_GRAPH, setLogs) || options.length === 1) {
         setIsFetchingOptions?.(true)
         let response = await retryTenTimes(() => fetch(API_ENDPOINTS.STATIC_DATA.STATIC_ASSET_GRAPH))
         response = await response.json()
-        if (checkQueryParams('dev')) setLogs('api response ' + response)
+        if (checkQueryParams('dev')) setLogs?.('api response ' + response)
         addResponseOptionsDataIntoRedux({ newOptions: response, oldOptions: options, oldOriginalOptions: originalOptions, setOptions, setOriginalOptions, sorting })
         setIsFetchingOptions?.(false)
         setSyncDate?.(Date.now())
