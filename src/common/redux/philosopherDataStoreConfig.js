@@ -12,7 +12,6 @@ const newPersistConfig = getPersistConfig({
     rootReducer: philosophersDataReducer,
     migrate: async (state) => {
         console.log('getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options })', getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options }))
-        debugger
         if (state && getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options })) {
             const index = getPhilosopherObjectIndex(PHILOSOPHER_TO_PURGE, state.options)
             if (state.options[index]?.quotes?.length === 1159) {
