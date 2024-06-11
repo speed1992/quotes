@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[218],{8615:(s,e,t)=>{t.r(e),t.d(e,{default:()=>l});var n=t(3003),o=t(579);const l=()=>{const s=(0,n.d4)((s=>s.philosophersData.logs));return s.length<1?(0,o.jsx)(o.Fragment,{children:"No logs found"}):s.map(((s,e)=>(0,o.jsx)("div",{children:s},e)))}}}]);
+//# sourceMappingURL=Logs.fb887cb3.chunk.js.map
