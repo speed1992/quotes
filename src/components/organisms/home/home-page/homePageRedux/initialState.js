@@ -21,7 +21,7 @@ let INITIAL_STATE = {
     originalOptions: STATIC_OPTIONS,
     options: STATIC_OPTIONS,
     darkMode: false,
-    voiceSpeed: 0.5,
+    voiceSpeed: 1,
     scrollPosition: {},
     scheduledPosts: {},
     syncDate: 46190630,

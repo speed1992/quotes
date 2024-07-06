@@ -5,7 +5,7 @@ import styles from './wordLengthSearch.module.css'
 const DesktopWordLengthSearch = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "DesktopWordLengthSearch" */ '../../home/desktop/desktop-word-length-search/desktop-word-length-search')))
 
 export function WordLengthSearch({ isMobile = true, isStartFeatureEnabled = false, label = false }) {
-    const { start, end, setStart, setEnd } = useHomePageHooks()
+    const { start, end, setStart, setEnd, populateWordCount } = useHomePageHooks()
     const renderComponent = () => {
         if (isMobile) {
             return (
@@ -15,8 +15,8 @@ export function WordLengthSearch({ isMobile = true, isStartFeatureEnabled = fals
                             Words{' '}
                         </label>
                     )}
-                    {isStartFeatureEnabled && <input id="start" className={styles.smallInput} key="start" name="start" type="number" min="0" value={start} onChange={({ target: { value } }) => setStart(value)} />}
-                    <input id="end" className={`${styles.smallInput} ${isStartFeatureEnabled ? styles.endMargin : ''}`} key="end" name="end" type="number" min="0" value={end} onChange={({ target: { value } }) => setEnd(value)} />
+                    {isStartFeatureEnabled && <input id="start" className={styles.smallInput} key="start" name="start" type="number" min="0" value={start} onChange={({ target: { value } }) => setStart(value)} disabled={populateWordCount} />}
+                    <input id="end" className={`${styles.smallInput} ${isStartFeatureEnabled ? styles.endMargin : ''}`} key="end" name="end" type="number" min="0" value={end} onChange={({ target: { value } }) => setEnd(value)} disabled={populateWordCount} />
                 </>
             )
         } else {
