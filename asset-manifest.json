@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/quotes/static/css/main.a163865e.css",
-    "main.js": "/quotes/static/js/main.166923ad.js",
+    "main.js": "/quotes/static/js/main.59e93c88.js",
     "Logs.css": "/quotes/static/css/Logs.a1dae449.chunk.css",
     "Logs.js": "/quotes/static/js/Logs.f3d0ee12.chunk.js",
     "Report.css": "/quotes/static/css/Report.f20fa752.chunk.css",
@@ -19,7 +19,7 @@
     "Header.css": "/quotes/static/css/Header.ec9a28db.chunk.css",
     "Header.js": "/quotes/static/js/Header.3d400733.chunk.js",
     "QuotesList.css": "/quotes/static/css/QuotesList.ba180624.chunk.css",
-    "QuotesList.js": "/quotes/static/js/QuotesList.c80b666c.chunk.js",
+    "QuotesList.js": "/quotes/static/js/QuotesList.a0bf830a.chunk.js",
     "QuoteWithImage.css": "/quotes/static/css/QuoteWithImage.023c6d07.chunk.css",
     "QuoteWithImage.js": "/quotes/static/js/QuoteWithImage.8c94ea17.chunk.js",
     "QuoteWithoutImage.css": "/quotes/static/css/QuoteWithoutImage.023c6d07.chunk.css",
@@ -60,7 +60,7 @@
     "static/media/PETERSON.jpg": "/quotes/static/media/PETERSON.f3968a4c45466650e225.jpg",
     "index.html": "/quotes/index.html",
     "main.a163865e.css.map": "/quotes/static/css/main.a163865e.css.map",
-    "main.166923ad.js.map": "/quotes/static/js/main.166923ad.js.map",
+    "main.59e93c88.js.map": "/quotes/static/js/main.59e93c88.js.map",
     "Logs.a1dae449.chunk.css.map": "/quotes/static/css/Logs.a1dae449.chunk.css.map",
     "Logs.f3d0ee12.chunk.js.map": "/quotes/static/js/Logs.f3d0ee12.chunk.js.map",
     "Report.f20fa752.chunk.css.map": "/quotes/static/css/Report.f20fa752.chunk.css.map",
@@ -78,7 +78,7 @@
     "Header.ec9a28db.chunk.css.map": "/quotes/static/css/Header.ec9a28db.chunk.css.map",
     "Header.3d400733.chunk.js.map": "/quotes/static/js/Header.3d400733.chunk.js.map",
     "QuotesList.ba180624.chunk.css.map": "/quotes/static/css/QuotesList.ba180624.chunk.css.map",
-    "QuotesList.c80b666c.chunk.js.map": "/quotes/static/js/QuotesList.c80b666c.chunk.js.map",
+    "QuotesList.a0bf830a.chunk.js.map": "/quotes/static/js/QuotesList.a0bf830a.chunk.js.map",
     "QuoteWithImage.023c6d07.chunk.css.map": "/quotes/static/css/QuoteWithImage.023c6d07.chunk.css.map",
     "QuoteWithImage.8c94ea17.chunk.js.map": "/quotes/static/js/QuoteWithImage.8c94ea17.chunk.js.map",
     "QuoteWithoutImage.023c6d07.chunk.css.map": "/quotes/static/css/QuoteWithoutImage.023c6d07.chunk.css.map",
@@ -111,6 +111,6 @@
   },
   "entrypoints": [
     "static/css/main.a163865e.css",
-    "static/js/main.166923ad.js"
+    "static/js/main.59e93c88.js"
   ]
 }
