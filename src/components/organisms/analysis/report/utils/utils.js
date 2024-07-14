@@ -13,9 +13,8 @@ export const createData = ({ markedQuotes, options, setData }) => {
                 sum += readCount
             }
             const originalData = getPhilosopherQuotes({ philosopher: key, options })
-            console.log('@dev key', key, 'originalData', originalData, 'originalData?.length', originalData?.length)
             const totalQuoteCount = originalData?.length
-            const obj = { id: uuidv4(), philosopher: getPhilosopherFullName({ currentPhilosopher: key, options }), readCount, totalCount: totalQuoteCount || 'NA', percentageCompleted: totalQuoteCount ? `${((readCount / totalQuoteCount) * 100).toFixed(2)}%` : 'NA' }
+            const obj = { id: uuidv4(), philosopher: getPhilosopherFullName({ currentPhilosopher: key, options }), readCount, totalCount: totalQuoteCount || '——', percentageCompleted: totalQuoteCount ? `${((readCount / totalQuoteCount) * 100).toFixed(2)}%` : '——' }
             data.push(obj)
         }
     }
