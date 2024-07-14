@@ -16,7 +16,7 @@
         "sortable": true
     },
     {
-        "label": "Percentage completed",
+        "label": "% Completed",
         "accessor": "percentageCompleted",
         "sortable": true
     }
