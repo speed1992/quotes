@@ -1,4 +1,4 @@
-import { getPhilosopherObjectIndex } from '../../../../../common/static/utils/utils'
+import { getPhilosopherObjectIndex, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
 import { isUndefined, uuidv4 } from '../../../../../common/utils/commonUtils'
 import { getPhilosopherFullName } from '../../../home/quotes-list/utils/utils'
 
@@ -12,7 +12,10 @@ export const createData = ({ markedQuotes, options, setData }) => {
                 readCount = markedQuotes[key].length
                 sum += readCount
             }
-            const obj = { philosopher: getPhilosopherFullName({ currentPhilosopher: key, options }), readCount: readCount, id: uuidv4() }
+            const originalData = getPhilosopherQuotes({ philosopher: key, options })
+            console.log('@dev key', key, 'originalData', originalData, 'originalData?.length', originalData?.length)
+            const totalQuoteCount = originalData?.length
+            const obj = { id: uuidv4(), philosopher: getPhilosopherFullName({ currentPhilosopher: key, options }), readCount, totalCount: totalQuoteCount || 'NA', percentageCompleted: totalQuoteCount ? `${((readCount / totalQuoteCount) * 100).toFixed(2)}%` : 'NA' }
             data.push(obj)
         }
     }

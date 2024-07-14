@@ -9,5 +9,15 @@
         "accessor": "readCount",
         "sortable": true,
         "sortbyOrder": "desc"
+    },
+    {
+        "label": "Total Count",
+        "accessor": "totalCount",
+        "sortable": true
+    },
+    {
+        "label": "Percentage completed",
+        "accessor": "percentageCompleted",
+        "sortable": true
     }
 ]
