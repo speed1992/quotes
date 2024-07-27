@@ -7,6 +7,8 @@ function UnreadCounter({ isFetching, isFetchingOptions, markedQuotes, currentPhi
     const [quoteCounts, setQuoteCounts] = useState({ totalQuoteCount: null, readCount: null, unreadCount: null })
     const options = useSelector((state) => state.philosophersData.options)
     const originalData = getPhilosopherQuotes({ philosopher: currentPhilosopher, options })
+    const { totalQuoteCount, readCount, unreadCount } = quoteCounts
+    const percentageCompleted = totalQuoteCount ? `(${((readCount / totalQuoteCount) * 100).toFixed(2)}%)` : ''
 
     useEffect(() => {
         if (!isFetching && !isFetchingOptions && originalData) {
@@ -18,8 +20,6 @@ function UnreadCounter({ isFetching, isFetchingOptions, markedQuotes, currentPhi
         }
     }, [currentPhilosopher, isFetching, isFetchingOptions, markedQuotes, originalData])
 
-    const { totalQuoteCount, readCount, unreadCount } = quoteCounts
-
     if (!originalData || isFetching || isFetchingOptions) {
         return null // Render nothing while fetching data
     }
@@ -27,7 +27,7 @@ function UnreadCounter({ isFetching, isFetchingOptions, markedQuotes, currentPhi
     return (
         <span>
             {totalQuoteCount !== null && `Total: ${totalQuoteCount}`}
-            {readCount !== null && ` Read: ${readCount}`}
+            {readCount !== null && ` Read: ${readCount} ${percentageCompleted}`}
             {unreadCount !== null && ` Unread: ${unreadCount}`}
         </span>
     )

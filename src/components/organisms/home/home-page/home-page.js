@@ -26,7 +26,7 @@ const HomePage = () => {
             ) : (
                 <>
                     {!minMode && <Header {...propsToSend} />}
-                    <ToggleMinMode {...{ minMode, setMinMode }} />
+                    <ToggleMinMode />
                     <div className={!minMode ? styles.content : styles.contentMinMode}>
                         <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
                     </div>
