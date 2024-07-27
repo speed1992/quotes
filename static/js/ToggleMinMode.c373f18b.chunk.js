@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[112],{8618:(e,n,o)=>{o.r(n),o.d(n,{default:()=>u});var s=o(5795);const t="toggleMinMode_minMode__jUq3D";var l=o(579);const u=e=>{let{minMode:n,setMinMode:o}=e;return!(0,s.xl)()&&(0,l.jsx)("button",{className:t,onClick:()=>o(!n),children:"Toggle Min Mode"})}}}]);
-//# sourceMappingURL=ToggleMinMode.c373f18b.chunk.js.map
