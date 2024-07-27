@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/quotes/static/css/main.a163865e.css",
-    "main.js": "/quotes/static/js/main.5d28552e.js",
+    "main.js": "/quotes/static/js/main.d2b15289.js",
     "Logs.css": "/quotes/static/css/Logs.a1dae449.chunk.css",
     "Logs.js": "/quotes/static/js/Logs.f3d0ee12.chunk.js",
     "Report.css": "/quotes/static/css/Report.f20fa752.chunk.css",
@@ -33,7 +33,7 @@
     "MarkAsRead.js": "/quotes/static/js/MarkAsRead.89d89c01.chunk.js",
     "Audio.js": "/quotes/static/js/Audio.af228da6.chunk.js",
     "MobileMenu.css": "/quotes/static/css/MobileMenu.4e03f8c2.chunk.css",
-    "MobileMenu.js": "/quotes/static/js/MobileMenu.47fa2287.chunk.js",
+    "MobileMenu.js": "/quotes/static/js/MobileMenu.9b5a4daf.chunk.js",
     "Breadcrumb.css": "/quotes/static/css/Breadcrumb.c2c40119.chunk.css",
     "Breadcrumb.js": "/quotes/static/js/Breadcrumb.aaa3ec62.chunk.js",
     "UnreadCounter.js": "/quotes/static/js/UnreadCounter.c5b96bc3.chunk.js",
@@ -42,7 +42,7 @@
     "MobileSelect.css": "/quotes/static/css/MobileSelect.958121f1.chunk.css",
     "MobileSelect.js": "/quotes/static/js/MobileSelect.7311d9b4.chunk.js",
     "DesktopWordLengthSearch.js": "/quotes/static/js/DesktopWordLengthSearch.7e2d7104.chunk.js",
-    "BuildInfo.js": "/quotes/static/js/BuildInfo.d98729a4.chunk.js",
+    "BuildInfo.js": "/quotes/static/js/BuildInfo.db1afb9a.chunk.js",
     "LoginRegister.css": "/quotes/static/css/LoginRegister.04a379bb.chunk.css",
     "LoginRegister.js": "/quotes/static/js/LoginRegister.3a14291f.chunk.js",
     "OutsideAlerter.js": "/quotes/static/js/OutsideAlerter.8812fb73.chunk.js",
@@ -62,7 +62,7 @@
     "static/media/PETERSON.jpg": "/quotes/static/media/PETERSON.f3968a4c45466650e225.jpg",
     "index.html": "/quotes/index.html",
     "main.a163865e.css.map": "/quotes/static/css/main.a163865e.css.map",
-    "main.5d28552e.js.map": "/quotes/static/js/main.5d28552e.js.map",
+    "main.d2b15289.js.map": "/quotes/static/js/main.d2b15289.js.map",
     "Logs.a1dae449.chunk.css.map": "/quotes/static/css/Logs.a1dae449.chunk.css.map",
     "Logs.f3d0ee12.chunk.js.map": "/quotes/static/js/Logs.f3d0ee12.chunk.js.map",
     "Report.f20fa752.chunk.css.map": "/quotes/static/css/Report.f20fa752.chunk.css.map",
@@ -94,7 +94,7 @@
     "MarkAsRead.89d89c01.chunk.js.map": "/quotes/static/js/MarkAsRead.89d89c01.chunk.js.map",
     "Audio.af228da6.chunk.js.map": "/quotes/static/js/Audio.af228da6.chunk.js.map",
     "MobileMenu.4e03f8c2.chunk.css.map": "/quotes/static/css/MobileMenu.4e03f8c2.chunk.css.map",
-    "MobileMenu.47fa2287.chunk.js.map": "/quotes/static/js/MobileMenu.47fa2287.chunk.js.map",
+    "MobileMenu.9b5a4daf.chunk.js.map": "/quotes/static/js/MobileMenu.9b5a4daf.chunk.js.map",
     "Breadcrumb.c2c40119.chunk.css.map": "/quotes/static/css/Breadcrumb.c2c40119.chunk.css.map",
     "Breadcrumb.aaa3ec62.chunk.js.map": "/quotes/static/js/Breadcrumb.aaa3ec62.chunk.js.map",
     "UnreadCounter.c5b96bc3.chunk.js.map": "/quotes/static/js/UnreadCounter.c5b96bc3.chunk.js.map",
@@ -103,7 +103,7 @@
     "MobileSelect.958121f1.chunk.css.map": "/quotes/static/css/MobileSelect.958121f1.chunk.css.map",
     "MobileSelect.7311d9b4.chunk.js.map": "/quotes/static/js/MobileSelect.7311d9b4.chunk.js.map",
     "DesktopWordLengthSearch.7e2d7104.chunk.js.map": "/quotes/static/js/DesktopWordLengthSearch.7e2d7104.chunk.js.map",
-    "BuildInfo.d98729a4.chunk.js.map": "/quotes/static/js/BuildInfo.d98729a4.chunk.js.map",
+    "BuildInfo.db1afb9a.chunk.js.map": "/quotes/static/js/BuildInfo.db1afb9a.chunk.js.map",
     "LoginRegister.04a379bb.chunk.css.map": "/quotes/static/css/LoginRegister.04a379bb.chunk.css.map",
     "LoginRegister.3a14291f.chunk.js.map": "/quotes/static/js/LoginRegister.3a14291f.chunk.js.map",
     "OutsideAlerter.8812fb73.chunk.js.map": "/quotes/static/js/OutsideAlerter.8812fb73.chunk.js.map",
@@ -115,6 +115,6 @@
   },
   "entrypoints": [
     "static/css/main.a163865e.css",
-    "static/js/main.5d28552e.js"
+    "static/js/main.d2b15289.js"
   ]
 }
