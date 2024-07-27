@@ -14,7 +14,7 @@ const ToggleMinMode = React.lazy(() => retryTenTimes(() => import(/* webpackChun
 const HomePage = () => {
     const { options, sorting, setSorting } = useSortingHooks()
     let propsToSend = useHomePageHooks()
-    const { currentPhilosopher, isFetching, minMode, setMinMode } = propsToSend
+    const { currentPhilosopher, isFetching, minMode } = propsToSend
     propsToSend = { ...propsToSend, setSorting, sorting }
 
     if (!doesPhilosopherDataExist(currentPhilosopher, options)) return <></>
