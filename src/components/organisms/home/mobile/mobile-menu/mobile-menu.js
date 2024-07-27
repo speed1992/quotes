@@ -65,22 +65,31 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 </li>
                 <li key="2">
                     Marked Mode
-                    <input type="checkbox" checked={markedMode} onChange={({ target: { checked } }) => setMarkedMode(checked)} />
+                    <input
+                        type="checkbox"
+                        checked={markedMode}
+                        onChange={({ target: { checked } }) => {
+                            setMarkedMode(checked)
+                            dispatch(setAutoPopulateWordCountRedux(false))
+                        }}
+                    />
                 </li>
                 <li key="3">
                     Dark Mode
                     <input type="checkbox" checked={darkMode} onChange={({ target: { checked } }) => setDarkMode(checked)} />
                 </li>
-                <li key="16">
-                    Auto Populate Min Word Count
-                    <input
-                        type="checkbox"
-                        checked={populateWordCount}
-                        onChange={({ target: { checked } }) => {
-                            dispatch(setAutoPopulateWordCountRedux(checked))
-                        }}
-                    />
-                </li>
+                {markedMode && (
+                    <li key="16">
+                        Set Minimum Word Count
+                        <input
+                            type="checkbox"
+                            checked={populateWordCount}
+                            onChange={({ target: { checked } }) => {
+                                dispatch(setAutoPopulateWordCountRedux(checked))
+                            }}
+                        />
+                    </li>
+                )}
                 <li key="4">
                     Voice Speed[1-20]
                     <input onChange={(event) => dispatch(setVoiceSpeedRedux(event.target.value / 10))} className={styles.voiceSpeed} type="number" value={voiceSpeed ? voiceSpeed * 10 : ''} />
