@@ -18,12 +18,7 @@
     overflow: hidden;
 }
 
-.minMode {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 2;
-}
+
 .autoPopulateWordCount {
     position: fixed;
     bottom: 2rem;

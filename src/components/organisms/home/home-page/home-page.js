@@ -3,13 +3,13 @@ import React from 'react'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import { doesPhilosopherDataExist } from '../../../../common/static/utils/utils'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
-import { isDesktop } from '../../../../common/utils/utils'
 import { LazyLoadQuoteList } from '../lazy-load-quote-list/lazy-load-quote-list'
 import styles from './home-page.module.css'
 import { useHomePageHooks } from './utils/hooks'
 import { useSortingHooks } from './utils/sortingHook'
 const Loader = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "Loader" */ '../../../../common/components/loader/loader')))
 const Header = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "Header" */ '../header-layout/header-layout')))
+const ToggleMinMode = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "ToggleMinMode" */ '../mobile/toggle-min-mode/toggleMinMode')))
 
 const HomePage = () => {
     const { options, sorting, setSorting } = useSortingHooks()
@@ -26,11 +26,7 @@ const HomePage = () => {
             ) : (
                 <>
                     {!minMode && <Header {...propsToSend} />}
-                    {!isDesktop() && (
-                        <button className={styles.minMode} onClick={() => setMinMode(!minMode)}>
-                            Toggle Min Mode
-                        </button>
-                    )}
+                    <ToggleMinMode {...{ minMode, setMinMode }} />
                     <div className={!minMode ? styles.content : styles.contentMinMode}>
                         <AutoSizer>{({ height, width }) => <LazyLoadQuoteList {...propsToSend} width={width} height={height} />}</AutoSizer>
                     </div>
