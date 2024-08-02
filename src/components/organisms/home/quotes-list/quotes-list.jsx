@@ -32,7 +32,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, markedMode
         currentData !== undefined && (
             <>
                 <ToggleMinMode />
-                <List height={screen.height - screen.height / 5} rowCount={currentData?.length} rowHeight={550} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined ? NoRowsRenderer : null} style={{ padding: '1rem', textAlign: isDesktop() && 'center' }} />
+                <List height={screen.height - screen.height / 4} rowCount={currentData?.length} rowHeight={550} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined ? NoRowsRenderer : null} style={{ padding: '1rem', textAlign: isDesktop() && 'center' }} />
             </>
         )
     )
