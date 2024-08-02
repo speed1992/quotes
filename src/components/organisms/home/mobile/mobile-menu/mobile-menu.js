@@ -95,6 +95,10 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                             checked={populateWordCount}
                             onChange={({ target: { checked } }) => {
                                 dispatch(setAutoPopulateWordCountRedux(checked))
+                                if (!checked) {
+                                    dispatch(setStartRedux(1))
+                                    dispatch(setEndRedux(''))
+                                }
                             }}
                         />
                     </li>
