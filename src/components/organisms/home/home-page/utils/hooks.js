@@ -95,18 +95,22 @@ export function useHomePageHooks() {
     }, [currentPhilosopher])
 
     useEffect(() => {
+        let changePhilosopher = false
         let foundFullyReadPhilospher = false
         let newOptions = [...options]
         newOptions = newOptions?.map((option) => {
             if (markedQuotes?.[option?.value]?.length >= option?.quotes?.length) {
                 foundFullyReadPhilospher = true
+                if (option?.value === currentPhilosopher) {
+                    changePhilosopher = true
+                }
                 return { ...option, disabled: true }
             }
             return option
         })
-        if (foundFullyReadPhilospher && markedMode) {
-            setCurrentPhilosopher(INITIAL_STATE?.currentPhilosopher)
-            setOptions(newOptions)
+        if (markedMode) {
+            if (foundFullyReadPhilospher) setOptions(newOptions)
+            if (changePhilosopher) setCurrentPhilosopher(INITIAL_STATE?.currentPhilosopher)
         }
     }, [currentPhilosopher, markedMode, markedQuotes])
 
