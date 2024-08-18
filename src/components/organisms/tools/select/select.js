@@ -4,7 +4,7 @@ import { retryTenTimes } from '../../../../common/utils/apiUtils'
 const DesktopSelect = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "DesktopSelect" */ '../../home/desktop/desktop-select/desktop-select')))
 const MobileSelect = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "MobileSelect" */ '../../home/mobile/mobile-select/mobile-select')))
 
-const Select = ({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, isMobile, isFetchingOptions, recentPhilosophers, darkMode }) => {
+const Select = ({ markedMode, options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, isMobile, isFetchingOptions, recentPhilosophers, darkMode }) => {
     const optionsWithRecentPhilosophersOnTop = [...options]
 
     recentPhilosophers
@@ -18,7 +18,7 @@ const Select = ({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCa
 
     const renderSelect = () => {
         if (isMobile) {
-            return <Suspense fallback={''}>{currentPhilosopher && <MobileSelect recentPhilosophers={recentPhilosophers} onFocusHandlerCallback={onFocusHandlerCallback} onChangeHandler={onChangeHandler} currentPhilosopher={currentPhilosopher} value={getCurrentPhilosopherFullname(currentPhilosopher, optionsWithRecentPhilosophersOnTop)} placeholder={'Search philosopher'} options={optionsWithRecentPhilosophersOnTop} isFetchingOptions={isFetchingOptions} darkMode={darkMode} />}</Suspense>
+            return <Suspense fallback={''}>{currentPhilosopher && <MobileSelect recentPhilosophers={recentPhilosophers} onFocusHandlerCallback={onFocusHandlerCallback} onChangeHandler={onChangeHandler} currentPhilosopher={currentPhilosopher} value={getCurrentPhilosopherFullname(currentPhilosopher, optionsWithRecentPhilosophersOnTop)} placeholder={'Search philosopher'} options={optionsWithRecentPhilosophersOnTop} isFetchingOptions={isFetchingOptions} darkMode={darkMode} markedMode={markedMode} />}</Suspense>
         } else {
             return (
                 <Suspense fallback={''}>

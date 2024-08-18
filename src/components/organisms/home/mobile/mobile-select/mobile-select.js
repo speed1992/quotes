@@ -3,7 +3,7 @@ import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import styles from './mobile-select.module.css'
 const OutsideAlerter = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "OutsideAlerter" */ '../../../../../common/components/outside-alerter/outside-alerter')))
 
-export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, placeholder, value, isFetchingOptions, recentPhilosophers, darkMode }) {
+export default function MobileSelect({ options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, placeholder, value, isFetchingOptions, recentPhilosophers, darkMode, markedMode }) {
     const [suggestions, setSuggestions] = useState([])
     const [searchText, setSearchText] = useState([])
     const [isFocused, setIsFocused] = useState(false)
@@ -54,13 +54,17 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
         if (suggestions.length === 0) {
             return null
         }
+
         return (
             <ul ref={scollToRef} className={`${styles.dropDownList} ${darkMode && styles.darkTheme}`}>
-                {suggestions?.map(({ fullName, value }, index) => (
-                    <li style={searchText === '' && index < recentPhilosophers?.length ? { color: '#FF00FF' } : {}} id={currentPhilosopher === value ? 'active' : ''} key={value} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
-                        {fullName}
-                    </li>
-                ))}
+                {suggestions?.map(({ fullName, value, disabled = false }, index) => {
+                    console.log('@dev disabled && markedMode', disabled, markedMode)
+                    return disabled && markedMode ? null : (
+                        <li style={searchText === '' && index < recentPhilosophers?.length ? { color: '#FF00FF' } : {}} id={currentPhilosopher === value ? 'active' : ''} key={value} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
+                            {fullName}
+                        </li>
+                    )
+                })}
             </ul>
         )
     }

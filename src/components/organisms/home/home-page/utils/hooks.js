@@ -10,6 +10,7 @@ import { isDesktop } from '../../../../../common/utils/utils'
 import { onFocusHandler } from '../../desktop/desktop-header/utils/utils'
 import { getPhilosopherFullName } from '../../quotes-list/utils/utils'
 import { setCurrentDataRedux, setCurrentPhilosopherRedux, setDarkModeRedux, setEndRedux, setIsLoggedInRedux, setLogsRedux, setMarkedModeRedux, setMarkedQuotesRedux, setMinModeRedux, setOptionsRedux, setOriginalOptionsRedux, setPasswordRedux, setRecentPhilosophersRedux, setRestoreQuotesFromServerCachedDateRedux, setScheduledPostsRedux, setScrollPositionRedux, setSearchTextRedux, setStartRedux, setSyncDateRedux, setUserNameRedux } from '../homePageRedux/homePageRedux'
+import INITIAL_STATE from '../homePageRedux/initialState'
 import { autoPopulateWordCount, compareWithServerSyncDatesAndMakeAnAPICall, setThemeClassNameOnHTMLTag } from './utils'
 
 export function useHomePageHooks() {
@@ -92,6 +93,22 @@ export function useHomePageHooks() {
     useEffect(() => {
         document.title = `${getPhilosopherFullName({ currentPhilosopher, options })} Quotes`
     }, [currentPhilosopher])
+
+    useEffect(() => {
+        let foundFullyReadPhilospher = false
+        let newOptions = [...options]
+        newOptions = newOptions?.map((option) => {
+            if (markedQuotes?.[option?.value]?.length >= option?.quotes?.length) {
+                foundFullyReadPhilospher = true
+                return { ...option, disabled: true }
+            }
+            return option
+        })
+        if (foundFullyReadPhilospher && markedMode) {
+            setCurrentPhilosopher(INITIAL_STATE?.currentPhilosopher)
+            setOptions(newOptions)
+        }
+    }, [currentPhilosopher, markedMode, markedQuotes])
 
     return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions, rowsRendered, setRowsRendered, syncDate, setSyncDate, voiceSpeed, recentPhilosophers, setRecentPhilosophers, minMode, setMinMode, setLogs, restoreQuotesFromServerCachedDate, setRestoreQuotesFromServerCachedDate, setAutoPopulateWordCount, populateWordCount }
 }
