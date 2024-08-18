@@ -1,11 +1,12 @@
 import { useCallback } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { isDesktop } from '../../utils/utils'
 import styles from './modal.module.css'
 import { setCurrentModalName } from './modalRedux'
 
-const Modal = ({ children, title, darkMode }) => {
+const Modal = ({ children, title }) => {
     const dispatch = useDispatch()
+    const darkMode = useSelector((state) => state?.philosophersData?.darkMode)
 
     return (
         <div className={`${styles.modalContainer} ${darkMode ? styles.darkMode : styles.lightMode}`}>

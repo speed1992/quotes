@@ -12,22 +12,21 @@ const GenerateQuoteImage = React.lazy(() => retryTenTimes(() => import(/* webpac
 
 export const App = () => {
     const currentModalName = useSelector((state) => state.modal)
-    const darkMode = useSelector((state) => state.philosophersData.darkMode)
     return (
         <ErrorBoundary>
             <Suspense>
                 {currentModalName === 'Report' && (
-                    <Modal title={currentModalName} darkMode={darkMode}>
+                    <Modal title={currentModalName}>
                         <Report />
                     </Modal>
                 )}
                 {currentModalName === 'Image' && (
-                    <Modal darkMode={darkMode}>
+                    <Modal>
                         <GenerateQuoteImage />
                     </Modal>
                 )}
                 {currentModalName === 'Logs' && (
-                    <Modal darkMode={darkMode}>
+                    <Modal>
                         <Logs />
                     </Modal>
                 )}
