@@ -70,10 +70,10 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 <li key="6">
                     <button onClick={useCallback(() => dispatch(setCurrentModalName('Report')), [])}>Open Report</button>
                 </li>
-
                 <li key="2">
-                    Marked Mode
+                    <label htmlFor="marked-mode">Marked Mode</label>
                     <input
+                        id="marked-mode"
                         type="checkbox"
                         checked={markedMode}
                         onChange={({ target: { checked } }) => {
@@ -86,7 +86,6 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                         }}
                     />
                 </li>
-
                 {markedMode && (
                     <li key="16">
                         Set Minimum Word Count
@@ -104,8 +103,11 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                     </li>
                 )}
                 <li key="3">
-                    Dark Mode
-                    <input type="checkbox" checked={darkMode} onChange={({ target: { checked } }) => setDarkMode(checked)} />
+                    <label htmlFor="dark-mode">Dark Mode</label>
+                    <input id="dark-mode" type="checkbox" checked={darkMode} onChange={({ target: { checked } }) => setDarkMode(checked)} />
+                </li>
+                <li key="17">
+                    <button onClick={useCallback(() => dispatch(setCurrentModalName('Exclusions')), [])}>Manage Filters</button>
                 </li>
                 <li key="4">
                     Voice Speed[1-20]

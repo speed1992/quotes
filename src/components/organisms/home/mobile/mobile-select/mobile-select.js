@@ -57,14 +57,13 @@ export default function MobileSelect({ options, currentPhilosopher, onChangeHand
 
         return (
             <ul ref={scollToRef} className={`${styles.dropDownList} ${darkMode && styles.darkTheme}`}>
-                {suggestions?.map(({ fullName, value, disabled = false }, index) => {
-                    console.log('@dev disabled && markedMode', disabled, markedMode)
-                    return disabled && markedMode ? null : (
+                {suggestions?.map(({ fullName, value, disabled = false }, index) =>
+                    disabled && markedMode ? null : (
                         <li style={searchText === '' && index < recentPhilosophers?.length ? { color: '#FF00FF' } : {}} id={currentPhilosopher === value ? 'active' : ''} key={value} value={value} onClick={(e) => suggestionSelected(fullName, value)}>
                             {fullName}
                         </li>
                     )
-                })}
+                )}
             </ul>
         )
     }

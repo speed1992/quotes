@@ -17,7 +17,7 @@ export function useHomePageHooks() {
     const [openSnackbar] = useSnackbar()
     const listRef = useRef()
     const dispatch = useDispatch()
-    const { start, end, searchText, currentPhilosopher, populateWordCount, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData = getPhilosopherQuotes({ philosopher: currentPhilosopher, options }), originalOptions, userName, isLoggedIn, password, syncDate, restoreQuotesFromServerCachedDate, sorting, voiceSpeed, recentPhilosophers, minMode } = useSelector((state) => state.philosophersData)
+    const { start, end, searchText, currentPhilosopher, populateWordCount, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData = getPhilosopherQuotes({ philosopher: currentPhilosopher, options }), originalOptions, userName, isLoggedIn, password, syncDate, restoreQuotesFromServerCachedDate, sorting, voiceSpeed, recentPhilosophers, minMode, searchFilters } = useSelector((state) => state.philosophersData)
 
     const [isFetching, setIsFetching] = useState(false)
     const [isFetchingOptions, setIsFetchingOptions] = useState(false)
@@ -67,9 +67,9 @@ export function useHomePageHooks() {
 
     useEffect(() => {
         if (originalData) {
-            applyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
+            applyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options, searchFilters }, { markedMode, markedQuotes, setMarkedQuotes })
         }
-    }, [start, end, searchText, markedMode, currentPhilosopher, markedQuotes[currentPhilosopher]?.quotes?.length])
+    }, [start, end, searchText, markedMode, currentPhilosopher, markedQuotes[currentPhilosopher]?.quotes?.length, searchFilters?.exclusions, searchFilters?.inclusions])
 
     useEffect(() => {
         setThemeClassNameOnHTMLTag(darkMode)

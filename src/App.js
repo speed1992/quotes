@@ -9,6 +9,7 @@ const Modal = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "
 const SnackBar = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "SnackBar" */ './common/components/snackbar/snackbar')))
 const HomePage = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "HomePage" */ './components/organisms/home/home-page/home-page')))
 const GenerateQuoteImage = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "GenerateQuoteImage" */ './components/organisms/analysis/generate-quote-image/generateQuoteImage')))
+const ExclusionsInclusions = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "GenerateQuoteImage" */ './components/organisms/tools/exclusions-inclusions/exclusions-inclusions')))
 
 export const App = () => {
     const currentModalName = useSelector((state) => state.modal)
@@ -28,6 +29,11 @@ export const App = () => {
                 {currentModalName === 'Logs' && (
                     <Modal>
                         <Logs />
+                    </Modal>
+                )}
+                {currentModalName === 'Exclusions' && (
+                    <Modal>
+                        <ExclusionsInclusions />
                     </Modal>
                 )}
                 <HomePage />

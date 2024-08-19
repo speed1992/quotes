@@ -30,10 +30,10 @@ export const scrollToQuoteId = (listRef, scrollObject, currentData, currentPhilo
     }
 }
 
-export const search = ({ searchText, currentData, setCurrentData }) => {
+export const search = ({ searchText, currentData, searchFilters }) => {
     return new Promise((resolve) => {
         if (currentData !== undefined) {
-            worker.postMessage({ currentData, searchText, filterName: 'searchTermFilter' })
+            worker.postMessage({ currentData, searchText, searchFilters, filterName: 'searchTermFilter' })
             worker.onmessage = (event) => {
                 const filteredQuotesFromWorker = JSON.parse(eval(`(${JSON.stringify(event.data)})`))
                 resolve(filteredQuotesFromWorker)

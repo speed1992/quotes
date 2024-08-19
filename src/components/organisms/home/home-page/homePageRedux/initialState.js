@@ -31,6 +31,10 @@ let INITIAL_STATE = {
     recentPhilosophers: [],
     minMode: false,
     logs: [],
+    searchFilters: {
+        inclusions: '',
+        exclusions: '',
+    },
 }
 
 export default INITIAL_STATE
