@@ -7,16 +7,15 @@ import { isCacheExpired } from '../../../../../../common/utils/dateUtils'
 import { addResponseOptionsDataIntoRedux } from '../../../../../../common/utils/lazyLoadUtils'
 import { checkQueryParams } from '../../../../../../common/utils/urlUtils'
 import { changeQuotesData } from '../../../quotes-list/utils/utils'
-export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching, setStart, setEnd, setSearchText, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, markedMode, markedQuotes, setMarkedQuotes, scrollPosition, setRowsRendered, recentPhilosophers, setRecentPhilosophers }) {
+export function onPhilosopherSelectChange({ philosopher, setIsFetching, setCurrentPhilosopher, currentData, setCurrentData, options, setOptions, markedMode, markedQuotes, setMarkedQuotes, recentPhilosophers, setRecentPhilosophers }) {
     function callback() {
         if (recentPhilosophers) setRecentPhilosophers([...new Set([philosopher, ...recentPhilosophers.slice(0, MAX_RECENT_PHILOSOPHERS - 1)])])
         setCurrentPhilosopher(philosopher)
         changeQuotesData({ philosopher, currentData, setCurrentData, options }, { markedMode, markedQuotes, setMarkedQuotes })
         setIsFetching(false)
     }
-    setStart(1)
-    setEnd('')
-    setSearchText('')
+    // setEnd('')
+    // setSearchText('')
     setIsFetching(true)
 
     if (!getPhilosopherQuotes({ philosopher, options })) {
@@ -26,7 +25,7 @@ export function onPhilosopherSelectChange({ philosopher, listRef, setIsFetching,
     }
 }
 
-export const onFocusHandler = async ({ options, setOptions, isLoggedIn, setSyncDate, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting, syncDate, setLogs }) => {
+export const onFocusHandler = async ({ options, setOptions, setSyncDate, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting, syncDate, setLogs }) => {
     if (checkQueryParams('dev')) {
         const today = new Date()
         setLogs?.('inside onFocusHandler')
