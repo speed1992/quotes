@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
 import CACHE_IN_DAYS from '../../../../../common/settings/cache.json'
@@ -17,7 +17,9 @@ export function useHomePageHooks() {
     const [openSnackbar] = useSnackbar()
     const listRef = useRef()
     const dispatch = useDispatch()
-    const { start, end, searchText, currentPhilosopher, populateWordCount, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData = getPhilosopherQuotes({ philosopher: currentPhilosopher, options }), originalOptions, userName, isLoggedIn, password, syncDate, restoreQuotesFromServerCachedDate, sorting, voiceSpeed, recentPhilosophers, minMode, searchFilters } = useSelector((state) => state.philosophersData)
+    const { start, end, searchText, currentPhilosopher, populateWordCount, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, userName, isLoggedIn, password, syncDate, restoreQuotesFromServerCachedDate, originalOptions, sorting, voiceSpeed, recentPhilosophers, minMode, searchFilters } = useSelector((state) => state.philosophersData)
+
+    const originalData = useMemo(() => getPhilosopherQuotes({ philosopher: currentPhilosopher, options }), [currentPhilosopher, options])
 
     const [isFetching, setIsFetching] = useState(false)
     const [isFetchingOptions, setIsFetchingOptions] = useState(false)
@@ -114,5 +116,60 @@ export function useHomePageHooks() {
         }
     }, [currentPhilosopher, markedMode, markedQuotes])
 
-    return { listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions, rowsRendered, setRowsRendered, syncDate, setSyncDate, voiceSpeed, recentPhilosophers, setRecentPhilosophers, minMode, setMinMode, setLogs, restoreQuotesFromServerCachedDate, setRestoreQuotesFromServerCachedDate, setAutoPopulateWordCount, populateWordCount }
+    return useMemo(
+        () => ({
+            listRef,
+            dispatch,
+            start,
+            end,
+            searchText,
+            currentPhilosopher,
+            currentData,
+            markedMode,
+            options,
+            markedQuotes,
+            scheduledPosts,
+            darkMode,
+            scrollPosition,
+            originalData,
+            isFetching,
+            setIsFetching,
+            setStart,
+            setEnd,
+            setSearchText,
+            setMarkedMode,
+            setCurrentPhilosopher,
+            setCurrentData,
+            setOptions,
+            setMarkedQuotes,
+            setScheduledQuotes,
+            setDarkMode,
+            setScrollPosition,
+            originalOptions,
+            setOriginalOptions,
+            userName,
+            setUserName,
+            isLoggedIn,
+            setIsLoggedIn,
+            password,
+            setPassword,
+            isFetchingOptions,
+            setIsFetchingOptions,
+            rowsRendered,
+            setRowsRendered,
+            syncDate,
+            setSyncDate,
+            voiceSpeed,
+            recentPhilosophers,
+            setRecentPhilosophers,
+            minMode,
+            setMinMode,
+            setLogs,
+            restoreQuotesFromServerCachedDate,
+            setRestoreQuotesFromServerCachedDate,
+            setAutoPopulateWordCount,
+            populateWordCount,
+        }),
+        [listRef, dispatch, start, end, searchText, currentPhilosopher, currentData, markedMode, options, markedQuotes, scheduledPosts, darkMode, scrollPosition, originalData, isFetching, setIsFetching, setStart, setEnd, setSearchText, setMarkedMode, setCurrentPhilosopher, setCurrentData, setOptions, setMarkedQuotes, setScheduledQuotes, setDarkMode, setScrollPosition, originalOptions, setOriginalOptions, userName, setUserName, isLoggedIn, setIsLoggedIn, password, setPassword, isFetchingOptions, setIsFetchingOptions, rowsRendered, setRowsRendered, syncDate, setSyncDate, voiceSpeed, recentPhilosophers, setRecentPhilosophers, minMode, setMinMode, setLogs, restoreQuotesFromServerCachedDate, setRestoreQuotesFromServerCachedDate, setAutoPopulateWordCount, populateWordCount]
+    )
 }
