@@ -12,9 +12,9 @@ const ExclusionsInclusions = () => {
     return (
         <div className={styles?.modal}>
             <h5>Exclusions</h5>
-            <textarea onChange={(e) => setFilters({ ...filters, exclusions: e?.target?.value?.toLowerCase() })} value={filters?.exclusions} />
+            <textarea rows="10" onChange={(e) => setFilters({ ...filters, exclusions: e?.target?.value?.toLowerCase() })} value={filters?.exclusions} />
             <h5>Inclusions</h5>
-            <textarea onChange={(e) => setFilters({ ...filters, inclusions: e?.target?.value?.toLowerCase() })} value={filters?.inclusions} />
+            <textarea rows="10" onChange={(e) => setFilters({ ...filters, inclusions: e?.target?.value?.toLowerCase() })} value={filters?.inclusions} />
             <div>
                 <button
                     onClick={() => {
