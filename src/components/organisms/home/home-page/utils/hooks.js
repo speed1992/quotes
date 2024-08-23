@@ -71,7 +71,7 @@ export function useHomePageHooks() {
         if (originalData) {
             applyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options, searchFilters }, { markedMode, markedQuotes, setMarkedQuotes })
         }
-    }, [start, end, searchText, markedMode, currentPhilosopher, markedQuotes[currentPhilosopher]?.quotes?.length, searchFilters?.exclusions, searchFilters?.inclusions])
+    }, [start, end, searchText, markedMode, currentPhilosopher, markedQuotes?.[currentPhilosopher]?.quotes?.length, searchFilters?.exclusions, searchFilters?.inclusions])
 
     useEffect(() => {
         setThemeClassNameOnHTMLTag(darkMode)
@@ -79,7 +79,8 @@ export function useHomePageHooks() {
 
     useEffect(() => {
         if (populateWordCount) autoPopulateWordCount({ setStart, setEnd, currentData })
-    }, [populateWordCount, currentPhilosopher, currentData])
+    }, [populateWordCount, currentPhilosopher, currentData, markedQuotes?.[currentPhilosopher]?.quotes?.length])
+
     useEffect(() => {
         if (isDesktop()) {
             setDarkMode(false)
