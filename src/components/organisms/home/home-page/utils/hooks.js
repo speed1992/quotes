@@ -78,8 +78,12 @@ export function useHomePageHooks() {
     }, [darkMode])
 
     useEffect(() => {
-        if (populateWordCount) autoPopulateWordCount({ setStart, setEnd, currentData })
-    }, [populateWordCount, currentPhilosopher, currentData, markedQuotes?.[currentPhilosopher]?.quotes?.length])
+        if (populateWordCount) autoPopulateWordCount({ currentPhilosopher, options, markedQuotes, setStart, setEnd })
+    }, [populateWordCount, currentPhilosopher])
+
+    useEffect(() => {
+        if (populateWordCount && currentData?.length === 0) autoPopulateWordCount({ currentPhilosopher, options, markedQuotes, setStart, setEnd })
+    }, [populateWordCount, currentData])
 
     useEffect(() => {
         if (isDesktop()) {

@@ -1,4 +1,4 @@
-import { getPhilosopherData } from '../../../../../common/static/utils/utils'
+import { getPhilosopherData, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
 import { getUserDetails, getUserMarkedQuotesCount, sendUserDetails } from '../../mobile/mobile-menu/utils/utils'
 import { getWordCount } from '../../quotes-list/utils/utils'
 
@@ -31,8 +31,11 @@ export async function compareWithServerSyncDatesAndMakeAnAPICall(userName, marke
     }
 }
 
-export const autoPopulateWordCount = ({ setStart, setEnd, currentData }) => {
-    const minimumWordCount = currentData?.reduce((minCount, { quote }) => {
+export const autoPopulateWordCount = ({ currentPhilosopher, options, markedQuotes, setStart, setEnd }) => {
+    const quotes = getPhilosopherQuotes({ philosopher: currentPhilosopher, options })
+    const markedQuotesOfTheCurrentPhilosopher = markedQuotes?.[currentPhilosopher] || []
+    const newQuotes = quotes.filter((quote) => !markedQuotesOfTheCurrentPhilosopher.includes(quote.id))
+    const minimumWordCount = newQuotes.reduce((minCount, { quote }) => {
         if (quote !== '') return Math.min(getWordCount(quote), minCount)
         else return minCount
     }, Infinity)
