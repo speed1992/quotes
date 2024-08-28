@@ -1,5 +1,4 @@
 import { changeQuotesData } from '../../components/organisms/home/quotes-list/utils/utils'
-import { worker } from '../web-workers/worker'
 
 export const scrollToFirstRow = (listRef) => {
     if (listRef.current) {
@@ -34,10 +33,18 @@ export const scrollToQuoteId = (listRef, scrollObject, currentData, currentPhilo
 export const search = ({ searchText, start, end, setCurrentData, searchFilters, markedMode, markedQuotes, setMarkedQuotes, currentData, currentPhilosopher }) => {
     return new Promise((resolve) => {
         if (currentData !== undefined) {
+            let worker
+            if (window.Worker) {
+                worker = new Worker(new URL('../web-workers/filter-worker.js', import.meta.url))
+            } else {
+                alert("Your browser doesn't support web workers.")
+            }
+
             if (typeof start === 'string' && start.trim() === '') start = 0
             worker.postMessage({ currentData, searchText, searchFilters, end, start })
             worker.onmessage = (event) => {
                 const filteredQuotesFromWorker = JSON.parse(eval(`(${JSON.stringify(event.data)})`))
+                worker?.terminate()
                 changeQuotesData({ currentData: filteredQuotesFromWorker, setCurrentData, currentPhilosopher }, { markedMode, markedQuotes, setMarkedQuotes })
                 resolve()
             }
