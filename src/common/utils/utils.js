@@ -32,7 +32,6 @@ export const scrollToQuoteId = (listRef, scrollObject, currentData, currentPhilo
 }
 
 export const search = ({ searchText, start, end, setCurrentData, searchFilters, markedMode, markedQuotes, setMarkedQuotes, currentData, currentPhilosopher }) => {
-    console.log('@dev currentData', currentData)
     return new Promise((resolve) => {
         if (currentData !== undefined) {
             if (typeof start === 'string' && start.trim() === '') start = 0
