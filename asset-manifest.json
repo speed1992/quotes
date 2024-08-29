@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/quotes/static/css/main.a163865e.css",
-    "main.js": "/quotes/static/js/main.3b2007de.js",
+    "main.js": "/quotes/static/js/main.f6f870ce.js",
     "Logs.css": "/quotes/static/css/Logs.a1dae449.chunk.css",
     "Logs.js": "/quotes/static/js/Logs.f3d0ee12.chunk.js",
     "Report.css": "/quotes/static/css/Report.f20fa752.chunk.css",
@@ -12,9 +12,9 @@
     "SnackBar.js": "/quotes/static/js/SnackBar.32f9d196.chunk.js",
     "HomePage.css": "/quotes/static/css/HomePage.04b6c77e.chunk.css",
     "HomePage.js": "/quotes/static/js/HomePage.81231618.chunk.js",
-    "GenerateQuoteImage.css": "/quotes/static/css/GenerateQuoteImage.d5e09cb9.chunk.css",
-    "GenerateQuoteImage.js": "/quotes/static/js/GenerateQuoteImage.ffc5be62.chunk.js",
-    "static/js/480.cbd4e36f.chunk.js": "/quotes/static/js/480.cbd4e36f.chunk.js",
+    "GenerateQuoteImage.css": "/quotes/static/css/GenerateQuoteImage.b5c2116e.chunk.css",
+    "GenerateQuoteImage.js": "/quotes/static/js/GenerateQuoteImage.60546ba9.chunk.js",
+    "static/js/480.683cd6cc.chunk.js": "/quotes/static/js/480.683cd6cc.chunk.js",
     "Loader.css": "/quotes/static/css/Loader.dd7177a6.chunk.css",
     "Loader.js": "/quotes/static/js/Loader.0b5599b6.chunk.js",
     "Header.css": "/quotes/static/css/Header.ec9a28db.chunk.css",
@@ -43,7 +43,7 @@
     "MobileSelect.css": "/quotes/static/css/MobileSelect.958121f1.chunk.css",
     "MobileSelect.js": "/quotes/static/js/MobileSelect.b0be7cba.chunk.js",
     "DesktopWordLengthSearch.js": "/quotes/static/js/DesktopWordLengthSearch.7e2d7104.chunk.js",
-    "BuildInfo.js": "/quotes/static/js/BuildInfo.d610a07e.chunk.js",
+    "BuildInfo.js": "/quotes/static/js/BuildInfo.fa0bdfde.chunk.js",
     "LoginRegister.css": "/quotes/static/css/LoginRegister.04a379bb.chunk.css",
     "LoginRegister.js": "/quotes/static/js/LoginRegister.3a14291f.chunk.js",
     "OutsideAlerter.js": "/quotes/static/js/OutsideAlerter.8812fb73.chunk.js",
@@ -63,7 +63,7 @@
     "static/media/PETERSON.jpg": "/quotes/static/media/PETERSON.f3968a4c45466650e225.jpg",
     "index.html": "/quotes/index.html",
     "main.a163865e.css.map": "/quotes/static/css/main.a163865e.css.map",
-    "main.3b2007de.js.map": "/quotes/static/js/main.3b2007de.js.map",
+    "main.f6f870ce.js.map": "/quotes/static/js/main.f6f870ce.js.map",
     "Logs.a1dae449.chunk.css.map": "/quotes/static/css/Logs.a1dae449.chunk.css.map",
     "Logs.f3d0ee12.chunk.js.map": "/quotes/static/js/Logs.f3d0ee12.chunk.js.map",
     "Report.f20fa752.chunk.css.map": "/quotes/static/css/Report.f20fa752.chunk.css.map",
@@ -74,9 +74,9 @@
     "SnackBar.32f9d196.chunk.js.map": "/quotes/static/js/SnackBar.32f9d196.chunk.js.map",
     "HomePage.04b6c77e.chunk.css.map": "/quotes/static/css/HomePage.04b6c77e.chunk.css.map",
     "HomePage.81231618.chunk.js.map": "/quotes/static/js/HomePage.81231618.chunk.js.map",
-    "GenerateQuoteImage.d5e09cb9.chunk.css.map": "/quotes/static/css/GenerateQuoteImage.d5e09cb9.chunk.css.map",
-    "GenerateQuoteImage.ffc5be62.chunk.js.map": "/quotes/static/js/GenerateQuoteImage.ffc5be62.chunk.js.map",
-    "480.cbd4e36f.chunk.js.map": "/quotes/static/js/480.cbd4e36f.chunk.js.map",
+    "GenerateQuoteImage.b5c2116e.chunk.css.map": "/quotes/static/css/GenerateQuoteImage.b5c2116e.chunk.css.map",
+    "GenerateQuoteImage.60546ba9.chunk.js.map": "/quotes/static/js/GenerateQuoteImage.60546ba9.chunk.js.map",
+    "480.683cd6cc.chunk.js.map": "/quotes/static/js/480.683cd6cc.chunk.js.map",
     "Loader.dd7177a6.chunk.css.map": "/quotes/static/css/Loader.dd7177a6.chunk.css.map",
     "Loader.0b5599b6.chunk.js.map": "/quotes/static/js/Loader.0b5599b6.chunk.js.map",
     "Header.ec9a28db.chunk.css.map": "/quotes/static/css/Header.ec9a28db.chunk.css.map",
@@ -105,7 +105,7 @@
     "MobileSelect.958121f1.chunk.css.map": "/quotes/static/css/MobileSelect.958121f1.chunk.css.map",
     "MobileSelect.b0be7cba.chunk.js.map": "/quotes/static/js/MobileSelect.b0be7cba.chunk.js.map",
     "DesktopWordLengthSearch.7e2d7104.chunk.js.map": "/quotes/static/js/DesktopWordLengthSearch.7e2d7104.chunk.js.map",
-    "BuildInfo.d610a07e.chunk.js.map": "/quotes/static/js/BuildInfo.d610a07e.chunk.js.map",
+    "BuildInfo.fa0bdfde.chunk.js.map": "/quotes/static/js/BuildInfo.fa0bdfde.chunk.js.map",
     "LoginRegister.04a379bb.chunk.css.map": "/quotes/static/css/LoginRegister.04a379bb.chunk.css.map",
     "LoginRegister.3a14291f.chunk.js.map": "/quotes/static/js/LoginRegister.3a14291f.chunk.js.map",
     "OutsideAlerter.8812fb73.chunk.js.map": "/quotes/static/js/OutsideAlerter.8812fb73.chunk.js.map",
@@ -117,6 +117,6 @@
   },
   "entrypoints": [
     "static/css/main.a163865e.css",
-    "static/js/main.3b2007de.js"
+    "static/js/main.f6f870ce.js"
   ]
 }
