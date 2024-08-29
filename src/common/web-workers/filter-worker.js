@@ -12,10 +12,10 @@ onmessage = function ({ data }) {
         const exclusionFound = exclusions.some((word) => lowercasedQuote.includes(word))
         const inclusionFound = inclusions.some((word) => lowercasedQuote.includes(word))
 
-        if (exclusions.length === 0 && inclusions.length === 0) return searchTextFound && wordCountFound
-        else if (exclusions.length > 0 && inclusions.length === 0) return !exclusionFound && searchTextFound && wordCountFound
-        else if (exclusions.length === 0 && inclusions.length > 0) return inclusionFound && wordCountFound && searchTextFound
-        else if (exclusions.length > 0 && inclusions.length > 0) return inclusionFound && !exclusionFound && wordCountFound && searchTextFound
+        if (!exclusions.length && !inclusions.length) return searchTextFound && wordCountFound
+        else if (exclusions.length && !inclusions.length) return !exclusionFound && searchTextFound && wordCountFound
+        else if (!exclusions.length && inclusions.length) return inclusionFound && wordCountFound && searchTextFound
+        else if (exclusions.length && inclusions.length) return inclusionFound && !exclusionFound && wordCountFound && searchTextFound
     })
 
     this.postMessage(JSON.stringify(filteredQuotes))
