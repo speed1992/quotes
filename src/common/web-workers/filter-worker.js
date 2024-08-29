@@ -10,16 +10,9 @@ onmessage = function ({ data }) {
         const wordCountFound = wordCount >= start && (end === '' || wordCount <= end)
 
         if (exclusions.length > 0 || inclusions.length > 0) {
-            if (exclusions.length > 0 && exclusions.some((word) => lowerQuote.includes(word))) {
-                return false
-            }
-
-            if (inclusions.length > 0 && inclusions.some((word) => lowerQuote.includes(word)) && wordCountFound) {
-                return true
-            }
-        } else if (lowerQuote.includes(lowerSearchText) && wordCountFound) {
-            return true
-        }
+            if (exclusions.length > 0 && exclusions.some((word) => lowerQuote.includes(word))) return false
+            if (inclusions.length > 0 && inclusions.some((word) => lowerQuote.includes(word)) && wordCountFound) return true
+        } else if (lowerQuote.includes(lowerSearchText) && wordCountFound) return true
     })
 
     this.postMessage(JSON.stringify(filteredQuotes))
