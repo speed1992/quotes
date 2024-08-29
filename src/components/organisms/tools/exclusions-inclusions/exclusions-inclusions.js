@@ -24,6 +24,17 @@ const ExclusionsInclusions = () => {
                 >
                     Add
                 </button>
+                <button
+                    className={styles?.clearBtn}
+                    onClick={() => {
+                        const clearedFilters = { inclusions: '', exclusions: '' }
+                        setFilters(clearedFilters)
+                        dispatch(setSearchFiltersRedux(clearedFilters))
+                        openSnackbar('Exclusions/Inclusions Updated!', 4000)
+                    }}
+                >
+                    Clear
+                </button>
             </div>
         </div>
     )
