@@ -17,9 +17,9 @@
     },
     "json.maxItemsComputed": 0,
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true,
-        "source.fixAll.eslint": true,
-        "source.fixAll.tslint": true,
-        "source.fixAll.stylelint": true
+        "source.organizeImports": "explicit",
+        "source.fixAll.eslint": "explicit",
+        "source.fixAll.tslint": "explicit",
+        "source.fixAll.stylelint": "explicit"
     }
 }

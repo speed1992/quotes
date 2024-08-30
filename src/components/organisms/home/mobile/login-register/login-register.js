@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux'
 import { loginRegister } from '../mobile-menu/utils/utils'
 import styles from './login-register.module.css'
 
-const LoginRegister = ({ setUserName, userName, isLoggedIn, setIsLoggedIn, openSnackbar, markedQuotes, setMarkedQuotes, password, setPassword, setIsFetching }) => {
-    const capitalizedUserName = userName.charAt(0).toUpperCase() + userName.slice(1)
+const LoginRegister = ({ setUserName, isLoggedIn, setIsLoggedIn, openSnackbar, password, setPassword, setIsFetching }) => {
+    const { userName } = useSelector((state) => state.philosophersData)
+    const capitalizedUserName = userName?.charAt(0).toUpperCase() + userName.slice(1)
 
     return (
         <>

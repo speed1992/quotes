@@ -1,10 +1,12 @@
 import React, { Suspense } from 'react'
+import { useSelector } from 'react-redux'
 import { getCurrentPhilosopherFullname } from '../../../../common/static/utils/utils'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 const DesktopSelect = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "DesktopSelect" */ '../../home/desktop/desktop-select/desktop-select')))
 const MobileSelect = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "MobileSelect" */ '../../home/mobile/mobile-select/mobile-select')))
 
-const Select = ({ markedMode, options, currentPhilosopher, onChangeHandler, onFocusHandlerCallback, isMobile, isFetchingOptions, recentPhilosophers, darkMode }) => {
+const Select = ({ onChangeHandler, onFocusHandlerCallback, isMobile, isFetchingOptions }) => {
+    const { options, markedMode, currentPhilosopher, recentPhilosophers, darkMode } = useSelector((state) => state.philosophersData)
     const optionsWithRecentPhilosophersOnTop = [...options]
 
     recentPhilosophers
