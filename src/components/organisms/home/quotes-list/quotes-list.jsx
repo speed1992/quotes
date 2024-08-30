@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import List from 'react-virtualized/dist/commonjs/List'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { isDesktop, scrollToQuoteId } from '../../../../common/utils/utils'
@@ -8,8 +8,10 @@ import { getPhilosopherFullName, getPhilosopherFullName_i10n } from './utils/uti
 const ToggleMinMode = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "ToggleMinMode" */ '../mobile/toggle-min-mode/toggleMinMode')))
 
 function QuotesList({ listRef, width, height, searchText, start, end, markedMode, currentData, setCurrentData, options, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }) {
-    const philosopherFullName = getPhilosopherFullName({ currentPhilosopher, options })
-    const philosopherFullName_i10n = getPhilosopherFullName_i10n({ currentPhilosopher, options })
+    const philosopherFullName = useMemo(() => getPhilosopherFullName({ currentPhilosopher, options }), [currentPhilosopher, options])
+    const philosopherFullName_i10n = useMemo(() => getPhilosopherFullName_i10n({ currentPhilosopher, options }), [currentPhilosopher, options])
+
+    const style = useMemo(() => ({ padding: '1rem', textAlign: isDesktop() && 'center' }), [isDesktop])
 
     useEffect(() => {
         if (rowsRendered) {
@@ -32,7 +34,7 @@ function QuotesList({ listRef, width, height, searchText, start, end, markedMode
         currentData !== undefined && (
             <>
                 <ToggleMinMode />
-                <List height={screen.height - screen.height / 4} rowCount={currentData?.length} rowHeight={550} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined ? NoRowsRenderer : null} style={{ padding: '1rem', textAlign: isDesktop() && 'center' }} />
+                <List height={screen.height - screen.height / 4} rowCount={currentData?.length} rowHeight={550} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined ? NoRowsRenderer : null} style={style} />
             </>
         )
     )
