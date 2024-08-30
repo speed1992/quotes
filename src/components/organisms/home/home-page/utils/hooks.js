@@ -105,7 +105,7 @@ export function useHomePageHooks() {
             if (foundFullyReadPhilospher) setOptions(newOptions)
             if (changePhilosopher) setCurrentPhilosopher(INITIAL_STATE?.currentPhilosopher)
         }
-    }, [currentPhilosopher, markedMode, markedQuotes])
+    }, [])
 
     return useMemo(
         () => ({
