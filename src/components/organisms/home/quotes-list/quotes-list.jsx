@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo } from 'react'
+import { useSelector } from 'react-redux'
 import List from 'react-virtualized/dist/commonjs/List'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { isDesktop, scrollToQuoteId } from '../../../../common/utils/utils'
@@ -7,7 +8,8 @@ import { NoRowsRenderer } from './utils/listUtils'
 import { getPhilosopherFullName, getPhilosopherFullName_i10n } from './utils/utils'
 const ToggleMinMode = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "ToggleMinMode" */ '../mobile/toggle-min-mode/toggleMinMode')))
 
-function QuotesList({ listRef, width, height, searchText, start, end, markedMode, currentData, setCurrentData, options, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }) {
+function QuotesList({ listRef, width, height, searchText, start, end, markedMode, setCurrentData, options, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }) {
+    const { currentData } = useSelector((state) => state.philosophersData)
     const philosopherFullName = useMemo(() => getPhilosopherFullName({ currentPhilosopher, options }), [currentPhilosopher, options])
     const philosopherFullName_i10n = useMemo(() => getPhilosopherFullName_i10n({ currentPhilosopher, options }), [currentPhilosopher, options])
 

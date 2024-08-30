@@ -5,7 +5,6 @@ import useSnackbar from '../../../../../common/components/snackbar/useSnackbar'
 import CACHE_IN_DAYS from '../../../../../common/settings/cache.json'
 import { doesPhilosopherDataExist, getPhilosopherQuotes } from '../../../../../common/static/utils/utils'
 import { isCacheExpired } from '../../../../../common/utils/dateUtils'
-import { applyFilters } from '../../../../../common/utils/searchUtils'
 import { isDesktop } from '../../../../../common/utils/utils'
 import { onFocusHandler } from '../../desktop/desktop-header/utils/utils'
 import { getPhilosopherFullName } from '../../quotes-list/utils/utils'
@@ -66,12 +65,6 @@ export function useHomePageHooks() {
             onFocusHandler({ options, setOptions, isLoggedIn, setSyncDate, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, sorting })
         }
     }, [currentPhilosopher])
-
-    useEffect(() => {
-        if (originalData) {
-            applyFilters({ searchText, start, end, currentPhilosopher, currentData, originalData, setCurrentData, options, searchFilters }, { markedMode, markedQuotes, setMarkedQuotes })
-        }
-    }, [start, end, searchText, markedMode, currentPhilosopher, markedQuotes?.[currentPhilosopher]?.quotes?.length, searchFilters?.exclusions, searchFilters?.inclusions])
 
     useEffect(() => {
         setThemeClassNameOnHTMLTag(darkMode)
