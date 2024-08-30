@@ -8,8 +8,8 @@ import { NoRowsRenderer } from './utils/listUtils'
 import { getPhilosopherFullName, getPhilosopherFullName_i10n } from './utils/utils'
 const ToggleMinMode = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "ToggleMinMode" */ '../mobile/toggle-min-mode/toggleMinMode')))
 
-function QuotesList({ listRef, width, height, searchText, start, end, markedMode, setCurrentData, options, currentPhilosopher, markedQuotes, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }) {
-    const { currentData } = useSelector((state) => state.philosophersData)
+function QuotesList({ listRef, width, height, searchText, start, end, setCurrentData, options, currentPhilosopher, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }) {
+    const { currentData, markedMode, markedQuotes } = useSelector((state) => state.philosophersData)
     const philosopherFullName = useMemo(() => getPhilosopherFullName({ currentPhilosopher, options }), [currentPhilosopher, options])
     const philosopherFullName_i10n = useMemo(() => getPhilosopherFullName_i10n({ currentPhilosopher, options }), [currentPhilosopher, options])
 
