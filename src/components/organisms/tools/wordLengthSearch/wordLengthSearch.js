@@ -1,11 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
-import { useHomePageHooks } from '../../home/home-page/utils/hooks'
 import styles from './wordLengthSearch.module.css'
 const DesktopWordLengthSearch = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "DesktopWordLengthSearch" */ '../../home/desktop/desktop-word-length-search/desktop-word-length-search')))
 
 export function WordLengthSearch({ isMobile = true, isStartFeatureEnabled = false, label = false }) {
-    const { start, end, setStart, setEnd, populateWordCount } = useHomePageHooks()
+    const { start, end, setStart, setEnd, populateWordCount } = useSelector((state) => state.philosophersData)
     const renderComponent = () => {
         if (isMobile) {
             return (
