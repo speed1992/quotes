@@ -1,18 +1,22 @@
-import React, { Suspense, useState } from 'react'
+import React, { Suspense, useCallback, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import ErrorBoundary from '../../../../../common/components/error-boundary/error-boundary'
 import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import Select from '../../../tools/select/select'
 import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSearch'
 import { onFocusHandler, onPhilosopherSelectChange } from '../../desktop/desktop-header/utils/utils'
 import styles from '../../header-layout/header-layout.module.css'
+import { setSearchTextRedux } from '../../home-page/homePageRedux/homePageRedux'
 import mobileMenuStyles from './mobile-header.module.css'
 const MobileMenu = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "MobileMenu" */ '../mobile-menu/mobile-menu')))
 const Breadcrumb = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "Breadcrumb" */ '../../../analysis/breadcrumb/breadcrumb')))
 const UnreadCounter = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "UnreadCounter" */ '../../../analysis/unread-counter/unread-counter')))
 const QuotesFound = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "QuotesFound" */ '../../../analysis/quotes-found/quotes-found')))
 
-function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart, setEnd, isFetching, setIsFetching, markedMode, setMarkedMode, markedQuotes, currentData, setCurrentData, currentPhilosopher, originalData, setCurrentPhilosopher, options, setOptions, darkMode, setDarkMode, setSorting, sorting, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, userName, setUserName, setMarkedQuotes, isLoggedIn, setIsLoggedIn, password, setPassword, scrollPosition, setRowsRendered, syncDate, setSyncDate, recentPhilosophers, setRecentPhilosophers, setLogs }) {
+function MobileHeader({ listRef, searchText, setStart, setEnd, isFetching, setIsFetching, markedMode, setMarkedMode, markedQuotes, currentData, setCurrentData, currentPhilosopher, originalData, setCurrentPhilosopher, options, setOptions, darkMode, setDarkMode, setSorting, sorting, isFetchingOptions, setIsFetchingOptions, originalOptions, setOriginalOptions, userName, setUserName, setMarkedQuotes, isLoggedIn, setIsLoggedIn, password, setPassword, scrollPosition, setRowsRendered, syncDate, setSyncDate, recentPhilosophers, setRecentPhilosophers, setLogs }) {
+    const dispatch = useDispatch()
     const [visible, toggleVisible] = useState(false)
+    const setSearchText = useCallback((value) => dispatch(setSearchTextRedux(value)), [dispatch])
 
     return (
         <div className={styles.header}>
@@ -39,7 +43,7 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
             </div>
             <Suspense fallback={''}>
                 <Breadcrumb>
-                    <QuotesFound  />
+                    <QuotesFound />
                     {markedMode && <UnreadCounter isFetching={isFetching} currentData={currentData} originalData={originalData} markedQuotes={markedQuotes} currentPhilosopher={currentPhilosopher} isFetchingOptions={isFetchingOptions} />}
                 </Breadcrumb>
             </Suspense>

@@ -12,7 +12,7 @@ const Modal = ({ children, title }) => {
         <div className={`${styles.modalContainer} ${darkMode ? styles.darkMode : styles.lightMode}`}>
             <div className={styles.titleBar}>
                 <span className={styles.title}>{title}</span>
-                <button className={`${styles.close} ${isDesktop() ? styles.desktopCloseBtn : ''}`} onClick={useCallback(() => dispatch(setCurrentModalName(''), []))}>
+                <button className={`${styles.close} ${isDesktop() ? styles.desktopCloseBtn : ''}`} onClick={useCallback(() => dispatch(setCurrentModalName('')), [dispatch])}>
                     X
                 </button>
             </div>

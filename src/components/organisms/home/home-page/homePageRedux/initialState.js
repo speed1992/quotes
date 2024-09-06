@@ -9,6 +9,7 @@ export const STATIC_OPTIONS = [
 ]
 let INITIAL_STATE = {
     currentPhilosopher: 'NIETZSCHE',
+    isFetchingPhilosopher: false,
     start: 1,
     end: '',
     searchText: '',

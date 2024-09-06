@@ -1,19 +1,23 @@
-import React, { useEffect, useMemo } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import List from 'react-virtualized/dist/commonjs/List'
 import { retryTenTimes } from '../../../../common/utils/apiUtils'
 import { isDesktop, scrollToQuoteId } from '../../../../common/utils/utils'
+import { setScrollPositionRedux } from '../home-page/homePageRedux/homePageRedux'
 import Row from '../row/row'
 import { NoRowsRenderer } from './utils/listUtils'
 import { getPhilosopherFullName, getPhilosopherFullName_i10n } from './utils/utils'
 const ToggleMinMode = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "ToggleMinMode" */ '../mobile/toggle-min-mode/toggleMinMode')))
 
-function QuotesList({ listRef, width, searchText, start, end, setCurrentData, options, currentPhilosopher, setMarkedQuotes, scrollPosition, setScrollPosition, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }) {
-    const { currentData, markedMode, markedQuotes } = useSelector((state) => state.philosophersData)
+function QuotesList({ width, searchText, start, end, setCurrentData, setMarkedQuotes, darkMode, scheduledPosts, setScheduledQuotes, rowsRendered, setRowsRendered, voiceSpeed, minMode }) {
+    const dispatch = useDispatch()
+    const setScrollPosition = useCallback((value) => dispatch(setScrollPositionRedux(value)), [dispatch])
+    const listRef = useRef(null)
+    const { currentData, markedMode, markedQuotes, currentPhilosopher, options, scrollPosition } = useSelector((state) => state.philosophersData)
     const philosopherFullName = useMemo(() => getPhilosopherFullName({ currentPhilosopher, options }), [currentPhilosopher, options])
     const philosopherFullName_i10n = useMemo(() => getPhilosopherFullName_i10n({ currentPhilosopher, options }), [currentPhilosopher, options])
 
-    const style = useMemo(() => ({ padding: '1rem', textAlign: isDesktop() && 'center' }), [isDesktop])
+    const style = useMemo(() => ({ padding: '1rem', textAlign: isDesktop() && 'center' }), [])
 
     useEffect(() => {
         if (rowsRendered) {
@@ -36,7 +40,7 @@ function QuotesList({ listRef, width, searchText, start, end, setCurrentData, op
         currentData !== undefined && (
             <>
                 <ToggleMinMode />
-                <List height={screen.height - screen.height / 4} rowCount={currentData?.length} rowHeight={550} width={width} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined ? NoRowsRenderer : null} style={style} />
+                <List height={window.screen.height - window.screen.height / 4} rowCount={currentData?.length} rowHeight={550} width={window.innerWidth} ref={listRef} rowRenderer={rowRenderer} noRowsRenderer={currentPhilosopher !== undefined && currentData !== undefined ? NoRowsRenderer : null} style={style} />
             </>
         )
     )

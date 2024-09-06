@@ -7,21 +7,21 @@ import { retryTenTimes } from '../../../../../common/utils/apiUtils'
 import { checkQueryParams } from '../../../../../common/utils/urlUtils'
 import { WordLengthSearch } from '../../../tools/wordLengthSearch/wordLengthSearch'
 import { ALPHABETICAL, LATEST } from '../../home-page/constants/constants'
-import { setAutoPopulateWordCountRedux, setEndRedux, setStartRedux, setVoiceSpeedRedux, setVoiceTypeRedux } from '../../home-page/homePageRedux/homePageRedux'
+import { setAutoPopulateWordCountRedux, setDarkModeRedux, setEndRedux, setStartRedux, setVoiceSpeedRedux, setVoiceTypeRedux } from '../../home-page/homePageRedux/homePageRedux'
 import styles from './mobile-menu.module.css'
 const BuildInfo = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "BuildInfo" */ '../../../tools/build-info/build-info')))
 const LoginRegister = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "LoginRegister" */ '../login-register/login-register')))
 const OutsideAlerter = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "OutsideAlerter" */ '../../../../../common/components/outside-alerter/outside-alerter')))
 
-function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting, userName, setUserName, setMarkedQuotes, isLoggedIn, setIsLoggedIn, password, setPassword, setIsFetching }) {
+function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setSorting, sorting, userName, setUserName, setMarkedQuotes, isLoggedIn, setIsLoggedIn, password, setPassword, setIsFetching }) {
+    const dispatch = useDispatch()
+    const setDarkMode = useCallback((value) => dispatch(setDarkModeRedux(value)), [dispatch])
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)
     const voiceType = useSelector(({ philosophersData: { voiceType } }) => voiceType)
     const populateWordCount = useSelector(({ philosophersData: { populateWordCount } }) => populateWordCount)
     const markedQuotes = useSelector(({ philosophersData: { markedQuotes } }) => markedQuotes)
     const [voices, setVoices] = useState([])
     const [openSnackbar] = useSnackbar()
-
-    const dispatch = useDispatch()
 
     const onClickSortButtonHandler = (event) => {
         const id = event.target.id
