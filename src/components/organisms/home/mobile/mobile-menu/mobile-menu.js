@@ -88,7 +88,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 </li>
                 {markedMode && (
                     <li key="16">
-                        Set Minimum Word Count
+                        Auto Set Minimum Word Count
                         <input
                             type="checkbox"
                             checked={populateWordCount}
