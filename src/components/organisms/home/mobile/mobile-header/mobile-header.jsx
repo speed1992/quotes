@@ -40,7 +40,8 @@ function MobileHeader({ listRef, setSearchText, searchText, start, end, setStart
             <Suspense fallback={''}>
                 <Breadcrumb>
                     <QuotesFound  />
-                    {markedMode && <UnreadCounter isFetching={isFetching} currentData={currentData} originalData={originalData} markedQuotes={markedQuotes} currentPhilosopher={currentPhilosopher} isFetchingOptions={isFetchingOptions} />}
+                    {markedMode && <UnreadCounter isFetching={isFetching} currentData={currentData} originalData={originalData} markedQuotes={markedQuotes} currentPhilosopher={currentPhilosopher} isFetchingOptions={isFetchingOptions} isLoggedIn={isLoggedIn}
+                    />}
                 </Breadcrumb>
             </Suspense>
         </div>
