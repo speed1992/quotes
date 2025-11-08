@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { getPhilosopherQuotes } from '../../../../common/static/utils/utils'
 import { isUndefined } from '../../../../common/utils/commonUtils'
 
-function UnreadCounter({ isFetching, isFetchingOptions, markedQuotes, currentPhilosopher }) {
+function UnreadCounter({ isFetching, isFetchingOptions, markedQuotes, currentPhilosopher, isLoggedIn }) {
     const [quoteCounts, setQuoteCounts] = useState({ totalQuoteCount: null, readCount: null, unreadCount: null })
     const options = useSelector((state) => state.philosophersData.options)
     const originalData = getPhilosopherQuotes({ philosopher: currentPhilosopher, options })
@@ -18,7 +18,7 @@ function UnreadCounter({ isFetching, isFetchingOptions, markedQuotes, currentPhi
 
             setQuoteCounts({ totalQuoteCount, readCount, unreadCount })
         }
-    }, [currentPhilosopher, isFetching, isFetchingOptions, markedQuotes, originalData])
+    }, [currentPhilosopher, isFetching, isFetchingOptions, markedQuotes, originalData, isLoggedIn])
 
     if (!originalData || isFetching || isFetchingOptions) {
         return null // Render nothing while fetching data
