@@ -163,11 +163,9 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                         <button onClick={useCallback(() => dispatch(setCurrentModalName('Logs')), [])}>Open Dev Logs</button>
                     </li>
                 )}
-                  {checkQueryParams('dev') && (
                     <li key="10">
                       <ExportPDF/>
                     </li>
-                )}
             </ul>
         </OutsideAlerter>
     )

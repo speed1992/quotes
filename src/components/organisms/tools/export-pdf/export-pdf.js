@@ -5,6 +5,8 @@ import "jspdf-autotable";
 
 const ExportPDF = () => {
   const quotes = useSelector((state) => state.philosophersData.currentData);
+  const currentPhilosopher = useSelector((state) => state.philosophersData.currentPhilosopher);
+  
 
   const exportPDF = () => {
     if (!quotes || quotes.length === 0) {
@@ -40,7 +42,7 @@ const ExportPDF = () => {
     });
 
     // 💾 Download
-    doc.save("quotes.pdf");
+    doc.save(`${currentPhilosopher}_quotes.pdf`);
   };
 
   return (
