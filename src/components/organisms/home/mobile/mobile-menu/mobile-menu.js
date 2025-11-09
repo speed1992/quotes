@@ -154,6 +154,10 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                     <LoginRegister {...{ setUserName, userName, openSnackbar, isLoggedIn, setIsLoggedIn, setMarkedQuotes, markedQuotes, password, setPassword, setIsFetching }} />
                     {!isLoggedIn && <div className={styles.backupNote}>You can login to backup your marked quotes in database in case browser data gets deleted.</div>}
                 </li>
+                
+                 <li key="10">
+                      <ExportPDF/>
+                 </li>
 
                 <li key="8">
                     <BuildInfo />
@@ -163,9 +167,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                         <button onClick={useCallback(() => dispatch(setCurrentModalName('Logs')), [])}>Open Dev Logs</button>
                     </li>
                 )}
-                    <li key="10">
-                      <ExportPDF/>
-                    </li>
+             
             </ul>
         </OutsideAlerter>
     )
