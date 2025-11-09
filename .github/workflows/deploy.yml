@@ -16,6 +16,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set timezone to IST
+        run: |
+          sudo ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+          date  # Just to verify current time
+
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
