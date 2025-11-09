@@ -12,6 +12,7 @@ import styles from './mobile-menu.module.css'
 const BuildInfo = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "BuildInfo" */ '../../../tools/build-info/build-info')))
 const LoginRegister = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "LoginRegister" */ '../login-register/login-register')))
 const OutsideAlerter = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "OutsideAlerter" */ '../../../../../common/components/outside-alerter/outside-alerter')))
+const ExportPDF = React.lazy(() => retryTenTimes(() => import(/* webpackChunkName: "ExportPDF" */ '../../../tools/export-pdf/export-pdf.js')))
 
 function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMode, setDarkMode, setSorting, sorting, userName, setUserName, setMarkedQuotes, isLoggedIn, setIsLoggedIn, password, setPassword, setIsFetching }) {
     const voiceSpeed = useSelector(({ philosophersData: { voiceSpeed } }) => voiceSpeed)
@@ -160,6 +161,11 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 {checkQueryParams('dev') && (
                     <li key="9">
                         <button onClick={useCallback(() => dispatch(setCurrentModalName('Logs')), [])}>Open Dev Logs</button>
+                    </li>
+                )}
+                  {checkQueryParams('dev') && (
+                    <li key="10">
+                        <ExportPDF/>
                     </li>
                 )}
             </ul>
