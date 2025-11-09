@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/quotes/static/css/main.a163865e.css",
-    "main.js": "/quotes/static/js/main.0f8bad5d.js",
+    "main.js": "/quotes/static/js/main.b858e30e.js",
     "Logs.css": "/quotes/static/css/Logs.cb49c31c.chunk.css",
     "Logs.js": "/quotes/static/js/Logs.31f0366d.chunk.js",
     "Report.css": "/quotes/static/css/Report.b42a7c17.chunk.css",
@@ -34,7 +34,7 @@
     "MarkAsRead.js": "/quotes/static/js/MarkAsRead.89d89c01.chunk.js",
     "Audio.js": "/quotes/static/js/Audio.aa572320.chunk.js",
     "MobileMenu.css": "/quotes/static/css/MobileMenu.ed881b47.chunk.css",
-    "MobileMenu.js": "/quotes/static/js/MobileMenu.6b72e46b.chunk.js",
+    "MobileMenu.js": "/quotes/static/js/MobileMenu.fd0e2117.chunk.js",
     "Breadcrumb.css": "/quotes/static/css/Breadcrumb.80f7ff01.chunk.css",
     "Breadcrumb.js": "/quotes/static/js/Breadcrumb.66d4cb54.chunk.js",
     "UnreadCounter.js": "/quotes/static/js/UnreadCounter.80dbbf85.chunk.js",
@@ -43,11 +43,11 @@
     "MobileSelect.css": "/quotes/static/css/MobileSelect.050d2619.chunk.css",
     "MobileSelect.js": "/quotes/static/js/MobileSelect.0c0bde52.chunk.js",
     "DesktopWordLengthSearch.js": "/quotes/static/js/DesktopWordLengthSearch.b90d531b.chunk.js",
-    "BuildInfo.js": "/quotes/static/js/BuildInfo.34a8b7b1.chunk.js",
+    "BuildInfo.js": "/quotes/static/js/BuildInfo.e73997fa.chunk.js",
     "LoginRegister.css": "/quotes/static/css/LoginRegister.44e87f2b.chunk.css",
     "LoginRegister.js": "/quotes/static/js/LoginRegister.9bbaf882.chunk.js",
     "OutsideAlerter.js": "/quotes/static/js/OutsideAlerter.c2422561.chunk.js",
-    "ExportPDF.js": "/quotes/static/js/ExportPDF.91fbcc14.chunk.js",
+    "ExportPDF.js": "/quotes/static/js/ExportPDF.2bd4bce3.chunk.js",
     "static/js/239.4a2d0af5.chunk.js": "/quotes/static/js/239.4a2d0af5.chunk.js",
     "static/js/594.fed4bf69.chunk.js": "/quotes/static/js/594.fed4bf69.chunk.js",
     "static/js/455.31331886.chunk.js": "/quotes/static/js/455.31331886.chunk.js",
@@ -67,7 +67,7 @@
     "static/media/PETERSON.jpg": "/quotes/static/media/PETERSON.f3968a4c45466650e225.jpg",
     "index.html": "/quotes/index.html",
     "main.a163865e.css.map": "/quotes/static/css/main.a163865e.css.map",
-    "main.0f8bad5d.js.map": "/quotes/static/js/main.0f8bad5d.js.map",
+    "main.b858e30e.js.map": "/quotes/static/js/main.b858e30e.js.map",
     "Logs.cb49c31c.chunk.css.map": "/quotes/static/css/Logs.cb49c31c.chunk.css.map",
     "Logs.31f0366d.chunk.js.map": "/quotes/static/js/Logs.31f0366d.chunk.js.map",
     "Report.b42a7c17.chunk.css.map": "/quotes/static/css/Report.b42a7c17.chunk.css.map",
@@ -100,7 +100,7 @@
     "MarkAsRead.89d89c01.chunk.js.map": "/quotes/static/js/MarkAsRead.89d89c01.chunk.js.map",
     "Audio.aa572320.chunk.js.map": "/quotes/static/js/Audio.aa572320.chunk.js.map",
     "MobileMenu.ed881b47.chunk.css.map": "/quotes/static/css/MobileMenu.ed881b47.chunk.css.map",
-    "MobileMenu.6b72e46b.chunk.js.map": "/quotes/static/js/MobileMenu.6b72e46b.chunk.js.map",
+    "MobileMenu.fd0e2117.chunk.js.map": "/quotes/static/js/MobileMenu.fd0e2117.chunk.js.map",
     "Breadcrumb.80f7ff01.chunk.css.map": "/quotes/static/css/Breadcrumb.80f7ff01.chunk.css.map",
     "Breadcrumb.66d4cb54.chunk.js.map": "/quotes/static/js/Breadcrumb.66d4cb54.chunk.js.map",
     "UnreadCounter.80dbbf85.chunk.js.map": "/quotes/static/js/UnreadCounter.80dbbf85.chunk.js.map",
@@ -109,11 +109,11 @@
     "MobileSelect.050d2619.chunk.css.map": "/quotes/static/css/MobileSelect.050d2619.chunk.css.map",
     "MobileSelect.0c0bde52.chunk.js.map": "/quotes/static/js/MobileSelect.0c0bde52.chunk.js.map",
     "DesktopWordLengthSearch.b90d531b.chunk.js.map": "/quotes/static/js/DesktopWordLengthSearch.b90d531b.chunk.js.map",
-    "BuildInfo.34a8b7b1.chunk.js.map": "/quotes/static/js/BuildInfo.34a8b7b1.chunk.js.map",
+    "BuildInfo.e73997fa.chunk.js.map": "/quotes/static/js/BuildInfo.e73997fa.chunk.js.map",
     "LoginRegister.44e87f2b.chunk.css.map": "/quotes/static/css/LoginRegister.44e87f2b.chunk.css.map",
     "LoginRegister.9bbaf882.chunk.js.map": "/quotes/static/js/LoginRegister.9bbaf882.chunk.js.map",
     "OutsideAlerter.c2422561.chunk.js.map": "/quotes/static/js/OutsideAlerter.c2422561.chunk.js.map",
-    "ExportPDF.91fbcc14.chunk.js.map": "/quotes/static/js/ExportPDF.91fbcc14.chunk.js.map",
+    "ExportPDF.2bd4bce3.chunk.js.map": "/quotes/static/js/ExportPDF.2bd4bce3.chunk.js.map",
     "239.4a2d0af5.chunk.js.map": "/quotes/static/js/239.4a2d0af5.chunk.js.map",
     "594.fed4bf69.chunk.js.map": "/quotes/static/js/594.fed4bf69.chunk.js.map",
     "455.31331886.chunk.js.map": "/quotes/static/js/455.31331886.chunk.js.map",
@@ -125,6 +125,6 @@
   },
   "entrypoints": [
     "static/css/main.a163865e.css",
-    "static/js/main.0f8bad5d.js"
+    "static/js/main.b858e30e.js"
   ]
 }
