@@ -10,21 +10,17 @@
   <title>Quotes Collection</title>
 </head>
 
-<script>
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("dev") === "true") {
-    const script = document.createElement("script");
-    script.src = "https://cdn.jsdelivr.net/npm/eruda";
-    script.onload = () => eruda.init();
-    document.body.appendChild(script);
-  }
-</script>
-
-
+<
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+<script>
+  eruda.init();
+</script>
+
 
 </html>
