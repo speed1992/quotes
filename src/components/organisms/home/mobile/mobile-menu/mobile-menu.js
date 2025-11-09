@@ -165,7 +165,7 @@ function MobileMenu({ markedMode, setMarkedMode, visible, toggleVisible, darkMod
                 )}
                   {checkQueryParams('dev') && (
                     <li key="10">
-                        <ExportPDF/>
+{ /* <ExportPDF/>  */}
                     </li>
                 )}
             </ul>
