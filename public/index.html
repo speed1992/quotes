@@ -10,10 +10,16 @@
   <title>Quotes Collection</title>
 </head>
 
-<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
 <script>
-  eruda.init();
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("dev") === "true") {
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/eruda";
+    script.onload = () => eruda.init();
+    document.body.appendChild(script);
+  }
 </script>
+
 
 
 <body>
