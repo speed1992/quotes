@@ -17,7 +17,8 @@
     "redux-deep-persist": "^1.0.7",
     "redux-persist": "^6.0.0",
     "redux-persist-indexeddb-storage": "^1.0.4",
-    "pdfmake": "^0.2.10"
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",

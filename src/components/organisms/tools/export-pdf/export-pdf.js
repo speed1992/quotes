@@ -1,60 +1,47 @@
 import React from "react";
-import { useSelector } from 'react-redux'
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
-
-// Register the fonts
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { useSelector } from "react-redux";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const ExportPDF = () => {
-  const quotes = useSelector((state) => state.philosophersData.currentData)
+  const quotes = useSelector((state) => state.philosophersData.currentData);
+
   const exportPDF = () => {
-    const tableBody = [
-      [
-        { text: "No.", bold: true },
-        { text: "Quote", bold: true },
-      ],
-      ...quotes.map(({quote, id}, index) => [id, quote])
-    ];
-
-    const docDefinition = {
-      pageOrientation: "portrait",
-      pageSize: "A4",
-      content: [
-        { text: "Quotes Collection", style: "header" },
-        {
-          style: "tableExample",
-          table: {
-            headerRows: 1,
-            widths: ["auto", "*"],
-            body: tableBody
-          },
-          layout: {
-            fillColor: function (rowIndex) {
-              return rowIndex === 0 ? "#eeeeee" : null;
-            }
-          }
-        }
-      ],
-      styles: {
-        header: {
-          fontSize: 18,
-          bold: true,
-          margin: [0, 0, 0, 10]
-        },
-        tableExample: {
-          margin: [0, 5, 0, 15]
-        }
-      }
-    };
-
-    pdfMake.createPdf(docDefinition).download("quotes.pdf");
-  };
-  
-  if (!quotes || quotes.length === 0) {
+    if (!quotes || quotes.length === 0) {
       alert("No quotes to export!");
       return;
     }
+
+    const doc = new jsPDF({
+      orientation: "portrait",
+      unit: "pt",
+      format: "a4",
+    });
+
+    // 🧾 Title
+    doc.setFontSize(18);
+    doc.text("Quotes Collection", 40, 40);
+
+    // 🧱 Table content
+    const tableColumn = ["No.", "Quote"];
+    const tableRows = quotes.map(({ quote, id }, index) => [
+      id || index + 1,
+      quote,
+    ]);
+
+    // 🪄 AutoTable (from jspdf-autotable)
+    doc.autoTable({
+      startY: 60,
+      head: [tableColumn],
+      body: tableRows,
+      styles: { fontSize: 10, cellPadding: 5 },
+      headStyles: { fillColor: [240, 240, 240], textColor: 20, fontStyle: "bold" },
+      alternateRowStyles: { fillColor: [250, 250, 250] },
+    });
+
+    // 💾 Download
+    doc.save("quotes.pdf");
+  };
 
   return (
     <button
