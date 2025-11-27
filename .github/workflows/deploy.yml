@@ -1,4 +1,4 @@
-name: Fast React Deploy (Mobile Optimized)
+name: Fast React Deploy
 
 on:
   push:
@@ -21,6 +21,7 @@ jobs:
           sudo ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
           date  # Just to verify current time
 
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -37,12 +38,6 @@ jobs:
 
       - name: Build React app
         run: npm run build
-
-      - name: Install gzipper (GZIP + Brotli)
-        run: npm install -g gzipper
-
-      - name: Compress build output (GZIP + Brotli)
-        run: gzipper **compress** ./build --brotli
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
