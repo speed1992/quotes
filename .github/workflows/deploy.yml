@@ -42,7 +42,7 @@ jobs:
         run: npm install -g gzipper
 
       - name: Compress build output (GZIP + Brotli)
-        run: gzipper ./build --brotli
+        run: gzipper **compress** ./build --brotli
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
