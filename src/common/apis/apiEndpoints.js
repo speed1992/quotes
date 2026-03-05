@@ -1,3 +1,9 @@
+import { COMMIT } from "../settings/constants"
+
+const STATIC_BASE = COMMIT
+  ? `https://cdn.jsdelivr.net/gh/speed1992/quotes@${COMMIT}/src/common/static`
+  : `https://cdn.jsdelivr.net/gh/speed1992/quotes/main/src/common/static`;
+
 const BASEURL = {
     USER_DETAILS: `https://quotes-backend.vercel.app/api`,
     STATIC_ASSETS_BASEURL: `https://cdn.jsdelivr.net/gh/speed1992/quotes/src/common/static`,
