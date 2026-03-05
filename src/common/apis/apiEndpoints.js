@@ -6,7 +6,7 @@ const STATIC_BASE = COMMIT
 
 const BASEURL = {
     USER_DETAILS: `https://quotes-backend.vercel.app/api`,
-    STATIC_ASSETS_BASEURL: `https://cdn.jsdelivr.net/gh/speed1992/quotes/src/common/static`,
+    STATIC_ASSETS_BASEURL: STATIC_BASE,
 }
 
 export const API_ENDPOINTS = {
