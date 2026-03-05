@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[213],{9835(e,s,i){i.r(s),i.d(s,{default:()=>n});i(5043);const d=JSON.parse('{"buildDateTime":"5 March 2026 @ 12:43 PM"}');var a=i(579);const n=()=>{var e;const s=null===(e="6ab66b404372b5aade48935da2ea6ae361e81341")?void 0:e.substring(0,7);return(0,a.jsxs)("div",{style:{fontSize:"1rem"},children:[(0,a.jsx)("div",{children:"App Version:"}),(0,a.jsx)("div",{children:null===d||void 0===d?void 0:d.buildDateTime}),s&&(0,a.jsx)("div",{children:s})]})}}}]);
+//# sourceMappingURL=BuildInfo.2c91cea9.chunk.js.map
