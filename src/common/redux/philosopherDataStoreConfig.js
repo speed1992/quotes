@@ -11,16 +11,29 @@ const newPersistConfig = getPersistConfig({
     blacklist: ['currentData', 'originalData', 'logs'],
     rootReducer: philosophersDataReducer,
     migrate: async (state) => {
-        if (state && getPhilosopherQuotes({ philosopher: PHILOSOPHER_TO_PURGE, options: state?.options })) {
-            const index = getPhilosopherObjectIndex(PHILOSOPHER_TO_PURGE, state.options)
-            if (state.options[index]?.quotes?.length === 1159) {
-                state.currentData = []
-                delete state.originalData
-                delete state.options[index]?.quotes
-                if (state.currentPhilosopher === PHILOSOPHER_TO_PURGE) {
-                    state.currentPhilosopher = 'NIETZSCHE'
-                }
-            }
+        if (!state) return state;
+        const storedVersion = state._version;
+        // First install
+        if (!storedVersion) {
+            return {
+                ...state,
+                _version: BUILD_VERSION,
+            };
+        }
+        
+            // 🔥 New production deploy detected
+        if (storedVersion !== BUILD_VERSION) {
+
+            const newState = { ...state };
+
+            // ✅ delete top-level keys
+            delete newState.originalOptions;
+            delete newState.options;
+
+            // ✅ update version
+            newState._version = BUILD_VERSION;
+
+            return newState;
         }
         return state
     },
