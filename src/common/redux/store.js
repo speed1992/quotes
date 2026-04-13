@@ -4,6 +4,7 @@ import generateQuoteImageReducer from '../../components/organisms/analysis/gener
 import modalReducer from '../components/modal/modalRedux'
 import snackbarReducer from '../components/snackbar/snackbarRedux'
 import philosophersDataPersistedReducer from './philosopherDataStoreConfig'
+import { checkQueryParams } from '../utils/urlUtils'
 
 export const store = configureStore({
     reducer: {
@@ -20,3 +21,15 @@ export const store = configureStore({
 })
 
 export const persistor = persistStore(store)
+
+if (
+    process.env.NODE_ENV === 'development' ||
+    checkQueryParams('dev')
+) {
+    window.redux = {
+        store,
+        persistor,
+        getState: () => store.getState(),
+        dispatch: store.dispatch,
+    }
+}
