@@ -5,6 +5,8 @@ import philosophersDataReducer from '../../components/organisms/home/home-page/h
 import { getPhilosopherObjectIndex, getPhilosopherQuotes } from '../static/utils/utils'
 import { PHILOSOPHER_TO_PURGE } from './purgeCache'
 
+const BUILD_VERSION = process.env?.REACT_APP_COMMIT_HASH;
+
 const newPersistConfig = getPersistConfig({
     key: 'root',
     storage: DBstorage('myDB'),
