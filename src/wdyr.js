@@ -1,7 +1,8 @@
 import React from 'react'
+import { checkQueryParams } "./common/utils/urlUtils"
 
 // Make sure to only include the library in development
-if (process.env.NODE_ENV === 'development') {
+if (checkQueryParams('dev')) {
     const whyDidYouRender = require('@welldone-software/why-did-you-render')
     whyDidYouRender(React, {
         trackAllPureComponents: true,
