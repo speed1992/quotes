@@ -9,7 +9,10 @@
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <title>Quotes Collection</title>
 </head>
-  <script>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
   const params = new URLSearchParams(window.location.search);
   if (params.get("dev") === "true") {
     const script = document.createElement("script");
@@ -17,10 +20,7 @@
     script.onload = () => eruda.init();
     document.body.appendChild(script);
   }
-  </script>
-
-<body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+    </script>
   <div id="root"></div>
 </body>
 
