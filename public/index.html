@@ -8,14 +8,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicons/favicon-32x32.png">
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <title>Quotes Collection</title>
-</head>
-
-<body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
-</body>
-
-<script>
+  <script>
   const params = new URLSearchParams(window.location.search);
   if (params.get("dev") === "true") {
     const script = document.createElement("script");
@@ -23,7 +16,12 @@
     script.onload = () => eruda.init();
     document.body.appendChild(script);
   }
-</script>
+  </script>
+</head>
 
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
 
 </html>
