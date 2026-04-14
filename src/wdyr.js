@@ -1,5 +1,5 @@
 import React from 'react'
-import { checkQueryParams } "./common/utils/urlUtils"
+import { checkQueryParams } from './common/utils/urlUtils'
 
 // Make sure to only include the library in development
 if (checkQueryParams('dev')) {
