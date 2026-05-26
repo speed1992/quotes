@@ -1,2 +1,0 @@
-"use strict";(globalThis.webpackChunkquotes=globalThis.webpackChunkquotes||[]).push([[112],{8618(o,e,s){s.r(e),s.d(e,{default:()=>c});var n=s(3003),t=s(5795),l=s(5630);const a="toggleMinMode_minMode__CxJ3k";var i=s(579);const c=()=>{const o=(0,n.wA)(),{minMode:e}=(0,n.d4)(o=>o.philosophersData);return!(0,t.xl)()&&(0,i.jsx)("button",{className:a,onClick:()=>o((0,l.Gw)(!e)),children:"Toggle Min Mode"})}}}]);
-//# sourceMappingURL=ToggleMinMode.d4f48a97.chunk.js.map

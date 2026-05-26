@@ -1,2 +1,0 @@
-"use strict";(globalThis.webpackChunkquotes=globalThis.webpackChunkquotes||[]).push([[352],{6141(e,s,t){t.r(s),t.d(s,{default:()=>a});t(5043);var n=t(3003),o=t(579);const a=()=>{const{markedMode:e,currentData:s}=(0,n.d4)(e=>e.philosophersData),t=null===s||void 0===s?void 0:s.length;if(t)return e?(0,o.jsxs)(o.Fragment,{children:["Found: ",t," "]}):(0,o.jsxs)(o.Fragment,{children:["Quotes Found: ",t," "]})}}}]);
-//# sourceMappingURL=QuotesFound.3c14c79a.chunk.js.map
