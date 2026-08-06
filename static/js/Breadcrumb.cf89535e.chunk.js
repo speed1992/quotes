@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[860],{1897(e,s,n){n.r(s),n.d(s,{default:()=>u});n(5043);const t="breadcrumb_alignment__K2p7E";var c=n(579);const u=function(e){let s=e.children;return(0,c.jsx)("span",{className:t,children:s})}}}]);
-//# sourceMappingURL=Breadcrumb.cf89535e.chunk.js.map
