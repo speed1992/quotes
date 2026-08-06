@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkquotes=self.webpackChunkquotes||[]).push([[557],{2245(e,t,s){s.r(t);var a=s(3624),l=(s(5043),s(3003)),u=s(2938),n=s(5630),r=s(579);const m=e=>{let t=e.start;const s=(0,l.wA)();return(0,r.jsx)(a.A,{className:u.A.smallInput,id:"outlined-number",label:"Words",type:"number",size:"small",name:"start",min:"1",value:t,onChange:e=>{let t=e.target.value;return s((0,n.zr)(t))}})};s.d(t,["default",0,m])}}]);
+//# sourceMappingURL=DesktopWordLengthSearch.95ee6805.chunk.js.map
