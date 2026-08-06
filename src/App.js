@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import React, { Suspense } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import ErrorBoundary from './common/components/error-boundary/error-boundary'
 import { retryTenTimes } from './common/utils/apiUtils'
@@ -15,30 +15,28 @@ export const App = () => {
     const currentModalName = useSelector((state) => state.modal)
     return (
         <ErrorBoundary>
-            <Suspense>
-                {currentModalName === 'Report' && (
-                    <Modal title={currentModalName}>
-                        <Report />
-                    </Modal>
-                )}
-                {currentModalName === 'Image' && (
-                    <Modal>
-                        <GenerateQuoteImage />
-                    </Modal>
-                )}
-                {currentModalName === 'Logs' && (
-                    <Modal>
-                        <Logs />
-                    </Modal>
-                )}
-                {currentModalName === 'Exclusions' && (
-                    <Modal>
-                        <ExclusionsInclusions />
-                    </Modal>
-                )}
-                <HomePage />
-                <SnackBar />
-            </Suspense>
+            {currentModalName === 'Report' && (
+                <Modal title={currentModalName}>
+                    <Report />
+                </Modal>
+            )}
+            {currentModalName === 'Image' && (
+                <Modal>
+                    <GenerateQuoteImage />
+                </Modal>
+            )}
+            {currentModalName === 'Logs' && (
+                <Modal>
+                    <Logs />
+                </Modal>
+            )}
+            {currentModalName === 'Exclusions' && (
+                <Modal>
+                    <ExclusionsInclusions />
+                </Modal>
+            )}
+            <HomePage />
+            <SnackBar />
         </ErrorBoundary>
     )
 }
