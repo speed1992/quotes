@@ -58,7 +58,7 @@ export function useHomePageHooks() {
                 }
             })()
         }
-    }, [])
+    }, [isLoggedIn])
 
     useEffect(() => {
         if (!doesPhilosopherDataExist(currentPhilosopher, options)) {
