@@ -1,0 +1,2 @@
+"use strict";(globalThis.webpackChunkquotes||=[]).push([[590],{2994(s,a,c){c.r(a),c.d(a,{default:()=>t});var r=c(3686);const e="snackbar_snackbar__SS4is";var n=c(579);const t=()=>{const s=(0,r.d4)(s=>s.snackbar.message);return s&&(0,n.jsx)("div",{className:e,children:s})}}}]);
+//# sourceMappingURL=SnackBar.91b057fb.chunk.js.map
